@@ -1,0 +1,813 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Membuat Form Kontak Sederhana - Panduan Lengkap</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <style>
+      h2 {
+        text-align: center;
+      }
+      
+      .biodata-demo {
+        background-color: #f8f9fa;
+        border-radius: 5px;
+        padding: 15px;
+        margin: 15px 0;
+        border-left: 4px solid #0d6efd;
+        overflow-x: auto;
+      }
+      .code-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #343a40;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 4px 4px 0 0;
+      }
+      .copy-btn {
+        background-color: #495057;
+        color: white !important;
+        border: none;
+        padding: 2px 8px;
+        border-radius: 3px;
+        cursor: pointer;
+      }
+      code {
+        display: block;
+        background-color: #f8f9fa;
+        padding: 15px;
+        overflow-x: auto;
+        font-family: 'Courier New', monospace;
+        font-size: 14px;
+      }
+      .form-preview {
+        max-width: 600px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+      .form-group {
+        margin-bottom: 15px;
+      }
+      .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: 500;
+      }
+      .form-control {
+        width: 100%;
+        padding: 8px 12px;
+        border: 1px solid #ced4da;
+        border-radius: 4px;
+        font-size: 16px;
+      }
+      .form-control:focus {
+        border-color: #80bdff;
+        outline: 0;
+        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+      }
+      .btn {
+        background-color: #0d6efd;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+      .btn:hover {
+        background-color: #0b5ed7;
+      }
+      .form-text {
+        font-size: 0.875em;
+        color: #6c757d;
+        margin-top: 5px;
+      }
+      .is-invalid {
+        border-color: #dc3545 !important;
+      }
+      .invalid-feedback {
+        color: #dc3545;
+        font-size: 0.875em;
+        margin-top: 5px;
+      }
+      .form-check {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+      }
+      .form-check-input {
+        margin-right: 8px;
+      }
+      .form-select {
+        width: 100%;
+        padding: 8px 12px;
+        border: 1px solid #ced4da;
+        border-radius: 4px;
+        font-size: 16px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="blog-container">
+      <header class="title-section">
+        <div class="title-content">
+          <a href="https://webiddesign.com" target="_blank" rel="noopener">
+            <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+          </a>
+        </div>
+      </header>
+
+      <main class="content-section">
+        <section class="article-content">
+          <h2 class="text-center">Membuat Form Kontak Sederhana</h2>
+          <h3>Panduan Lengkap untuk Pemula</h3>
+
+          <p>
+            Form kontak adalah komponen penting dalam website yang memungkinkan pengunjung 
+            untuk berkomunikasi dengan pemilik website. Mari pelajari cara membuat form 
+            kontak yang fungsional dan menarik menggunakan HTML, CSS, dan JavaScript.
+          </p>
+
+          <h4>1. Struktur Dasar Form Kontak</h4>
+          <div class="biodata-demo">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="id"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Form Kontak&lt;/title&gt;
+  &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div class="container"&gt;
+    &lt;h1&gt;Hubungi Kami&lt;/h1&gt;
+    &lt;form id="contactForm" class="contact-form"&gt;
+      &lt;!-- Field input akan ditambahkan di sini --&gt;
+    &lt;/form&gt;
+  &lt;/div&gt;
+  &lt;script src="script.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          </div>
+
+          <h4>2. Menambahkan Field Input</h4>
+          <div class="biodata-demo">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;form id="contactForm" class="contact-form"&gt;
+  &lt;div class="form-group"&gt;
+    &lt;label for="name"&gt;Nama Lengkap&lt;/label&gt;
+    &lt;input 
+      type="text" 
+      id="name" 
+      name="name" 
+      class="form-control" 
+      required
+      placeholder="Masukkan nama lengkap Anda"
+    &gt;
+    &lt;div class="invalid-feedback"&gt;Mohon isi nama Anda&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class="form-group"&gt;
+    &lt;label for="email"&gt;Email&lt;/label&gt;
+    &lt;input 
+      type="email" 
+      id="email" 
+      name="email" 
+      class="form-control" 
+      required
+      placeholder="contoh@email.com"
+    &gt;
+    &lt;div class="invalid-feedback"&gt;Mohon masukkan email yang valid&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class="form-group"&gt;
+    &lt;label for="subject"&gt;Subjek&lt;/label&gt;
+    &lt;select id="subject" name="subject" class="form-select" required&gt;
+      &lt;option value="" disabled selected&gt;Pilih subjek...&lt;/option&gt;
+      &lt;option value="pertanyaan"&gt;Pertanyaan&lt;/option&gt;
+      &lt;option value="saran"&gt;Saran&lt;/option&gt;
+      &lt;option value="kerjasama"&gt;Kerja Sama&lt;/option&gt;
+      &lt;option value="lainnya"&gt;Lainnya&lt;/option&gt;
+    &lt;/select&gt;
+    &lt;div class="invalid-feedback"&gt;Mohon pilih subjek&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class="form-group"&gt;
+    &lt;label for="message"&gt;Pesan&lt;/label&gt;
+    &lt;textarea 
+      id="message" 
+      name="message" 
+      class="form-control" 
+      rows="5" 
+      required
+      placeholder="Tulis pesan Anda di sini..."
+    &gt;&lt;/textarea&gt;
+    &lt;div class="invalid-feedback"&gt;Mohon isi pesan Anda&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class="form-group"&gt;
+    &lt;div class="form-check"&gt;
+      &lt;input 
+        type="checkbox" 
+        id="privacyPolicy" 
+        name="privacyPolicy" 
+        class="form-check-input" 
+        required
+      &gt;
+      &lt;label class="form-check-label" for="privacyPolicy"&gt;
+        Saya setuju dengan &lt;a href="#"&gt;kebijakan privasi&lt;/a&gt;
+      &lt;/label&gt;
+      &lt;div class="invalid-feedback"&gt;Anda harus menyetujui kebijakan privasi&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;button type="submit" class="btn"&gt;Kirim Pesan&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+          </div>
+
+          <h4>3. CSS untuk Mempercantik Form</h4>
+          <div class="biodata-demo">
+            <div class="code-header">
+              <span>CSS (style.css)</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>/* Reset dan Variabel */
+:root {
+  --primary: #0d6efd;
+  --primary-hover: #0b5ed7;
+  --danger: #dc3545;
+  --gray: #6c757d;
+  --light-gray: #e9ecef;
+  --border-color: #ced4da;
+  --border-focus: #80bdff;
+  --box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: #212529;
+  background-color: #f8f9fa;
+  padding: 20px;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #2c3e50;
+}
+
+/* Form Styles */
+.contact-form {
+  background-color: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #495057;
+}
+
+.form-control,
+.form-select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid var(--border-color);
+  border-radius: 0.375rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--border-focus);
+  outline: 0;
+  box-shadow: var(--box-shadow);
+}
+
+textarea.form-control {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* Checkbox Styles */
+.form-check {
+  display: flex;
+  align-items: center;
+  padding-left: 0;
+}
+
+.form-check-input {
+  width: 1.2em;
+  height: 1.2em;
+  margin-right: 0.5rem;
+  margin-top: 0;
+}
+
+.form-check-label {
+  margin-bottom: 0;
+  font-weight: normal;
+}
+
+.form-check-label a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.form-check-label a:hover {
+  text-decoration: underline;
+}
+
+/* Button Styles */
+.btn {
+  display: inline-block;
+  font-weight: 500;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  user-select: none;
+  border: 1px solid transparent;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 0.375rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  cursor: pointer;
+  background-color: var(--primary);
+  color: white;
+  width: 100%;
+}
+
+.btn:hover {
+  background-color: var(--primary-hover);
+  color: white;
+}
+
+/* Validation Styles */
+.invalid-feedback {
+  display: none;
+  width: 100%;
+  margin-top: 0.25rem;
+  font-size: 0.875em;
+  color: var(--danger);
+}
+
+.was-validated .form-control:invalid ~ .invalid-feedback,
+.was-validated .form-control:invalid ~ .invalid-tooltip,
+.form-control.is-invalid ~ .invalid-feedback,
+.form-control.is-invalid ~ .invalid-tooltip {
+  display: block;
+}
+
+.was-validated .form-control:invalid,
+.form-control.is-invalid {
+  border-color: var(--danger);
+  padding-right: calc(1.5em + 0.75rem);
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc3545'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right calc(0.375em + 0.1875rem) center;
+  background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+}
+
+.was-validated .form-control:valid,
+.form-control.is-valid {
+  border-color: #198754;
+  padding-right: calc(1.5em + 0.75rem);
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23198754' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right calc(0.375em + 0.1875rem) center;
+  background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    padding: 10px;
+  }
+  
+  .contact-form {
+    padding: 20px;
+  }
+  
+  .btn {
+    padding: 0.6rem 1.2rem;
+  }
+}
+
+/* Animasi */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.contact-form {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+/* Loading State */
+.btn-loading {
+  position: relative;
+  pointer-events: none;
+}
+
+.btn-loading::after {
+  content: "";
+  display: inline-block;
+  width: 1.2em;
+  height: 1.2em;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 1s ease-in-out infinite;
+  margin-left: 10px;
+  vertical-align: middle;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}</code></pre>
+          </div>
+
+          <h4>4. Menambahkan Validasi dengan JavaScript</h4>
+          <div class="biodata-demo">
+            <div class="code-header">
+              <span>JavaScript (script.js)</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>document.addEventListener('DOMContentLoaded', function() {
+  const form = document.getElementById('contactForm');
+  
+  if (form) {
+    // Validasi form saat submit
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+      
+      // Hapus class validasi sebelumnya
+      const formControls = form.querySelectorAll('.form-control, .form-select, .form-check-input');
+      formControls.forEach(control => {
+        control.classList.remove('is-invalid');
+      });
+      
+      // Validasi form
+      let isValid = true;
+      const nameInput = document.getElementById('name');
+      const emailInput = document.getElementById('email');
+      const subjectSelect = document.getElementById('subject');
+      const messageTextarea = document.getElementById('message');
+      const privacyCheckbox = document.getElementById('privacyPolicy');
+      
+      // Validasi nama
+      if (!nameInput.value.trim()) {
+        nameInput.classList.add('is-invalid');
+        isValid = false;
+      }
+      
+      // Validasi email
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(emailInput.value.trim())) {
+        emailInput.classList.add('is-invalid');
+        isValid = false;
+      }
+      
+      // Validasi subjek
+      if (!subjectSelect.value) {
+        subjectSelect.classList.add('is-invalid');
+        isValid = false;
+      }
+      
+      // Validasi pesan
+      if (!messageTextarea.value.trim()) {
+        messageTextarea.classList.add('is-invalid');
+        isValid = false;
+      }
+      
+      // Validasi checkbox kebijakan privasi
+      if (!privacyCheckbox.checked) {
+        privacyCheckbox.classList.add('is-invalid');
+        isValid = false;
+      }
+      
+      // Jika form valid, kirim data
+      if (isValid) {
+        const formData = new FormData(form);
+        const formObject = {};
+        
+        // Konversi FormData ke object
+        formData.forEach((value, key) => {
+          formObject[key] = value;
+        });
+        
+        // Tampilkan loading state
+        const submitButton = form.querySelector('button[type="submit"]');
+        const originalButtonText = submitButton.innerHTML;
+        submitButton.disabled = true;
+        submitButton.innerHTML = 'Mengirim...';
+        submitButton.classList.add('btn-loading');
+        
+        // Simulasi pengiriman data (ganti dengan kode AJAX sebenarnya)
+        setTimeout(() => {
+          console.log('Data yang dikirim:', formObject);
+          
+          // Tampilkan pesan sukses
+          alert('Pesan Anda berhasil terkirim! Kami akan segera menghubungi Anda.');
+          
+          // Reset form
+          form.reset();
+          
+          // Reset button state
+          submitButton.disabled = false;
+          submitButton.innerHTML = originalButtonText;
+          submitButton.classList.remove('btn-loading');
+        }, 1500);
+      }
+    });
+    
+    // Validasi real-time
+    const inputs = form.querySelectorAll('.form-control, .form-select, .form-check-input');
+    
+    inputs.forEach(input => {
+      // Validasi saat input kehilangan fokus
+      input.addEventListener('blur', function() {
+        validateField(this);
+      });
+      
+      // Hapus pesan error saat pengguna mulai mengetik
+      input.addEventListener('input', function() {
+        if (this.classList.contains('is-invalid')) {
+          this.classList.remove('is-invalid');
+        }
+      });
+    });
+    
+    // Fungsi validasi field
+    function validateField(field) {
+      if (field.required && !field.value.trim()) {
+        field.classList.add('is-invalid');
+        return false;
+      }
+      
+      // Validasi email
+      if (field.type === 'email' && field.value.trim()) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(field.value.trim())) {
+          field.classList.add('is-invalid');
+          return false;
+        }
+      }
+      
+      field.classList.remove('is-invalid');
+      return true;
+    }
+  }
+});</code></pre>
+          </div>
+
+          <h4>5. Menambahkan Fungsi Pengiriman dengan Fetch API</h4>
+          <div class="biodata-demo">
+            <div class="code-header">
+              <span>JavaScript (script.js - Update)</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>// Fungsi untuk mengirim form menggunakan Fetch API
+async function submitForm(formData) {
+  try {
+    const response = await fetch('https://contoh-api.com/contact', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData)
+    });
+    
+    if (!response.ok) {
+      throw new Error('Gagal mengirim pesan');
+    }
+    
+    const data = await response.json();
+    return { success: true, data };
+  } catch (error) {
+    console.error('Error:', error);
+    return { 
+      success: false, 
+      message: 'Terjadi kesalahan saat mengirim pesan. Silakan coba lagi nanti.' 
+    };
+  }
+}
+
+// Ganti kode dalam event listener submit form dengan:
+if (isValid) {
+  const formData = new FormData(form);
+  const formObject = {};
+  
+  formData.forEach((value, key) => {
+    formObject[key] = value;
+  });
+  
+  // Tampilkan loading state
+  const submitButton = form.querySelector('button[type="submit"]');
+  const originalButtonText = submitButton.innerHTML;
+  submitButton.disabled = true;
+  submitButton.innerHTML = 'Mengirim...';
+  submitButton.classList.add('btn-loading');
+  
+  // Kirim data menggunakan Fetch API
+  const result = await submitForm(formObject);
+  
+  if (result.success) {
+    // Tampilkan pesan sukses
+    alert('Pesan Anda berhasil terkirim! Kami akan segera menghubungi Anda.');
+    form.reset();
+  } else {
+    alert(result.message || 'Terjadi kesalahan. Silakan coba lagi.');
+  }
+  
+  // Reset button state
+  submitButton.disabled = false;
+  submitButton.innerHTML = originalButtonText;
+  submitButton.classList.remove('btn-loading');
+}</code></pre>
+          </div>
+
+          <h4>6. Menambahkan Fitur Upload File</h4>
+          <div class="biodata-demo">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;div class="form-group"&gt;
+  &lt;label for="attachment"&gt;Lampiran (Opsional)&lt;/label&gt;
+  &lt;input 
+    type="file" 
+    id="attachment" 
+    name="attachment" 
+    class="form-control"
+    accept=".pdf,.doc,.docx,.jpg,.jpeg,.png"
+  &gt;
+  &lt;div class="form-text"&gt;Format yang didukung: PDF, DOC, DOCX, JPG, PNG (Maks. 5MB)&lt;/div&gt;
+  &lt;div class="invalid-feedback"&gt;Ukuran file terlalu besar atau format tidak didukung&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+
+          <div class="biodata-demo">
+            <div class="code-header">
+              <span>JavaScript (script.js - Update)</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>// Validasi ukuran file
+function validateFileSize(fileInput) {
+  const maxSize = 5 * 1024 * 1024; // 5MB
+  if (fileInput.files.length > 0) {
+    const fileSize = fileInput.files[0].size;
+    if (fileSize > maxSize) {
+      fileInput.classList.add('is-invalid');
+      return false;
+    }
+  }
+  return true;
+}
+
+// Tambahkan event listener untuk validasi file
+const fileInput = document.getElementById('attachment');
+if (fileInput) {
+  fileInput.addEventListener('change', function() {
+    validateFileSize(this);
+  });
+}
+
+// Update validasi form
+if (fileInput && !validateFileSize(fileInput)) {
+  isValid = false;
+}</code></pre>
+          </div>
+
+          <div class="note">
+            <strong>Tips untuk Form Kontak yang Lebih Baik:</strong>
+            <ul>
+              <li>Gunakan label yang jelas dan deskriptif</li>
+              <li>Tambahkan placeholder untuk panduan input</li>
+              <li>Validasi input di sisi klien dan server</li>
+              <li>Berikan umpan balik yang jelas untuk setiap aksi</li>
+              <li>Optimalkan untuk perangkat mobile</li>
+              <li>Gunakan CAPTCHA untuk mencegah spam</li>
+              <li>Tambahkan halaman terima kasih setelah pengiriman</li>
+            </ul>
+          </div>
+
+          <div class="warning">
+            <strong>Keamanan Form:</strong>
+            <ul>
+              <li>Selalu validasi input di sisi server</li>
+              <li>Gunakan HTTPS untuk mengamankan data yang dikirim</li>
+              <li>Lindungi dari serangan XSS (Cross-Site Scripting)</li>
+              <li>Bersihkan input untuk mencegah SQL Injection</li>
+              <li>Batasi ukuran file yang diunggah</li>
+            </ul>
+          </div>
+
+          <nav class="navigation-section" aria-label="Halaman navigasi">
+            <div class="nav-buttons">
+              <button
+                class="btn"
+                onclick="window.location.href='h122.html'"
+                title="Membuat halaman artikel dengan gambar dan link"
+              >
+                &lt;&nbsp;Prev
+              </button>
+              <img
+                src="../assets/png/home.png"
+                alt="Home"
+                class="home-icon"
+                onclick="window.location.href='../index.html'"
+                title="Home"
+              />
+              <img
+                src="../assets/png/html5.png"
+                alt="HTML"
+                onclick="window.location.href='h1.html'"
+                title="Daftar Isi HTML"
+              />
+              <button
+                class="btn"
+                onclick="window.location.href='h124.html'"
+                title="Membuat layout website sederhana dengan elemen semantik"
+              >
+                Next&nbsp;&gt;
+              </button>
+            </div>
+          </nav>
+        </section>
+      </main>
+    </div>
+
+    <script>
+      function copyCode(button) {
+        const codeBlock = button.parentElement.nextElementSibling;
+        const code = codeBlock.textContent;
+
+        // Buat elemen textarea untuk menyalin teks
+        const textarea = document.createElement('textarea');
+        textarea.value = code;
+        textarea.style.position = 'fixed';
+        document.body.appendChild(textarea);
+        textarea.select();
+
+        try {
+          // Salin teks ke clipboard
+          const successful = document.execCommand('copy');
+          const msg = successful ? 'berhasil disalin!' : 'gagal disalin';
+
+          // Tampilkan notifikasi
+          const originalText = button.textContent;
+          button.textContent = 'Tersalin!';
+
+          // Kembalikan teks tombol setelah 2 detik
+          setTimeout(() => {
+            button.textContent = originalText;
+          }, 2000);
+        } catch (err) {
+          console.error('Gagal menyalin teks: ', err);
+        }
+        // Hapus textarea
+        document.body.removeChild(textarea);
+      }
+    </script>
+  </body>
+</html>

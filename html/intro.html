@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog Sederhana</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Introduction to HTML</h2>
+
+      <h3 class="section-title">What is <span class="x-html">X</span>HTML?</h3>
+      <p>
+        XHTML stands for e<span class="x-html">X</span>tensible
+        <span class="x-html">H</span>yper<span class="x-html">T</span>ext
+        <span class="x-html">M</span>arkup <span class="x-html">L</span>anguage and is aimed to
+        replace HTML. XHTML is almost identical to HTML 4.01 and a stricter and cleaner version of
+        HTML.
+      </p>
+
+      <p>
+        Markup language means a method of segmenting the content by marking the beginning and ending
+        of the segment. This is the example:
+      </p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>HTML</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>&lt;b&gt;this part is bold&lt;/b&gt;
+and this part is not</code></pre>
+      </div>
+
+      <p>
+        Hypertext means that the marked segment can be linked to another document, another object or
+        another part of the current document.
+      </p>
+
+      <p>
+        Extensible means that the whole language can be expanded, new markups can be created by
+        using combinations of standard ones.
+      </p>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='h1.html'">Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <button class="btn" onclick="window.location.href='intro2.html'">Next</button>
+      </div>
+    </div>
+
+    <script src="../script/copyCode.js"></script>
+    <script src="../script/script.js"></script>
+  </body>
+</html>

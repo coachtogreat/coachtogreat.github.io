@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gambar HTML</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <style>
+      .image-gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 15px;
+        margin: 20px 0;
+      }
+      .image-container {
+        border: 1px solid #ddd;
+        padding: 10px;
+        border-radius: 5px;
+        text-align: center;
+      }
+      .image-container img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 0 auto 10px;
+      }
+      .image-caption {
+        font-size: 0.9em;
+        color: #555;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="blog-container">
+      <header class="title-section">
+        <div class="title-content">
+          <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+            <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+          </a>
+        </div>
+      </header>
+
+      <main class="content-section">
+        <section class="article-content">
+          <h2 class="intro-title">Menambahkan Gambar dengan &lt;img&gt;</h2>
+          <h3 class="section-title">Memahami Tag &lt;img&gt; dalam HTML</h3>
+
+          <p>
+            Tag <code>&lt;img&gt;</code> digunakan untuk menambahkan gambar ke dalam halaman web.
+            Berbeda dengan elemen lain, tag ini tidak memiliki tag penutup dan termasuk dalam
+            kategori <em>void element</em>.
+          </p>
+
+          <h4>1. Dasar Penggunaan &lt;img&gt;</h4>
+          <p>Berikut adalah contoh dasar penggunaan tag <code>&lt;img&gt;</code>:</p>
+
+          <div class="code-block">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;!-- Gambar dengan path relatif --&gt;
+&lt;img src="gambar/logo.png" alt="Logo Perusahaan"&gt;
+
+&lt;!-- Gambar dengan URL absolut --&gt;
+&lt;img src="https://contoh.com/gambar/logo.png" alt="Logo"&gt;
+
+&lt;!-- Gambar dengan lebar dan tinggi --&gt;
+&lt;img src="foto.jpg" alt="Foto Profil" width="200" height="150"&gt;</code></pre>
+          </div>
+
+          <h4>2. Atribut Wajib</h4>
+
+          <h5><code>src</code> (source)</h5>
+          <p>Menentukan lokasi file gambar. Bisa berupa path relatif atau URL absolut.</p>
+
+          <div class="code-block">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;!-- Path relatif --&gt;
+&lt;img src="images/logo.png" alt="Logo"&gt;
+
+&lt;!-- URL absolut --&gt;
+&lt;img src="https://contoh.com/gambar/header.jpg" alt="Header"&gt;</code></pre>
+          </div>
+
+          <h5><code>alt</code> (alternative text)</h5>
+          <p>Menyediakan teks alternatif yang akan ditampilkan jika gambar tidak dapat dimuat.</p>
+
+          <div class="code-block">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;img src="kucing.jpg" alt="Kucing lucu sedang tidur"&gt;</code></pre>
+          </div>
+
+          <h4>3. Atribut Penting Lainnya</h4>
+
+          <h5><code>width</code> dan <code>height</code></h5>
+          <p>Mengatur lebar dan tinggi gambar dalam piksel.</p>
+
+          <div class="code-block">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;!-- Atur lebar dan tinggi --&gt;
+&lt;img src="foto.jpg" alt="Foto" width="300" height="200"&gt;
+
+&lt;!-- Hanya atur lebar, tinggi menyesuaikan aspek rasio --&gt;
+&lt;img src="foto.jpg" alt="Foto" width="300"&gt;</code></pre>
+          </div>
+
+          <h5><code>loading</code></h5>
+          <p>Mengontrol kapan gambar akan dimuat.</p>
+
+          <div class="code-block">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;!-- Gambar dimuat saat terlihat di viewport --&gt;
+&lt;img src="gambar-besar.jpg" alt="Gambar Besar" loading="lazy"&gt;</code></pre>
+          </div>
+
+          <h4>4. Gambar Responsif</h4>
+
+          <h5>Menggunakan CSS</h5>
+          <div class="code-block">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;style&gt;
+  .gambar-responsif {
+    max-width: 100%;
+    height: auto;
+  }
+&lt;/style&gt;
+
+&lt;img src="gambar.jpg" alt="Gambar Responsif" class="gambar-responsif"&gt;</code></pre>
+          </div>
+
+          <h5>Menggunakan <code>srcset</code> dan <code>sizes</code></h5>
+          <div class="code-block">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;img 
+  src="gambar-kecil.jpg" 
+  srcset="gambar-kecil.jpg 300w,
+          gambar-sedang.jpg 600w,
+          gambar-besar.jpg 1200w"
+  sizes="(max-width: 600px) 300px,
+         (max-width: 1200px) 600px,
+         1200px"
+  alt="Gambar Responsif"
+  loading="lazy"
+&gt;</code></pre>
+          </div>
+
+          <h4>5. Gambar dengan Teks Alternatif yang Baik</h4>
+          <div class="code-block">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;!-- Tidak disarankan --&gt;
+&lt;img src="chart.png" alt="Grafik"&gt;
+
+&lt;!-- Direkomendasikan --&gt;
+&lt;img 
+  src="chart.png" 
+  alt="Grafik pertumbuhan penjualan triwulan 1-4 tahun 2023"
+  title="Klik untuk memperbesar"
+&gt;</code></pre>
+          </div>
+
+          <h4>6. Gambar dengan Link</h4>
+          <div class="code-block">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;!-- Gambar yang dapat diklik --&gt;
+&lt;a href="halaman-besar.html"&gt;
+  &lt;img 
+    src="thumbnail.jpg" 
+    alt="Lihat gambar ukuran penuh"
+    width="200"
+    height="150"
+  &gt;
+&lt;/a&gt;
+
+&lt;!-- Gambar dengan tooltip --&gt;
+&lt;img 
+  src="info.png" 
+  alt="Informasi"
+  title="Klik untuk informasi lebih lanjut"
+  style="cursor: help;"
+&gt;</code></pre>
+          </div>
+
+          <h4>7. Format Gambar yang Didukung</h4>
+          <div class="table-responsive">
+            <table style="border-collapse: collapse; width: 100%; border: 1px solid #ddd">
+              <thead>
+                <tr style="background-color: #f2f2f2">
+                  <th style="border: 1px solid #ddd; padding: 8px; text-align: left">Format</th>
+                  <th style="border: 1px solid #ddd; padding: 8px; text-align: left">Ekstensi</th>
+                  <th style="border: 1px solid #ddd; padding: 8px; text-align: left">Kegunaan</th>
+                  <th style="border: 1px solid #ddd; padding: 8px; text-align: left">Dukungan</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="border: 1px solid #ddd; padding: 8px">JPEG</td>
+                  <td style="border: 1px solid #ddd; padding: 8px">.jpg, .jpeg</td>
+                  <td style="border: 1px solid #ddd; padding: 8px">Foto</td>
+                  <td style="border: 1px solid #ddd; padding: 8px; text-align: center">✓</td>
+                </tr>
+                <tr style="background-color: #f9f9f9">
+                  <td style="border: 1px solid #ddd; padding: 8px">PNG</td>
+                  <td style="border: 1px solid #ddd; padding: 8px">.png</td>
+                  <td style="border: 1px solid #ddd; padding: 8px">Grafik dengan transparansi</td>
+                  <td style="border: 1px solid #ddd; padding: 8px; text-align: center">✓</td>
+                </tr>
+                <tr>
+                  <td style="border: 1px solid #ddd; padding: 8px">GIF</td>
+                  <td style="border: 1px solid #ddd; padding: 8px">.gif</td>
+                  <td style="border: 1px solid #ddd; padding: 8px">Animasi sederhana</td>
+                  <td style="border: 1px solid #ddd; padding: 8px; text-align: center">✓</td>
+                </tr>
+                <tr style="background-color: #f9f9f9">
+                  <td style="border: 1px solid #ddd; padding: 8px">SVG</td>
+                  <td style="border: 1px solid #ddd; padding: 8px">.svg</td>
+                  <td style="border: 1px solid #ddd; padding: 8px">Grafik vektor</td>
+                  <td style="border: 1px solid #ddd; padding: 8px; text-align: center">✓</td>
+                </tr>
+                <tr>
+                  <td style="border: 1px solid #ddd; padding: 8px">WebP</td>
+                  <td style="border: 1px solid #ddd; padding: 8px">.webp</td>
+                  <td style="border: 1px solid #ddd; padding: 8px">
+                    Format modern dengan kompresi lebih baik
+                  </td>
+                  <td style="border: 1px solid #ddd; padding: 8px; text-align: center">
+                    ✓ (kecuali IE)
+                  </td>
+                </tr>
+                <tr style="background-color: #f9f9f9">
+                  <td style="border: 1px solid #ddd; padding: 8px">AVIF</td>
+                  <td style="border: 1px solid #ddd; padding: 8px">.avif</td>
+                  <td style="border: 1px solid #ddd; padding: 8px">Format gambar modern</td>
+                  <td style="border: 1px solid #ddd; padding: 8px; text-align: center">
+                    ✓ (terbatas)
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h4>8. Praktik Terbaik</h4>
+          <ul>
+            <li>Selalu sertakan atribut <code>alt</code> yang deskriptif</li>
+            <li>Optimalkan ukuran file gambar untuk web</li>
+            <li>Gunakan format gambar yang tepat untuk konten yang sesuai</li>
+            <li>Pertimbangkan untuk menggunakan gambar responsif</li>
+            <li>Gunakan <code>loading="lazy"</code> untuk gambar di bawah fold</li>
+            <li>Pertimbangkan penggunaan CDN untuk gambar jika situs Anda besar</li>
+            <li>Gunakan teks alternatif yang bermakna untuk gambar konten</li>
+            <li>Hindari teks dalam gambar (gunakan HTML/CSS untuk teks)</li>
+          </ul>
+        </section>
+
+        <br />
+        <nav class="navigation-section" aria-label="Halaman navigasi">
+          <div class="nav-buttons">
+            <button class="btn" onclick="window.location.href='h42.html'" title="Atribut Tautan">
+              &lt;&nbsp;Prev
+            </button>
+            <img
+              src="../assets/png/home.png"
+              alt="Home"
+              class="home-icon"
+              onclick="window.location.href='../index.html'"
+              title="Home"
+            />
+            <img
+              src="../assets/png/html5.png"
+              alt="HTML"
+              onclick="window.location.href='h1.html'"
+              title="Daftar Isi HTML"
+            />
+            <button class="btn" onclick="window.location.href='h51.html'" title="Atribut Gambar">
+              Next&nbsp;&gt;
+            </button>
+          </div>
+        </nav>
+      </main>
+    </div>
+
+    <script src="../script/copyCode.js"></script>
+    <script src="../script/script.js"></script>
+  </body>
+</html>

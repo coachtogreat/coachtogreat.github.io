@@ -1,43 +1,49 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Selamat Datang</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f9f9f9;
-      color: #333;
-      
-      padding: 50px;
-    }
-    h1 {
-      color: #2c3e50;
-      text-align: center;
-    }
-    p {
-      font-size: 18px;
-      max-width: 600px;
-      margin: 0 auto;
-      text-align: justify;
-    }
-    a.button {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 12px 24px;
-      background-color: #3498db;
-      color: white;
-      text-decoration: none;
-      border-radius: 5px;
-    }
-    a.button:hover {
-      background-color: #2980b9;
-    }
-  </style>
-</head>
-<body>
-  <h1>Halo, Selamat Datang di Website Saya!</h1>
-  <p>Ini adalah halaman utama dari situs saya yang dihosting melalui GitHub Pages. Situs ini masih dalam pengembangan, tapi kamu bisa melihat update terbaru di sini.</p>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>index.html</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="./assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+      <h1>Front End Developer Journal</h1>
+      <h3>Never give up and keep on learning</h3>
+      <div class="meta">Date: May 11, 2025 | By Surya Rachmannuh</div>
+      <p>
+        Hai, my name is Surya Rachmannuh, as know as trainer, coach and module developer. Since
+        today I will start my journey as a front end developer. This blog is designed in English
+        version, for the Indonesian Version, you can follow it after the English Version
+      </p>
+
+      <p>Here is the skills list that ypu can learn at your own pace:</p>
+
+      <ol>
+        <li><a href="./html/h1.html">HTML</a></li>
+        <li>CSS</li>
+        <li>JavaScript</li>
+        <li>TypeScript</li>
+        <li>React</li>
+        <li>Redux</li>
+        <li>Framer Motion</li>
+        <li>Others</li>
+      </ol>
+
+      <p>
+        Please give your comments to
+        <a href="mailto:coachtogreat@gmail.com">coachtogreat@gmail.com</a>. So enjoy and keep on
+        learning. <span class="emoji">😊</span><br />
+      </p>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='./html/h1.html'">Get Started</button>
+      </div>
+    </div>
+
+    <script src="./script/script.js"></script>
+  </body>
 </html>

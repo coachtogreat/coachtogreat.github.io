@@ -1,0 +1,449 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Atribut Penting Formulir HTML: Action, Method, dan Name</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <style>
+      .form-demo {
+        background-color: #f8f9fa;
+        border-radius: 5px;
+        padding: 15px;
+        margin: 15px 0;
+        border-left: 4px solid #0d6efd;
+        overflow-x: auto;
+      }
+      .form-container {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: white;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      }
+      .form-group {
+        margin-bottom: 20px;
+        padding: 15px;
+        border: 1px solid #e9ecef;
+        border-radius: 5px;
+      }
+      label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+        color: #212529;
+      }
+      input[type="text"],
+      input[type="email"],
+      input[type="password"],
+      input[type="tel"],
+      input[type="url"],
+      input[type="search"],
+      input[type="number"],
+      input[type="date"],
+      input[type="time"],
+      input[type="datetime-local"],
+      select,
+      textarea {
+        width: 100%;
+        padding: 10px 12px;
+        margin: 5px 0 15px;
+        border: 1px solid #ced4da;
+        border-radius: 4px;
+        box-sizing: border-box;
+        font-size: 16px;
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+      }
+      input:focus, select:focus, textarea:focus {
+        border-color: #86b7fe;
+        outline: 0;
+        box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+      }
+      .code-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #343a40;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 4px 4px 0 0;
+      }
+      .copy-btn {
+        background-color: #495057;
+        color: white;
+        border: none;
+        padding: 2px 8px;
+        border-radius: 3px;
+        cursor: pointer;
+        font-size: 14px;
+      }
+      .copy-btn:hover {
+        background-color: #ffd43b;
+        color: #212529;
+      }
+      pre {
+        margin: 0;
+        padding: 0;
+      }
+      code {
+        display: block;
+        background-color: #f8f9fa;
+        padding: 15px;
+        border-radius: 0 0 4px 4px;
+        overflow-x: auto;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 14px;
+        line-height: 1.5;
+      }
+      .property {
+        color: #d63384;
+        font-weight: bold;
+      }
+      .value {
+        color: #0d6efd;
+      }
+      .comment {
+        color: #6c757d;
+        font-style: italic;
+      }
+      .highlight {
+        background-color: #fff3cd;
+        padding: 2px 4px;
+        border-radius: 3px;
+      }
+      .note {
+        background-color: #e7f5ff;
+        border-left: 4px solid #0d6efd;
+        padding: 12px 15px;
+        margin: 15px 0;
+        border-radius: 0 4px 4px 0;
+      }
+      .warning {
+        background-color: #fff3bf;
+        border-left: 4px solid #ffd43b;
+        padding: 12px 15px;
+        margin: 15px 0;
+        border-radius: 0 4px 4px 0;
+      }
+      .attribute-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+      }
+      .attribute-table th, .attribute-table td {
+        border: 1px solid #dee2e6;
+        padding: 10px;
+        text-align: left;
+      }
+      .attribute-table th {
+        background-color: #f8f9fa;
+      }
+      .attribute-table tr:nth-child(even) {
+        background-color: #f8f9fa;
+      }
+      .example-form {
+        background-color: white;
+        padding: 20px;
+        border: 1px solid #dee2e6;
+        border-radius: 4px;
+        margin: 15px 0;
+      }
+      .form-actions {
+        margin-top: 15px;
+      }
+      .form-actions button {
+        padding: 8px 16px;
+        margin-right: 10px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: 500;
+      }
+      .btn-primary {
+        background-color: #0d6efd;
+        color: white;
+      }
+      .btn-secondary {
+        background-color: #6c757d;
+        color: white;
+      }
+      .btn-primary:hover {
+        background-color: #0b5ed7;
+      }
+      .btn-secondary:hover {
+        background-color: #5c636a;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="blog-container">
+      <header class="title-section">
+        <div class="title-content">
+          <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+            <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+          </a>
+        </div>
+      </header>
+
+      <main class="content-section">
+        <section class="article-content">
+          <h2 class="intro-title">Atribut Penting dalam Formulir HTML</h2>
+          <h3 class="section-title">Memahami Action, Method, dan Name</h3>
+          
+          <p>
+            Formulir HTML adalah komponen penting dalam pengembangan web yang memungkinkan pengguna untuk mengirim data ke server. 
+            Ada tiga atribut penting yang perlu dipahami dalam pembuatan formulir: <code>action</code>, <code>method</code>, dan <code>name</code>.
+          </p>
+
+          <div class="note">
+            <strong>Catatan:</strong> Ketiga atribut ini bekerja sama untuk menentukan bagaimana data formulir akan diproses dan dikirim ke server.
+          </div>
+
+          <h3 style="text-align: left;">1. Atribut Action</h3>
+          <p>
+            Atribut <span class="code-highlight"></span> menentukan ke mana data formulir akan dikirim ketika formulir disubmit.
+          </p>
+          
+          <h4>Contoh Penggunaan:</h4>
+          <div class="form-demo">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode('action-example')">Salin</button>
+            </div>
+            <pre><code id="action-example">&lt;form action="/proses-pendaftaran.php"&gt;
+  &lt;!-- Isi formulir --&gt;
+&lt;/form&gt;</code></pre>
+          </div>
+
+          <h5>Penjelasan:</h5>
+          <ul>
+            <li>Nilai dari <code>action</code> adalah URL yang akan memproses data formulir</li>
+            <li>Bisa berupa URL absolut (contoh: https://contoh.com/proses.php) atau relatif (contoh: /proses.php)</li>
+            <li>Jika tidak ditentukan, formulir akan mengirim data ke URL halaman saat ini</li>
+          </ul>
+
+          <h3 style="text-align: left;">2. Atribut method</h3>
+          <p>
+            Atribut <span class="code-highlight">method</span> menentukan metode HTTP yang akan digunakan untuk mengirim data formulir ke server.
+          </p>
+          
+          <h4>Nilai yang Tersedia:</h4>
+          <table class="attribute-table">
+            <tr>
+              <th>Nilai</th>
+              <th>Keterangan</th>
+            </tr>
+            <tr>
+              <td><code>GET</code></td>
+              <td>
+                <ul>
+                  <li>Mengirim data melalui URL</li>
+                  <li>Data terlihat di address bar browser</n                  <li>Panjang URL terbatas (sekitar 2000 karakter)</li>
+                  <li>Cocok untuk pencarian dan filter</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td><code>POST</code></td>
+              <td>
+                <ul>
+                  <li>Mengirim data melalui body HTTP request</li>
+                  <li>Tidak terlihat di address bar</li>
+                  <li>Tidak ada batasan ukuran data</li>
+                  <li>Cocok untuk data sensitif dan form pendaftaran</li>
+                </ul>
+              </td>
+            </tr>
+          </table>
+
+          <h4>Contoh Perbandingan:</h4>
+          <div class="form-demo">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode('method-example')">Salin</button>
+            </div>
+            <pre><code id="method-example">&lt;!-- Menggunakan GET --&gt;
+&lt;form action="/cari" method="get"&gt;
+  &lt;input type="text" name="q" placeholder="Cari..."&gt;
+  &lt;button type="submit"&gt;Cari&lt;/button&gt;
+&lt;/form&gt;
+
+&lt;!-- Menggunakan POST --&gt;
+&lt;form action="/daftar" method="post"&gt;
+  &lt;input type="text" name="username" placeholder="Username"&gt;
+  &lt;input type="password" name="password" placeholder="Password"&gt;
+  &lt;button type="submit"&gt;Daftar&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+          </div>
+
+          <h3 style="text-align: left;">3. Atribut name</h3>
+          <p>
+            Atribut <span class="code-highlight">name</span> digunakan untuk mengidentifikasi data yang dikirim dari formulir.
+          </p>
+          
+          <h4>Pentingnya Atribut Name:</h4>
+          <ul>
+            <li>Wajib untuk mengirim data formulir ke server</li>
+            <li>Nilai dari atribut <code>name</code> akan menjadi kunci (key) dari data yang dikirim</li>
+            <li>Berguna untuk mengakses nilai input di sisi server</li>
+          </ul>
+
+          <h4>Contoh Penggunaan:</h4>
+          <div class="form-demo">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode('name-example')">Salin</button>
+            </div>
+            <pre><code id="name-example">&lt;form action="/proses.php" method="post"&gt;
+  &lt;div&gt;
+    &lt;label for="nama"&gt;Nama Lengkap:&lt;/label&gt;
+    &lt;input type="text" id="nama" name="nama_lengkap" required&gt;
+  &lt;/div&gt;
+  
+  &lt;div&gt;
+    &lt;label for="email"&gt;Email:&lt;/label&gt;
+    &lt;input type="email" id="email" name="email_pengguna" required&gt;
+  &lt;/div&gt;
+  
+  &lt;div&gt;
+    &lt;label&gt;Jenis Kelamin:&lt;/label&gt;
+    &lt;input type="radio" id="laki" name="jenis_kelamin" value="L"&gt;
+    &lt;label for="laki"&gt;Laki-laki&lt;/label&gt;
+    
+    &lt;input type="radio" id="perempuan" name="jenis_kelamin" value="P"&gt;
+    &lt;label for="perempuan"&gt;Perempuan&lt;/label&gt;
+  &lt;/div&gt;
+  
+  &lt;div&gt;
+    &lt;label for="hobi"&gt;Hobi:&lt;/label&gt;
+    &lt;select id="hobi" name="hobi[]" multiple&gt;
+      &lt;option value="membaca"&gt;Membaca&lt;/option&gt;
+      &lt;option value="menulis"&gt;Menulis&lt;/option&gt;
+      &lt;option value="berenang"&gt;Berenang&lt;/option&gt;
+    &lt;/select&gt;
+  &lt;/div&gt;
+  
+  &lt;button type="submit"&gt;Kirim&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+          </div>
+
+          <h4>Contoh Data yang Dikirim:</h4>
+          <div class="form-demo">
+            <div class="code-header">
+              <span>Data yang Dikirim</span>
+            </div>
+            <pre><code>// Data yang dikirim ke server
+{
+  "nama_lengkap": "Budi Santoso",
+  "email_pengguna": "budi@contoh.com",
+  "jenis_kelamin": "L",
+  "hobi": ["membaca", "berenang"]
+}</code></pre>
+          </div>
+
+          <h3>Contoh Formulir Lengkap</h3>
+          <p>Berikut contoh formulir lengkap yang menggunakan ketiga atribut penting tersebut:</p>
+          
+          <div class="example-form">
+            <h4>Formulir Pendaftaran Anggota</h4>
+            <form action="/proses-pendaftaran.php" method="post" id="demoForm">
+              <div class="form-group">
+                <label for="demoNama">Nama Lengkap:</label>
+                <input type="text" id="demoNama" name="nama" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="demoEmail">Email:</label>
+                <input type="email" id="demoEmail" name="email" required>
+              </div>
+              
+              <div class="form-group">
+                <label>Jenis Kelamin:</label><br>
+                <input type="radio" id="demoLaki" name="jenis_kelamin" value="L" required>
+                <label for="demoLaki" style="display: inline; font-weight: normal;">Laki-laki</label>
+                
+                <input type="radio" id="demoPerempuan" name="jenis_kelamin" value="P" style="margin-left: 15px;">
+                <label for="demoPerempuan" style="display: inline; font-weight: normal;">Perempuan</label>
+              </div>
+              
+              <div class="form-actions">
+                <button type="submit" class="btn-primary">Daftar</button>
+                <button type="reset" class="btn-secondary">Reset</button>
+              </div>
+            </form>
+          </div>
+
+          <div class="warning">
+            <strong>Penting!</strong> Selalu gunakan atribut <code>name</code> pada elemen formulir yang nilainya ingin Anda kirim ke server. 
+            Tanpa atribut <code>name</code>, nilai input tidak akan dikirim.
+          </div>
+
+          <h3>Kesimpulan</h3>
+          <ul>
+            <li><code>action</code>: Menentukan ke mana data formulir akan dikirim</li>
+            <li><code>method</code>: Menentukan cara pengiriman data (GET/POST)</li>
+            <li><code>name</code>: Mengidentifikasi data yang dikirim ke server</li>
+          </ul>
+          
+          <p>
+            Dengan memahami ketiga atribut penting ini, Anda dapat membuat formulir HTML yang efektif dan berfungsi dengan baik.
+          </p>
+        </section>
+        <br />
+        <nav class="navigation-section" aria-label="Halaman navigasi">
+          <div class="nav-buttons">
+            <button class="btn" onclick="window.location.href='h74.html'" title="Elemen Dasar Formulir">
+              &lt;&nbsp;Prev
+            </button>
+            <img
+              src="../assets/png/home.png"
+              alt="Home"
+              class="home-icon"
+              onclick="window.location.href='../index.html'"
+              title="Home"
+            />
+            <img
+              src="../assets/png/html5.png"
+              alt="HTML"
+              onclick="window.location.href='h1.html'"
+              title="Daftar Isi HTML"
+            />
+            <button class="btn" onclick="window.location.href='h81.html'" title="Jenis Input Lainnya">
+              Next&nbsp;&gt;
+            </button>
+          </div>
+        </nav>
+      </main>
+    </div>
+
+    <script>
+      function copyCode(elementId) {
+        const codeElement = document.getElementById(elementId);
+        const range = document.createRange();
+        range.selectNode(codeElement);
+        window.getSelection().removeAllRanges();
+        window.getSelection().addRange(range);
+        document.execCommand('copy');
+        window.getSelection().removeAllRanges();
+        
+        // Tampilkan notifikasi
+        const button = event.target;
+        const originalText = button.textContent;
+        button.textContent = 'Tersalin!';
+        button.style.backgroundColor = '#198754';
+        
+        setTimeout(() => {
+          button.textContent = originalText;
+          button.style.backgroundColor = '';
+        }, 2000);
+      }
+
+      // Mencegah form demo dikirim
+      document.getElementById('demoForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        alert('Formulir tidak benar-benar dikirim. Ini hanya contoh.');
+      });
+    </script>
+  </body>
+</html>

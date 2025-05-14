@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog Sederhana</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+      <h2 style="text-align: center; margin-top: 20px; margin-bottom: 40px">
+        Creating an XHTML Documents
+      </h2>
+
+      <h3 class="section-title">Examine an XHTML douments</h3>
+
+      <p>I would like you to learn from the result like this:</p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>HTML</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml/DTD/xhtml1-transitional.dtd"&gt;
+&lt;html lang="en-US"&gt;
+&lt;head&gt;
+  &lt;title&gt;Main Page &lt;/title&gt;
+  &lt;meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" /&gt;
+  &lt;meta name="description" content="MaInSysCon XHTML and CSS Tutorial" /&gt;
+  &lt;meta name="keyword" content="xhtml, css, extensible hypertext markup language, style sheet, cascading style sheet" /&gt;
+  &lt;link rel="stylesheet" type="text/css" href="stdx.css" /&gt;
+&lt;/head&gt;
+&lt;body topmargin="0" leftmargin="0" marginwidth="0" marginheight="0" bgcolor="blue" text="green" link="blue" alink="red" vlink="purple"&gt;
+  &lt;p&gt;Welcome to the world of XHTML!&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+      </div>
+
+      <p>Based on the example above, &lt;html>, &lt;head>, &lt;title>, &lt;body> tag can be used 
+        once only in HTML document, except the meta tag.</p>
+        
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='h1.html'">Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          style="height: 40px; width: auto"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <button class="btn" onclick="window.location.href='intro2.html'">Next</button>
+      </div>
+    </div>
+
+    <script src="../script/script.js"></script>
+  </body>
+</html>

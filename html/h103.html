@@ -1,0 +1,559 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Optimasi SEO Dasar dengan Tag HTML - Panduan Lengkap</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <style>
+      .seo-demo {
+        background-color: #f8f9fa;
+        border-radius: 5px;
+        padding: 15px;
+        margin: 15px 0;
+        border-left: 4px solid #0d6efd;
+        overflow-x: auto;
+      }
+      .demo-container {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: white;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      .form-group {
+        margin-bottom: 15px;
+      }
+      label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+      }
+      input,
+      select,
+      textarea,
+      button {
+        padding: 8px 12px;
+        margin-bottom: 10px;
+        border: 1px solid #ced4da;
+        border-radius: 4px;
+        width: 100%;
+        max-width: 400px;
+        box-sizing: border-box;
+      }
+      button {
+        background-color: #0d6efd;
+        color: white;
+        border: none;
+        cursor: pointer;
+        width: auto;
+        padding: 8px 16px;
+      }
+      button:hover {
+        background-color: #0b5ed7;
+      }
+      .code-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #343a40;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 4px 4px 0 0;
+      }
+      .copy-btn {
+        background-color: #495057;
+        color: white !important;
+        border: none;
+        padding: 2px 8px;
+        border-radius: 3px;
+        cursor: pointer;
+      }
+      .copy-btn:hover {
+        color: white !important;
+        background-color: #0d6efd;
+      }
+      pre {
+        margin: 0;
+        padding: 0;
+      }
+      code {
+        display: block;
+        background-color: #f8f9fa;
+        padding: 15px;
+        border-radius: 0 0 4px 4px;
+        overflow-x: auto;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 14px;
+        line-height: 1.5;
+        transition: background-color 0.2s ease;
+      }
+      code:hover {
+        background-color: #e9ecef;
+        cursor: pointer;
+      }
+      .note {
+        background-color: #e7f5ff;
+        border-left: 4px solid #0d6efd;
+        padding: 12px 15px;
+        margin: 15px 0;
+        border-radius: 0 4px 4px 0;
+      }
+      .warning {
+        background-color: #fff3bf;
+        border-left: 4px solid #ffd43b;
+        padding: 12px 15px;
+        margin: 15px 0;
+        border-radius: 0 4px 4px 0;
+      }
+      .tip {
+        background-color: #d4edda;
+        border-left: 4px solid #28a745;
+        padding: 12px 15px;
+        margin: 15px 0;
+        border-radius: 0 4px 4px 0;
+      }
+      .seo-tag {
+        background-color: #f0f0f0;
+        padding: 2px 6px;
+        border-radius: 3px;
+        font-family: monospace;
+      }
+      .importance-high {
+        color: #dc3545;
+        font-weight: bold;
+      }
+      .importance-medium {
+        color: #fd7e14;
+        font-weight: bold;
+      }
+      .importance-low {
+        color: #198754;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="blog-container">
+      <header class="title-section">
+        <div class="title-content">
+          <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+            <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+          </a>
+        </div>
+      </header>
+
+      <main class="content-section">
+        <section class="article-content">
+          <h2 class="intro-title">Optimasi SEO Dasar dengan Tag HTML</h2>
+          <h3 class="section-title">Meningkatkan Peringkat Situs dengan Tag HTML yang Tepat</h3>
+
+          <p>
+            Search Engine Optimization (SEO) adalah praktik untuk meningkatkan kualitas dan
+            kuantitas lalu lintas ke situs web melalui hasil mesin pencari organik. Tag HTML
+            memainkan peran penting dalam membantu mesin pencari memahami konten halaman Anda.
+          </p>
+
+          <div class="note">
+            <strong>Mengapa SEO Penting?</strong>
+            <ul>
+              <li>Meningkatkan visibilitas situs di mesin pencari</li>
+              <li>Menarik pengunjung yang lebih relevan</li>
+              <li>Meningkatkan pengalaman pengguna</li>
+              <li>Meningkatkan kredibilitas dan kepercayaan</li>
+              <li>Mendapatkan lalu lintas organik jangka panjang</li>
+            </ul>
+          </div>
+
+          <h4>1. Tag Judul (Title Tag)</h4>
+          <p>
+            Tag judul adalah salah satu elemen SEO terpenting. Ini muncul di hasil pencarian dan tab
+            browser.
+          </p>
+
+          <div class="seo-demo">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="id"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;Panduan Lengkap SEO untuk Pemula | Nama Situs Anda&lt;/title&gt;
+  &lt;meta name="description" content="Pelajari dasar-dasar SEO dan cara mengoptimalkan situs web Anda untuk mesin pencari dengan panduan lengkap ini."&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;!-- Konten halaman --&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+            <div class="tip">
+              <strong>Tips:</strong>
+              <ul>
+                <li>Panjang ideal: 50-60 karakter</li>
+                <li>Sertakan kata kunci utama di awal</li>
+                <li>Buat unik untuk setiap halaman</li>
+                <li>Hindari pengulangan kata kunci (keyword stuffing)</li>
+              </ul>
+            </div>
+          </div>
+
+          <h4>2. Meta Description</h4>
+          <p>Deskripsi meta memberikan ringkasan konten halaman Anda di hasil pencarian.</p>
+
+          <div class="seo-demo">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;meta 
+  name="description" 
+  content="Pelajari cara membuat website yang SEO friendly dengan panduan lengkap dari para ahli. Temukan tips dan trik terbaru untuk meningkatkan peringkat situs Anda."&gt;</code></pre>
+
+            <div class="tip">
+              <strong>Tips:</strong>
+              <ul>
+                <li>Panjang ideal: 150-160 karakter</li>
+                <li>Sertakan kata kunci utama</li>
+                <li>Tulis deskripsi yang menarik dan relevan</li>
+                <li>Setiap halaman harus memiliki deskripsi unik</li>
+              </ul>
+            </div>
+          </div>
+
+          <h4>3. Tag Heading (H1-H6)</h4>
+          <p>Tag heading membantu mesin pencari memahami struktur dan hierarki konten Anda.</p>
+
+          <div class="seo-demo">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;h1&gt;Panduan Lengkap SEO untuk Pemula&lt;/h1&gt;
+&lt;h2&gt;Apa itu SEO?&lt;/h2&gt;
+&lt;p&gt;SEO adalah praktik untuk meningkatkan kualitas dan kuantitas lalu lintas...&lt;/p&gt;
+
+&lt;h2&gt;Manfaat SEO&lt;/h2&gt;
+&lt;p&gt;Berikut adalah beberapa manfaat utama dari SEO...&lt;/p&gt;
+
+&lt;h3&gt;1. Meningkatkan Visibilitas&lt;/h3&gt;
+&lt;p&gt;Dengan SEO, situs Anda akan lebih mudah ditemukan...&lt;/p&gt;
+
+&lt;h3&gt;2. Meningkatkan Trafik Organik&lt;/h3&gt;
+&lt;p&gt;SEO yang baik akan membawa lebih banyak pengunjung...&lt;/p&gt;
+
+&lt;h2&gt;Cara Menerapkan SEO&lt;/h2&gt;
+&lt;!-- Konten lainnya --&gt;</code></pre>
+
+            <div class="warning">
+              <strong>Penting:</strong> Gunakan hanya satu tag &lt;h1&gt; per halaman dan pastikan
+              urutan heading logis (H1 diikuti H2, lalu H3, dll.).
+            </div>
+          </div>
+
+          <h4>4. Tag Gambar (Alt Text)</h4>
+          <p>Alt text membantu mesin pencari memahami isi gambar dan meningkatkan aksesibilitas.</p>
+
+          <div class="seo-demo">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;img 
+  src="optimasi-seo.jpg" 
+  alt="Ilustrasi optimasi SEO untuk pemula"
+  title="Panduan Optimasi SEO"
+  width="800" 
+  height="450"&gt;</code></pre>
+
+            <div class="tip">
+              <strong>Tips:</strong>
+              <ul>
+                <li>Gunakan teks alt yang deskriptif</li>
+                <li>Sertakan kata kunci yang relevan</li>
+                <li>Jangan berlebihan (tidak lebih dari 125 karakter)</li>
+                <li>Gunakan tanda hubung (-) untuk memisahkan kata</li>
+              </ul>
+            </div>
+          </div>
+
+          <h4>5. URL yang SEO Friendly</h4>
+          <p>Struktur URL yang baik membantu mesin pencari dan pengguna memahami konten halaman.</p>
+
+          <div class="seo-demo">
+            <div class="code-header">
+              <span>Contoh URL</span>
+            </div>
+            <div class="demo-container">
+              <p>
+                <strong>Buruk:</strong><br />
+                <code>example.com/p=123</code>
+              </p>
+
+              <p>
+                <strong>Baik:</strong><br />
+                <code>example.com/optimasi-seo-dasar</code>
+              </p>
+
+              <p>
+                <strong>Lebih Baik:</strong><br />
+                <code>example.com/panduan/optimasi-seo-dasar-untuk-pemula</code>
+              </p>
+            </div>
+
+            <div class="tip">
+              <strong>Karakteristik URL yang SEO Friendly:</strong>
+              <ul>
+                <li>Menggunakan kata kunci</li>
+                <li>Mudah dibaca manusia</li>
+                <li>Menggunakan tanda hubung (-) sebagai pemisah kata</li>
+                <li>Tidak mengandung parameter yang tidak perlu</li>
+                <li>Pendek dan deskriptif</li>
+              </ul>
+            </div>
+          </div>
+
+          <h4>6. Tag Kanonikal</h4>
+          <p>
+            Tag kanonikal membantu mencegah masalah konten duplikat dengan menentukan versi "resmi"
+            dari suatu URL.
+          </p>
+
+          <div class="seo-demo">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;!-- Di bagian &lt;head&gt; halaman Anda --&gt;
+&lt;link rel="canonical" href="https://example.com/halaman-utama" /&gt;</code></pre>
+
+            <div class="warning">
+              <strong>Kapan Menggunakan Tag Kanonikal:</strong>
+              <ul>
+                <li>Ketika Anda memiliki konten yang sama atau mirip di beberapa URL</li>
+                <li>Untuk versi mobile/desktop dari halaman yang sama</li>
+                <li>
+                  Untuk parameter URL yang tidak mengubah konten inti (?sort=price, ?page=2, dll.)
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <h4>7. Tag Open Graph dan Twitter Cards</h4>
+          <p>Tag ini mengontrol bagaimana konten Anda muncul saat dibagikan di media sosial.</p>
+
+          <div class="seo-demo">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;!-- Open Graph / Facebook --&gt;
+&lt;meta property="og:type" content="website"&gt;
+&lt;meta property="og:url" content="https://example.com/halaman-anda/"&gt;
+&lt;meta property="og:title" content="Judul Halaman Anda"&gt;
+&lt;meta property="og:description" content="Deskripsi singkat tentang halaman Anda"&gt;
+&lt;meta property="og:image" content="https://example.com/gambar-anda.jpg"&gt;
+
+&lt;!-- Twitter --&gt;
+&lt;meta name="twitter:card" content="summary_large_image"&gt;
+&lt;meta name="twitter:url" content="https://example.com/halaman-anda/"&gt;
+&lt;meta name="twitter:title" content="Judul Halaman Anda"&gt;
+&lt;meta name="twitter:description" content="Deskripsi singkat tentang halaman Anda"&gt;
+&lt;meta name="twitter:image" content="https://example.com/gambar-anda.jpg"&gt;</code></pre>
+          </div>
+
+          <h4>8. Tag Penting Lainnya untuk SEO</h4>
+
+          <div class="demo-container">
+            <div style="overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 15px 0">
+              <table style="width: 100%; border-collapse: collapse; min-width: 600px">
+                <thead>
+                  <tr style="background-color: #f2f2f2">
+                    <th style="border: 1px solid #ddd; padding: 12px; text-align: left">Tag</th>
+                    <th style="border: 1px solid #ddd; padding: 12px; text-align: left">
+                      Deskripsi
+                    </th>
+                    <th style="border: 1px solid #ddd; padding: 12px; text-align: center">
+                      Tingkat Penting
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td style="border: 1px solid #ddd; padding: 10px; vertical-align: top">
+                      <code style="word-break: break-word">&lt;meta name="robots"&gt;</code>
+                    </td>
+                    <td style="border: 1px solid #ddd; padding: 10px; vertical-align: top">
+                      Mengontrol cara mesin pencari mengindeks halaman
+                    </td>
+                    <td
+                      style="
+                        border: 1px solid #ddd;
+                        padding: 10px;
+                        vertical-align: middle;
+                        text-align: center;
+                      "
+                      class="importance-high"
+                    >
+                      Tinggi
+                    </td>
+                  </tr>
+                  <tr style="background-color: #f9f9f9">
+                    <td style="border: 1px solid #ddd; padding: 10px; vertical-align: top">
+                      <code style="word-break: break-word"
+                        >&lt;link rel="alternate" hreflang="x"&gt;</code
+                      >
+                    </td>
+                    <td style="border: 1px solid #ddd; padding: 10px; vertical-align: top">
+                      Menentukan versi bahasa alternatif dari halaman
+                    </td>
+                    <td
+                      style="
+                        border: 1px solid #ddd;
+                        padding: 10px;
+                        vertical-align: middle;
+                        text-align: center;
+                      "
+                      class="importance-medium"
+                    >
+                      Sedang
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="border: 1px solid #ddd; padding: 10px; vertical-align: top">
+                      <code style="word-break: break-word">&lt;meta name="author"&gt;</code>
+                    </td>
+                    <td style="border: 1px solid #ddd; padding: 10px; vertical-align: top">
+                      Menentukan penulis konten
+                    </td>
+                    <td
+                      style="
+                        border: 1px solid #ddd;
+                        padding: 10px;
+                        vertical-align: middle;
+                        text-align: center;
+                      "
+                      class="importance-low"
+                    >
+                      Rendah
+                    </td>
+                  </tr>
+                  <tr style="background-color: #f9f9f9">
+                    <td style="border: 1px solid #ddd; padding: 10px; vertical-align: top">
+                      <code style="word-break: break-word">&lt;meta name="keywords"&gt;</code>
+                    </td>
+                    <td style="border: 1px solid #ddd; padding: 10px; vertical-align: top">
+                      Dulu penting, sekarang sebagian besar mesin pencari mengabaikannya
+                    </td>
+                    <td
+                      style="
+                        border: 1px solid #ddd;
+                        padding: 10px;
+                        vertical-align: middle;
+                        text-align: center;
+                      "
+                      class="importance-low"
+                    >
+                      Sangat Rendah
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p style="font-size: 0.9em; color: #666; margin-top: 5px">
+              <em>Gulir ke sampah untuk melihat tabel lengkap di perangkat mobile</em>
+            </p>
+          </div>
+
+          <div class="note">
+            <strong>Alat Bantu SEO:</strong>
+            <ul>
+              <li>
+                <a href="https://search.google.com/search-console" target="_blank"
+                  >Google Search Console</a
+                >
+                - Pantau kinerja situs Anda di Google
+              </li>
+              <li>
+                <a href="https://analytics.google.com/" target="_blank">Google Analytics</a> -
+                Analisis lalu lintas situs web
+              </li>
+              <li>
+                <a href="https://pagespeed.web.dev/" target="_blank">PageSpeed Insights</a> - Ukur
+                kecepatan halaman
+              </li>
+              <li>
+                <a href="https://www.screamingfrog.com/" target="_blank">Screaming Frog</a> - Audit
+                teknis SEO
+              </li>
+            </ul>
+          </div>
+
+          <br />
+          <nav class="navigation-section" aria-label="Halaman navigasi">
+            <div class="nav-buttons">
+              <button class="btn" onclick="window.location.href='h102.html'" title="Validasi HTML">
+                &lt;&nbsp;Prev
+              </button>
+              <img
+                src="../assets/png/home.png"
+                alt="Home"
+                class="home-icon"
+                onclick="window.location.href='../index.html'"
+                title="Home"
+              />
+              <img
+                src="../assets/png/html5.png"
+                alt="HTML"
+                onclick="window.location.href='h1.html'"
+                title="Daftar Isi HTML"
+              />
+              <button
+                class="btn"
+                onclick="window.location.href='h111.html'"
+                title="HTML entities dan simbol khusus"
+              >
+                Next&nbsp;&gt;
+              </button>
+            </div>
+          </nav>
+        </section>
+      </main>
+    </div>
+
+    <script>
+      function copyCode(button) {
+        const codeBlock = button.parentElement.nextElementSibling;
+        const code = codeBlock.textContent;
+
+        // Buat elemen textarea untuk menyalin teks
+        const textarea = document.createElement('textarea');
+        textarea.value = code;
+        textarea.style.position = 'fixed'; // Menghindari scroll otomatis
+        document.body.appendChild(textarea);
+        textarea.select();
+
+        try {
+          // Salin teks ke clipboard
+          const successful = document.execCommand('copy');
+          const msg = successful ? 'berhasil disalin!' : 'gagal disalin';
+
+          // Tampilkan notifikasi
+          const originalText = button.textContent;
+          button.textContent = 'Tersalin!';
+
+          // Kembalikan teks tombol setelah 2 detik
+          setTimeout(() => {
+            button.textContent = originalText;
+          }, 2000);
+        } catch (err) {
+          console.error('Gagal menyalin teks: ', err);
+        }
+        // Hapus textarea
+        document.body.removeChild(textarea);
+      }
+    </script>
+  </body>
+</html>

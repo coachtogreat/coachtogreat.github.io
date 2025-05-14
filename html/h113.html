@@ -1,0 +1,509 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Komentar dan Dokumentasi - Panduan Lengkap</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <style>
+      .comment-demo {
+        background-color: #f8f9fa;
+        border-radius: 5px;
+        padding: 15px;
+        margin: 15px 0;
+        border-left: 4px solid #0d6efd;
+        overflow-x: auto;
+      }
+      .demo-container {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: white;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      .code-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #343a40;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 4px 4px 0 0;
+      }
+      .copy-btn {
+        background-color: #495057;
+        color: white !important;
+        border: none;
+        padding: 2px 8px;
+        border-radius: 3px;
+        cursor: pointer;
+      }
+      .copy-btn:hover {
+        color: white !important;
+        background-color: #0d6efd;
+      }
+      pre {
+        margin: 0;
+        padding: 0;
+      }
+      code {
+        display: block;
+        background-color: #f8f9fa;
+        padding: 15px;
+        border-radius: 0 0 4px 4px;
+        overflow-x: auto;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 14px;
+        line-height: 1.5;
+        transition: background-color 0.2s ease;
+      }
+      code:hover {
+        background-color: #e9ecef;
+        cursor: pointer;
+      }
+      .note {
+        background-color: #e7f5ff;
+        border-left: 4px solid #0d6efd;
+        padding: 12px 15px;
+        margin: 15px 0;
+        border-radius: 0 4px 4px 0;
+      }
+      .warning {
+        background-color: #fff3bf;
+        border-left: 4px solid #ffd43b;
+        padding: 12px 15px;
+        margin: 15px 0;
+        border-radius: 0 4px 4px 0;
+      }
+      .tip {
+        background-color: #d4edda;
+        border-left: 4px solid #28a745;
+        padding: 12px 15px;
+        margin: 15px 0;
+        border-radius: 0 4px 4px 0;
+      }
+      .bad-example {
+        background-color: #fee2e2;
+        border-left: 4px solid #ef4444;
+        padding: 12px 15px;
+        margin: 15px 0;
+        border-radius: 0 4px 4px 0;
+      }
+      .good-example {
+        background-color: #dcfce7;
+        border-left: 4px solid #22c55e;
+        padding: 12px 15px;
+        margin: 15px 0;
+        border-radius: 0 4px 4px 0;
+      }
+      .comparison {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        margin: 20px 0;
+      }
+      .comparison-item {
+        flex: 1;
+        min-width: 300px;
+      }
+      .comment-example {
+        margin: 15px 0;
+        padding: 10px;
+        border-radius: 4px;
+      }
+      .comment-type {
+        font-weight: bold;
+        color: #1e40af;
+        margin-bottom: 5px;
+        font-family: monospace;
+      }
+      @media (max-width: 768px) {
+        .comment-demo {
+          font-size: 0.9em;
+        }
+        .comment-demo code {
+          font-size: 0.85em;
+          padding: 10px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="blog-container">
+      <header class="title-section">
+        <div class="title-content">
+          <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+            <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+          </a>
+        </div>
+      </header>
+
+      <main class="content-section">
+        <section class="article-content">
+          <h2 class="intro-title">Komentar dan Dokumentasi</h2>
+          <h3 class="section-title">Panduan Menulis Komentar dan Dokumentasi yang Efektif</h3>
+
+          <p>
+            Komentar dan dokumentasi yang baik adalah komponen penting dalam pengembangan web yang 
+            sering diabaikan. Mereka membantu pengembang lain (dan diri Anda sendiri di masa depan) 
+            untuk memahami alur kode, logika bisnis, dan alasan di balik keputusan pengembangan.
+          </p>
+
+          <div class="note">
+            <strong>Mengapa Komentar dan Dokumentasi Penting?</strong>
+            <ul>
+              <li>Memudahkan pemeliharaan kode di masa depan</li>
+              <li>Membantu pengembang baru memahami kode dengan cepat</li>
+              <li>Mendokumentasikan alasan di balik keputusan teknis</li>
+              <li>Mempercepat proses debugging</li>
+              <li>Meningkatkan kolaborasi tim</li>
+            </ul>
+          </div>
+
+          <h4>1. Dasar-dasar Komentar HTML</h4>
+          <p>HTML memiliki sintaks komentar yang sederhana namun kuat.</p>
+          
+          <div class="comment-demo">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;!-- Ini adalah komentar satu baris --&gt;
+
+&lt;!-- 
+  Ini adalah komentar
+  yang mencakup beberapa baris
+  dan akan diabaikan oleh browser
+--&gt;
+
+&lt;div class="container"&gt;
+  &lt;!-- Komentar di tengah kode --&gt;
+  &lt;p&gt;Konten di sini&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;!-- 
+  KOMENTAR YANG BAIK:
+  - Jelas dan ringkas
+  - Menjelaskan 'mengapa', bukan 'apa'
+  - Diperbarui saat kode berubah
+--&gt;</code></pre>
+          </div>
+
+          <h4>2. Jenis-jenis Komentar</h4>
+          <p>Berbagai jenis komentar untuk berbagai keperluan.</p>
+          
+          <div class="demo-container">
+            <div class="comment-example">
+              <div class="comment-type">1. Komentar Penjelasan</div>
+              <code>&lt;!-- Menampilkan daftar produk terlaris --&gt;
+&lt;section class="best-sellers"&gt;...&lt;/section&gt;</code>
+            </div>
+            
+            <div class="comment-example">
+              <div class="comment-type">2. Komentar Pemisah Bagian</div>
+              <code>&lt;!-- 
+  ====================================
+  BAGIAN HEADER
+  ====================================
+--&gt;
+&lt;header&gt;...&lt;/header&gt;</code>
+            </div>
+            
+            <div class="comment-example">
+              <div class="comment-type">3. Komentar TODO/FIXME</div>
+              <code>&lt;!-- 
+  TODO: Perbaiki responsivitas menu navigasi di perangkat mobile
+  Ditambahkan oleh: John - 14 Mei 2025
+--&gt;
+&lt;nav class="main-nav"&gt;...&lt;/nav&gt;</code>
+            </div>
+            
+            <div class="comment-example">
+              <div class="comment-type">4. Komentar Dokumentasi</div>
+              <code>&lt;!-- 
+  NAMA KOMPONEN: Formulir Login
+  DESKRIPSI: Menangani autentikasi pengguna
+  VERSI: 1.2
+  UPDATE TERAKHIR: 14 Mei 2025
+  PENGEMBANG: Tim Frontend
+--&gt;
+&lt;form id="login-form"&gt;...&lt;/form&gt;</code>
+            </div>
+          </div>
+
+          <h4>3. Praktik Terbaik Menulis Komentar</h4>
+          
+          <div class="comparison">
+            <div class="comparison-item">
+              <div class="bad-example">
+                <strong>❌ Buruk:</strong>
+                <code>&lt;!-- Menambahkan 10 ke total --&gt;
+&lt;div class="total"&gt;{{ total + 10 }}&lt;/div&gt;</code>
+                <p>Komentar hanya mengulangi apa yang sudah jelas dari kode.</p>
+              </div>
+              
+              <div class="good-example">
+                <strong>✅ Baik:</strong>
+                <code>&lt;!-- Menambahkan biaya pengiriman standar sebesar 10.000 --&gt;
+&lt;div class="total"&gt;{{ total + 10000 }}&lt;/div&gt;</code>
+                <p>Komentar menjelaskan alasan di balik logika bisnis.</p>
+              </div>
+            </div>
+            
+            <div class="comparison-item">
+              <div class="bad-example">
+                <strong>❌ Buruk:</strong>
+                <code>&lt;!-- Mulai konten utama --&gt;
+&lt;main&gt;...&lt;/main&gt;
+&lt;!-- Akhir konten utama --&gt;</code>
+                <p>Komentar yang tidak memberikan nilai tambah.</p>
+              </div>
+              
+              <div class="good-example">
+                <strong>✅ Baik:</strong>
+                <code>&lt;!-- 
+  Konten utama berisi artikel terbaru dan widget sampingan.
+  Diurutkan berdasarkan tanggal terbaru (DESC) dengan maksimal 10 artikel per halaman.
+--&gt;
+&lt;main class="content"&gt;...&lt;/main&gt;</code>
+                <p>Komentar yang memberikan konteks dan detail penting.</p>
+              </div>
+            </div>
+          </div>
+
+          <h4>4. Alat Dokumentasi</h4>
+          <p>Beberapa alat yang dapat membantu membuat dokumentasi yang lebih baik.</p>
+          
+          <div class="demo-container">
+            <div style="overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 15px 0">
+              <table style="width: 100%; border-collapse: collapse; min-width: 600px">
+                <thead>
+                  <tr style="background-color: #f2f2f2">
+                    <th style="border: 1px solid #ddd; padding: 12px; text-align: left">Alat</th>
+                    <th style="border: 1px solid #ddd; padding: 12px; text-align: left">Deskripsi</th>
+                    <th style="border: 1px solid #ddd; padding: 12px; text-align: left">Kegunaan</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td style="border: 1px solid #ddd; padding: 10px; vertical-align: top">
+                      <strong>JSDoc</strong>
+                    </td>
+                    <td style="border: 1px solid #ddd; padding: 10px; vertical-align: top">
+                      Dokumentasi API untuk JavaScript
+                    </td>
+                    <td style="border: 1px solid #ddd; padding: 10px; vertical-align: top">
+                      <code>
+                        /**<br>
+                         * Menghitung total belanja<br>
+                         * @param {Array} items - Array item belanja<br>
+                         * @returns {number} Total harga
+                         */
+                      </code>
+                    </td>
+                  </tr>
+                  <tr style="background-color: #f9f9f9">
+                    <td style="border: 1px solid #ddd; padding: 10px; vertical-align: top">
+                      <strong>Markdown</strong>
+                    </td>
+                    <td style="border: 1px solid #ddd; padding: 10px; vertical-align: top">
+                      Format teks sederhana untuk dokumentasi
+                    </td>
+                    <td style="border: 1px solid #ddd; padding: 10px; vertical-align: top">
+                      <code>
+                        # Judul<br>
+                        ## Subjudul<br>
+                        - Daftar<br>
+                        `kode`
+                      </code>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="border: 1px solid #ddd; padding: 10px; vertical-align: top">
+                      <strong>HTML Comments</strong>
+                    </td>
+                    <td style="border: 1px solid #ddd; padding: 10px; vertical-align: top">
+                      Komentar standar HTML
+                    </td>
+                    <td style="border: 1px solid #ddd; padding: 10px; vertical-align: top">
+                      <code>
+                        &lt;!-- Komentar --&gt;
+                      </code>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <h4>5. Contoh Dokumentasi Proyek</h4>
+          <p>Struktur dokumentasi untuk proyek web yang lengkap.</p>
+          
+          <div class="comment-demo">
+            <div class="code-header">
+              <span>Struktur Folder</span>
+            </div>
+            <pre><code>project/
+├── docs/                   # Dokumentasi proyek
+│   ├── api/                # Dokumentasi API
+│   ├── components/         # Dokumentasi komponen
+│   ├── setup.md           # Panduan instalasi
+│   └── styleguide.md      # Panduan gaya kode
+├── src/
+│   ├── assets/           # File aset (gambar, font, dll.)
+│   ├── components/       # Komponen UI yang dapat digunakan kembali
+│   ├── pages/            # Halaman aplikasi
+│   └── styles/           # File CSS/Styles
+├── README.md             # Dokumentasi utama proyek
+└── CONTRIBUTING.md       # Panduan berkontribusi</code></pre>
+          </div>
+
+          <div class="warning">
+            <strong>Hal yang Harus Dihindari:</strong>
+            <ul>
+              <li>Komentar yang sudah tidak relevan dengan kode</li>
+              <li>Mengomentari hal yang sudah jelas dari kode</li>
+              <li>Komentar yang tidak diupdate saat kode berubah</li>
+              <li>Komentar yang menjelekkan kode atau pengembang lain</li>
+              <li>Komentar yang berisi informasi sensitif</li>
+            </ul>
+          </div>
+
+          <div class="tip">
+            <strong>Tips Dokumentasi yang Baik:</strong>
+            <ol>
+              <li>Tulis dokumentasi untuk pembaca manusia, bukan untuk mesin</li>
+              <li>Gunakan bahasa yang konsisten (Bahasa Indonesia atau Inggris)</li>
+              <li>Sertakan contoh kode yang dapat dijalankan</li>
+              <li>Perbarui dokumentasi saat memperbarui kode</li>
+              <li>Gunakan alat bantu untuk menghasilkan dokumentasi</li>
+            </ol>
+          </div>
+
+          <h4>6. Template Dokumentasi README.md</h4>
+          
+          <div class="comment-demo">
+            <div class="code-header">
+              <span>README.md</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code># Nama Proyek
+
+Deskripsi singkat tentang proyek dan tujuannya.
+
+## Fitur Utama
+
+- Fitur 1
+- Fitur 2
+- Fitur 3
+
+## Persyaratan Sistem
+
+- Node.js v14+
+- NPM v6+
+- Browser modern (Chrome, Firefox, Safari, Edge)
+
+## Instalasi
+
+```bash
+# Clone repositori
+git clone https://github.com/username/repository.git
+
+# Masuk ke direktori proyek
+cd repository
+
+# Install dependencies
+npm install
+
+# Jalankan pengembangan server
+npm run dev
+```
+
+## Penggunaan
+
+Jelaskan cara menggunakan proyek Anda:
+
+1. Langkah 1
+2. Langkah 2
+3. Langkah 3
+
+## Kontribusi
+
+Kontribusi dipersilakan! Silakan baca [CONTRIBUTING.md](CONTRIBUTING.md) untuk detail tentang kode etik dan proses pengajuan pull request.
+
+## Lisensi
+
+[MIT](LICENSE) © 2025 Nama Anda</code></pre>
+          </div>
+
+          <br />
+          <nav class="navigation-section" aria-label="Halaman navigasi">
+            <div class="nav-buttons">
+              <button
+                class="btn"
+                onclick="window.location.href='h112.html'"
+                title="Penggunaan tag sesuai fungsinya"
+              >
+                &lt;&nbsp;Prev
+              </button>
+              <img
+                src="../assets/png/home.png"
+                alt="Home"
+                class="home-icon"
+                onclick="window.location.href='../index.html'"
+                title="Home"
+              />
+              <img
+                src="../assets/png/html5.png"
+                alt="HTML"
+                onclick="window.location.href='h1.html'"
+                title="Daftar Isi HTML"
+              />
+              <button
+                class="btn"
+                onclick="window.location.href='h114.html'"
+                title="Konsistensi dalam penulisan kode"
+              >
+                Next&nbsp;&gt;
+              </button>
+            </div>
+          </nav>
+        </section>
+      </main>
+    </div>
+
+    <script>
+      function copyCode(button) {
+        const codeBlock = button.parentElement.nextElementSibling;
+        const code = codeBlock.textContent;
+
+        // Buat elemen textarea untuk menyalin teks
+        const textarea = document.createElement('textarea');
+        textarea.value = code;
+        textarea.style.position = 'fixed'; // Menghindari scroll otomatis
+        document.body.appendChild(textarea);
+        textarea.select();
+
+        try {
+          // Salin teks ke clipboard
+          const successful = document.execCommand('copy');
+          const msg = successful ? 'berhasil disalin!' : 'gagal disalin';
+
+          // Tampilkan notifikasi
+          const originalText = button.textContent;
+          button.textContent = 'Tersalin!';
+
+          // Kembalikan teks tombol setelah 2 detik
+          setTimeout(() => {
+            button.textContent = originalText;
+          }, 2000);
+        } catch (err) {
+          console.error('Gagal menyalin teks: ', err);
+        }
+        // Hapus textarea
+        document.body.removeChild(textarea);
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,559 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Elemen Dasar Formulir HTML</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <style>
+      .form-demo {
+        background-color: #f8f9fa;
+        border-radius: 5px;
+        padding: 15px;
+        margin: 15px 0;
+        border-left: 4px solid #0d6efd;
+        overflow-x: auto;
+      }
+      .form-container {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: white;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      .form-group {
+        margin-bottom: 15px;
+      }
+      label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+      }
+      input[type='text'],
+      input[type='email'],
+      input[type='password'],
+      input[type='number'],
+      input[type='date'],
+      input[type='time'],
+      input[type='datetime-local'],
+      input[type='search'],
+      input[type='tel'],
+      input[type='url'],
+      select,
+      textarea {
+        width: 100%;
+        padding: 8px 12px;
+        margin-bottom: 10px;
+        border: 1px solid #ced4da;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+      button,
+      input[type='submit'],
+      input[type='reset'] {
+        background-color: #0d6efd;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-right: 5px;
+      }
+      button:hover,
+      input[type='submit']:hover,
+      input[type='reset']:hover {
+        background-color: #0b5ed7;
+      }
+      .radio-group,
+      .checkbox-group {
+        margin: 10px 0;
+      }
+      .radio-option,
+      .checkbox-option {
+        margin: 5px 0;
+      }
+      .code-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #343a40;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 4px 4px 0 0;
+      }
+      .copy-btn {
+        background-color: #495057;
+        color: white;
+        border: none;
+        padding: 2px 8px;
+        border-radius: 3px;
+        cursor: pointer;
+      }
+      .copy-btn:hover {
+        background-color: #ffd43b;
+        color: #212529;
+      }
+      pre {
+        margin: 0;
+        padding: 0;
+      }
+      code {
+        display: block;
+        background-color: #f8f9fa;
+        padding: 10px;
+        border-radius: 0 0 4px 4px;
+        overflow-x: auto;
+      }
+      .property {
+        color: #d63384;
+        font-weight: bold;
+      }
+      .value {
+        color: #0d6efd;
+      }
+      .comment {
+        color: #6c757d;
+        font-style: italic;
+      }
+      .highlight {
+        background-color: #fff3cd;
+        padding: 2px 4px;
+        border-radius: 3px;
+      }
+      .note {
+        background-color: #e7f5ff;
+        border-left: 4px solid #0d6efd;
+        padding: 10px 15px;
+        margin: 15px 0;
+        border-radius: 0 4px 4px 0;
+      }
+      .warning {
+        background-color: #fff3bf;
+        border-left: 4px solid #ffd43b;
+        padding: 10px 15px;
+        margin: 15px 0;
+        border-radius: 0 4px 4px 0;
+      }
+      .form-actions {
+        margin: 20px 0;
+        padding-top: 10px;
+        border-top: 1px solid #dee2e6;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="blog-container">
+      <header class="title-section">
+        <div class="title-content">
+          <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+            <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+          </a>
+        </div>
+      </header>
+
+      <main class="content-section">
+        <section class="article-content">
+          <h2 class="intro-title">Elemen Dasar Formulir HTML</h2>
+          <h3 class="section-title">Membuat Formulir Interaktif dengan HTML</h3>
+
+          <p>
+            Formulir HTML memungkinkan pengguna untuk memasukkan data yang dapat dikirim ke server
+            untuk diproses. Halaman ini akan membahas elemen-elemen dasar yang digunakan dalam
+            pembuatan formulir HTML.
+          </p>
+
+          <div class="note">
+            <strong>Catatan:</strong> Formulir HTML biasanya dikirim ke server menggunakan metode
+            GET atau POST, tetapi untuk contoh ini kita fokus pada elemen-elemen dasarnya terlebih
+            dahulu.
+          </div>
+
+          <h4>1. Struktur Dasar Formulir</h4>
+          <p>
+            Setiap formulir dimulai dengan tag <code>&lt;form&gt;</code> dan berisi berbagai elemen
+            input di dalamnya.
+          </p>
+
+          <div class="form-demo">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;form action="/proses" method="post"&gt;
+  &lt;!-- Elemen formulir akan ditempatkan di sini --&gt;
+&lt;/form&gt;</code></pre>
+          </div>
+
+          <div class="form-container">
+            <h4>2. Elemen Input Dasar</h4>
+
+            <div class="form-group">
+              <label for="nama">Nama Lengkap</label>
+              <input type="text" id="nama" name="nama" placeholder="Masukkan nama lengkap" />
+              <div class="form-demo">
+                <div class="code-header">
+                  <span>HTML</span>
+                  <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+                </div>
+                <pre><code>&lt;label for="nama"&gt;Nama Lengkap&lt;/label&gt;
+&lt;input type="text" id="nama" name="nama" placeholder="Masukkan nama lengkap"&gt;</code></pre>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="contoh@email.com" required />
+              <div class="form-demo">
+                <div class="code-header">
+                  <span>HTML</span>
+                  <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+                </div>
+                <pre><code>&lt;label for="email"&gt;Email&lt;/label&gt;
+&lt;input type="email" id="email" name="email" placeholder="contoh@email.com" required&gt;</code></pre>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="password">Kata Sandi</label>
+              <input type="password" id="password" name="password" minlength="8" required />
+              <div class="form-demo">
+                <div class="code-header">
+                  <span>HTML</span>
+                  <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+                </div>
+                <pre><code>&lt;label for="password"&gt;Kata Sandi&lt;/label&gt;
+&lt;input type="password" id="password" name="password" minlength="8" required&gt;</code></pre>
+              </div>
+            </div>
+
+            <h4>3. Textarea</h4>
+            <div class="form-group">
+              <label for="pesan">Pesan</label>
+              <textarea
+                id="pesan"
+                name="pesan"
+                rows="4"
+                placeholder="Tulis pesan Anda di sini..."
+              ></textarea>
+              <div class="form-demo">
+                <div class="code-header">
+                  <span>HTML</span>
+                  <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+                </div>
+                <pre><code>&lt;label for="pesan"&gt;Pesan&lt;/label&gt;
+&lt;textarea id="pesan" name="pesan" rows="4" placeholder="Tulis pesan Anda di sini..."&gt;&lt;/textarea&gt;</code></pre>
+              </div>
+            </div>
+
+            <h4>4. Radio Buttons</h4>
+            <div class="form-group">
+              <label>Jenis Kelamin</label>
+              <div class="radio-group">
+                <div class="radio-option">
+                  <input type="radio" id="laki" name="jenis_kelamin" value="laki" checked />
+                  <label for="laki">Laki-laki</label>
+                </div>
+                <div class="radio-option">
+                  <input type="radio" id="perempuan" name="jenis_kelamin" value="perempuan" />
+                  <label for="perempuan">Perempuan</label>
+                </div>
+              </div>
+              <div class="form-demo">
+                <div class="code-header">
+                  <span>HTML</span>
+                  <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+                </div>
+                <pre><code>&lt;label&gt;Jenis Kelamin&lt;/label&gt;
+&lt;div class="radio-group"&gt;
+  &lt;div class="radio-option"&gt;
+    &lt;input type="radio" id="laki" name="jenis_kelamin" value="laki" checked&gt;
+    &lt;label for="laki"&gt;Laki-laki&lt;/label&gt;
+  &lt;/div&gt;
+  &lt;div class="radio-option"&gt;
+    &lt;input type="radio" id="perempuan" name="jenis_kelamin" value="perempuan"&gt;
+    &lt;label for="perempuan"&gt;Perempuan&lt;/label&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+
+            <h4>5. Checkboxes</h4>
+            <div class="form-group">
+              <label>Hobi</label>
+              <div class="checkbox-group">
+                <div class="checkbox-option">
+                  <input type="checkbox" id="membaca" name="hobi" value="membaca" />
+                  <label for="membaca">Membaca</label>
+                </div>
+                <div class="checkbox-option">
+                  <input type="checkbox" id="olahraga" name="hobi" value="olahraga" />
+                  <label for="olahraga">Olahraga</label>
+                </div>
+                <div class="checkbox-option">
+                  <input type="checkbox" id="musik" name="hobi" value="musik" />
+                  <label for="musik">Musik</label>
+                </div>
+              </div>
+              <div class="form-demo">
+                <div class="code-header">
+                  <span>HTML</span>
+                  <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+                </div>
+                <pre><code>&lt;label&gt;Hobi&lt;/label&gt;
+&lt;div class="checkbox-group"&gt;
+  &lt;div class="checkbox-option"&gt;
+    &lt;input type="checkbox" id="membaca" name="hobi" value="membaca"&gt;
+    &lt;label for="membaca"&gt;Membaca&lt;/label&gt;
+  &lt;/div&gt;
+  &lt;div class="checkbox-option"&gt;
+    &lt;input type="checkbox" id="olahraga" name="hobi" value="olahraga"&gt;
+    &lt;label for="olahraga"&gt;Olahraga&lt;/label&gt;
+  &lt;/div&gt;
+  &lt;div class="checkbox-option"&gt;
+    &lt;input type="checkbox" id="musik" name="hobi" value="musik"&gt;
+    &lt;label for="musik"&gt;Musik&lt;/label&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+            </div>
+
+            <h4>6. Select Dropdown</h4>
+            <div class="form-group">
+              <label for="provinsi">Provinsi</label>
+              <select id="provinsi" name="provinsi">
+                <option value="">Pilih Provinsi</option>
+                <option value="jabar">Jawa Barat</option>
+                <option value="jatim">Jawa Timur</option>
+                <option value="jateng">Jawa Tengah</option>
+                <option value="banten">Banten</option>
+                <option value="dki">DKI Jakarta</option>
+              </select>
+              <div class="form-demo">
+                <div class="code-header">
+                  <span>HTML</span>
+                  <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+                </div>
+                <pre><code>&lt;label for="provinsi"&gt;Provinsi&lt;/label&gt;
+&lt;select id="provinsi" name="provinsi"&gt;
+  &lt;option value=""&gt;Pilih Provinsi&lt;/option&gt;
+  &lt;option value="jabar"&gt;Jawa Barat&lt;/option&gt;
+  &lt;option value="jatim"&gt;Jawa Timur&lt;/option&gt;
+  &lt;option value="jateng"&gt;Jawa Tengah&lt;/option&gt;
+  &lt;option value="banten"&gt;Banten&lt;/option&gt;
+  &lt;option value="dki"&gt;DKI Jakarta&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+              </div>
+            </div>
+
+            <h4>7. Tombol</h4>
+            <div class="form-actions">
+              <input type="submit" value="Kirim" />
+              <input type="reset" value="Reset" />
+              <button type="button">Batal</button>
+              <div class="form-demo">
+                <div class="code-header">
+                  <span>HTML</span>
+                  <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+                </div>
+                <pre><code>&lt;input type="submit" value="Kirim"&gt;
+&lt;input type="reset" value="Reset"&gt;
+&lt;button type="button"&gt;Batal&lt;/button&gt;</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <h4>8. Atribut Penting pada Formulir</h4>
+          <div class="form-demo">
+            <table style="width: 100%; border-collapse: collapse">
+              <thead>
+                <tr>
+                  <th
+                    style="
+                      border: 1px solid #dee2e6;
+                      padding: 8px;
+                      text-align: left;
+                      background-color: #f8f9fa;
+                    "
+                  >
+                    Atribut
+                  </th>
+                  <th
+                    style="
+                      border: 1px solid #dee2e6;
+                      padding: 8px;
+                      text-align: left;
+                      background-color: #f8f9fa;
+                    "
+                  >
+                    Deskripsi
+                  </th>
+                  <th
+                    style="
+                      border: 1px solid #dee2e6;
+                      padding: 8px;
+                      text-align: left;
+                      background-color: #f8f9fa;
+                    "
+                  >
+                    Contoh
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="border: 1px solid #dee2e6; padding: 8px"><code>action</code></td>
+                  <td style="border: 1px solid #dee2e6; padding: 8px">
+                    URL tempat mengirim data formulir
+                  </td>
+                  <td style="border: 1px solid #dee2e6; padding: 8px">
+                    <code>action="/proses.php"</code>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="border: 1px solid #dee2e6; padding: 8px"><code>method</code></td>
+                  <td style="border: 1px solid #dee2e6; padding: 8px">
+                    Metode pengiriman (GET/POST)
+                  </td>
+                  <td style="border: 1px solid #dee2e6; padding: 8px">
+                    <code>method="post"</code>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="border: 1px solid #dee2e6; padding: 8px"><code>name</code></td>
+                  <td style="border: 1px solid #dee2e6; padding: 8px">
+                    Nama elemen (untuk pengolahan data)
+                  </td>
+                  <td style="border: 1px solid #dee2e6; padding: 8px"><code>name="nama"</code></td>
+                </tr>
+                <tr>
+                  <td style="border: 1px solid #dee2e6; padding: 8px"><code>required</code></td>
+                  <td style="border: 1px solid #dee2e6; padding: 8px">Wajib diisi</td>
+                  <td style="border: 1px solid #dee2e6; padding: 8px"><code>required</code></td>
+                </tr>
+                <tr>
+                  <td style="border: 1px solid #dee2e6; padding: 8px"><code>placeholder</code></td>
+                  <td style="border: 1px solid #dee2e6; padding: 8px">Teks petunjuk</td>
+                  <td style="border: 1px solid #dee2e6; padding: 8px">
+                    <code>placeholder="Nama lengkap"</code>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="border: 1px solid #dee2e6; padding: 8px"><code>value</code></td>
+                  <td style="border: 1px solid #dee2e6; padding: 8px">Nilai default</td>
+                  <td style="border: 1px solid #dee2e6; padding: 8px">
+                    <code>value="contoh@email.com"</code>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="border: 1px solid #dee2e6; padding: 8px"><code>disabled</code></td>
+                  <td style="border: 1px solid #dee2e6; padding: 8px">Menonaktifkan elemen</td>
+                  <td style="border: 1px solid #dee2e6; padding: 8px"><code>disabled</code></td>
+                </tr>
+                <tr>
+                  <td style="border: 1px solid #dee2e6; padding: 8px"><code>readonly</code></td>
+                  <td style="border: 1px solid #dee2e6; padding: 8px">
+                    Hanya baca (tetap dikirim)
+                  </td>
+                  <td style="border: 1px solid #dee2e6; padding: 8px"><code>readonly</code></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h4>9. Validasi Formulir</h4>
+          <p>HTML5 menyediakan beberapa atribut validasi bawaan:</p>
+          <ul>
+            <li><code>required</code> - Wajib diisi</li>
+            <li><code>minlength</code> - Panjang teks minimal</li>
+            <li><code>maxlength</code> - Panjang teks maksimal</li>
+            <li><code>min</code>/<code>max</code> - Nilai minimal/maksimal untuk angka</li>
+            <li><code>pattern</code> - Pola regex untuk validasi</li>
+            <li><code>type</code> - Tipe input (email, number, url, dll)</li>
+          </ul>
+
+          <div class="form-demo">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;form id="contohForm"&gt;
+  &lt;div class="form-group"&gt;
+    &lt;label for="username"&gt;Username (min 4 karakter):&lt;/label&gt;
+    &lt;input type="text" id="username" name="username" minlength="4" required&gt;
+  &lt;/div&gt;
+  
+  &lt;div class="form-group"&gt;
+    &lt;label for="umur"&gt;Umur (13-120):&lt;/label&gt;
+    &lt;input type="number" id="umur" name="umur" min="13" max="120" required&gt;
+  &lt;/div&gt;
+  
+  &lt;div class="form-group"&gt;
+    &lt;label for="website"&gt;Website (opsional):&lt;/label&gt;
+    &lt;input type="url" id="website" name="website"&gt;
+  &lt;/div&gt;
+  
+  &lt;div class="form-group"&gt;
+    &lt;label for="kode_pos"&gt;Kode Pos (5 digit):&lt;/label&gt;
+    &lt;input type="text" id="kode_pos" name="kode_pos" 
+           pattern="[0-9]{5}" title="Masukkan 5 digit angka"&gt;
+  &lt;/div&gt;
+  
+  &lt;button type="submit"&gt;Daftar&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+          </div>
+
+          <div class="warning">
+            <strong>Penting:</strong> Selalu lakukan validasi juga di sisi server, karena validasi
+            HTML dapat di-bypass dengan mudah.
+          </div>
+
+          <h4>10. Praktik Terbaik</h4>
+          <div class="form-demo">
+            <ul>
+              <li>Selalu gunakan tag <code>&lt;label&gt;</code> untuk setiap elemen input</li>
+              <li>
+                Kelompokkan elemen terkait dengan <code>&lt;fieldset&gt;</code> dan beri judul
+                dengan <code>&lt;legend&gt;</code>
+              </li>
+              <li>Gunakan atribut <code>required</code> untuk bidang yang wajib diisi</li>
+              <li>Berikan pesan validasi yang jelas dan membantu</li>
+              <li>Pastikan formulir dapat digunakan dengan keyboard</li>
+              <li>Grupkan elemen terkait secara logis</li>
+              <li>Gunakan tipe input yang sesuai (email, number, dll.)</li>
+              <li>Berikan umpan balik visual saat berinteraksi dengan elemen formulir</li>
+            </ul>
+          </div>
+        </section>
+
+        <br />
+        <nav class="navigation-section" aria-label="Halaman navigasi">
+          <div class="nav-buttons">
+            <button class="btn" onclick="window.location.href='h63.html'" title="Tabel Lanjutan">
+              &lt;&nbsp;Prev
+            </button>
+            <img
+              src="../assets/png/home.png"
+              alt="Home"
+              class="home-icon"
+              onclick="window.location.href='../index.html'"
+              title="Home"
+            />
+            <img
+              src="../assets/png/html5.png"
+              alt="HTML"
+              onclick="window.location.href='h1.html'"
+              title="Daftar Isi HTML"
+            />
+            <button class="btn" onclick="window.location.href='h72.html'" title="Atribut Formulir">
+              Next&nbsp;&gt;
+            </button>
+          </div>
+        </nav>
+      </main>
+    </div>
+
+    <script src="../script/copyCode.js"></script>
+    <script src="../script/script.js"></script>
+  </body>
+</html>

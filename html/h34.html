@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Garis dan Baris Baru</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <header class="title-section">
+        <div class="title-content">
+          <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+            <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+          </a>
+        </div>
+      </header>
+
+      <main class="content-section">
+        <section class="article-content">
+          <h2 class="intro-title">Garis dan Baris Baru</h2>
+          <h3 class="section-title">Tag &lt;hr&gt; dan &lt;br&gt; dalam HTML</h3>
+
+          <p>
+            HTML menyediakan dua tag penting untuk mengatur tata letak teks:
+            <code>&lt;hr&gt;</code> untuk membuat garis horizontal dan <code>&lt;br&gt;</code> untuk
+            membuat baris baru. Mari kita bahas keduanya secara detail.
+          </p>
+
+          <h4>1. Tag &lt;hr&gt; (Horizontal Rule)</h4>
+          <p>
+            Tag <code>&lt;hr&gt;</code> digunakan untuk membuat garis horizontal yang memisahkan
+            konten. Tag ini bersifat <em>self-closing</em> (tidak memerlukan tag penutup).
+          </p>
+
+          <h5>Contoh Penggunaan:</h5>
+          <div class="code-block">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;h2&gt;Judul Bagian 1&lt;/h2&gt;
+&lt;p&gt;Ini adalah konten bagian pertama.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;Judul Bagian 2&lt;/h2&gt;
+&lt;p&gt;Ini adalah konten bagian kedua.&lt;/p&gt;</code></pre>
+          </div>
+
+          <h5>Hasil:</h5>
+          <div class="example-output" style="border: 1px solid #ddd; padding: 15px; margin: 10px 0">
+            <h4 style="margin: 0">Judul Bagian 1</h4>
+            <p style="margin: 5px 0">Ini adalah konten bagian pertama.</p>
+            <hr style="margin: 15px 0" />
+            <h4 style="margin: 0">Judul Bagian 2</h4>
+            <p style="margin: 5px 0">Ini adalah konten bagian kedua.</p>
+          </div>
+
+          <h5>Atribut untuk &lt;hr&gt; (tidak disarankan, gunakan CSS):</h5>
+          <ul>
+            <li><code>width</code> - Lebar garis (contoh: width="50%")</li>
+            <li><code>size</code> - Ketebalan garis (dalam pixel)</li>
+            <li><code>noshade</code> - Menghilangkan efek bayangan</li>
+            <li><code>color</code> - Warna garis</li>
+            <li><code>align</code> - Perataan (left, center, right)</li>
+          </ul>
+
+          <div class="note">
+            <strong>Catatan:</strong> Sebaiknya gunakan CSS untuk mengatur tampilan garis horizontal
+            daripada menggunakan atribut HTML langsung.
+          </div>
+
+          <h4>2. Tag &lt;br&gt; (Line Break)</h4>
+          <p>
+            Tag <code>&lt;br&gt;</code> digunakan untuk membuat baris baru dalam teks. Sama seperti
+            <code>&lt;hr&gt;</code>, tag ini juga bersifat <em>self-closing</em>.
+          </p>
+
+          <h5>Contoh Penggunaan:</h5>
+          <div class="code-block">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;p&gt;
+  Baris pertama teks.&lt;br&gt;
+  Baris kedua teks dalam paragraf yang sama.&lt;br&gt;&lt;br&gt;
+  Baris keempat (setelah satu baris kosong).
+&lt;/p&gt;</code></pre>
+          </div>
+
+          <h5>Hasil:</h5>
+          <div class="example-output" style="border: 1px solid #ddd; padding: 15px; margin: 10px 0">
+            <p style="margin: 0">
+              Baris pertama teks.<br />
+              Baris kedua teks dalam paragraf yang sama.<br /><br />
+              Baris keempat (setelah satu baris kosong).
+            </p>
+          </div>
+
+          <h4>Kapan Menggunakan &lt;br&gt; dan Kapan Tidak</h4>
+          <div class="do-dont">
+            <div class="do">
+              <h5>Gunakan &lt;br&gt; untuk:</h5>
+              <ul>
+                <li>Alamat</li>
+                <li>Puisi atau lirik lagu</li>
+                <li>Kutipan yang memerlukan jeda baris spesifik</li>
+              </ul>
+            </div>
+            <div class="dont">
+              <h5>Hindari &lt;br&gt; untuk:</h5>
+              <ul>
+                <li>Membuat jarak antar paragraf (gunakan margin/padding CSS)</li>
+                <li>Membuat daftar (gunakan &lt;ul&gt;, &lt;ol&gt;, atau &lt;dl&gt;)</li>
+                <li>Layout halaman (gunakan CSS Grid atau Flexbox)</li>
+              </ul>
+            </div>
+          </div>
+
+          <h4>Contoh Praktis</h4>
+          <div class="code-block">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;h3&gt;Contoh Alamat&lt;/h3&gt;
+&lt;address&gt;
+  Nama Perusahaan&lt;br&gt;
+  Jl. Contoh No. 123&lt;br&gt;
+  Kota Contoh, 12345&lt;br&gt;
+  Indonesia
+&lt;/address&gt;
+
+&lt;hr&gt;
+
+&lt;h3&gt;Contoh Puisi&lt;/h3&gt;
+&lt;p&gt;
+  Aku Ingin&lt;br&gt;
+  Aku ingin mencintaimu dengan sederhana&lt;br&gt;
+  dengan kata yang tak sempat diucapkan&lt;br&gt;
+  kayu kepada api yang menjadikannya abu
+&lt;/p&gt;</code></pre>
+          </div>
+
+          <h4>Tips Penting</h4>
+          <ul>
+            <li>
+              Gunakan <code>&lt;hr&gt;</code> untuk memisahkan bagian konten yang memiliki topik
+              berbeda
+            </li>
+            <li>Hindari penggunaan berlebihan <code>&lt;br&gt;</code> untuk tata letak</li>
+            <li>
+              Untuk jarak vertikal yang konsisten, gunakan CSS <code>margin</code> dan
+              <code>padding</code>
+            </li>
+            <li>
+              Gunakan elemen semantik seperti <code>&lt;section&gt;</code> atau
+              <code>&lt;article&gt;</code> untuk memisahkan bagian konten
+            </li>
+          </ul>
+        </section>
+
+        <br />
+        <nav class="navigation-section" aria-label="Halaman navigasi">
+          <div class="nav-buttons">
+            <button class="btn" onclick="window.location.href='h33.html'" title="Pemformatan Teks">
+              &lt;&nbsp;Prev
+            </button>
+            <img
+              src="../assets/png/home.png"
+              alt="Home"
+              class="home-icon"
+              onclick="window.location.href='../index.html'"
+              title="Home"
+            />
+            <img
+              src="../assets/png/html5.png"
+              alt="HTML"
+              onclick="window.location.href='h1.html'"
+              title="Daftar Isi HTML"
+            />
+            <button class="btn" onclick="window.location.href='h41.html'" title="Daftar HTML">
+              Next&nbsp;&gt;
+            </button>
+          </div>
+        </nav>
+      </main>
+    </div>
+
+    <script src="../script/copyCode.js"></script>
+    <script src="../script/script.js"></script>
+  </body>
+</html>

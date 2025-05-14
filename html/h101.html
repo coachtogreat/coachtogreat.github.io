@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aksesibilitas Dasar (Alt Text, Label) - HTML</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <style>
+      .accessibility-demo {
+        background-color: #f8f9fa;
+        border-radius: 5px;
+        padding: 15px;
+        margin: 15px 0;
+        border-left: 4px solid #0d6efd;
+        overflow-x: auto;
+      }
+      .demo-container {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: white;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      .form-group {
+        margin-bottom: 15px;
+      }
+      label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+      }
+      input, select, textarea, button {
+        padding: 8px 12px;
+        margin-bottom: 10px;
+        border: 1px solid #ced4da;
+        border-radius: 4px;
+        width: 100%;
+        max-width: 400px;
+        box-sizing: border-box;
+      }
+      button {
+        background-color: #0d6efd;
+        color: white;
+        border: none;
+        cursor: pointer;
+        width: auto;
+        padding: 8px 16px;
+      }
+      button:hover {
+        background-color: #0b5ed7;
+      }
+      .code-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #343a40;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 4px 4px 0 0;
+      }
+      .copy-btn {
+        background-color: #495057;
+        color: white !important;
+        border: none;
+        padding: 2px 8px;
+        border-radius: 3px;
+        cursor: pointer;
+      }
+      .copy-btn:hover {
+        color: white !important;
+        background-color: #0d6efd;
+      }
+      pre {
+        margin: 0;
+        padding: 0;
+      }
+      code {
+        display: block;
+        background-color: #f8f9fa;
+        padding: 15px;
+        border-radius: 0 0 4px 4px;
+        overflow-x: auto;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 14px;
+        line-height: 1.5;
+        transition: background-color 0.2s ease;
+      }
+      code:hover {
+        background-color: #e9ecef;
+        cursor: pointer;
+      }
+      .note {
+        background-color: #e7f5ff;
+        border-left: 4px solid #0d6efd;
+        padding: 12px 15px;
+        margin: 15px 0;
+        border-radius: 0 4px 4px 0;
+      }
+      .warning {
+        background-color: #fff3bf;
+        border-left: 4px solid #ffd43b;
+        padding: 12px 15px;
+        margin: 15px 0;
+        border-radius: 0 4px 4px 0;
+      }
+      .tip {
+        background-color: #d4edda;
+        border-left: 4px solid #28a745;
+        padding: 12px 15px;
+        margin: 15px 0;
+        border-radius: 0 4px 4px 0;
+      }
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border-width: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="blog-container">
+      <header class="title-section">
+        <div class="title-content">
+          <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+            <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+          </a>
+        </div>
+      </header>
+
+      <main class="content-section">
+        <section class="article-content">
+          <h2 class="intro-title">Aksesibilitas Dasar (Alt Text, Label)</h2>
+          <h3 class="section-title">Membuat Web yang Dapat Diakses Semua Orang</h3>
+
+          <p>
+            Aksesibilitas web memastikan bahwa semua orang, termasuk penyandang disabilitas, 
+            dapat mengakses dan berinteraksi dengan konten web. Mari pelajari dasar-dasar 
+            aksesibilitas dalam HTML.
+          </p>
+
+          <div class="note">
+            <strong>Catatan:</strong> Aksesibilitas bukan hanya untuk pengguna dengan disabilitas, 
+            tetapi juga bermanfaat untuk semua pengguna dalam berbagai situasi.
+          </div>
+
+          <h4>1. Teks Alternatif (Alt Text) untuk Gambar</h4>
+          <p>Atribut <code>alt</code> memberikan deskripsi teks untuk gambar:</p>
+          
+          <div class="accessibility-demo">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;!-- Gambar informatif --&gt;
+&lt;img 
+  src="gambar/logo.png" 
+  alt="Logo WebID Design - Desain Web Profesional"
+  width="200"
+  height="100"&gt;
+
+&lt;!-- Gamban dekoratif --&gt;
+&lt;img 
+  src="gambar/ornamen.png" 
+  alt=""
+  role="presentation"
+  width="100"
+  height="50"&gt;</code></pre>
+          </div>
+
+          <div class="tip">
+            <strong>Tip:</strong> Gunakan alt text yang deskriptif untuk gambar informatif, 
+            dan biarkan kosong (alt="") untuk gambar dekoratif.
+          </div>
+
+          <h4>2. Label untuk Formulir</h4>
+          <p>Setiap elemen input harus memiliki label yang terkait:</p>
+          
+          <div class="accessibility-demo">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;!-- Menggunakan for dan id --&gt;
+&lt;label for="nama"&gt;Nama Lengkap:&lt;/label&gt;
+&lt;input type="text" id="nama" name="nama"&gt;
+
+&lt;!-- Atau membungkus input --&gt;
+&lt;label&gt;
+  Email:
+  &lt;input type="email" name="email" required&gt;
+&lt;/label&gt;</code></pre>
+            
+            <div class="demo-container">
+              <form>
+                <div class="form-group">
+                  <label for="contoh-nama">Nama Lengkap:</label>
+                  <input type="text" id="contoh-nama" name="nama">
+                </div>
+                <div class="form-group">
+                  <label>
+                    Email:
+                    <input type="email" name="email" required>
+                  </label>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <h4>3. Judul dan Struktur yang Jelas</h4>
+          <p>Gunakan heading dengan urutan yang logis dan deskriptif:</p>
+          
+          <div class="accessibility-demo">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;h1&gt;Judul Halaman&lt;/h1&gt;
+&lt;h2&gt;Bagian Utama&lt;/h2&gt;
+&lt;h3&gt;Sub-bagian&lt;/h3&gt;
+
+&lt;!-- Skip to main content link untuk keyboard users -->
+&lt;a href="#main" class="sr-only"&gt;Lanjutkan ke konten utama&lt;/a&gt;
+&lt;nav&gt;...&lt;/nav&gt;
+&lt;main id="main"&gt;...&lt;/main&gt;</code></pre>
+          </div>
+
+          <h4>4. ARIA (Accessible Rich Internet Applications)</h4>
+          <p>Tambahkan semantik tambahan untuk komponen interaktif:</p>
+          
+          <div class="accessibility-demo">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;!-- Tab panel dengan ARIA --&gt;
+&lt;div role="tablist"&gt;
+  &lt;button 
+    role="tab" 
+    aria-selected="true"
+    aria-controls="panel1"
+    id="tab1"&gt;
+    Tab 1
+  &lt;/button&gt;
+  &lt;div 
+    role="tabpanel" 
+    id="panel1" 
+    aria-labelledby="tab1"
+    tabindex="0"&gt;
+    Konten tab 1
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+
+          <div class="warning">
+            <strong>Penting:</strong> Gunakan elemen HTML semantik yang sesuai sebelum beralih ke ARIA.
+            ARIA seharusnya hanya digunakan ketika elemen HTML standar tidak mencukupi.
+          </div>
+
+          <h4>5. Kontras Warna yang Cukup</h4>
+          <p>Pastikan rasio kontras antara teks dan latar belakang memenuhi standar:</p>
+          
+          <div class="accessibility-demo">
+            <div class="code-header">
+              <span>CSS</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>/* Kontras yang baik (minimal 4.5:1 untuk teks normal) */
+.baik {
+  color: #000000;
+  background-color: #ffffff; /* Rasio 21:1 */
+}
+
+/* Kontras buruk (hanya 2.14:1) */
+.buruk {
+  color: #777777;
+  background-color: #ffffff;
+}</code></pre>
+            
+            <div class="demo-container">
+              <p style="color: #000; background: #fff; padding: 10px;">
+                Teks dengan kontras baik (21:1)
+              </p>
+              <p style="color: #777; background: #fff; padding: 10px;">
+                Teks dengan kontras buruk (2.14:1)
+              </p>
+            </div>
+          </div>
+
+          <h4>6. Fokus Keyboard yang Jelas</h4>
+          <p>Pastikan semua elemen interaktif dapat diakses dengan keyboard:</p>
+          
+          <div class="accessibility-demo">
+            <div class="code-header">
+              <span>CSS</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>/* Gaya fokus yang terlihat */
+:focus {
+  outline: 3px solid #4d90fe;
+  outline-offset: 2px;
+}
+
+/* Jangan pernah menghilangkan outline sepenuhnya! */
+*:focus {
+  outline: none; /* JANGAN LAKUKAN INI! */
+}</code></pre>
+          </div>
+
+          <div class="tip">
+            <strong>Tip:</strong> Uji navigasi keyboard di situs Anda dengan menekan Tab. 
+            Pastikan semua elemen interaktif dapat diakses dan fokus terlihat jelas.
+          </div>
+
+          <h4>7. Bahasa dan Baca Arah</h4>
+          <p>Tentukan bahasa halaman dan bagian yang menggunakan bahasa berbeda:</p>
+          
+          <div class="accessibility-demo">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="id"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;Halaman dalam Bahasa Indonesia&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;p&gt;Ini adalah konten dalam Bahasa Indonesia.&lt;/p&gt;
+  
+  &lt;!-- Konten dalam bahasa lain --&gt;
+  &lt;div lang="en"&gt;
+    &lt;p&gt;This content is in English.&lt;/p&gt;
+  &lt;/div&gt;
+  
+  &lt;!-- Teks dengan arah baca kanan ke kiri --&gt;
+  &lt;p dir="rtl" lang="ar"&gt;هذا النص باللغة العربية&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          </div>
+
+          <div class="note">
+            <strong>Alat Bantu:</strong> Gunakan alat seperti WAVE, axe, atau Lighthouse 
+            untuk menguji aksesibilitas situs Anda.
+          </div>
+
+          <br />
+          <nav class="navigation-section" aria-label="Halaman navigasi">
+            <div class="nav-buttons">
+              <button
+                class="btn"
+                onclick="window.location.href='h93.html'"
+                title="Menyematkan Konten Eksternal"
+              >
+                &lt;&nbsp;Prev
+              </button>
+              <img
+                src="../assets/png/home.png"
+                alt="Home"
+                class="home-icon"
+                onclick="window.location.href='../index.html'"
+                title="Home"
+              />
+              <img
+                src="../assets/png/html5.png"
+                alt="HTML"
+                onclick="window.location.href='h1.html'"
+                title="Daftar Isi HTML"
+              />
+              <button
+                class="btn"
+                onclick="window.location.href='h102.html'"
+                title="Validasi HTML"
+              >
+                Next&nbsp;&gt;
+              </button>
+            </div>
+          </nav>
+        </section>
+      </main>
+    </div>
+
+    <script>
+      function copyCode(button) {
+        const codeBlock = button.parentElement.nextElementSibling;
+        const code = codeBlock.textContent;
+
+        // Buat elemen textarea untuk menyalin teks
+        const textarea = document.createElement('textarea');
+        textarea.value = code;
+        textarea.style.position = 'fixed'; // Menghindari scroll otomatis
+        document.body.appendChild(textarea);
+        textarea.select();
+
+        try {
+          // Salin teks ke clipboard
+          const successful = document.execCommand('copy');
+          const msg = successful ? 'berhasil disalin!' : 'gagal disalin';
+
+          // Tampilkan notifikasi
+          const originalText = button.textContent;
+          button.textContent = 'Tersalin!';
+
+          // Kembalikan teks tombol setelah 2 detik
+          setTimeout(() => {
+            button.textContent = originalText;
+          }, 2000);
+        } catch (err) {
+          console.error('Gagal menyalin teks: ', err);
+        }
+
+        // Hapus textarea
+        document.body.removeChild(textarea);
+      }
+    </script>
+  </body>
+</html>

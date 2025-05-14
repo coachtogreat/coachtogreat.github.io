@@ -1,0 +1,625 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Membuat Halaman Artikel dengan Gambar dan Link - Panduan Lengkap</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <style>
+      h2 {
+        text-align: center;
+      }
+      
+      .biodata-demo {
+        background-color: #f8f9fa;
+        border-radius: 5px;
+        padding: 15px;
+        margin: 15px 0;
+        border-left: 4px solid #0d6efd;
+        overflow-x: auto;
+      }
+      .code-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #343a40;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 4px 4px 0 0;
+      }
+      .copy-btn {
+        background-color: #495057;
+        color: white !important;
+        border: none;
+        padding: 2px 8px;
+        border-radius: 3px;
+        cursor: pointer;
+      }
+      code {
+        display: block;
+        background-color: #f8f9fa;
+        padding: 15px;
+        overflow-x: auto;
+        font-family: 'Courier New', monospace;
+        font-size: 14px;
+      }
+      .preview {
+        border: 1px solid #ddd;
+        padding: 20px;
+        margin: 20px 0;
+        border-radius: 5px;
+      }
+      .article-image {
+        max-width: 100%;
+        height: auto;
+        border-radius: 5px;
+        margin: 15px 0;
+      }
+      .image-caption {
+        text-align: center;
+        font-style: italic;
+        color: #666;
+        margin-top: -10px;
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="blog-container">
+      <header class="title-section">
+        <div class="title-content">
+          <a href="https://webiddesign.com" target="_blank" rel="noopener">
+            <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+          </a>
+        </div>
+      </header>
+
+      <main class="content-section">
+        <section class="article-content">
+          <h2 class="text-center">Membuat Halaman Artikel dengan Gambar dan Link</h2>
+          <h3>Panduan Lengkap untuk Pemula</h3>
+
+          <p>
+            Halaman artikel yang baik membutuhkan lebih dari sekadar teks. Gambar dan link adalah elemen penting yang membuat konten lebih menarik dan informatif. Mari pelajari cara membuat halaman artikel yang profesional dengan HTML dan CSS.
+          </p>
+
+          <h4>1. Struktur Dasar Artikel</h4>
+          <div class="biodata-demo">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="id"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Judul Artikel&lt;/title&gt;
+  &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;article class="article-container"&gt;
+    &lt;header class="article-header"&gt;
+      &lt;h1&gt;Judul Artikel yang Menarik&lt;/h1&gt;
+      &lt;div class="article-meta"&gt;
+        &lt;span class="author"&gt;Oleh: Nama Penulis&lt;/span&gt;
+        &lt;span class="date"&gt;14 Mei 2025&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/header&gt;
+    
+    &lt;div class="article-content"&gt;
+      &lt;!-- Konten artikel akan ditambahkan di sini --&gt;
+    &lt;/div&gt;
+    
+    &lt;footer class="article-footer"&gt;
+      &lt;div class="tags"&gt;
+        &lt;span&gt;Tag:&lt;/span&gt;
+        &lt;a href="#"&gt;HTML&lt;/a&gt;
+        &lt;a href="#"&gt;CSS&lt;/a&gt;
+        &lt;a href="#"&gt;Web Design&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/footer&gt;
+  &lt;/article&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          </div>
+
+          <h4>2. Menambahkan Gambar ke Dalam Artikel</h4>
+          <div class="biodata-demo">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;figure class="article-image"&gt;
+  &lt;img 
+    src="gambar-contoh.jpg" 
+    alt="Deskripsi gambar yang informatif"
+    loading="lazy"
+  &gt;
+  &lt;figcaption&gt;
+    Gambar 1: Contoh gambar dengan caption yang deskriptif
+  &lt;/figcaption&gt;
+&lt;/figure&gt;</code></pre>
+          </div>
+
+          <h4>3. Menambahkan Link ke Dalam Teks</h4>
+          <div class="biodata-demo">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;p&gt;
+  HTML adalah bahasa markup standar untuk membuat halaman web. 
+  Anda dapat mempelajari lebih lanjut tentang 
+  &lt;a href="https://developer.mozilla.org/id/docs/Web/HTML" 
+     target="_blank" 
+     rel="noopener noreferrer"
+  &gt;
+    HTML di MDN Web Docs
+  &lt;/a&gt;.
+&lt;/p&gt;
+
+&lt;p&gt;
+  Untuk informasi lebih lanjut, kunjungi 
+  &lt;a href="#" class="read-more"&gt;halaman ini&lt;/a&gt;.
+&lt;/p&gt;</code></pre>
+          </div>
+
+          <h4>4. Menambahkan Daftar Referensi</h4>
+          <div class="biodata-demo">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;section class="references"&gt;
+  &lt;h3&gt;Referensi&lt;/h3&gt;
+  &lt;ul&gt;
+    &lt;li&gt;
+      &lt;a href="https://developer.mozilla.org/id/" target="_blank" rel="noopener"&gt;
+        MDN Web Docs
+      &lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+      &lt;a href="https://www.w3schools.com/" target="_blank" rel="noopener"&gt;
+        W3Schools
+      &lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+      &lt;a href="https://www.freecodecamp.org/" target="_blank" rel="noopener"&gt;
+        freeCodeCamp
+      &lt;/a&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/section&gt;</code></pre>
+          </div>
+
+          <h4>5. CSS untuk Artikel</h4>
+          <div class="biodata-demo">
+            <div class="code-header">
+              <span>CSS (style.css)</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>/* Gaya Dasar */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+.article-container {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  padding: 30px;
+  margin: 20px 0;
+}
+
+/* Header Artikel */
+.article-header {
+  margin-bottom: 30px;
+  text-align: center;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.article-header h1 {
+  color: #2c3e50;
+  font-size: 2.2em;
+  margin-bottom: 10px;
+}
+
+.article-meta {
+  color: #7f8c8d;
+  font-size: 0.9em;
+  margin-top: 10px;
+}
+
+.article-meta .author {
+  margin-right: 15px;
+}
+
+/* Konten Artikel */
+.article-content {
+  font-size: 1.1em;
+  line-height: 1.8;
+}
+
+.article-content p {
+  margin-bottom: 1.5em;
+}
+
+.article-content h2 {
+  color: #2c3e50;
+  margin: 1.5em 0 0.8em;
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid #eee;
+}
+
+.article-content h3 {
+  color: #34495e;
+  margin: 1.3em 0 0.8em;
+}
+
+/* Gambar */
+.article-image {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 2em auto;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.article-image img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 5px;
+}
+
+figcaption {
+  text-align: center;
+  font-style: italic;
+  color: #7f8c8d;
+  font-size: 0.9em;
+  margin-top: 8px;
+}
+
+/* Link */
+a {
+  color: #3498db;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #2980b9;
+  text-decoration: underline;
+}
+
+.read-more {
+  font-weight: bold;
+  color: #e74c3c;
+}
+
+.read-more:hover {
+  color: #c0392b;
+}
+
+/* Daftar Referensi */
+.references {
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 5px;
+  margin-top: 40px;
+}
+
+.references h3 {
+  margin-top: 0;
+  color: #2c3e50;
+  border-bottom: 1px solid #dee2e6;
+  padding-bottom: 8px;
+}
+
+.references ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.references li {
+  margin-bottom: 8px;
+  padding-left: 20px;
+  position: relative;
+}
+
+.references li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: #3498db;
+}
+
+/* Footer Artikel */
+.article-footer {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.tags span {
+  color: #7f8c8d;
+  margin-right: 10px;
+}
+
+.tags a {
+  background-color: #f1f8ff;
+  color: #0366d6;
+  padding: 3px 10px;
+  border-radius: 15px;
+  font-size: 0.85em;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.tags a:hover {
+  background-color: #ddeeff;
+  text-decoration: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .article-container {
+    padding: 15px;
+  }
+  
+  .article-header h1 {
+    font-size: 1.8em;
+  }
+  
+  .article-content {
+    font-size: 1em;
+  }
+  
+  .article-image {
+    margin: 1.5em auto;
+  }
+}
+
+/* Blockquote */
+blockquote {
+  border-left: 4px solid #3498db;
+  padding: 15px 20px;
+  margin: 20px 0;
+  background-color: #f8f9fa;
+  color: #555;
+  font-style: italic;
+}
+
+blockquote p {
+  margin: 0;
+}
+
+/* Kode dalam artikel */
+pre {
+  background-color: #f8f9fa;
+  padding: 15px;
+  border-radius: 5px;
+  overflow-x: auto;
+  margin: 20px 0;
+}
+
+code {
+  font-family: 'Courier New', Courier, monospace;
+  background-color: #f8f9fa;
+  padding: 2px 5px;
+  border-radius: 3px;
+  font-size: 0.9em;
+}
+
+/* Tabel */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+table, th, td {
+  border: 1px solid #dee2e6;
+}
+
+th, td {
+  padding: 12px 15px;
+  text-align: left;
+}
+
+th {
+  background-color: #f8f9fa;
+  font-weight: bold;
+}
+
+tr:nth-child(even) {
+  background-color: #f8f9fa;
+}</code></pre>
+          </div>
+
+          <h4>6. Menambahkan Artikel Contoh</h4>
+          <div class="biodata-demo">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;article class="article-container"&gt;
+  &lt;header class="article-header"&gt;
+    &lt;h1&gt;Panduan Lengkap Belajar HTML dan CSS&lt;/h1&gt;
+    &lt;div class="article-meta"&gt;
+      &lt;span class="author"&gt;Oleh: Web Developer&lt;/span&gt;
+      &lt;span class="date"&gt;14 Mei 2025&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/header&gt;
+  
+  &lt;div class="article-content"&gt;
+    &lt;p&gt;
+      HTML (HyperText Markup Language) dan CSS (Cascading Style Sheets) 
+      adalah dua teknologi dasar untuk membangun halaman web. 
+      &lt;a href="https://developer.mozilla.org/id/docs/Web/HTML" 
+         target="_blank" 
+         rel="noopener noreferrer"
+      &gt;
+        HTML
+      &lt;/a&gt; 
+      digunakan untuk struktur konten, sementara 
+      &lt;a href="https://developer.mozilla.org/id/docs/Web/CSS" 
+         target="_blank" 
+         rel="noopener noreferrer"
+      &gt;
+        CSS
+      &lt;/a&gt; 
+      digunakan untuk gaya dan tata letak.
+    &lt;/p&gt;
+    
+    &lt;figure class="article-image"&gt;
+      &lt;img 
+        src="html-css.jpg" 
+        alt="Ilustrasi HTML dan CSS"
+        loading="lazy"
+      &gt;
+      &lt;figcaption&gt;
+        Gambar: Ilustrasi HTML dan CSS bekerja sama dalam pembuatan web
+      &lt;/figcaption&gt;
+    &lt;/figure&gt;
+    
+    &lt;h2&gt;Keuntungan Menggunakan HTML dan CSS&lt;/h2&gt;
+    
+    &lt;p&gt;
+      Berikut adalah beberapa keuntungan menggunakan HTML dan CSS:
+    &lt;/p&gt;
+    
+    &lt;ul&gt;
+      &lt;li&gt;Mudah dipelajari untuk pemula&lt;/li&gt;
+      &lt;li&gt;Didukung oleh semua browser web modern&lt;/li&gt;
+      &lt;li&gt;Ringan dan cepat dimuat&lt;/li&gt;
+      &lt;li&gt;Dapat diakses oleh perangkat apa pun&lt;/li&gt;
+    &lt;/ul&gt;
+    
+    &lt;h2&gt;Struktur Dasar HTML&lt;/h2&gt;
+    
+    &lt;p&gt;
+      Setiap dokumen HTML dimulai dengan deklarasi &lt;code&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/code&gt; 
+      dan memiliki elemen &lt;code&gt;&amp;lt;html&amp;gt;&lt;/code&gt; yang berisi &lt;code&gt;&amp;lt;head&amp;gt;&lt;/code&gt; 
+      dan &lt;code&gt;&amp;lt;body&amp;gt;&lt;/code&gt;.
+    &lt;/p&gt;
+    
+    &lt;h2&gt;Kesimpulan&lt;/h2&gt;
+    
+    &lt;p&gt;
+      HTML dan CSS adalah fondasi dari pengembangan web modern. 
+      Dengan mempelajari keduanya, Anda dapat membuat berbagai jenis 
+      halaman web yang menarik dan fungsional.
+    &lt;/p&gt;
+  &lt;/div&gt;
+  
+  &lt;footer class="article-footer"&gt;
+    &lt;div class="tags"&gt;
+      &lt;span&gt;Tag:&lt;/span&gt;
+      &lt;a href="#"&gt;HTML&lt;/a&gt;
+      &lt;a href="#"&gt;CSS&lt;/a&gt;
+      &lt;a href="#"&gt;Web Development&lt;/a&gt;
+      &lt;a href="#"&gt;Pemrograman Web&lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/footer&gt;
+&lt;/article&gt;</code></pre>
+          </div>
+
+          <div class="note">
+            <strong>Tips untuk Artikel yang Lebih Baik:</strong>
+            <ul>
+              <li>Gunakan gambar yang relevan dan berkualitas tinggi</li>
+              <li>Optimalkan ukuran gambar untuk web</li>
+              <li>Gunakan heading dengan hierarki yang benar (h1, h2, h3, dll.)</li>
+              <li>Tambahkan alt text untuk semua gambar</li>
+              <li>Gunakan link yang deskriptif, bukan "klik di sini"</li>
+              <li>Pastikan konten mudah dibaca dengan font dan ukuran yang sesuai</li>
+            </ul>
+          </div>
+
+          <nav class="navigation-section" aria-label="Halaman navigasi">
+            <div class="nav-buttons">
+              <button
+                class="btn"
+                onclick="window.location.href='h121.html'"
+                title="Membuat halaman biodata sederhana"
+              >
+                &lt;&nbsp;Prev
+              </button>
+              <img
+                src="../assets/png/home.png"
+                alt="Home"
+                class="home-icon"
+                onclick="window.location.href='../index.html'"
+                title="Home"
+              />
+              <img
+                src="../assets/png/html5.png"
+                alt="HTML"
+                onclick="window.location.href='h1.html'"
+                title="Daftar Isi HTML"
+              />
+              <button
+                class="btn"
+                onclick="window.location.href='h123.html'"
+                title="Membuat form kontak sederhana"
+              >
+                Next&nbsp;&gt;
+              </button>
+            </div>
+          </nav>
+        </section>
+      </main>
+    </div>
+
+    <script>
+      function copyCode(button) {
+        const codeBlock = button.parentElement.nextElementSibling;
+        const code = codeBlock.textContent;
+
+        // Buat elemen textarea untuk menyalin teks
+        const textarea = document.createElement('textarea');
+        textarea.value = code;
+        textarea.style.position = 'fixed';
+        document.body.appendChild(textarea);
+        textarea.select();
+
+        try {
+          // Salin teks ke clipboard
+          const successful = document.execCommand('copy');
+          const msg = successful ? 'berhasil disalin!' : 'gagal disalin';
+
+          // Tampilkan notifikasi
+          const originalText = button.textContent;
+          button.textContent = 'Tersalin!';
+
+          // Kembalikan teks tombol setelah 2 detik
+          setTimeout(() => {
+            button.textContent = originalText;
+          }, 2000);
+        } catch (err) {
+          console.error('Gagal menyalin teks: ', err);
+        }
+        // Hapus textarea
+        document.body.removeChild(textarea);
+      }
+    </script>
+  </body>
+</html>

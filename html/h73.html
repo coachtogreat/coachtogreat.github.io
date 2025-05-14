@@ -1,0 +1,526 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Textarea & Select Dropdown - Formulir HTML</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <style>
+      .form-demo {
+        background-color: #f8f9fa;
+        border-radius: 5px;
+        padding: 15px;
+        margin: 15px 0;
+        border-left: 4px solid #0d6efd;
+        overflow-x: auto;
+      }
+      .form-container {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: white;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      }
+      .form-group {
+        margin-bottom: 25px;
+        padding: 20px;
+        border: 1px solid #e9ecef;
+        border-radius: 5px;
+        background-color: #fff;
+      }
+      label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+        color: #212529;
+      }
+      input, select, textarea {
+        width: 100%;
+        padding: 10px 12px;
+        margin: 5px 0 15px;
+        border: 1px solid #ced4da;
+        border-radius: 4px;
+        box-sizing: border-box;
+        font-size: 16px;
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+      }
+      textarea {
+        min-height: 120px;
+        resize: vertical;
+        font-family: inherit;
+        line-height: 1.5;
+      }
+      select {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23343a40' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 0.75rem center;
+        background-size: 16px 12px;
+        padding-right: 2.25rem;
+      }
+      input:focus, select:focus, textarea:focus {
+        border-color: #86b7fe;
+        outline: 0;
+        box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+      }
+      .code-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #343a40;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 4px 4px 0 0;
+      }
+      .copy-btn {
+        background-color: #495057;
+        color: white;
+        border: none;
+        padding: 2px 8px;
+        border-radius: 3px;
+        cursor: pointer;
+        font-size: 14px;
+      }
+      .copy-btn:hover {
+        background-color: #ffd43b;
+        color: #212529;
+      }
+      pre {
+        margin: 0;
+        padding: 0;
+      }
+      code {
+        display: block;
+        background-color: #f8f9fa;
+        padding: 15px;
+        border-radius: 0 0 4px 4px;
+        overflow-x: auto;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 14px;
+        line-height: 1.5;
+      }
+      .note {
+        background-color: #e7f5ff;
+        border-left: 4px solid #0d6efd;
+        padding: 12px 15px;
+        margin: 15px 0;
+        border-radius: 0 4px 4px 0;
+      }
+      .warning {
+        background-color: #fff3bf;
+        border-left: 4px solid #ffd43b;
+        padding: 12px 15px;
+        margin: 15px 0;
+        border-radius: 0 4px 4px 0;
+      }
+      .attribute-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+      }
+      .attribute-table th, .attribute-table td {
+        border: 1px solid #dee2e6;
+        padding: 10px;
+        text-align: left;
+      }
+      .attribute-table th {
+        background-color: #f8f9fa;
+      }
+      .attribute-table tr:nth-child(even) {
+        background-color: #f8f9fa;
+      }
+      .input-example {
+        margin: 15px 0;
+        padding: 15px;
+        border: 1px solid #e9ecef;
+        border-radius: 5px;
+        background-color: #f8f9fa;
+      }
+      .input-preview {
+        background-color: white;
+        padding: 20px;
+        border: 1px solid #dee2e6;
+        border-radius: 4px;
+        margin: 15px 0;
+      }
+      .select-wrapper {
+        position: relative;
+        margin-bottom: 15px;
+      }
+      .select-wrapper::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        right: 15px;
+        transform: translateY(-50%);
+        width: 0;
+        height: 0;
+        border-left: 6px solid transparent;
+        border-right: 6px solid transparent;
+        border-top: 6px solid #495057;
+        pointer-events: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="blog-container">
+      <header class="title-section">
+        <div class="title-content">
+          <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+            <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+          </a>
+        </div>
+      </header>
+
+      <main class="content-section">
+        <section class="article-content">
+          <h2 class="intro-title">Textarea & Select Dropdown</h2>
+          <h3 class="section-title">Mengelola Input Teks Panjang dan Pilihan dalam Formulir</h3>
+          
+          <p>
+            Halaman ini akan membahas secara mendalam tentang elemen <code>&lt;textarea&gt;</code> dan <code>&lt;select&gt;</code> 
+            yang sangat berguna untuk mengumpulkan input teks panjang dan pilihan dari pengguna.
+          </p>
+
+          <!-- Textarea Section -->
+          <div class="form-group">
+            <h4>1. Textarea (<code>&lt;textarea&gt;</code>)</h4>
+            <p>Elemen untuk input teks multi-baris seperti komentar, deskripsi, atau pesan panjang.</p>
+            
+            <div class="input-example">
+              <h5>Contoh Penggunaan Dasar:</h5>
+              <div class="input-preview">
+                <label for="komentar">Komentar Anda:</label>
+                <textarea id="komentar" name="komentar" rows="4" 
+                          placeholder="Tulis komentar Anda di sini..."></textarea>
+              </div>
+              
+              <div class="form-demo">
+                <div class="code-header">
+                  <span>HTML</span>
+                  <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+                </div>
+                <pre><code>&lt;label for="komentar"&gt;Komentar Anda:&lt;/label&gt;
+&lt;textarea id="komentar" name="komentar" rows="4" 
+          placeholder="Tulis komentar Anda di sini..."&gt;&lt;/textarea&gt;</code></pre>
+              </div>
+              
+              <h5>Atribut Penting Textarea:</h5>
+              <table class="attribute-table">
+                <tr>
+                  <th>Atribut</th>
+                  <th>Deskripsi</th>
+                  <th>Contoh</th>
+                </tr>
+                <tr>
+                  <td><code>rows</code></td>
+                  <td>Jumlah baris yang terlihat</td>
+                  <td><code>rows="4"</code></td>
+                </tr>
+                <tr>
+                  <td><code>cols</code></td>
+                  <td>Lebar dalam karakter (sebaiknya gunakan CSS)</td>
+                  <td><code>cols="50"</code></td>
+                </tr>
+                <tr>
+                  <td><code>maxlength</code></td>
+                  <td>Jumlah karakter maksimum</td>
+                  <td><code>maxlength="500"</code></td>
+                </tr>
+                <tr>
+                  <td><code>minlength</code></td>
+                  <td>Jumlah karakter minimum</td>
+                  <td><code>minlength="10"</code></td>
+                </tr>
+                <tr>
+                  <td><code>placeholder</code></td>
+                  <td>Teks petunjuk dalam textarea</td>
+                  <td><code>placeholder="Tulis pesan..."</code></td>
+                </tr>
+                <tr>
+                  <td><code>readonly</code></td>
+                  <td>Hanya bisa dibaca</td>
+                  <td><code>readonly</code></td>
+                </tr>
+                <tr>
+                  <td><code>disabled</code></td>
+                  <td>Menonaktifkan textarea</td>
+                  <td><code>disabled</code></td>
+                </tr>
+                <tr>
+                  <td><code>wrap</code></td>
+                  <td>Penggulungan teks (soft/hard)</td>
+                  <td><code>wrap="hard"</code></td>
+                </tr>
+              </table>
+              
+              <h5>Contoh Textarea Lanjutan:</h5>
+              <div class="input-preview">
+                <label for="alamat">Alamat Lengkap:</label>
+                <textarea id="alamat" name="alamat" rows="3" 
+                          placeholder="Jl. Contoh No. 123, Kota" 
+                          required minlength="10" maxlength="200"
+                          style="width: 100%;"></textarea>
+                <small>Minimal 10 karakter, maksimal 200 karakter</small>
+              </div>
+              
+              <div class="form-demo">
+                <div class="code-header">
+                  <span>HTML</span>
+                  <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+                </div>
+                <pre><code>&lt;label for="alamat"&gt;Alamat Lengkap:&lt;/label&gt;
+&lt;textarea id="alamat" name="alamat" rows="3" 
+          placeholder="Jl. Contoh No. 123, Kota" 
+          required minlength="10" maxlength="200"
+          style="width: 100%;"&gt;&lt;/textarea&gt;
+&lt;small&gt;Minimal 10 karakter, maksimal 200 karakter&lt;/small&gt;</code></pre>
+              </div>
+              
+              <div class="note">
+                <strong>Tip:</strong> Gunakan CSS <code>resize: vertical</code> atau <code>resize: none</code> 
+                untuk mengontrol apakah pengguna dapat mengubah ukuran textarea.
+              </div>
+            </div>
+          </div>
+
+          <!-- Select Dropdown Section -->
+          <div class="form-group">
+            <h4>2. Select Dropdown (<code>&lt;select&gt;</code>)</h4>
+            <p>Elemen untuk memilih satu atau beberapa opsi dari daftar dropdown.</p>
+            
+            <div class="input-example">
+              <h5>Select Dasar (Pilihan Tunggal):</h5>
+              <div class="input-preview">
+                <label for="provinsi">Pilih Provinsi:</label>
+                <select id="provinsi" name="provinsi" required>
+                  <option value="" disabled selected>-- Pilih Provinsi --</option>
+                  <option value="jabar">Jawa Barat</option>
+                  <option value="jatim">Jawa Timur</option>
+                  <option value="jateng">Jawa Tengah</option>
+                  <option value="banten">Banten</option>
+                  <option value="dki">DKI Jakarta</option>
+                </select>
+              </div>
+              
+              <div class="form-demo">
+                <div class="code-header">
+                  <span>HTML</span>
+                  <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+                </div>
+                <pre><code>&lt;label for="provinsi"&gt;Pilih Provinsi:&lt;/label&gt;
+&lt;select id="provinsi" name="provinsi" required&gt;
+  &lt;option value="" disabled selected&gt;-- Pilih Provinsi --&lt;/option&gt;
+  &lt;option value="jabar"&gt;Jawa Barat&lt;/option&gt;
+  &lt;option value="jatim"&gt;Jawa Timur&lt;/option&gt;
+  &lt;option value="jateng"&gt;Jawa Tengah&lt;/option&gt;
+  &lt;option value="banten"&gt;Banten&lt;/option&gt;
+  &lt;option value="dki"&gt;DKI Jakarta&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+              </div>
+              
+              <h5>Atribut Penting Select:</h5>
+              <table class="attribute-table">
+                <tr>
+                  <th>Atribut</th>
+                  <th>Deskripsi</th>
+                  <th>Contoh</th>
+                </tr>
+                <tr>
+                  <td><code>multiple</code></td>
+                  <td>Memungkinkan banyak pilihan</td>
+                  <td><code>multiple</code></td>
+                </tr>
+                <tr>
+                  <td><code>size</code></td>
+                  <td>Jumlah opsi yang terlihat</td>
+                  <td><code>size="5"</code></td>
+                </tr>
+                <tr>
+                  <td><code>required</code></td>
+                  <td>Harus dipilih</td>
+                  <td><code>required</code></td>
+                </tr>
+                <tr>
+                  <td><code>disabled</code></td>
+                  <td>Menonaktifkan select</td>
+                  <td><code>disabled</code></td>
+                </tr>
+              </table>
+              
+              <h5>Atribut Penting Option:</h5>
+              <table class="attribute-table">
+                <tr>
+                  <th>Atribut</th>
+                  <th>Deskripsi</th>
+                  <th>Contoh</th>
+                </tr>
+                <tr>
+                  <td><code>value</code></td>
+                  <td>Nilai yang dikirim ke server</td>
+                  <td><code>value="jabar"</code></td>
+                </tr>
+                <tr>
+                  <td><code>selected</code></td>
+                  <td>Opsi terpilih secara default</td>
+                  <td><code>selected</code></td>
+                </tr>
+                <tr>
+                  <td><code>disabled</code></td>
+                  <td>Menonaktifkan opsi</td>
+                  <td><code>disabled</code></td>
+                </tr>
+              </table>
+              
+              <h5>Select dengan Grup Opsi:</h5>
+              <div class="input-preview">
+                <label for="makanan">Makanan Favorit:</label>
+                <select id="makanan" name="makanan">
+                  <optgroup label="Makanan Indonesia">
+                    <option value="nasi-goreng">Nasi Goreng</option>
+                    <option value="sate">Sate</option>
+                    <option value="rendang">Rendang</option>
+                  </optgroup>
+                  <optgroup label="Makanan Barat">
+                    <option value="pizza">Pizza</option>
+                    <option value="burger">Burger</option>
+                    <option value="pasta">Pasta</option>
+                  </optgroup>
+                </select>
+              </div>
+              
+              <div class="form-demo">
+                <div class="code-header">
+                  <span>HTML</span>
+                  <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+                </div>
+                <pre><code>&lt;label for="makanan"&gt;Makanan Favorit:&lt;/label&gt;
+&lt;select id="makanan" name="makanan"&gt;
+  &lt;optgroup label="Makanan Indonesia"&gt;
+    &lt;option value="nasi-goreng"&gt;Nasi Goreng&lt;/option&gt;
+    &lt;option value="sate"&gt;Sate&lt;/option&gt;
+    &lt;option value="rendang"&gt;Rendang&lt;/option&gt;
+  &lt;/optgroup&gt;
+  &lt;optgroup label="Makanan Barat"&gt;
+    &lt;option value="pizza"&gt;Pizza&lt;/option&gt;
+    &lt;option value="burger"&gt;Burger&lt;/option&gt;
+    &lt;option value="pasta"&gt;Pasta&lt;/option&gt;
+  &lt;/optgroup&gt;
+&lt;/select&gt;</code></pre>
+              </div>
+              
+              <h5>Select dengan Multiple Pilihan:</h5>
+              <div class="input-preview">
+                <label for="hobi">Pilih Hobi (Tekan Ctrl/Cmd untuk memilih banyak):</label>
+                <select id="hobi" name="hobi" multiple size="4">
+                  <option value="membaca">Membaca</option>
+                  <option value="menulis">Menulis</option>
+                  <option value="berenang">Berenang</option>
+                  <option value="bersepeda">Bersepeda</option>
+                  <option value="musik">Bermusik</option>
+                  <option value="traveling">Traveling</option>
+                </select>
+                <small>Tahan tombol Ctrl (Windows/Linux) atau Cmd (Mac) untuk memilih beberapa opsi</small>
+              </div>
+              
+              <div class="form-demo">
+                <div class="code-header">
+                  <span>HTML</span>
+                  <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+                </div>
+                <pre><code>&lt;label for="hobi"&gt;Pilih Hobi (Tekan Ctrl/Cmd untuk memilih banyak):&lt;/label&gt;
+&lt;select id="hobi" name="hobi" multiple size="4"&gt;
+  &lt;option value="membaca"&gt;Membaca&lt;/option&gt;
+  &lt;option value="menulis"&gt;Menulis&lt;/option&gt;
+  &lt;option value="berenang"&gt;Berenang&lt;/option&gt;
+  &lt;option value="bersepeda"&gt;Bersepeda&lt;/option&gt;
+  &lt;option value="musik"&gt;Bermusik&lt;/option&gt;
+  &lt;option value="traveling"&gt;Traveling&lt;/option&gt;
+&lt;/select&gt;
+&lt;small&gt;Tahan tombol Ctrl (Windows/Linux) atau Cmd (Mac) untuk memilih beberapa opsi&lt;/small&gt;</code></pre>
+              </div>
+              
+              <div class="note">
+                <h5>DataList untuk Autocomplete</h5>
+                <p>Anda juga dapat menggunakan <code>&lt;datalist&gt;</code> untuk membuat input dengan saran otomatis:</p>
+                
+                <div class="input-preview">
+                  <label for="browser">Pilih browser favorit Anda:</label>
+                  <input list="browsers" id="browser" name="browser" class="form-control">
+                  <datalist id="browsers">
+                    <option value="Google Chrome">
+                    <option value="Mozilla Firefox">
+                    <option value="Microsoft Edge">
+                    <option value="Safari">
+                    <option value="Opera">
+                  </datalist>
+                </div>
+                
+                <div class="form-demo">
+                  <div class="code-header">
+                    <span>HTML</span>
+                    <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+                  </div>
+                  <pre><code>&lt;label for="browser"&gt;Pilih browser favorit Anda:&lt;/label&gt;
+&lt;input list="browsers" id="browser" name="browser"&gt;
+&lt;datalist id="browsers"&gt;
+  &lt;option value="Google Chrome"&gt;
+  &lt;option value="Mozilla Firefox"&gt;
+  &lt;option value="Microsoft Edge"&gt;
+  &lt;option value="Safari"&gt;
+  &lt;option value="Opera"&gt;
+&lt;/datalist&gt;</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="note">
+            <h4>Praktik Terbaik Penggunaan Textarea dan Select</h4>
+            <ul>
+              <li>Gunakan <code>&lt;textarea&gt;</code> untuk input teks panjang (lebih dari satu baris)</li>
+              <li>Gunakan <code>&lt;select&gt;</code> saat ada lebih dari 5 opsi untuk menghemat ruang</li>
+              <li>Urutkan opsi dalam <code>&lt;select&gt;</code> secara logis (abjad, numerik, atau berdasarkan prioritas)</li>
+              <li>Gunakan <code>&lt;optgroup&gt;</code> untuk mengelompokkan opsi yang terkait</li>
+              <li>Hindari menggunakan <code>multiple</code> dengan lebih dari 10 opsi yang dapat dipilih</li>
+              <li>Gunakan atribut <code>required</code> untuk bidang yang wajib diisi</li>
+              <li>Berikan teks bantuan atau contoh format yang diharapkan</li>
+              <li>Uji formulir pada berbagai perangkat dan browser</li>
+            </ul>
+          </div>
+        </section>
+
+        <br />
+        <nav class="navigation-section" aria-label="Halaman navigasi">
+          <div class="nav-buttons">
+            <button class="btn" onclick="window.location.href='h72.html'" title="Jenis Input Dasar">
+              &lt;&nbsp;Prev
+            </button>
+            <img
+              src="../assets/png/home.png"
+              alt="Home"
+              class="home-icon"
+              onclick="window.location.href='../index.html'"
+              title="Home"
+            />
+            <img
+              src="../assets/png/html5.png"
+              alt="HTML"
+              onclick="window.location.href='h1.html'"
+              title="Daftar Isi HTML"
+            />
+            <button class="btn" onclick="window.location.href='h74.html'" title="Input Lanjutan">
+              Next&nbsp;&gt;
+            </button>
+          </div>
+        </nav>
+      </main>
+    </div>
+
+    <script src="../script/copyCode.js"></script>
+    <script src="../script/script.js"></script>
+  </body>
+</html>

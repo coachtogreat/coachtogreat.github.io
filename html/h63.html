@@ -1,0 +1,516 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Styling Tabel Dasar dengan CSS</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <style>
+      .style-demo {
+        background-color: #f8f9fa;
+        border-radius: 5px;
+        padding: 15px;
+        margin: 15px 0;
+        border-left: 4px solid #0d6efd;
+        overflow-x: auto;
+      }
+      .table-container {
+        margin: 15px 0;
+        overflow-x: auto;
+      }
+      .result-box {
+        background-color: white;
+        border: 1px solid #dee2e6;
+        border-radius: 4px;
+        padding: 15px;
+        margin: 15px 0;
+      }
+      .code-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #343a40;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 4px 4px 0 0;
+      }
+      .copy-btn {
+        background-color: #495057;
+        color: white;
+        border: none;
+        padding: 2px 8px;
+        border-radius: 3px;
+        cursor: pointer;
+      }
+      .copy-btn:hover {
+        background-color: #ffd43b;
+        color: #212529;
+      }
+      pre {
+        margin: 0;
+        padding: 0;
+      }
+      code {
+        display: block;
+        background-color: #f8f9fa;
+        padding: 10px;
+        border-radius: 0 0 4px 4px;
+        overflow-x: auto;
+      }
+      .property {
+        color: #d63384;
+        font-weight: bold;
+      }
+      .value {
+        color: #0d6efd;
+      }
+      .comment {
+        color: #6c757d;
+        font-style: italic;
+      }
+      .highlight {
+        background-color: #fff3cd;
+        padding: 2px 4px;
+        border-radius: 3px;
+      }
+      .note {
+        background-color: #e7f5ff;
+        border-left: 4px solid #0d6efd;
+        padding: 10px 15px;
+        margin: 15px 0;
+        border-radius: 0 4px 4px 0;
+      }
+      .warning {
+        background-color: #fff3bf;
+        border-left: 4px solid #ffd43b;
+        padding: 10px 15px;
+        margin: 15px 0;
+        border-radius: 0 4px 4px 0;
+      }
+      .hover-cell tbody tr:hover td {
+        background-color: #e7f5ff;
+        transform: translateX(2px);
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="blog-container">
+      <header class="title-section">
+        <div class="title-content">
+          <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+            <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+          </a>
+        </div>
+      </header>
+
+      <main class="content-section">
+        <section class="article-content">
+          <h2 class="intro-title">Styling Tabel Dasar dengan CSS</h2>
+          <h3 class="section-title">Mempercantik Tabel HTML dengan CSS</h3>
+
+          <p>
+            CSS memberikan fleksibilitas tinggi dalam mengatur tampilan tabel HTML. Di halaman ini,
+            kita akan mempelajari berbagai properti CSS yang dapat digunakan untuk mempercantik
+            tabel.
+          </p>
+
+          <div class="note">
+            <strong>Catatan:</strong> Sebelum mempelajari styling, pastikan Anda sudah memahami
+            struktur dasar tabel HTML yang telah dibahas di halaman sebelumnya.
+          </div>
+
+          <h4>1. Dasar-dasar Styling Tabel</h4>
+
+          <h5>a. Border Tabel</h5>
+          <p>Mengatur border pada tabel dan sel-selnya:</p>
+
+          <div class="style-demo">
+            <div class="code-header">
+              <span>CSS</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code><span class="comment">/* Border untuk tabel */</span>
+table {
+  <span class="property">border-collapse</span>: <span class="value">collapse</span>; <span class="comment">/* Menggabungkan border yang bersebelahan */</span>
+  <span class="property">width</span>: <span class="value">100%</span>;
+  <span class="property">margin-bottom</span>: <span class="value">1rem</span>;
+  <span class="property">border</span>: <span class="value">1px solid #dee2e6</span>;
+}
+
+<span class="comment">/* Border untuk sel header dan data */</span>
+th, td {
+  <span class="property">border</span>: <span class="value">1px solid #dee2e6</span>;
+  <span class="property">padding</span>: <span class="value">0.75rem</span>;
+  <span class="property">text-align</span>: <span class="value">left</span>;
+}
+
+<span class="comment">/* Border khusus untuk header */</span>
+th {
+  <span class="property">border-bottom</span>: <span class="value">2px solid #dee2e6</span>;
+  <span class="property">background-color</span>: <span class="value">#f8f9fa</span>;
+  <span class="property">font-weight</span>: <span class="value">bold</span>;
+}</code></pre>
+          </div>
+
+          <div class="result-box">
+            <strong>Hasil:</strong>
+            <table
+              style="
+                width: 100%;
+                border-collapse: collapse;
+                margin: 15px 0;
+                border: 1px solid #dee2e6;
+              "
+            >
+              <thead>
+                <tr>
+                  <th
+                    style="
+                      border: 1px solid #dee2e6;
+                      padding: 0.75rem;
+                      text-align: left;
+                      border-bottom: 2px solid #dee2e6;
+                      background-color: #f8f9fa;
+                      font-weight: bold;
+                    "
+                  >
+                    Nama
+                  </th>
+                  <th
+                    style="
+                      border: 1px solid #dee2e6;
+                      padding: 0.75rem;
+                      text-align: left;
+                      border-bottom: 2px solid #dee2e6;
+                      background-color: #f8f9fa;
+                      font-weight: bold;
+                    "
+                  >
+                    Usia
+                  </th>
+                  <th
+                    style="
+                      border: 1px solid #dee2e6;
+                      padding: 0.75rem;
+                      text-align: left;
+                      border-bottom: 2px solid #dee2e6;
+                      background-color: #f8f9fa;
+                      font-weight: bold;
+                    "
+                  >
+                    Kota
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="border: 1px solid #dee2e6; padding: 0.75rem; text-align: left">
+                    Andi
+                  </td>
+                  <td style="border: 1px solid #dee2e6; padding: 0.75rem; text-align: left">25</td>
+                  <td style="border: 1px solid #dee2e6; padding: 0.75rem; text-align: left">
+                    Jakarta
+                  </td>
+                </tr>
+                <tr>
+                  <td style="border: 1px solid #dee2e6; padding: 0.75rem; text-align: left">
+                    Budi
+                  </td>
+                  <td style="border: 1px solid #dee2e6; padding: 0.75rem; text-align: left">30</td>
+                  <td style="border: 1px solid #dee2e6; padding: 0.75rem; text-align: left">
+                    Bandung
+                  </td>
+                </tr>
+                <tr>
+                  <td style="border: 1px solid #dee2e6; padding: 0.75rem; text-align: left">
+                    Citra
+                  </td>
+                  <td style="border: 1px solid #dee2e6; padding: 0.75rem; text-align: left">22</td>
+                  <td style="border: 1px solid #dee2e6; padding: 0.75rem; text-align: left">
+                    Surabaya
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h5>b. Warna dan Latar Belakang</h5>
+          <p>Menambahkan warna untuk meningkatkan keterbacaan:</p>
+
+          <div class="style-demo">
+            <div class="code-header">
+              <span>CSS</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code><span class="comment">/* Warna baris ganjil-genap */</span>
+tr:nth-child(even) {
+  <span class="property">background-color</span>: <span class="value">#f8f9fa</span>;
+}
+
+<span class="comment">/* Efek hover pada baris */</span>
+tr:hover {
+  <span class="property">background-color</span>: <span class="value">#e7f5ff</span>;
+}
+
+<span class="comment">/* Warna header */</span>
+thead th {
+  <span class="property">background-color</span>: <span class="value">#0d6efd</span>;
+  <span class="property">color</span>: <span class="value">white</span>;
+}
+
+<span class="comment">/* Warna footer */</span>
+tfoot td {
+  <span class="property">background-color</span>: <span class="value">#e9ecef</span>;
+  <span class="property">font-weight</span>: <span class="value">bold</span>;
+}</code></pre>
+          </div>
+
+          <h5>c. Spasi dan Padding</h5>
+          <p>Mengatur spasi dalam dan luar sel:</p>
+
+          <div class="style-demo">
+            <div class="code-header">
+              <span>CSS</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code><span class="comment">/* Padding sel */</span>
+th, td {
+  <span class="property">padding</span>: <span class="value">12px 15px</span>; <span class="comment">/* 12px atas-bawah, 15px kiri-kanan */</span>
+}
+
+<span class="comment">/* Spasi antar sel */</span>
+table {
+  <span class="property">border-spacing</span>: <span class="value">0</span>; <span class="comment">/* Hanya bekerja jika border-collapse: separate */</span>
+}
+
+<span class="comment">/* Jarak antar baris */</span>
+tbody tr {
+  <span class="property">margin-bottom</span>: <span class="value">5px</span>; <span class="comment">/* Tidak berlaku untuk display: table-row */</span>
+}</code></pre>
+          </div>
+
+          <h4>2. Tabel Responsif</h4>
+
+          <div class="style-demo">
+            <div class="code-header">
+              <span>CSS</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code><span class="comment">/* Container untuk tabel responsif */</span>
+.table-responsive {
+  <span class="property">width</span>: <span class="value">100%</span>;
+  <span class="property">overflow-x</span>: <span class="value">auto</span>;
+  <span class="property">-webkit-overflow-scrolling</span>: <span class="value">touch</span>; <span class="comment">/* Untuk scrolling halus di iOS */</span>
+  <span class="property">margin-bottom</span>: <span class="value">1rem</span>;
+}
+
+<span class="comment">/* Media query untuk perangkat kecil */</span>
+<span class="highlight">@media screen and (max-width: 768px)</span> {
+  table {
+    <span class="property">display</span>: <span class="value">block</span>;
+  }
+  
+  thead, tbody, th, td, tr {
+    <span class="property">display</span>: <span class="value">block</span>;
+  }
+  
+  thead tr {
+    <span class="property">position</span>: <span class="value">absolute</span>;
+    <span class="property">top</span>: <span class="value">-9999px</span>;
+    <span class="property">left</span>: <span class="value">-9999px</span>;
+  }
+  
+  tr {
+    <span class="property">margin-bottom</span>: <span class="value">1rem</span>;
+    <span class="property">border</span>: <span class="value">1px solid #dee2e6</span>;
+  }
+  
+  td {
+    <span class="property">position</span>: <span class="value">relative</span>;
+    <span class="property">padding-left</span>: <span class="value">50%</span>;
+    <span class="property">text-align</span>: <span class="value">right</span>;
+    <span class="property">border-bottom</span>: <span class="value">1px solid #dee2e6</span>;
+  }
+  
+  td:before {
+    <span class="property">content</span>: <span class="value">attr(data-label)</span>;
+    <span class="property">position</span>: <span class="value">absolute</span>;
+    <span class="property">left</span>: <span class="value">15px</span>;
+    <span class="property">width</span>: <span class="value">45%</span>;
+    <span class="property">text-align</span>: <span class="value">left</span>;
+    <span class="property">font-weight</span>: <span class="value">bold</span>;
+  }
+}</code></pre>
+          </div>
+
+          <div class="warning">
+            <strong>Penting:</strong> Pastikan untuk menambahkan atribut
+            <code>data-label</code> pada setiap <code>&lt;td&gt;</code>
+            yang berisi teks label untuk tampilan responsif.
+          </div>
+
+          <h4>3. Efek Visual Lanjutan</h4>
+
+          <h5>a. Striped Table</h5>
+          <div class="style-demo">
+            <div class="code-header">
+              <span>CSS</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code><span class="comment">/* Striped rows */</span>
+.striped tbody tr:nth-of-type(odd) {
+  <span class="property">background-color</span>: <span class="value">rgba(0, 0, 0, 0.02)</span>;
+}
+
+.striped tbody tr:hover {
+  <span class="property">background-color</span>: <span class="value">rgba(0, 0, 0, 0.05)</span>;
+  <span class="property">transition</span>: <span class="value">background-color 0.2s ease</span>;
+}</code></pre>
+          </div>
+
+          <h5>b. Bordered Table</h5>
+          <div class="style-demo">
+            <div class="code-header">
+              <span>CSS</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code><span class="comment">/* Tabel dengan border lengkap */</span>
+.bordered {
+  <span class="property">border</span>: <span class="value">1px solid #dee2e6</span>;
+  <span class="property">border-radius</span>: <span class="value">4px</span>;
+  <span class="property">overflow</span>: <span class="value">hidden</span>;
+}
+
+.bordered th,
+.bordered td {
+  <span class="property">border</span>: <span class="value">1px solid #dee2e6</span>;
+}
+
+.bordered thead th {
+  <span class="property">border-bottom-width</span>: <span class="value">2px</span>;
+}</code></pre>
+          </div>
+
+          <h5>c. Hover Effect</h5>
+          <div class="style-demo">
+            <div class="code-header">
+              <span>CSS</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code><span class="comment">/* Efek hover pada sel */</span>
+.hover-cell td {
+  <span class="property">transition</span>: <span class="value">all 0.2s ease</span>;
+}
+
+.hover-cell tbody tr:hover td {
+  <span class="property">background-color</span>: <span class="value">#e9ecef</span>;
+  <span class="property">transform</span>: <span class="value">translateX(2px)</span>;
+  <span class="property">box-shadow</span>: <span class="value">0 2px 5px rgba(0,0,0,0.1)</span>;
+}</code></pre>
+          </div>
+
+          <h4>4. Contoh Tabel dengan Semua Gaya</h4>
+
+          <div class="style-demo">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;div class="table-responsive"&gt;
+  &lt;table class="striped bordered hover-cell"&gt;
+    &lt;caption&gt;Daftar Harga Produk Terbaru&lt;/caption&gt;
+    &lt;thead&gt;
+      &lt;tr&gt;
+        &lt;th&gt;No.&lt;/th&gt;
+        &lt;th&gt;Nama Produk&lt;/th&gt;
+        &lt;th&gt;Kategori&lt;/th&gt;
+        &lt;th&gt;Harga (Rp)&lt;/th&gt;
+        &lt;th&gt;Stok&lt;/th&gt;
+      &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;td data-label="No."&gt;1&lt;/td&gt;
+        &lt;td data-label="Nama Produk"&gt;Laptop ASUS X441NA&lt;/td&gt;
+        &lt;td data-label="Kategori"&gt;Elektronik&lt;/td&gt;
+        &lt;td data-label="Harga"&gt;4.499.000&lt;/td&gt;
+        &lt;td data-label="Stok"&gt;15&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td data-label="No."&gt;2&lt;/td&gt;
+        &lt;td data-label="Nama Produk"&gt;Smartphone Samsung A12&lt;/td&gt;
+        &lt;td data-label="Kategori"&gt;Handphone&lt;/td&gt;
+        &lt;td data-label="Harga"&gt;2.199.000&lt;/td&gt;
+        &lt;td data-label="Stok"&gt;30&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td data-label="No."&gt;3&lt;/td&gt;
+        &lt;td data-label="Nama Produk"&gt;Mouse Wireless Logitech M170&lt;/td&gt;
+        &lt;td data-label="Kategori"&gt;Aksesoris&lt;/td&gt;
+        &lt;td data-label="Harga"&gt;149.000&lt;/td&gt;
+        &lt;td data-label="Stok"&gt;50&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tbody&gt;
+    &lt;tfoot&gt;
+      &lt;tr&gt;
+        &lt;td colspan="4"&gt;Total Produk&lt;/td&gt;
+        &lt;td&gt;3&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tfoot&gt;
+  &lt;/table&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+
+          <h4>5. Praktik Terbaik</h4>
+          <div class="style-demo">
+            <ul>
+              <li>
+                Gunakan <code>border-collapse: collapse</code> untuk tampilan border yang lebih rapi
+              </li>
+              <li>Pastikan ada cukup kontras antara teks dan latar belakang</li>
+              <li>Gunakan padding yang cukup untuk keterbacaan yang baik</li>
+              <li>
+                Pertimbangkan aksesibilitas dengan memastikan tabel dapat dinavigasi dengan keyboard
+              </li>
+              <li>Uji tampilan di berbagai ukuran layar</li>
+              <li>Gunakan class yang deskriptif untuk gaya yang dapat digunakan kembali</li>
+              <li>Hindari penggunaan <code>!important</code> yang tidak perlu</li>
+              <li>
+                Pertimbangkan untuk menggunakan CSS variables untuk warna dan ukuran yang konsisten
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <br />
+        <nav class="navigation-section" aria-label="Halaman navigasi">
+          <div class="nav-buttons">
+            <button class="btn" onclick="window.location.href='h62.html'" title="Atribut Tabel">
+              &lt;&nbsp;Prev
+            </button>
+            <img
+              src="../assets/png/home.png"
+              alt="Home"
+              class="home-icon"
+              onclick="window.location.href='../index.html'"
+              title="Home"
+            />
+            <img
+              src="../assets/png/html5.png"
+              alt="HTML"
+              onclick="window.location.href='h1.html'"
+              title="Daftar Isi HTML"
+            />
+            <button class="btn" onclick="window.location.href='h71.html'" title="Tabel Lanjutan">
+              Next&nbsp;&gt;
+            </button>
+          </div>
+        </nav>
+      </main>
+    </div>
+
+    <script src="../script/copyCode.js"></script>
+    <script src="../script/script.js"></script>
+  </body>
+</html>

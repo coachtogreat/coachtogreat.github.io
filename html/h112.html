@@ -1,0 +1,552 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Penggunaan Tag Sesuai Fungsinya - Panduan Lengkap</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <style>
+      .tag-demo {
+        background-color: #f8f9fa;
+        border-radius: 5px;
+        padding: 15px;
+        margin: 15px 0;
+        border-left: 4px solid #0d6efd;
+        overflow-x: auto;
+      }
+      .demo-container {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: white;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      .code-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #343a40;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 4px 4px 0 0;
+      }
+      .copy-btn {
+        background-color: #495057;
+        color: white !important;
+        border: none;
+        padding: 2px 8px;
+        border-radius: 3px;
+        cursor: pointer;
+      }
+      .copy-btn:hover {
+        color: white !important;
+        background-color: #0d6efd;
+      }
+      pre {
+        margin: 0;
+        padding: 0;
+      }
+      code {
+        display: block;
+        background-color: #f8f9fa;
+        padding: 15px;
+        border-radius: 0 0 4px 4px;
+        overflow-x: auto;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 14px;
+        line-height: 1.5;
+        transition: background-color 0.2s ease;
+      }
+      code:hover {
+        background-color: #e9ecef;
+        cursor: pointer;
+      }
+      .note {
+        background-color: #e7f5ff;
+        border-left: 4px solid #0d6efd;
+        padding: 12px 15px;
+        margin: 15px 0;
+        border-radius: 0 4px 4px 0;
+      }
+      .warning {
+        background-color: #fff3bf;
+        border-left: 4px solid #ffd43b;
+        padding: 12px 15px;
+        margin: 15px 0;
+        border-radius: 0 4px 4px 0;
+      }
+      .tip {
+        background-color: #d4edda;
+        border-left: 4px solid #28a745;
+        padding: 12px 15px;
+        margin: 15px 0;
+        border-radius: 0 4px 4px 0;
+      }
+      .bad-example {
+        background-color: #fee2e2;
+        border-left: 4px solid #ef4444;
+        padding: 12px 15px;
+        margin: 15px 0;
+        border-radius: 0 4px 4px 0;
+      }
+      .good-example {
+        background-color: #dcfce7;
+        border-left: 4px solid #22c55e;
+        padding: 12px 15px;
+        margin: 15px 0;
+        border-radius: 0 4px 4px 0;
+      }
+      .comparison {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        margin: 20px 0;
+      }
+      .comparison-item {
+        flex: 1;
+        min-width: 300px;
+      }
+      .tag-example {
+        margin: 15px 0;
+        padding: 10px;
+        border-radius: 4px;
+      }
+      .tag-name {
+        font-weight: bold;
+        color: #1e40af;
+        font-family: monospace;
+        margin-bottom: 5px;
+      }
+      @media (max-width: 768px) {
+        .tag-demo {
+          font-size: 0.9em;
+        }
+        .tag-demo code {
+          font-size: 0.85em;
+          padding: 10px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="blog-container">
+      <header class="title-section">
+        <div class="title-content">
+          <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+            <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+          </a>
+        </div>
+      </header>
+
+      <main class="content-section">
+        <section class="article-content">
+          <h2 class="intro-title">Penggunaan Tag Sesuai Fungsinya</h2>
+          <h3 class="section-title">Memahami dan Menerapkan Tag HTML dengan Tepat</h3>
+
+          <p>
+            Setiap tag HTML memiliki tujuan dan makna semantik tertentu. Menggunakan tag sesuai 
+            dengan fungsinya tidak hanya membuat kode lebih mudah dipahami, tetapi juga meningkatkan 
+            aksesibilitas dan SEO halaman web Anda.
+          </p>
+
+          <div class="note">
+            <strong>Mengapa Penting Menggunakan Tag Sesuai Fungsinya?</strong>
+            <ul>
+              <li>Meningkatkan aksesibilitas bagi pengguna dengan disabilitas</li>
+              <li>Memperbaiki SEO (Search Engine Optimization)</li>
+              <li>Memudahkan pemeliharaan kode</li>
+              <li>Meningkatkan kompatibilitas lintas perangkat</li>
+              <li>Memberikan pengalaman pengguna yang lebih baik</li>
+            </ul>
+          </div>
+
+          <h4>1. Tag Struktur Dasar</h4>
+          <p>Tag-tag yang membentuk kerangka dasar dokumen HTML.</p>
+          
+          <div class="tag-demo">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="id"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Judul Halaman&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;!-- Konten halaman --&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          </div>
+
+          <h4>2. Tag Semantik untuk Struktur</h4>
+          <p>Tag semantik memberikan makna pada konten dan struktur halaman.</p>
+          
+          <div class="tag-demo">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;header&gt;
+  &lt;h1&gt;Judul Utama&lt;/h1&gt;
+  &lt;nav&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href="#beranda"&gt;Beranda&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#tentang"&gt;Tentang&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/nav&gt;
+&lt;/header&gt;
+
+&lt;main&gt;
+  &lt;article&gt;
+    &lt;h2&gt;Judul Artikel&lt;/h2&gt;
+    &lt;p&gt;Konten artikel...&lt;/p&gt;
+  &lt;/article&gt;
+
+  &lt;aside&gt;
+    &lt;h3&gt;Info Tambahan&lt;/h3&gt;
+    &lt;p&gt;Konten samping...&lt;/p&gt;
+  &lt;/aside&gt;
+&lt;/main&gt;
+
+&lt;footer&gt;
+  &lt;p&gt;Hak Cipta 2025&lt;/p&gt;
+&lt;/footer&gt;</code></pre>
+          </div>
+
+          <h4>3. Tag Teks dan Formatting</h4>
+          <p>Tag untuk menampilkan dan memformat teks.</p>
+          
+          <div class="demo-container">
+            <div class="comparison">
+              <div class="comparison-item">
+                <div class="tag-example">
+                  <div class="tag-name">&lt;h1&gt; sampai &lt;h6&gt;</div>
+                  <p>Heading level 1-6 untuk judul dan subjudul</p>
+                  <code>&lt;h1&gt;Judul Utama&lt;/h1&gt;</code>
+                </div>
+                
+                <div class="tag-example">
+                  <div class="tag-name">&lt;p&gt;</div>
+                  <p>Paragraf teks</p>
+                  <code>&lt;p&gt;Ini adalah paragraf.&lt;/p&gt;</code>
+                </div>
+                
+                <div class="tag-example">
+                  <div class="tag-name">&lt;strong&gt; dan &lt;em&gt;</div>
+                  <p>Teks penting dan teks ditekankan</p>
+                  <code>&lt;p&gt;Ini &lt;strong&gt;penting&lt;/strong&gt; dan &lt;em&gt;ditekankan&lt;/em&gt;.&lt;/p&gt;</code>
+                </div>
+              </div>
+              
+              <div class="comparison-item">
+                <div class="tag-example">
+                  <div class="tag-name">&lt;blockquote&gt; dan &lt;cite&gt;</div>
+                  <p>Kutipan panjang dan sumber kutipan</p>
+                  <code>&lt;blockquote&gt;Kutipan panjang...&lt;/blockquote&gt;</code>
+                </div>
+                
+                <div class="tag-example">
+                  <div class="tag-name">&lt;code&gt; dan &lt;pre&gt;</div>
+                  <p>Kode komputer dan teks terformat</p>
+                  <code>&lt;code&gt;console.log('Hello');&lt;/code&gt;</code>
+                </div>
+                
+                <div class="tag-example">
+                  <div class="tag-name">&lt;mark&gt; dan &lt;del&gt;</div>
+                  <p>Teks yang ditandai dan dihapus</p>
+                  <code>&lt;p&gt;Harga: &lt;del&gt;Rp500.000&lt;/del&gt; Rp&lt;mark&gt;300.000&lt;/mark&gt;&lt;/p&gt;</code>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <h4>4. Tag Daftar</h4>
+          <p>Tag untuk membuat daftar terurut, tidak terurut, dan daftar definisi.</p>
+          
+          <div class="tag-demo">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;!-- Daftar tidak terurut (bullet points) --&gt;
+&lt;ul&gt;
+  &lt;li&gt;Item 1&lt;/li&gt;
+  &lt;li&gt;Item 2
+    &lt;ul&gt;
+      &lt;li&gt;Sub-item 1&lt;/li&gt;
+      &lt;li&gt;Sub-item 2&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!-- Daftar terurut (bernomor) --&gt;
+&lt;ol&gt;
+  &lt;li&gt;Langkah pertama&lt;/li&gt;
+  &lt;li&gt;Langkah kedua&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;!-- Daftar definisi --&gt;
+&lt;dl&gt;
+  &lt;dt&gt;HTML&lt;/dt&gt;
+  &lt;dd&gt;HyperText Markup Language&lt;/dd&gt;
+  &lt;dt&gt;CSS&lt;/dt&gt;
+  &lt;dd&gt;Cascading Style Sheets&lt;/dd&gt;
+&lt;/dl&gt;</code></pre>
+          </div>
+
+          <h4>5. Tag Tabel</h4>
+          <p>Tag untuk menampilkan data tabular.</p>
+          
+          <div class="tag-demo">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;table&gt;
+  &lt;caption&gt;Daftar Produk&lt;/caption&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th scope="col"&gt;No&lt;/th&gt;
+      &lt;th scope="col"&gt;Nama Produk&lt;/th&gt;
+      &lt;th scope="col"&gt;Harga&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th scope="row"&gt;1&lt;/th&gt;
+      &lt;td&gt;Produk A&lt;/td&gt;
+      &lt;td&gt;Rp100.000&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th scope="row"&gt;2&lt;/th&gt;
+      &lt;td&gt;Produk B&lt;/td&gt;
+      &lt;td&gt;Rp150.000&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+  &lt;tfoot&gt;
+    &lt;tr&gt;
+      &lt;th colspan="2"&gt;Total&lt;/th&gt;
+      &lt;td&gt;Rp250.000&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tfoot&gt;
+&lt;/table&gt;</code></pre>
+          </div>
+
+          <h4>6. Tag Formulir</h4>
+          <p>Tag untuk membuat elemen input interaktif.</p>
+          
+          <div class="tag-demo">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;form action="/submit" method="POST"&gt;
+  &lt;div&gt;
+    &lt;label for="nama"&gt;Nama Lengkap:&lt;/label&gt;
+    &lt;input type="text" id="nama" name="nama" required&gt;
+  &lt;/div&gt;
+  
+  &lt;div&gt;
+    &lt;label for="email"&gt;Email:&lt;/label&gt;
+    &lt;input type="email" id="email" name="email" required&gt;
+  &lt;/div&gt;
+  
+  &lt;div&gt;
+    &lt;label for="pesan"&gt;Pesan:&lt;/label&gt;
+    &lt;textarea id="pesan" name="pesan" rows="4"&gt;&lt;/textarea&gt;
+  &lt;/div&gt;
+  
+  &lt;div&gt;
+    &lt;button type="submit"&gt;Kirim&lt;/button&gt;
+    &lt;button type="reset"&gt;Reset&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/form&gt;</code></pre>
+          </div>
+
+          <h4>7. Tag Gambar dan Media</h4>
+          <p>Tag untuk menampilkan gambar, video, dan konten multimedia.</p>
+          
+          <div class="tag-demo">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;!-- Gambar --&gt;
+&lt;figure&gt;
+  &lt;img src="gambar.jpg" alt="Deskripsi gambar"&gt;
+  &lt;figcaption&gt;Keterangan gambar&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;!-- Video --&gt;
+&lt;video controls width="640" height="360"&gt;
+  &lt;source src="video.mp4" type="video/mp4"&gt;
+  Browser Anda tidak mendukung tag video.
+&lt;/video&gt;
+
+&lt;!-- Audio --&gt;
+&lt;audio controls&gt;
+  &lt;source src="audio.mp3" type="audio/mpeg"&gt;
+  Browser Anda tidak mendukung tag audio.
+&lt;/audio&gt;</code></pre>
+          </div>
+
+          <h4>8. Tag Penting Lainnya</h4>
+          
+          <div class="demo-container">
+            <div style="overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 15px 0">
+              <table style="width: 100%; border-collapse: collapse; min-width: 600px">
+                <thead>
+                  <tr style="background-color: #f2f2f2">
+                    <th style="border: 1px solid #ddd; padding: 12px; text-align: left">Tag</th>
+                    <th style="border: 1px solid #ddd; padding: 12px; text-align: left">Deskripsi</th>
+                    <th style="border: 1px solid #ddd; padding: 12px; text-align: left">Contoh</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td style="border: 1px solid #ddd; padding: 10px; vertical-align: top">
+                      <code>&lt;div&gt;</code>
+                    </td>
+                    <td style="border: 1px solid #ddd; padding: 10px; vertical-align: top">
+                      Wadah generik untuk mengelompokkan elemen
+                    </td>
+                    <td style="border: 1px solid #ddd; padding: 10px; vertical-align: top">
+                      <code>&lt;div class="container"&gt;...&lt;/div&gt;</code>
+                    </td>
+                  </tr>
+                  <tr style="background-color: #f9f9f9">
+                    <td style="border: 1px solid #ddd; padding: 10px; vertical-align: top">
+                      <code>&lt;span&gt;</code>
+                    </td>
+                    <td style="border: 1px solid #ddd; padding: 10px; vertical-align: top">
+                      Wadah sebaris untuk teks
+                    </td>
+                    <td style="border: 1px solid #ddd; padding: 10px; vertical-align: top">
+                      <code>Ini &lt;span class="highlight"&gt;penting&lt;/span&gt;.</code>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="border: 1px solid #ddd; padding: 10px; vertical-align: top">
+                      <code>&lt;br&gt;</code>
+                    </td>
+                    <td style="border: 1px solid #ddd; padding: 10px; vertical-align: top">
+                      Baris baru
+                    </td>
+                    <td style="border: 1px solid #ddd; padding: 10px; vertical-align: top">
+                      <code>Baris pertama&lt;br&gt;Baris kedua</code>
+                    </td>
+                  </tr>
+                  <tr style="background-color: #f9f9f9">
+                    <td style="border: 1px solid #ddd; padding: 10px; vertical-align: top">
+                      <code>&lt;hr&gt;</code>
+                    </td>
+                    <td style="border: 1px solid #ddd; padding: 10px; vertical-align: top">
+                      Garis horizontal
+                    </td>
+                    <td style="border: 1px solid #ddd; padding: 10px; vertical-align: top">
+                      <code>&lt;p&gt;Bagian 1&lt;/p&gt;&lt;hr&gt;&lt;p&gt;Bagian 2&lt;/p&gt;</code>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p style="font-size: 0.9em; color: #666; margin-top: 5px">
+              <em>Gulir ke sampah untuk melihat tabel lengkap di perangkat mobile</em>
+            </p>
+          </div>
+
+          <div class="warning">
+            <strong>Hindari Penggunaan Tag yang Tidak Semantik:</strong>
+            <ul>
+              <li>Jangan gunakan &lt;b&gt; dan &lt;i&gt; untuk teks penting (gunakan &lt;strong&gt; dan &lt;em&gt;)</li>
+              <li>Hindari penggunaan &lt;div&gt; berlebihan (divitis)</li>
+              <li>Jangan gunakan tabel untuk tata letak (layout)</li>
+              <li>Hindari tag yang sudah tidak didukung seperti &lt;font&gt;, &lt;center&gt;, dll.</li>
+            </ul>
+          </div>
+
+          <div class="tip">
+            <strong>Tips Memilih Tag yang Tepat:</strong>
+            <ol>
+              <li>Pertimbangkan makna semantik dari konten Anda</li>
+              <li>Gunakan elemen semantik HTML5 bila memungkinkan</li>
+              <li>Pertimbangkan aksesibilitas</li>
+              <li>Uji dengan validator HTML</li>
+              <li>Ikuti standar dan praktik terbaru</li>
+            </ol>
+          </div>
+
+          <br />
+          <nav class="navigation-section" aria-label="Halaman navigasi">
+            <div class="nav-buttons">
+              <button
+                class="btn"
+                onclick="window.location.href='h111.html'"
+                title="Struktur HTML yang bersih dan mudah dibaca"
+              >
+                &lt;&nbsp;Prev
+              </button>
+              <img
+                src="../assets/png/home.png"
+                alt="Home"
+                class="home-icon"
+                onclick="window.location.href='../index.html'"
+                title="Home"
+              />
+              <img
+                src="../assets/png/html5.png"
+                alt="HTML"
+                onclick="window.location.href='h1.html'"
+                title="Daftar Isi HTML"
+              />
+              <button
+                class="btn"
+                onclick="window.location.href='h113.html'"
+                title="Komentar dan dokumentasi"
+              >
+                Next&nbsp;&gt;
+              </button>
+            </div>
+          </nav>
+        </section>
+      </main>
+    </div>
+
+    <script>
+      function copyCode(button) {
+        const codeBlock = button.parentElement.nextElementSibling;
+        const code = codeBlock.textContent;
+
+        // Buat elemen textarea untuk menyalin teks
+        const textarea = document.createElement('textarea');
+        textarea.value = code;
+        textarea.style.position = 'fixed'; // Menghindari scroll otomatis
+        document.body.appendChild(textarea);
+        textarea.select();
+
+        try {
+          // Salin teks ke clipboard
+          const successful = document.execCommand('copy');
+          const msg = successful ? 'berhasil disalin!' : 'gagal disalin';
+
+          // Tampilkan notifikasi
+          const originalText = button.textContent;
+          button.textContent = 'Tersalin!';
+
+          // Kembalikan teks tombol setelah 2 detik
+          setTimeout(() => {
+            button.textContent = originalText;
+          }, 2000);
+        } catch (err) {
+          console.error('Gagal menyalin teks: ', err);
+        }
+        // Hapus textarea
+        document.body.removeChild(textarea);
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,494 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Atribut Tabel HTML</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <style>
+      .attribute-demo {
+        background-color: #f8f9fa;
+        border-radius: 5px;
+        padding: 15px;
+        margin: 15px 0;
+        border-left: 4px solid #fd7e14;
+        overflow-x: auto;
+      }
+      .table-container {
+        margin: 15px 0;
+        overflow-x: auto;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 15px 0;
+      }
+      th, td {
+        border: 1px solid #dee2e6;
+        padding: 12px;
+        text-align: left;
+      }
+      th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+      }
+      tr:nth-child(even) {
+        background-color: #f9f9f9;
+      }
+      .attribute-name {
+        color: #d63384;
+        font-weight: bold;
+      }
+      .deprecated {
+        text-decoration: line-through;
+        color: #6c757d;
+      }
+      .new-feature {
+        background-color: #e7f5ff;
+        padding: 2px 5px;
+        border-radius: 3px;
+        font-size: 0.8em;
+        color: #1864ab;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="blog-container">
+      <header class="title-section">
+        <div class="title-content">
+          <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+            <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+          </a>
+        </div>
+      </header>
+
+      <main class="content-section">
+        <section class="article-content">
+          <h2 class="intro-title">Atribut Tabel HTML</h2>
+          <h3 class="section-title">Memahami Atribut-atribut Tabel dalam HTML</h3>
+          
+          <p>
+            Tabel HTML memiliki berbagai atribut yang memungkinkan Anda mengontrol tampilan dan perilakunya. 
+            Beberapa atribut sudah tidak digunakan lagi (deprecated) dan digantikan dengan CSS, sementara yang lain masih relevan digunakan.
+          </p>
+
+          <div class="alert alert-info">
+            <strong>Catatan:</strong> Atribut yang ditandai dengan <span class="deprecated">coretan</span> sudah tidak direkomendasikan penggunaannya dan sebaiknya diganti dengan CSS.
+          </div>
+
+          <h4>1. Atribut untuk Tag &lt;table&gt;</h4>
+          
+          <div class="attribute-demo">
+            <table>
+              <thead>
+                <tr>
+                  <th>Atribut</th>
+                  <th>Deskripsi</th>
+                  <th>Nilai yang Mungkin</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>border</code></td>
+                  <td>Menentukan ketebalan border tabel</td>
+                  <td>angka (contoh: 1, 2)</td>
+                  <td><span class="deprecated">Deprecated</span> (gunakan CSS <code>border</code>)</td>
+                </tr>
+                <tr>
+                  <td><code>cellpadding</code></td>
+                  <td>Jarak antara isi sel dengan border-nya</td>
+                  <td>angka (dalam pixel)</td>
+                  <td><span class="deprecated">Deprecated</span> (gunakan CSS <code>padding</code>)</td>
+                </tr>
+                <tr>
+                  <td><code>cellspacing</code></td>
+                  <td>Jarak antar sel dalam tabel</td>
+                  <td>angka (dalam pixel)</td>
+                  <td><span class="deprecated">Deprecated</span> (gunakan CSS <code>border-spacing</code>)</td>
+                </tr>
+                <tr>
+                  <td><code>width</code></td>
+                  <td>Lebar tabel</td>
+                  <td>pixel atau persentase</td>
+                  <td><span class="deprecated">Deprecated</span> (gunakan CSS <code>width</code>)</td>
+                </tr>
+                <tr>
+                  <td><code>height</code></td>
+                  <td>Tinggi tabel</td>
+                  <td>pixel atau persentase</td>
+                  <td><span class="deprecated">Deprecated</span> (gunakan CSS <code>height</code>)</td>
+                </tr>
+                <tr>
+                  <td><code>align</code></td>
+                  <td>Posisi horizontal tabel</td>
+                  <td>left, center, right</td>
+                  <td><span class="deprecated">Deprecated</span> (gunakan CSS <code>margin: 0 auto</code>)</td>
+                </tr>
+                <tr>
+                  <td><code>bgcolor</code></td>
+                  <td>Warna latar belakang tabel</td>
+                  <td>nama warna atau kode hex</td>
+                  <td><span class="deprecated">Deprecated</span> (gunakan CSS <code>background-color</code>)</td>
+                </tr>
+                <tr>
+                  <td><code>rules</code></td>
+                  <td>Menampilkan garis pemisah sel</td>
+                  <td>none, groups, rows, cols, all</td>
+                  <td>Masih didukung</td>
+                </tr>
+                <tr>
+                  <td><code>summary</code></td>
+                  <td>Ringkasan isi tabel (untuk aksesibilitas)</td>
+                  <td>teks</td>
+                  <td><span class="deprecated">Deprecated</span> (gunakan <code>&lt;caption&gt;</code> atau <code>aria-describedby</code>)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h5>Contoh Penggunaan:</h5>
+          <div class="attribute-demo">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;!-- Cara lama (tidak direkomendasikan) --&gt;
+&lt;table border="1" cellpadding="5" cellspacing="0" width="100%" bgcolor="#f0f0f0"&gt;
+  &lt;!-- isi tabel --&gt;
+&lt;/table&gt;
+
+&lt;!-- Cara modern dengan CSS --&gt;
+&lt;table style="border: 1px solid #000; border-collapse: collapse; width: 100%; background-color: #f0f0f0;"&gt;
+  &lt;caption&gt;Judul Tabel&lt;/caption&gt;
+  &lt;!-- isi tabel --&gt;
+&lt;/table&gt;</code></pre>
+          </div>
+
+          <h4>2. Atribut untuk Tag &lt;tr&gt;, &lt;th&gt;, dan &lt;td&gt;</h4>
+          
+          <div class="attribute-demo">
+            <table>
+              <thead>
+                <tr>
+                  <th>Atribut</th>
+                  <th>Deskripsi</th>
+                  <th>Nilai yang Mungkin</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>rowspan</code></td>
+                  <td>Menggabungkan beberapa baris</td>
+                  <td>angka (jumlah baris yang digabung)</td>
+                  <td>Masih didukung</td>
+                </tr>
+                <tr>
+                  <td><code>colspan</code></td>
+                  <td>Menggabungkan beberapa kolom</td>
+                  <td>angka (jumlah kolom yang digabung)</td>
+                  <td>Masih didukung</td>
+                </tr>
+                <tr>
+                  <td><code>headers</code></td>
+                  <td>Menghubungkan sel data dengan header terkait</td>
+                  <td>ID dari elemen header</td>
+                  <td>Masih didukung (aksesibilitas)</td>
+                </tr>
+                <tr>
+                  <td><code>scope</code></td>
+                  <td>Menentukan cakupan header</td>
+                  <td>row, col, rowgroup, colgroup</td>
+                  <td>Masih didukung (aksesibilitas)</td>
+                </tr>
+                <tr>
+                  <td><code>abbr</code></td>
+                  <td>Versi singkat dari konten sel</td>
+                  <td>teks</td>
+                  <td>Masih didukung (aksesibilitas)</td>
+                </tr>
+                <tr>
+                  <td><code>width</code></td>
+                  <td>Lebar sel</td>
+                  <td>pixel atau persentase</td>
+                  <td><span class="deprecated">Deprecated</span> (gunakan CSS)</td>
+                </tr>
+                <tr>
+                  <td><code>height</code></td>
+                  <td>Tinggi sel</td>
+                  <td>pixel atau persentase</td>
+                  <td><span class="deprecated">Deprecated</span> (gunakan CSS)</td>
+                </tr>
+                <tr>
+                  <td><code>bgcolor</code></td>
+                  <td>Warna latar belakang sel</td>
+                  <td>nama warna atau kode hex</td>
+                  <td><span class="deprecated">Deprecated</span> (gunakan CSS)</td>
+                </tr>
+                <tr>
+                  <td><code>align</code></td>
+                  <td>Posisi horizontal konten</td>
+                  <td>left, center, right, justify</td>
+                  <td><span class="deprecated">Deprecated</span> (gunakan CSS)</td>
+                </tr>
+                <tr>
+                  <td><code>valign</code></td>
+                  <td>Posisi vertikal konten</td>
+                  <td>top, middle, bottom, baseline</td>
+                  <td><span class="deprecated">Deprecated</span> (gunakan CSS)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h5>Contoh Penggunaan:</h5>
+          <div class="attribute-demo">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;table border="1"&gt;
+  &lt;tr&gt;
+    &lt;th scope="col"&gt;Nama&lt;/th&gt;
+    &lt;th scope="col"&gt;Nilai&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Matematika&lt;/td&gt;
+    &lt;td align="center"&gt;90&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Bahasa Indonesia&lt;/td&gt;
+    &lt;td align="center"&gt;85&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td colspan="2" bgcolor="#f0f0f0"&gt;Rata-rata: 87.5&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+          </div>
+
+          <h4>3. Atribut untuk &lt;colgroup&gt; dan &lt;col&gt;</h4>
+          
+          <div class="attribute-demo">
+            <table>
+              <thead>
+                <tr>
+                  <th>Atribut</th>
+                  <th>Deskripsi</th>
+                  <th>Nilai yang Mungkin</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>span</code></td>
+                  <td>Jumlah kolom yang akan diformat</td>
+                  <td>angka</td>
+                  <td>Masih didukung</td>
+                </tr>
+                <tr>
+                  <td><code>width</code></td>
+                  <td>Lebar kolom</td>
+                  <td>pixel, persentase, atau relatif (*)</td>
+                  <td><span class="deprecated">Deprecated</span> (gunakan CSS)</td>
+                </tr>
+                <tr>
+                  <td><code>align</code></td>
+                  <td>Posisi horizontal konten</td>
+                  <td>left, center, right, justify</td>
+                  <td><span class="deprecated">Deprecated</span> (gunakan CSS)</td>
+                </tr>
+                <tr>
+                  <td><code>valign</code></td>
+                  <td>Posisi vertikal konten</td>
+                  <td>top, middle, bottom, baseline</td>
+                  <td><span class="deprecated">Deprecated</span> (gunakan CSS)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h5>Contoh Penggunaan:</h5>
+          <div class="attribute-demo">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;table border="1"&gt;
+  &lt;colgroup&gt;
+    &lt;col style="background-color:#f0f0f0"&gt;
+    &lt;col span="2" style="background-color:#e0e0e0"&gt;
+  &lt;/colgroup&gt;
+  &lt;tr&gt;
+    &lt;th&gt;No.&lt;/th&gt;
+    &lt;th&gt;Nama Barang&lt;/th&gt;
+    &lt;th&gt;Harga&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;1&lt;/td&gt;
+    &lt;td&gt;Buku Tulis&lt;/td&gt;
+    &lt;td&gt;Rp 5.000&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+          </div>
+
+          <h4>4. Atribut Global yang Dapat Digunakan</h4>
+          <p>Selain atribut khusus tabel, elemen tabel juga mendukung atribut global HTML5:</p>
+          
+          <div class="attribute-demo">
+            <table>
+              <thead>
+                <tr>
+                  <th>Atribut</th>
+                  <th>Deskripsi</th>
+                  <th>Contoh</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>id</code></td>
+                  <td>Pengidentifikasi unik untuk elemen</td>
+                  <td><code>id="tabel-data"</code></td>
+                </tr>
+                <tr>
+                  <td><code>class</code></td>
+                  <td>Nama kelas untuk styling CSS</td>
+                  <td><code>class="tabel-striped"</code></td>
+                </tr>
+                <tr>
+                  <td><code>style</code></td>
+                  <td>CSS inline</td>
+                  <td><code>style="width: 100%;"</code></td>
+                </tr>
+                <tr>
+                  <td><code>title</code></td>
+                  <td>Informasi tambahan (tooltip)</td>
+                  <td><code>title="Data per 2023"</code></td>
+                </tr>
+                <tr>
+                  <td><code>data-*</code></td>
+                  <td>Atribut data kustom</td>
+                  <td><code>data-sortable="true"</code></td>
+                </tr>
+                <tr>
+                  <td><code>hidden</code></td>
+                  <td>Menyembunyikan elemen</td>
+                  <td><code>hidden</code></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h4>5. Atribut Aksesibilitas</h4>
+          <p>Berikut beberapa atribut yang meningkatkan aksesibilitas tabel:</p>
+          
+          <div class="attribute-demo">
+            <table>
+              <thead>
+                <tr>
+                  <th>Atribut</th>
+                  <th>Deskripsi</th>
+                  <th>Contoh</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>scope</code></td>
+                  <td>Menentukan cakupan header (baris/kolom)</td>
+                  <td><code>&lt;th scope="col"&gt;Nama&lt;/th&gt;</code></td>
+                </tr>
+                <tr>
+                  <td><code>headers</code></td>
+                  <td>Menghubungkan sel data dengan header</td>
+                  <td><code>headers="nama-header"</code></td>
+                </tr>
+                <tr>
+                  <td><code>aria-label</code></td>
+                  <td>Label untuk pembaca layar</td>
+                  <td><code>aria-label="Tabel Data Mahasiswa"</code></td>
+                </tr>
+                <tr>
+                  <td><code>aria-describedby</code></td>
+                  <td>Menghubungkan dengan deskripsi tabel</td>
+                  <td><code>aria-describedby="tabel-desc"</code></td>
+                </tr>
+                <tr>
+                  <td><code>role</code></td>
+                  <td>Peran ARIA untuk aksesibilitas</td>
+                  <td><code>role="table"</code>, <code>role="row"</code>, dll.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h5>Contoh Tabel dengan Aksesibilitas:</h5>
+          <div class="attribute-demo">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;table role="table" aria-label="Daftar Harga Produk"&gt;
+  &lt;caption&gt;Daftar Harga Produk Terbaru&lt;/caption&gt;
+  &lt;thead&gt;
+    &lt;tr role="row"&gt;
+      &lt;th scope="col" role="columnheader"&gt;No.&lt;/th&gt;
+      &lt;th scope="col" role="columnheader"&gt;Nama Produk&lt;/th&gt;
+      &lt;th scope="col" role="columnheader"&gt;Harga (Rp)&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr role="row"&gt;
+      &lt;td role="cell"&gt;1&lt;/td&gt;
+      &lt;td role="cell"&gt;Laptop ASUS X441NA&lt;/td&gt;
+      &lt;td role="cell"&gt;4.499.000&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+          </div>
+
+          <h4>6. Praktik Terbaik</h4>
+          <div class="attribute-demo">
+            <ul>
+              <li>Gunakan CSS untuk styling, bukan atribut HTML yang sudah tidak didukung</li>
+              <li>Selalu sertakan <code>&lt;th&gt;</code> untuk header tabel</li>
+              <li>Gunakan <code>scope</code> pada header untuk aksesibilitas</li>
+              <li>Pertimbangkan penggunaan <code>&lt;caption&gt;</code> untuk judul tabel</li>
+              <li>Gunakan <code>rowspan</code> dan <code>colspan</code> dengan bijak</li>
+              <li>Pastikan tabel responsif di perangkat mobile</li>
+              <li>Uji aksesibilitas tabel dengan pembaca layar</li>
+              <li>Hindari tabel bersarang yang terlalu kompleks</li>
+            </ul>
+          </div>
+        </section>
+
+        <br />
+        <nav class="navigation-section" aria-label="Halaman navigasi">
+          <div class="nav-buttons">
+            <button class="btn" onclick="window.location.href='h61.html'" title="Struktur Dasar Tabel">
+              &lt;&nbsp;Prev
+            </button>
+            <img
+              src="../assets/png/home.png"
+              alt="Home"
+              class="home-icon"
+              onclick="window.location.href='../index.html'"
+              title="Home"
+            />
+            <img
+              src="../assets/png/html5.png"
+              alt="HTML"
+              onclick="window.location.href='h1.html'"
+              title="Daftar Isi HTML"
+            />
+            <button class="btn" onclick="window.location.href='h63.html'" title="Styling Tabel Dasar">
+              Next&nbsp;&gt;
+            </button>
+          </div>
+        </nav>
+      </main>
+    </div>
+
+    <script src="../script/copyCode.js"></script>
+    <script src="../script/script.js"></script>
+  </body>
+</html>

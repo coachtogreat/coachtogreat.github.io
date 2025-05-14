@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Paragraf HTML</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <header class="title-section">
+        <div class="title-content">
+          <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+            <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+          </a>
+        </div>
+      </header>
+
+      <main class="content-section">
+        <section class="article-content">
+          <h2 class="intro-title">Teks dan Paragraf</h2>
+          <h3 class="section-title">Tag Paragraf HTML</h3>
+          <p>
+            Dalam HTML, tag <code>&lt;p&gt;</code> digunakan untuk membuat paragraf teks. Setiap paragraf
+            secara otomatis memiliki jarak (margin) di atas dan di bawahnya, yang memisahkannya dari
+            elemen-elemen lain di halaman web.
+          </p>
+
+          <h4>Contoh Penggunaan Tag Paragraf:</h4>
+          <div class="code-block">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            </div>
+            <pre><code>&lt;p&gt;Ini adalah contoh paragraf pertama.&lt;/p&gt;
+&lt;p&gt;Ini adalah paragraf kedua. Perhatikan jarak otomatis antara kedua paragraf ini.&lt;/p&gt;</code></pre>
+          </div>
+
+          <h4>Atribut Penting Tag Paragraf:</h4>
+          <ul>
+            <li>
+              <code>class</code> - Menambahkan nama class untuk penataan gaya dengan CSS
+            </li>
+            <li>
+              <code>id</code> - Memberikan identifikasi unik untuk paragraf
+            </li>
+            <li>
+              <code>style</code> - Menambahkan gaya inline ke paragraf
+            </li>
+          </ul>
+
+          <h4>Pemformatan Teks dalam Paragraf:</h4>
+          <p>
+            Anda bisa memformat teks dalam paragraf menggunakan berbagai tag seperti:
+            <code>&lt;strong&gt;</code> untuk teks tebal,
+            <code>&lt;em&gt;</code> untuk teks miring, dan
+            <code>&lt;u&gt;</code> untuk teks bergaris bawah.
+          </p>
+
+          <div class="code-block">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            </div>
+            <pre><code>&lt;p&gt;
+  Ini adalah contoh teks dengan &lt;strong&gt;teks tebal&lt;/strong&gt;, 
+  &lt;em&gt;teks miring&lt;/em&gt;, dan &lt;u&gt;teks bergaris bawah&lt;/u&gt;.
+&lt;/p&gt;</code></pre>
+          </div>
+
+          <h4>Poin Penting Tentang Paragraf HTML:</h4>
+          <ul>
+            <li>Gunakan tag <code>&lt;br&gt;</code> untuk membuat baris baru dalam paragraf yang sama</li>
+            <li>Gunakan <code>&amp;nbsp;</code> untuk menambahkan spasi yang tidak terputus</li>
+            <li>Hindari menggunakan tag <code>&lt;br&gt;</code> untuk membuat jarak antar paragraf</li>
+            <li>Gunakan CSS untuk mengatur jarak dan indentasi paragraf</li>
+          </ul>
+        </section>
+
+        <br />
+        <nav class="navigation-section" aria-label="Halaman navigasi">
+          <div class="nav-buttons">
+            <button class="btn" onclick="window.location.href='h31.html'" title="Heading HTML">&lt;&nbsp;Prev</button>
+            <img
+              src="../assets/png/home.png"
+              alt="Home"
+              class="home-icon"
+              onclick="window.location.href='../index.html'"
+              title="Home"
+            />
+            <img
+              src="../assets/png/html5.png"
+              alt="HTML"
+              onclick="window.location.href='h1.html'"
+              title="Daftar Isi HTML"
+            />
+            <button class="btn" onclick="window.location.href='h33.html'" title="Pemformatan Teks">Next&nbsp;&gt;</button>
+          </div>
+        </nav>
+      </main>
+    </div>
+
+    <script src="../script/copyCode.js"></script>
+    <script src="../script/script.js"></script>
+  </body>
+</html>

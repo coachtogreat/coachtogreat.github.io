@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menyematkan Konten Eksternal di HTML</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <style>
+      .embed-demo {
+        background-color: #f8f9fa;
+        border-radius: 5px;
+        padding: 15px;
+        margin: 15px 0;
+        border-left: 4px solid #0d6efd;
+        overflow-x: auto;
+      }
+      .embed-container {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: white;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      .embed-preview {
+        width: 100%;
+        max-width: 100%;
+        margin: 15px 0;
+      }
+      .code-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #343a40;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 4px 4px 0 0;
+      }
+      .copy-btn {
+        background-color: #495057;
+        color: white !important;
+        border: none;
+        padding: 2px 8px;
+        border-radius: 3px;
+        cursor: pointer;
+      }
+      .copy-btn:hover {
+        color: white !important;
+        background-color: #0d6efd;
+      }
+      pre {
+        margin: 0;
+        padding: 0;
+      }
+      code {
+        display: block;
+        background-color: #f8f9fa;
+        padding: 15px;
+        border-radius: 0 0 4px 4px;
+        overflow-x: auto;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 14px;
+        line-height: 1.5;
+        transition: background-color 0.2s ease;
+      }
+      code:hover {
+        background-color: #e9ecef;
+        cursor: pointer;
+      }
+      .note {
+        background-color: #e7f5ff;
+        border-left: 4px solid #0d6efd;
+        padding: 12px 15px;
+        margin: 15px 0;
+        border-radius: 0 4px 4px 0;
+      }
+      .warning {
+        background-color: #fff3bf;
+        border-left: 4px solid #ffd43b;
+        padding: 12px 15px;
+        margin: 15px 0;
+        border-radius: 0 4px 4px 0;
+      }
+      .tip {
+        background-color: #d4edda;
+        border-left: 4px solid #28a745;
+        padding: 12px 15px;
+        margin: 15px 0;
+        border-radius: 0 4px 4px 0;
+      }
+      .responsive-embed {
+        position: relative;
+        padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+        height: 0;
+        overflow: hidden;
+        max-width: 100%;
+      }
+      .responsive-embed iframe,
+      .responsive-embed object,
+      .responsive-embed embed {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="blog-container">
+      <header class="title-section">
+        <div class="title-content">
+          <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+            <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+          </a>
+        </div>
+      </header>
+
+      <main class="content-section">
+        <section class="article-content">
+          <h2 class="intro-title">Menyematkan Konten Eksternal di HTML</h2>
+          <h3 class="section-title">Panduan Lengkap Menyisipkan Konten dari Sumber Eksternal</h3>
+
+          <p>
+            HTML menyediakan berbagai cara untuk menyematkan konten dari sumber eksternal ke dalam
+            halaman web. Mari kita pelajari berbagai metode yang tersedia dan cara menggunakannya
+            dengan benar.
+          </p>
+
+          <h4>1. Menyematkan Video dengan &lt;iframe&gt;</h4>
+          <p>Berikut cara menyematkan video dari YouTube:</p>
+
+          <div class="embed-demo">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;div class="responsive-embed"&gt;
+  &lt;iframe 
+    width="560" 
+    height="315" 
+    src="https://www.youtube.com/embed/VIDEO_ID" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+    allowfullscreen&gt;
+  &lt;/iframe&gt;
+&lt;/div&gt;</code></pre>
+
+            <div class="embed-preview">
+              <div class="responsive-embed">
+                <iframe
+                  width="560"
+                  height="315"
+                  src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                >
+                </iframe>
+              </div>
+            </div>
+          </div>
+
+          <h4>2. Menyematkan Peta Google Maps</h4>
+          <p>Berikut cara menyematkan peta Google Maps:</p>
+
+          <div class="embed-demo">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;div class="responsive-embed"&gt;
+  &lt;iframe 
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d..." 
+    width="600" 
+    height="450" 
+    style="border:0;" 
+    allowfullscreen="" 
+    loading="lazy"&gt;
+  &lt;/iframe&gt;
+&lt;/div&gt;</code></pre>
+
+            <div class="embed-preview">
+              <div class="responsive-embed">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d253840.48788651433!2d106.6894293!3d-6.229728!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f3e945e34b9d%3A0x5371bf0fdad786a2!2sJakarta%2C%20Daerah%20Khusus%20Ibukota%20Jakarta!5e0!3m2!1sid!2sid!4v1234567890123!5m2!1sid!2sid"
+                  width="600"
+                  height="450"
+                  style="border: 0"
+                  allowfullscreen=""
+                  loading="lazy"
+                >
+                </iframe>
+              </div>
+            </div>
+          </div>
+
+          <h4>3. Menyematkan Postingan Media Sosial</h4>
+          <p>Berikut cara menyematkan postingan dari Twitter:</p>
+
+          <div class="embed-demo">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;blockquote class="twitter-tweet"&gt;
+  &lt;p lang="en" dir="ltr"&gt;Contoh tweet yang disematkan&lt;/p&gt;
+  &amp;mdash; Nama Akun (@username) 
+  &lt;a href="https://twitter.com/username/status/1234567890"&gt;May 14, 2025&lt;/a&gt;
+&lt;/blockquote&gt;
+&lt;script async src="https://platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;</code></pre>
+
+            <div class="embed-preview">
+              <blockquote class="twitter-tweet">
+                <p lang="en" dir="ltr">Contoh tweet yang disematkan</p>
+                &mdash; Nama Akun (@username)
+                <a href="https://twitter.com/username/status/1234567890">May 14, 2025</a>
+              </blockquote>
+              <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            </div>
+          </div>
+
+          <h4>4. Menyematkan Dokumen</h4>
+          <p>Berikut cara menyematkan dokumen PDF menggunakan Google Docs Viewer:</p>
+
+          <div class="embed-demo">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;div class="responsive-embed" style="height: 500px;"&gt;
+  &lt;iframe 
+    src="https://docs.google.com/viewer?url=URL_DOKUMEN_ANDA.pdf&embedded=true" 
+    width="100%" 
+    height="100%" 
+    style="border: none;"&gt;
+  &lt;/iframe&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+
+          <div class="note">
+            <strong>Catatan:</strong> Pastikan untuk mengganti
+            <code>URL_DOKUMEN_ANDA.pdf</code> dengan URL dokumen PDF yang ingin Anda sematkan.
+          </div>
+
+          <h4>5. Menyematkan Kode dari CodePen</h4>
+          <p>Berikut cara menyematkan kode dari CodePen:</p>
+
+          <div class="embed-demo">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;div class="responsive-embed" style="height: 400px;"&gt;
+  &lt;iframe 
+    height="100%" 
+    style="width: 100%;" 
+    scrolling="no" 
+    title="Contoh CodePen"
+    src="https://codepen.io/username/embed/abcdefgh?default-tab=result" 
+    frameborder="no" 
+    loading="lazy" 
+    allowtransparency="true" 
+    allowfullscreen="true"&gt;
+  &lt;/iframe&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+
+          <div class="tip">
+            <strong>Tip:</strong> Selalu gunakan HTTPS saat menyematkan konten eksternal untuk
+            keamanan yang lebih baik.
+          </div>
+
+          <h4>6. Menyematkan Presentasi dari SlideShare</h4>
+          <p>Berikut cara menyematkan presentasi dari SlideShare:</p>
+
+          <div class="embed-demo">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;div class="responsive-embed" style="height: 500px;"&gt;
+  &lt;iframe 
+    src="https://www.slideshare.net/slideshow/embed_code/key/abcdefgh12345678" 
+    width="100%" 
+    height="100%" 
+    frameborder="0" 
+    marginwidth="0" 
+    marginheight="0" 
+    scrolling="no" 
+    style="border:1px solid #CCC; border-width:1px; margin-bottom:5px;" 
+    allowfullscreen&gt;
+  &lt;/iframe&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+
+          <div class="warning">
+            <strong>Penting:</strong> Selalu periksa kebijakan penyematan (embed policy) dari situs
+            yang Anda gunakan. Beberapa situs mungkin memiliki batasan atau persyaratan tertentu
+            untuk penyematan konten mereka.
+          </div>
+
+          <br />
+          <nav class="navigation-section" aria-label="Halaman navigasi">
+            <div class="nav-buttons">
+              <button
+                class="btn"
+                onclick="window.location.href='h92.html'"
+                title="Memasukkan Audio di HTML"
+              >
+                &lt;&nbsp;Prev
+              </button>
+              <img
+                src="../assets/png/home.png"
+                alt="Home"
+                class="home-icon"
+                onclick="window.location.href='../index.html'"
+                title="Home"
+              />
+              <img
+                src="../assets/png/html5.png"
+                alt="HTML"
+                onclick="window.location.href='h1.html'"
+                title="Daftar Isi HTML"
+              />
+              <button
+                class="btn"
+                onclick="window.location.href='h101.html'"
+                title="Membuat Form di HTML"
+              >
+                Next&nbsp;&gt;
+              </button>
+            </div>
+          </nav>
+        </section>
+      </main>
+    </div>
+
+    <script>
+      function copyCode(button) {
+        const codeBlock = button.parentElement.nextElementSibling;
+        const code = codeBlock.textContent;
+
+        // Buat elemen textarea untuk menyalin teks
+        const textarea = document.createElement('textarea');
+        textarea.value = code;
+        textarea.style.position = 'fixed'; // Menghindari scroll otomatis
+        document.body.appendChild(textarea);
+        textarea.select();
+
+        try {
+          // Salin teks ke clipboard
+          const successful = document.execCommand('copy');
+          const msg = successful ? 'berhasil disalin!' : 'gagal disalin';
+
+          // Tampilkan notifikasi
+          const originalText = button.textContent;
+          button.textContent = 'Tersalin!';
+
+          // Kembalikan teks tombol setelah 2 detik
+          setTimeout(() => {
+            button.textContent = originalText;
+          }, 2000);
+        } catch (err) {
+          console.error('Gagal menyalin teks: ', err);
+        }
+
+        // Hapus textarea
+        document.body.removeChild(textarea);
+      }
+    </script>
+  </body>
+</html>

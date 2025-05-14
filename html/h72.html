@@ -1,0 +1,586 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jenis-Jenis Input Formulir HTML</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <style>
+      .form-demo {
+        background-color: #f8f9fa;
+        border-radius: 5px;
+        padding: 15px;
+        margin: 15px 0;
+        border-left: 4px solid #0d6efd;
+        overflow-x: auto;
+      }
+      .form-container {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: white;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      }
+      .form-group {
+        margin-bottom: 20px;
+        padding: 15px;
+        border: 1px solid #e9ecef;
+        border-radius: 5px;
+      }
+      label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+        color: #212529;
+      }
+      input[type="text"],
+      input[type="email"],
+      input[type="password"],
+      input[type="tel"],
+      input[type="url"],
+      input[type="search"],
+      input[type="number"],
+      input[type="date"],
+      input[type="time"],
+      input[type="datetime-local"],
+      select,
+      textarea {
+        width: 100%;
+        padding: 10px 12px;
+        margin: 5px 0 15px;
+        border: 1px solid #ced4da;
+        border-radius: 4px;
+        box-sizing: border-box;
+        font-size: 16px;
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+      }
+      input:focus, select:focus, textarea:focus {
+        border-color: #86b7fe;
+        outline: 0;
+        box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+      }
+      .radio-group, .checkbox-group {
+        margin: 10px 0;
+      }
+      .radio-option, .checkbox-option {
+        margin: 10px 0;
+        display: flex;
+        align-items: center;
+      }
+      .radio-option input[type="radio"],
+      .checkbox-option input[type="checkbox"] {
+        margin-right: 10px;
+        width: 18px;
+        height: 18px;
+      }
+      .code-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #343a40;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 4px 4px 0 0;
+      }
+      .copy-btn {
+        background-color: #495057;
+        color: white;
+        border: none;
+        padding: 2px 8px;
+        border-radius: 3px;
+        cursor: pointer;
+        font-size: 14px;
+      }
+      .copy-btn:hover {
+        background-color: #ffd43b;
+        color: #212529;
+      }
+      pre {
+        margin: 0;
+        padding: 0;
+      }
+      code {
+        display: block;
+        background-color: #f8f9fa;
+        padding: 15px;
+        border-radius: 0 0 4px 4px;
+        overflow-x: auto;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 14px;
+        line-height: 1.5;
+      }
+      .property {
+        color: #d63384;
+        font-weight: bold;
+      }
+      .value {
+        color: #0d6efd;
+      }
+      .comment {
+        color: #6c757d;
+        font-style: italic;
+      }
+      .highlight {
+        background-color: #fff3cd;
+        padding: 2px 4px;
+        border-radius: 3px;
+      }
+      .note {
+        background-color: #e7f5ff;
+        border-left: 4px solid #0d6efd;
+        padding: 12px 15px;
+        margin: 15px 0;
+        border-radius: 0 4px 4px 0;
+      }
+      .warning {
+        background-color: #fff3bf;
+        border-left: 4px solid #ffd43b;
+        padding: 12px 15px;
+        margin: 15px 0;
+        border-radius: 0 4px 4px 0;
+      }
+      .attribute-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+      }
+      .attribute-table th, .attribute-table td {
+        border: 1px solid #dee2e6;
+        padding: 10px;
+        text-align: left;
+      }
+      .attribute-table th {
+        background-color: #f8f9fa;
+      }
+      .attribute-table tr:nth-child(even) {
+        background-color: #f8f9fa;
+      }
+      .input-example {
+        margin: 15px 0;
+        padding: 15px;
+        border: 1px solid #e9ecef;
+        border-radius: 5px;
+        background-color: #f8f9fa;
+      }
+      .input-preview {
+        background-color: white;
+        padding: 15px;
+        border: 1px solid #dee2e6;
+        border-radius: 4px;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="blog-container">
+      <header class="title-section">
+        <div class="title-content">
+          <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+            <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+          </a>
+        </div>
+      </header>
+
+      <main class="content-section">
+        <section class="article-content">
+          <h2 class="intro-title">Jenis-Jenis Input Formulir HTML</h2>
+          <h3 class="section-title">Memahami Berbagai Tipe Input dalam Formulir</h3>
+          
+          <p>
+            HTML menyediakan berbagai tipe input yang dapat digunakan dalam formulir. 
+            Setiap tipe input dirancang untuk jenis data tertentu yang membantu dalam 
+            validasi dan meningkatkan pengalaman pengguna.
+          </p>
+
+          <div class="note">
+            <strong>Catatan:</strong> Meskipun semua input menggunakan tag <code>&lt;input&gt;</code>, 
+            atribut <code>type</code> yang berbeda akan menampilkan kontrol yang berbeda di browser.
+          </div>
+
+          <!-- Input Text -->
+          <div class="form-group">
+            <h4>1. Input Text (<code>type="text"</code>)</h4>
+            <p>Digunakan untuk input teks satu baris seperti nama, alamat, atau teks pendek lainnya.</p>
+            
+            <div class="input-example">
+              <h5>Contoh Penggunaan:</h5>
+              <div class="input-preview">
+                <label for="nama_lengkap">Nama Lengkap:</label>
+                <input type="text" id="nama_lengkap" name="nama_lengkap" 
+                       placeholder="Masukkan nama lengkap" maxlength="50">
+              </div>
+              
+              <div class="form-demo">
+                <div class="code-header">
+                  <span>HTML</span>
+                  <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+                </div>
+                <pre><code>&lt;label for="nama_lengkap"&gt;Nama Lengkap:&lt;/label&gt;
+&lt;input type="text" id="nama_lengkap" name="nama_lengkap" 
+       placeholder="Masukkan nama lengkap" maxlength="50"&gt;</code></pre>
+              </div>
+              
+              <h5>Atribut Penting:</h5>
+              <table class="attribute-table">
+                <tr>
+                  <th>Atribut</th>
+                  <th>Deskripsi</th>
+                  <th>Contoh</th>
+                </tr>
+                <tr>
+                  <td><code>maxlength</code></td>
+                  <td>Jumlah karakter maksimum yang dapat dimasukkan</td>
+                  <td><code>maxlength="50"</code></td>
+                </tr>
+                <tr>
+                  <td><code>minlength</code></td>
+                  <td>Jumlah karakter minimum yang diperlukan</td>
+                  <td><code>minlength="3"</code></td>
+                </tr>
+                <tr>
+                  <td><code>pattern</code></td>
+                  <td>Ekspresi reguler untuk validasi</td>
+                  <td><code>pattern="[A-Za-z\s]+"</code></td>
+                </tr>
+                <tr>
+                  <td><code>placeholder</code></td>
+                  <td>Teks petunjuk dalam input</td>
+                  <td><code>placeholder="Nama lengkap"</code></td>
+                </tr>
+                <tr>
+                  <td><code>readonly</code></td>
+                  <td>Input hanya bisa dibaca</td>
+                  <td><code>readonly</code></td>
+                </tr>
+                <tr>
+                  <td><code>disabled</code></td>
+                  <td>Menonaktifkan input</td>
+                  <td><code>disabled</code></td>
+                </tr>
+                <tr>
+                  <td><code>size</code></td>
+                  <td>Lebar input dalam karakter</td>
+                  <td><code>size="30"</code></td>
+                </tr>
+              </table>
+              
+              <div class="note">
+                <strong>Tip:</strong> Gunakan <code>&lt;textarea&gt;</code> untuk input teks multi-baris 
+                seperti komentar atau deskripsi panjang.
+              </div>
+            </div>
+          </div>
+
+          <!-- Input Email -->
+          <div class="form-group">
+            <h4>2. Input Email (<code>type="email"</code>)</h4>
+            <p>Dirancang khusus untuk alamat email dengan validasi otomatis di browser.</p>
+            
+            <div class="input-example">
+              <h5>Contoh Penggunaan:</h5>
+              <div class="input-preview">
+                <label for="email">Alamat Email:</label>
+                <input type="email" id="email" name="email" 
+                       placeholder="contoh@email.com" required multiple>
+                <small>Gunakan koma (,) untuk memisahkan beberapa alamat email</small>
+              </div>
+              
+              <div class="form-demo">
+                <div class="code-header">
+                  <span>HTML</span>
+                  <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+                </div>
+                <pre><code>&lt;label for="email"&gt;Alamat Email:&lt;/label&gt;
+&lt;input type="email" id="email" name="email" 
+       placeholder="contoh@email.com" required multiple&gt;
+&lt;small&gt;Gunakan koma (,) untuk memisahkan beberapa alamat email&lt;/small&gt;</code></pre>
+              </div>
+              
+              <h5>Fitur Khusus:</h5>
+              <ul>
+                <li>Validasi otomatis format email</li>
+                <li>Keyboard khusus di perangkat mobile</li>
+                <li>Dukungan multiple email dengan atribut <code>multiple</code></li>
+                <li>Pencocokan domain yang disarankan di beberapa browser</li>
+              </ul>
+              
+              <div class="warning">
+                <strong>Penting:</strong> Selalu lakukan validasi email di sisi server juga, 
+                karena validasi HTML dapat di-bypass dengan mudah.
+              </div>
+            </div>
+          </div>
+
+          <!-- Input Password -->
+          <div class="form-group">
+            <h4>3. Input Password (<code>type="password"</code>)</h4>
+            <p>Menyembunyikan karakter yang dimasukkan untuk keamanan.</p>
+            
+            <div class="input-example">
+              <h5>Contoh Penggunaan:</h5>
+              <div class="input-preview">
+                <label for="password">Kata Sandi:</label>
+                <input type="password" id="password" name="password" 
+                       minlength="8" required>
+                <small>Minimal 8 karakter</small>
+                
+                <div style="margin-top: 10px;">
+                  <label>
+                    <input type="checkbox" id="showPassword"> Tampilkan kata sandi
+                  </label>
+                </div>
+              </div>
+              
+              <div class="form-demo">
+                <div class="code-header">
+                  <span>HTML</span>
+                  <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+                </div>
+                <pre><code>&lt;label for="password"&gt;Kata Sandi:&lt;/label&gt;
+&lt;input type="password" id="password" name="password" 
+       minlength="8" required&gt;
+&lt;small&gt;Minimal 8 karakter&lt;/small&gt;
+
+&lt;div style="margin-top: 10px;"&gt;
+  &lt;label&gt;
+    &lt;input type="checkbox" id="showPassword"&gt; Tampilkan kata sandi
+  &lt;/label&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+  // Kode JavaScript untuk menampilkan/sembunyikan password
+  document.getElementById('showPassword').addEventListener('change', function() {
+    const passwordInput = document.getElementById('password');
+    passwordInput.type = this.checked ? 'text' : 'password';
+  });
+&lt;/script&gt;</code></pre>
+              </div>
+              
+              <h5>Keamanan Password:</h5>
+              <ul>
+                <li>Gunakan minimal 8-12 karakter</li>
+                <li>Gabungkan huruf besar, kecil, angka, dan simbol</li>
+                <li>Hindari menggunakan informasi pribadi</li>
+                <li>Gunakan password yang unik untuk setiap akun</li>
+              </ul>
+              
+              <div class="note">
+                <strong>Tip:</strong> Selalu gunakan HTTPS untuk mengamankan pengiriman data sensitif 
+                seperti password melalui internet.
+              </div>
+            </div>
+          </div>
+
+          <!-- Checkbox -->
+          <div class="form-group">
+            <h4>4. Checkbox (<code>type="checkbox"</code>)</h4>
+            <p>Memungkinkan pemilihan beberapa opsi dari daftar yang tersedia.</p>
+            
+            <div class="input-example">
+              <h5>Contoh Penggunaan:</h5>
+              <div class="input-preview">
+                <p>Pilih hobi Anda:</p>
+                <div class="checkbox-group">
+                  <div class="checkbox-option">
+                    <input type="checkbox" id="hobi1" name="hobi" value="membaca" checked>
+                    <label for="hobi1">Membaca</label>
+                  </div>
+                  <div class="checkbox-option">
+                    <input type="checkbox" id="hobi2" name="hobi" value="olahraga">
+                    <label for="hobi2">Olahraga</label>
+                  </div>
+                  <div class="checkbox-option">
+                    <input type="checkbox" id="hobi3" name="hobi" value="musik">
+                    <label for="hobi3">Musik</label>
+                  </div>
+                  <div class="checkbox-option">
+                    <input type="checkbox" id="hobi4" name="hobi" value="traveling">
+                    <label for="hobi4">Traveling</label>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="form-demo">
+                <div class="code-header">
+                  <span>HTML</span>
+                  <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+                </div>
+                <pre><code>&lt;p&gt;Pilih hobi Anda:&lt;/p&gt;
+&lt;div class="checkbox-group"&gt;
+  &lt;div class="checkbox-option"&gt;
+    &lt;input type="checkbox" id="hobi1" name="hobi" value="membaca" checked&gt;
+    &lt;label for="hobi1"&gt;Membaca&lt;/label&gt;
+  &lt;/div&gt;
+  &lt;div class="checkbox-option"&gt;
+    &lt;input type="checkbox" id="hobi2" name="hobi" value="olahraga"&gt;
+    &lt;label for="hobi2"&gt;Olahraga&lt;/label&gt;
+  &lt;/div&gt;
+  &lt;!-- Opsi lainnya --&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+              
+              <h5>Karakteristik Checkbox:</h5>
+              <ul>
+                <li>Dapat memilih banyak opsi sekaligus</li>
+                <li>Nilai dikirim ke server hanya jika dicentang</li>
+                <li>Atribut <code>checked</code> membuat opsi terpilih secara default</li>
+                <li>Dapat dikelompokkan dengan <code>fieldset</code> dan <code>legend</code></li>
+              </ul>
+              
+              <h5>Atribut Penting:</h5>
+              <ul>
+                <li><code>checked</code> - Opsi terpilih secara default</li>
+                <li><code>value</code> - Nilai yang akan dikirim ke server</li>
+                <li><code>required</code> - Minimal satu opsi harus dipilih</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Radio Buttons -->
+          <div class="form-group">
+            <h4>5. Radio Buttons (<code>type="radio"</code>)</h4>
+            <p>Memungkinkan pemilihan satu opsi dari beberapa pilihan yang tersedia.</p>
+            
+            <div class="input-example">
+              <h5>Contoh Penggunaan:</h5>
+              <div class="input-preview">
+                <p>Pilih metode pembayaran:</p>
+                <div class="radio-group">
+                  <div class="radio-option">
+                    <input type="radio" id="bayar1" name="pembayaran" value="transfer" checked>
+                    <label for="bayar1">Transfer Bank</label>
+                  </div>
+                  <div class="radio-option">
+                    <input type="radio" id="bayar2" name="pembayaran" value="kartu">
+                    <label for="bayar2">Kartu Kredit/Debit</label>
+                  </div>
+                  <div class="radio-option">
+                    <input type="radio" id="bayar3" name="pembayaran" value="cod">
+                    <label for="bayar3">Bayar di Tempat (COD)</label>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="form-demo">
+                <div class="code-header">
+                  <span>HTML</span>
+                  <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+                </div>
+                <pre><code>&lt;p&gt;Pilih metode pembayaran:&lt;/p&gt;
+&lt;div class="radio-group"&gt;
+  &lt;div class="radio-option"&gt;
+    &lt;input type="radio" id="bayar1" name="pembayaran" value="transfer" checked&gt;
+    &lt;label for="bayar1"&gt;Transfer Bank&lt;/label&gt;
+  &lt;/div&gt;
+  &lt;div class="radio-option"&gt;
+    &lt;input type="radio" id="bayar2" name="pembayaran" value="kartu"&gt;
+    &lt;label for="bayar2"&gt;Kartu Kredit/Debit&lt;/label&gt;
+  &lt;/div&gt;
+  &lt;!-- Opsi lainnya --&gt;
+&lt;/div&gt;</code></pre>
+              </div>
+              
+              <h5>Karakteristik Radio Button:</h5>
+              <ul>
+                <li>Hanya satu opsi yang dapat dipilih dalam satu grup</li>
+                <li>Dikelompokkan dengan atribut <code>name</code> yang sama</li>
+                <li>Wajib memiliki atribut <code>value</code></li>
+                <li>Atribut <code>checked</code> untuk opsi default</li>
+              </ul>
+              
+              <div class="warning">
+                <strong>Perhatian:</strong> Pastikan selalu ada opsi yang terpilih secara default 
+                atau gunakan validasi untuk memastikan pengguna memilih setidaknya satu opsi.
+              </div>
+              
+              <h5>Perbandingan Checkbox vs Radio Button:</h5>
+              <table class="attribute-table">
+                <tr>
+                  <th>Fitur</th>
+                  <th>Checkbox</th>
+                  <th>Radio Button</th>
+                </tr>
+                <tr>
+                  <td>Jumlah pilihan</td>
+                  <td>Bisa memilih banyak</td>
+                  <td>Hanya satu yang bisa dipilih</td>
+                </tr>
+                <tr>
+                  <td>Penggunaan</td>
+                  <td>Opsi yang tidak saling eksklusif</td>
+                  <td>Opsi yang saling eksklusif</td>
+                </tr>
+                <tr>
+                  <td>Nilai default</td>
+                  <td>Bisa tidak ada yang terpilih</td>
+                  <td>Harus ada yang terpilih (disarankan)</td>
+                </tr>
+                <tr>
+                  <td>Contoh penggunaan</td>
+                  <td>Pilihan hobi, filter pencarian</td>
+                  <td>Jenis kelamin, metode pembayaran</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+
+          <div class="note">
+            <h4>Praktik Terbaik Penggunaan Input</h4>
+            <ul>
+              <li>Selalu gunakan <code>&lt;label&gt;</code> untuk setiap input</li>
+              <li>Kelompokkan input terkait dengan <code>&lt;fieldset&gt;</code></li>
+              <li>Gunakan atribut <code>required</code> untuk bidang wajib</li>
+              <li>Berikan pesan validasi yang jelas</li>
+              <li>Pastikan formulir dapat digunakan dengan keyboard</li>
+              <li>Gunakan tipe input yang sesuai dengan data yang diminta</li>
+              <li>Berikan umpan balik visual saat berinteraksi dengan input</li>
+            </ul>
+          </div>
+        </section>
+
+        <br />
+        <nav class="navigation-section" aria-label="Halaman navigasi">
+          <div class="nav-buttons">
+            <button class="btn" onclick="window.location.href='h71.html'" title="Elemen Dasar Formulir">
+              &lt;&nbsp;Prev
+            </button>
+            <img
+              src="../assets/png/home.png"
+              alt="Home"
+              class="home-icon"
+              onclick="window.location.href='../index.html'"
+              title="Home"
+            />
+            <img
+              src="../assets/png/html5.png"
+              alt="HTML"
+              onclick="window.location.href='h1.html'"
+              title="Daftar Isi HTML"
+            />
+            <button class="btn" onclick="window.location.href='h73.html'" title="Jenis Input Lainnya">
+              Next&nbsp;&gt;
+            </button>
+          </div>
+        </nav>
+      </main>
+    </div>
+
+    <script src="../script/copyCode.js"></script>
+    <script src="../script/script.js"></script>
+    <script>
+      // Kode JavaScript untuk menampilkan/sembunyikan password
+      document.addEventListener('DOMContentLoaded', function() {
+        const showPasswordCheckbox = document.getElementById('showPassword');
+        if (showPasswordCheckbox) {
+          showPasswordCheckbox.addEventListener('change', function() {
+            const passwordInput = document.getElementById('password');
+            if (passwordInput) {
+              passwordInput.type = this.checked ? 'text' : 'password';
+            }
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Membuat Halaman Biodata Sederhana - Panduan Lengkap</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <style>
+      .biodata-demo {
+        background-color: #f8f9fa;
+        border-radius: 5px;
+        padding: 15px;
+        margin: 15px 0;
+        border-left: 4px solid #0d6efd;
+        overflow-x: auto;
+      }
+      .code-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #343a40;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 4px 4px 0 0;
+      }
+      .copy-btn {
+        background-color: #495057;
+        color: white !important;
+        border: none;
+        padding: 2px 8px;
+        border-radius: 3px;
+        cursor: pointer;
+      }
+      code {
+        display: block;
+        background-color: #f8f9fa;
+        padding: 15px;
+        overflow-x: auto;
+        font-family: 'Courier New', monospace;
+        font-size: 14px;
+      }
+      .preview {
+        border: 1px solid #ddd;
+        padding: 20px;
+        margin: 20px 0;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="blog-container">
+      <header class="title-section">
+        <div class="title-content">
+          <a href="https://webiddesign.com" target="_blank" rel="noopener">
+            <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+          </a>
+        </div>
+      </header>
+
+      <main class="content-section">
+        <section class="article-content">
+          <h2>Membuat Halaman Biodata Sederhana</h2>
+          <h3>Panduan Langkah demi Langkah</h3>
+
+          <p>Mari buat halaman biodata pribadi yang menarik dengan HTML dan CSS dasar.</p>
+
+          <h4>1. Struktur Dasar HTML</h4>
+          <div class="biodata-demo">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="id"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Biodata Saya&lt;/title&gt;
+  &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div class="container"&gt;
+    &lt;header&gt;
+      &lt;img src="foto.jpg" alt="Foto Profil"&gt;
+      &lt;h1&gt;Nama Anda&lt;/h1&gt;
+      &lt;p&gt;Web Developer&lt;/p&gt;
+    &lt;/header&gt;
+    
+    &lt;main&gt;
+      &lt;section&gt;
+        &lt;h2&gt;Tentang Saya&lt;/h2&gt;
+        &lt;p&gt;Deskripsi singkat tentang diri Anda.&lt;/p&gt;
+      &lt;/section&gt;
+      
+      &lt;section&gt;
+        &lt;h2&gt;Kontak&lt;/h2&gt;
+        &lt;p&gt;Email: email@contoh.com&lt;/p&gt;
+        &lt;p&gt;Telepon: +62 812-3456-7890&lt;/p&gt;
+      &lt;/section&gt;
+    &lt;/main&gt;
+    
+    &lt;footer&gt;
+      &lt;p&gt;&copy; 2025 Biodata Saya&lt;/p&gt;
+    &lt;/footer&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          </div>
+
+          <h4>2. Menambahkan Gaya dengan CSS</h4>
+          <div class="biodata-demo">
+            <div class="code-header">
+              <span>CSS (style.css)</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 20px;
+  background-color: #f4f4f4;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+header {
+  text-align: center;
+  padding: 20px 0;
+}
+
+header img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #0d6efd;
+}
+
+h1 {
+  color: #333;
+  margin: 10px 0 5px;
+}
+
+h2 {
+  color: #0d6efd;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 5px;
+}
+
+section {
+  margin: 20px 0;
+  padding: 0 10px;
+}
+
+footer {
+  text-align: center;
+  margin-top: 30px;
+  padding: 10px;
+  color: #666;
+  font-size: 0.9em;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .container {
+    padding: 10px;
+  }
+  
+  header img {
+    width: 120px;
+    height: 120px;
+  }
+}</code></pre>
+          </div>
+
+          <h4>3. Menambahkan Informasi Pendidikan</h4>
+          <div class="biodata-demo">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;section&gt;
+  &lt;h2&gt;Pendidikan&lt;/h2&gt;
+  &lt;div class="education"&gt;
+    &lt;h3&gt;Nama Universitas&lt;/h3&gt;
+    &lt;p&gt;Jurusan Teknik Informatika&lt;/p&gt;
+    &lt;p&gt;2018 - 2022&lt;/p&gt;
+  &lt;/div&gt;
+  
+  &lt;div class="education"&gt;
+    &lt;h3&gt;SMA Contoh&lt;/h3&gt;
+    &lt;p&gt;Jurusan IPA&lt;/p&gt;
+    &lt;p&gt;2015 - 2018&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/section&gt;</code></pre>
+          </div>
+
+          <h4>4. Menambahkan Keahlian</h4>
+          <div class="biodata-demo">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;section&gt;
+  &lt;h2&gt;Keahlian&lt;/h2&gt;
+  &lt;div class="skills"&gt;
+    &lt;div class="skill"&gt;
+      &lt;h4&gt;HTML &amp; CSS&lt;/h4&gt;
+      &lt;div class="skill-bar"&gt;
+        &lt;div class="skill-level" style="width: 90%"&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    
+    &lt;div class="skill"&gt;
+      &lt;h4&gt;JavaScript&lt;/h4&gt;
+      &lt;div class="skill-bar"&gt;
+        &lt;div class="skill-level" style="width: 75%"&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;</code></pre>
+          </div>
+
+          <h4>5. CSS untuk Skill Bar</h4>
+          <div class="biodata-demo">
+            <div class="code-header">
+              <span>CSS</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>.skill {
+  margin-bottom: 15px;
+}
+
+.skill-bar {
+  height: 20px;
+  background-color: #e9ecef;
+  border-radius: 10px;
+  margin-top: 5px;
+  overflow: hidden;
+}
+
+.skill-level {
+  height: 100%;
+  background-color: #0d6efd;
+  border-radius: 10px;
+  transition: width 1s ease-in-out;
+}
+
+.skill h4 {
+  margin: 5px 0;
+  color: #333;
+}</code></pre>
+          </div>
+
+          <h4>6. Menambahkan Media Sosial</h4>
+          <div class="biodata-demo">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;section&gt;
+  &lt;h2&gt;Media Sosial&lt;/h2&gt;
+  &lt;div class="social-links"&gt;
+    &lt;a href="#" target="_blank"&gt;LinkedIn&lt;/a&gt;
+    &lt;a href="#" target="_blank"&gt;GitHub&lt;/a&gt;
+    &lt;a href="#" target="_blank"&gt;Twitter&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/section&gt;</code></pre>
+          </div>
+
+          <h4>7. CSS untuk Tautan Media Sosial</h4>
+          <div class="biodata-demo">
+            <div class="code-header">
+              <span>CSS</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>.social-links {
+  display: flex;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.social-links a {
+  color: #0d6efd;
+  text-decoration: none;
+  padding: 5px 10px;
+  border: 1px solid #0d6efd;
+  border-radius: 5px;
+  transition: all 0.3s;
+}
+
+.social-links a:hover {
+  background-color: #0d6efd;
+  color: white;
+}</code></pre>
+          </div>
+
+          <div class="note">
+            <strong>Tips:</strong>
+            <ul>
+              <li>Gunakan foto profil yang profesional</li>
+              <li>Perbarui informasi secara berkala</li>
+              <li>Tambahkan proyek atau portofolio</li>
+              <li>Optimalkan untuk perangkat mobile</li>
+            </ul>
+          </div>
+
+          <nav class="navigation-section" aria-label="Halaman navigasi">
+            <div class="nav-buttons">
+              <button
+                class="btn"
+                onclick="window.location.href='h114.html'"
+                title="Konsistensi dalam penulisan kode"
+              >
+                &lt;&nbsp;Prev
+              </button>
+              <img
+                src="../assets/png/home.png"
+                alt="Home"
+                class="home-icon"
+                onclick="window.location.href='../index.html'"
+                title="Home"
+              />
+              <img
+                src="../assets/png/html5.png"
+                alt="HTML"
+                onclick="window.location.href='h1.html'"
+                title="Daftar Isi HTML"
+              />
+              <button
+                class="btn"
+                onclick="window.location.href='h122.html'"
+                title="Membuat halaman artikel dengan gambar dan link"
+              >
+                Next&nbsp;&gt;
+              </button>
+            </div>
+          </nav>
+        </section>
+      </main>
+    </div>
+
+    <script>
+      function copyCode(button) {
+        const codeBlock = button.parentElement.nextElementSibling;
+        const code = codeBlock.textContent;
+
+        // Buat elemen textarea untuk menyalin teks
+        const textarea = document.createElement('textarea');
+        textarea.value = code;
+        textarea.style.position = 'fixed';
+        document.body.appendChild(textarea);
+        textarea.select();
+
+        try {
+          // Salin teks ke clipboard
+          const successful = document.execCommand('copy');
+          const msg = successful ? 'berhasil disalin!' : 'gagal disalin';
+
+          // Tampilkan notifikasi
+          const originalText = button.textContent;
+          button.textContent = 'Tersalin!';
+
+          // Kembalikan teks tombol setelah 2 detik
+          setTimeout(() => {
+            button.textContent = originalText;
+          }, 2000);
+        } catch (err) {
+          console.error('Gagal menyalin teks: ', err);
+        }
+        // Hapus textarea
+        document.body.removeChild(textarea);
+      }
+    </script>
+  </body>
+</html>

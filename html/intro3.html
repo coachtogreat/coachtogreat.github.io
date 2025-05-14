@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Intro3.html</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+      <h2 class="intro-title">Introduction to HTML</h2>
+
+      <h3 class="section-title">How does it work?</h3>
+      <p>
+        XHTML documents is processed by software and hardware deviced called parsers. The most
+        common parser are browsers, even though there are other types.
+      </p>
+      <p>
+        During the processing, the parser will watch for the ' &lt; ' which signifies the beginning
+        of a markup. The parser will then enter into dictionary mode and search it's database for
+        commands it recognizes. If the command following the ' &lt; ' is not recognized, it will be
+        considered as an error and will be ignored.
+      </p>
+
+      <p>
+        If the command is recognized, the parser will set a new mode for the content following the
+        command. The parser will then look for the ' &gt; ' which tells the parser to execute the
+        command received. If the command was recognized, the parser will execute it until it find
+        another ' &lt; ' sign and check if it is a new command or a closing command for the
+        currently executed one.
+      </p>
+      <p>
+        Since some browsers are so 'wise' , it often happens that the browser at a certain point
+        assume that the command is closed, even though there are no closing command. This is the
+        reason that when an XHTML document contains error and commands are not terminated carefully,
+        different browsers can produce different results for a single document.
+      </p>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='intro2.html'">Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          style="height: 40px; width: auto"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <button class="btn" onclick="window.location.href='intro4.html'">Next</button>
+      </div>
+    </div>
+
+    <script src="../script/copyCode.js"></script>
+    <script src="../script/script.js"></script>
+  </body>
+</html>

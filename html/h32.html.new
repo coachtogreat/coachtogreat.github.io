@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>h32.html</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Teks dan Paragraf</h2>
+
+      <p>
+        Tag heading HTML (<code>&lt;h1&gt;</code> sampai <code>&lt;h6&gt;</code>) digunakan
+        untuk mendefinisikan judul dan subjudul pada halaman web. Tag ini menciptakan struktur
+        hierarkis, dengan <code>&lt;h1&gt;</code> sebagai yang paling penting (judul utama) dan
+        <code>&lt;h6&gt;</code> sebagai yang paling tidak penting.
+      </p>
+
+      <h4>Tag Heading dalam Dokumen Ini:</h4>
+      <ul>
+        <li>
+          <code>&lt;h2 class="intro-title"&gt;</code> - Ini adalah heading sekunder (level 2),
+          digunakan untuk judul utama
+        </li>
+        <li>
+          <code>&lt;h3 class="section-title"&gt;</code> - Ini adalah heading tersier (level 3),
+          digunakan untuk judul bagian
+        </li>
+        <li>
+          <code>&lt;h4&gt;</code> - Ini adalah heading kuaterner (level 4), digunakan untuk
+          subbagian
+        </li>
+      </ul>
+
+      <h4>Poin Penting Tentang Heading HTML:</h4>
+      <ul>
+        <li>Mesin pencari menggunakan heading untuk mengindeks struktur dan konten halaman web</li>
+        <li>Pengguna sering kali melihat sekilas halaman berdasarkan heading-nya</li>
+        <li>
+          Gunakan heading secara berurutan (h1 → h2 → h3, dst.) untuk struktur dokumen yang benar
+        </li>
+        <li>
+          Jangan menggunakan heading hanya untuk membuat teks lebih besar atau tebal - gunakan CSS
+          untuk keperluan penataan gaya
+        </li>
+      </ul>
+
+      <p>
+        Dalam dokumen ini, Anda menggunakan tag heading dengan tepat untuk menciptakan hierarki
+        konten yang jelas, yang sangat baik untuk SEO dan aksesibilitas. Kelas-kelas
+        (<code>intro-title</code>, <code>section-title</code>) juga memungkinkan penataan gaya yang
+        konsisten melalui CSS.
+      </p>
+
+      <h3 class="section-title">Dasar-Dasar HTML</h3>
+      <p>
+        HTML (HyperText Markup Language) adalah bahasa markup standar untuk membuat halaman web.
+        Berikut adalah konsep dasar HTML:
+      </p>
+
+      <h4>1. Struktur Dasar HTML</h4>
+      <div class="code-block">
+        <div class="code-header">
+          <span>HTML</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Judul Halaman&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Ini adalah Heading&lt;/h1&gt;
+    &lt;p&gt;Ini adalah paragraf.&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+      </div>
+
+      <h4>2. Elemen Dasar HTML</h4>
+      <ul>
+        <li><code>&lt;!DOCTYPE html&gt;</code> - Mendeklarasikan tipe dokumen HTML5</li>
+        <li><code>&lt;html&gt;</code> - Elemen akar dari halaman HTML</li>
+        <li><code>&lt;head&gt;</code> - Berisi metadata/informasi dokumen</li>
+        <li><code>&lt;title&gt;</code> - Menentukan judul halaman (muncul di tab browser)</li>
+        <li><code>&lt;body&gt;</code> - Berisi konten yang ditampilkan di halaman web</li>
+      </ul>
+
+      <h4>3. Tag HTML Umum</h4>
+      <ul>
+        <li><code>&lt;h1&gt; sampai &lt;h6&gt;</code> - Heading/tingkat judul</li>
+        <li><code>&lt;p&gt;</code> - Paragraf teks</li>
+        <li><code>&lt;a href="url"&gt;Link&lt;/a&gt;</code> - Hyperlink</li>
+        <li><code>&lt;img src="gambar.jpg" alt="deskripsi"&gt;</code> - Gambar</li>
+        <li>
+          <code>&lt;ul&gt;</code> dan <code>&lt;ol&gt;</code> - Daftar tidak berurutan dan berurutan
+        </li>
+        <li><code>&lt;li&gt;</code> - Item dalam daftar</li>
+        <li><code>&lt;div&gt;</code> - Kontainer blok untuk elemen lainnya</li>
+        <li><code>&lt;span&gt;</code> - Kontainer inline untuk teks</li>
+      </ul>
+
+      <h4>4. Atribut Dasar</h4>
+      <ul>
+        <li><code>class="nama-kelas"</code> - Menentukan nama class untuk CSS/JavaScript</li>
+        <li><code>id="identifikasi"</code> - Menentukan ID unik untuk elemen</li>
+        <li><code>style="property:value;"</code> - CSS inline</li>
+        <li><code>src="url"</code> - Menentukan sumber (gambar, script, dll)</li>
+        <li><code>alt="teks"</code> - Teks alternatif untuk aksesibilitas</li>
+      </ul>
+
+      <h4>5. Komentar HTML</h4>
+      <div class="code-block">
+        <div class="code-header">
+          <span>HTML</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>&lt;!-- Ini adalah komentar HTML --&gt;
+&lt;!-- Komentar tidak akan ditampilkan di browser --&gt;</code></pre>
+      </div>
+
+      <h4>6. Atribut Dasar HTML</h4>
+      <ul>
+        <li>Semua elemen HTML dapat memiliki atribut</li>
+        <li>Atribut memberikan informasi tambahan tentang elemen</li>
+        <li>Atribut selalu ditulis di tag pembuka</li>
+        <li>Atribut biasanya dalam format name="value"</li>
+      </ul>
+
+      <h4>7. Karakter Khusus</h4>
+      <p>Beberapa karakter khusus di HTML:</p>
+      <ul>
+        <li><code>&amp;lt;</code> - &lt; (kurang dari)</li>
+        <li><code>&amp;gt;</code> - &gt; (lebih dari)</li>
+        <li><code>&amp;amp;</code> - &amp; (dan)</li>
+        <li><code>&amp;quot;</code> - " (tanda petik)</li>
+        <li><code>&amp;nbsp;</code> - Spasi tidak terputus</li>
+      </ul>
+
+      <p>
+        Dengan memahami dasar-dasar ini, Anda sudah siap untuk mulai membuat halaman web sederhana
+        menggunakan HTML.
+      </p>
+      
+      <br />
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='h22.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+        />
+        <button class="btn" onclick="window.location.href='h32.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+    <script src="../script.js"></script>
+  </body>
+</html>

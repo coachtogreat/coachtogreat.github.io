@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>intro4.html</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+      <h2 class="intro-title">Introduction to HTML</h2>
+
+      <h3 class="section-title">Structure and Logic</h3>
+
+      <p>
+        The structure of XHTML documents are simple. Any command that is issued, must be closed to
+        ensure correct execution. If commands are issued in sequence, then the last issued command
+        must be terminated first.
+      </p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>HTML</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>&lt;b&gt;this is bold
+&lt;i&gt;this is bold and italic&lt;/i&gt;
+this is bold again&lt;/b&gt;
+this is plain text
+</code></pre>
+      </div>
+
+      <p>
+        There are no if.. then.. else.. statements in XHTML, therefore it is not a programming
+        language. In fact, XHTML is a member of the SGML family. SGML stands for Standard
+        Generalized Markup Language, which was created by IBM for their electronic typewriter. Based
+        on this fact, we know that XHTML is a publishing language, with the main purpose of
+        controlling page layout.
+      </p>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='intro3.html'">Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          style="height: 40px; width: auto"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <button class="btn" onclick="window.location.href='h1.html'">Next</button>
+      </div>
+    </div>
+
+    <script src="../script/copyCode.js"></script>
+    <script src="../script/script.js"></script>
+  </body>
+</html>

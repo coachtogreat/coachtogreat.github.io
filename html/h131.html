@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Struktur File Website yang Baik - Panduan Lengkap</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <style>
+      h2.text-center {
+        text-align: center;
+        width: 100%;
+      }
+      
+      .biodata-demo {
+        background-color: #f8f9fa;
+        border-radius: 5px;
+        padding: 15px;
+        margin: 15px 0;
+        border-left: 4px solid #0d6efd;
+        overflow-x: auto;
+      }
+      .code-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #343a40;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 4px 4px 0 0;
+      }
+      .copy-btn {
+        background-color: #495057;
+        color: white !important;
+        border: none;
+        padding: 2px 8px;
+        border-radius: 3px;
+        cursor: pointer;
+      }
+      code {
+        display: block;
+        background-color: #f8f9fa;
+        padding: 15px;
+        overflow-x: auto;
+        font-family: 'Courier New', monospace;
+        font-size: 14px;
+      }
+      .file-structure {
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 5px;
+        padding: 15px;
+        margin: 15px 0;
+      }
+      .file-structure ul {
+        list-style-type: none;
+        padding-left: 20px;
+        margin: 0;
+      }
+      .file-structure li {
+        margin: 5px 0;
+        position: relative;
+      }
+      .file-structure li:before {
+        content: '📄';
+        margin-right: 8px;
+      }
+      .file-structure li.folder:before {
+        content: '📁';
+      }
+      .note {
+        background-color: #e7f5ff;
+        border-left: 4px solid #4dabf7;
+        padding: 15px;
+        margin: 15px 0;
+        border-radius: 0 5px 5px 0;
+      }
+      .warning {
+        background-color: #fff3bf;
+        border-left: 4px solid #ffd43b;
+        padding: 15px;
+        margin: 15px 0;
+        border-radius: 0 5px 5px 0;
+      }
+      .tip {
+        background-color: #ebfbee;
+        border-left: 4px solid #40c057;
+        padding: 15px;
+        margin: 15px 0;
+        border-radius: 0 5px 5px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="blog-container">
+      <header class="title-section">
+        <div class="title-content">
+          <a href="https://webiddesign.com" target="_blank" rel="noopener">
+            <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+          </a>
+        </div>
+      </header>
+
+      <main class="content-section">
+        <section class="article-content">
+          <h2 class="text-center">Struktur File Website yang Baik</h2>
+          <h3>Panduan Lengkap untuk Pengembangan Web Modern</h3>
+
+          <p>
+            Struktur file yang terorganisir dengan baik adalah fondasi dari setiap proyek pengembangan web yang sukses. 
+            Artikel ini akan membahas struktur file yang direkomendasikan untuk berbagai jenis proyek web, 
+            mulai dari website HTML statis hingga aplikasi web modern dengan Vue.js dan Next.js.
+          </p>
+
+          <h4>1. Struktur Dasar Website HTML</h4>
+          <p>
+            Berikut adalah struktur folder yang direkomendasikan untuk website HTML statis sederhana:
+          </p>
+          
+          <div class="file-structure">
+            <ul>
+              <li class="folder">website/
+                <ul>
+                  <li class="folder">assets/
+                    <ul>
+                      <li class="folder">css/
+                        <ul>
+                          <li>style.css</li>
+                          <li>reset.css</li>
+                        </ul>
+                      </li>
+                      <li class="folder">js/
+                        <ul>
+                          <li>main.js</li>
+                          <li>components/</li>
+                        </ul>
+                      </li>
+                      <li class="folder">images/</li>
+                      <li class="folder">fonts/</li>
+                    </ul>
+                  </li>
+                  <li class="folder">pages/
+                    <ul>
+                      <li>about.html</li>
+                      <li>contact.html</li>
+                      <li>blog/</li>
+                    </ul>
+                  </li>
+                  <li>index.html</li>
+                  <li>robots.txt</li>
+                  <li>sitemap.xml</li>
+                  <li>.htaccess</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+
+          <div class="note">
+            <strong>Keterangan:</strong>
+            <ul>
+              <li><strong>assets/</strong> - Menyimpan semua file aset seperti CSS, JavaScript, gambar, dan font</li>
+              <li><strong>pages/</strong> - Berisi halaman-halaman tambahan</li>
+              <li><strong>index.html</strong> - Halaman utama/beranda</li>
+              <li><strong>robots.txt</strong> - Memberi tahu mesin pencari halaman mana yang boleh diindeks</li>
+              <li><strong>sitemap.xml</strong> - Peta situs untuk mesin pencari</li>
+              <li><strong>.htaccess</strong> - Konfigurasi server (khusus Apache)</li>
+            </ul>
+          </div>
+
+          <h4>2. Struktur Project Web Modern</h4>
+          <p>Untuk proyek web modern, berikut struktur yang direkomendasikan:</p>
+          
+          <div class="file-structure">
+            <ul>
+              <li class="folder">project/
+                <ul>
+                  <li class="folder">public/
+                    <ul>
+                      <li>index.html</li>
+                      <li>favicon.ico</li>
+                      <li>robots.txt</li>
+                      <li>sitemap.xml</li>
+                      <li class="folder">images/</li>
+                    </ul>
+                  </li>
+                  <li class="folder">src/
+                    <ul>
+                      <li class="folder">assets/
+                        <ul>
+                          <li>styles/</li>
+                          <li>images/</li>
+                          <li>fonts/</li>
+                        </ul>
+                      </li>
+                      <li class="folder">components/
+                        <ul>
+                          <li>Header/</li>
+                          <li>Footer/</li>
+                          <li>common/</li>
+                        </ul>
+                      </li>
+                      <li class="folder">pages/
+                        <ul>
+                          <li>Home/</li>
+                          <li>About/</li>
+                          <li>Contact/</li>
+                        </ul>
+                      </li>
+                      <li class="folder">services/</li>
+                      <li class="folder">utils/</li>
+                      <li>App.jsx</li>
+                      <li>main.jsx</li>
+                      <li>routes.js</li>
+                    </ul>
+                  </li>
+                  <li>.gitignore</li>
+                  <li>package.json</li>
+                  <li>README.md</li>
+                  <li>webpack.config.js</li>
+                  <li>babel.config.js</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+
+          <div class="tip">
+            <strong>Tips Organisasi File:</strong>
+            <ul>
+              <li>Pisahkan file berdasarkan fitur/modul, bukan berdasarkan tipe file</li>
+              <li>Gunakan nama file yang deskriptif dan konsisten</li>
+              <li>Simpan konfigurasi di root project</li>
+              <li>Gunakan folder untuk mengelompokkan file yang berkaitan</li>
+              <li>Pertahankan struktur yang konsisten di seluruh proyek</li>
+            </ul>
+          </div>
+
+          <h4>3. Struktur Project Vue.js</h4>
+          <p>Berikut struktur folder yang direkomendasikan untuk proyek Vue.js:</p>
+          
+          <div class="file-structure">
+            <ul>
+              <li class="folder">vue-project/
+                <ul>
+                  <li class="folder">public/
+                    <ul>
+                      <li>index.html</li>
+                      <li>favicon.ico</li>
+                    </ul>
+                  </li>
+                  <li class="folder">src/
+                    <ul>
+                      <li class="folder">assets/
+                        <ul>
+                          <li>styles/</li>
+                          <li>images/</li>
+                        </ul>
+                      </li>
+                      <li class="folder">components/
+                        <ul>
+                          <li>common/</li>
+                          <li>layout/</li>
+                        </ul>
+                      </li>
+                      <li class="folder">composables/</li>
+                      <li class="folder">router/</li>
+                      <li class="folder">stores/</li>
+                      <li class="folder">views/
+                        <ul>
+                          <li>HomeView.vue</li>
+                          <li>AboutView.vue</li>
+                        </ul>
+                      </li>
+                      <li>App.vue</li>
+                      <li>main.js</li>
+                    </ul>
+                  </li>
+                  <li class="folder">tests/</li>
+                  <li>.editorconfig</li>
+                  <li>.eslintrc.js</li>
+                  <li>.gitignore</li>
+                  <li>package.json</li>
+                  <li>README.md</li>
+                  <li>vite.config.js</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+
+          <div class="note">
+            <strong>Keterangan Vue.js:</strong>
+            <ul>
+              <li><strong>public/</strong> - File-file statis yang tidak melalui proses build</li>
+              <li><strong>src/assets/</strong> - Aset yang diimpor ke komponen</li>
+              <li><strong>src/components/</strong> - Komponen yang dapat digunakan kembali</li>
+              <li><strong>src/views/</strong> - Komponen halaman yang sesuai dengan rute</li>
+              <li><strong>src/stores/</strong> - State management dengan Pinia</li>
+              <li><strong>src/router/</strong> - Konfigurasi routing</li>
+            </ul>
+          </div>
+
+          <h4>4. Struktur Project Next.js</h4>
+          <p>Berikut struktur folder yang direkomendasikan untuk proyek Next.js dengan App Router:</p>
+          
+          <div class="file-structure">
+            <ul>
+              <li class="folder">next-project/
+                <ul>
+                  <li class="folder">public/
+                    <ul>
+                      <li>favicon.ico</li>
+                      <li>robots.txt</li>
+                      <li class="folder">images/</li>
+                    </ul>
+                  </li>
+                  <li class="folder">src/
+                    <ul>
+                      <li class="folder">app/
+                        <ul>
+                          <li class="folder">(auth)/
+                            <ul>
+                              <li>login/</li>
+                              <li>register/</li>
+                            </ul>
+                          </li>
+                          <li class="folder">(dashboard)/
+                            <ul>
+                              <li>page.js</li>
+                              <li>layout.js</li>
+                            </ul>
+                          </li>
+                          <li class="folder">api/
+                            <ul>
+                              <li>users/</li>
+                              <li>posts/</li>
+                            </ul>
+                          </li>
+                          <li>globals.css</li>
+                          <li>layout.js</li>
+                          <li>page.js</li>
+                        </ul>
+                      </li>
+                      <li class="folder">components/
+                        <ul>
+                          <li>ui/</li>
+                          <li>layout/</li>
+                          <li>shared/</li>
+                        </ul>
+                      </li>
+                      <li class="folder">lib/
+                        <ul>
+                          <li>utils.js</li>
+                          <li>api.js</li>
+                        </ul>
+                      </li>
+                      <li class="folder">styles/
+                        <ul>
+                          <li>globals.css</li>
+                          <li>theme.js</li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="folder">.next/</li>
+                  <li>.eslintrc.json</li>
+                  <li>.gitignore</li>
+                  <li>next.config.js</li>
+                  <li>package.json</li>
+                  <li>postcss.config.js</li>
+                  <li>tailwind.config.js</li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+
+          <div class="warning">
+            <strong>Best Practices Next.js:</strong>
+            <ul>
+              <li>Gunakan App Router untuk routing</li>
+              <li>Manfaatkan Server Components untuk performa yang lebih baik</li>
+              <li>Gunakan folder <code>lib/</code> untuk kode utilitas</li>
+              <li>Simpan komponen UI yang dapat digunakan kembali di <code>components/ui/</code></li>
+              <li>Gunakan <code>public/</code> untuk aset statis</li>
+              <li>Manfaatkan fitur built-in seperti Image Optimization</li>
+            </ul>
+          </div>
+
+          <h4>5. Rekomendasi Umum untuk Semua Proyek</h4>
+          
+          <div class="tip">
+            <strong>Struktur Direktori yang Baik:</strong>
+            <ul>
+              <li><strong>Bersifat Prediktif</strong> - Mudah ditebak lokasi file-file tertentu</li>
+              <li><strong>Skalabel</strong> - Dapat menangani pertumbuhan proyek</li>
+              <li><strong>Modular</strong> - Komponen yang dapat digunakan kembali</li>
+              <li><strong>Dokumentasi</strong> - Termasuk README yang jelas</li>
+            </ul>
+          </div>
+
+          <div class="note">
+            <strong>File-file Penting yang Sering Dilupakan:</strong>
+            <ul>
+              <li><code>.gitignore</code> - Mengabaikan file yang tidak perlu di-version control</li>
+              <li><code>README.md</code> - Dokumentasi proyek</li>
+              <li><code>LICENSE</code> - Lisensi proyek</li>
+              <li><code>.env.example</code> - Contoh variabel lingkungan</li>
+              <li><code>CHANGELOG.md</code> - Catatan perubahan versi</li>
+            </ul>
+          </div>
+
+          <nav class="navigation-section" aria-label="Halaman navigasi">
+            <div class="nav-buttons">
+              <button
+                class="btn"
+                onclick="window.location.href='h124.html'"
+                title="Membuat layout website sederhana dengan elemen semantik"
+              >
+                &lt;&nbsp;Prev
+              </button>
+              <img
+                src="../assets/png/home.png"
+                alt="Home"
+                class="home-icon"
+                onclick="window.location.href='../index.html'"
+                title="Home"
+              />
+              <img
+                src="../assets/png/html5.png"
+                alt="HTML"
+                onclick="window.location.href='h1.html'"
+                title="Daftar Isi HTML"
+              />
+              <button
+                class="btn"
+                onclick="window.location.href='h132.html'"
+                title="Box Model"
+              >
+                Next&nbsp;&gt;
+              </button>
+            </div>
+          </nav>
+        </section>
+      </main>
+    </div>
+
+    <script>
+      function copyCode(button) {
+        const codeBlock = button.parentElement.nextElementSibling;
+        const code = codeBlock.textContent;
+
+        // Buat elemen textarea untuk menyalin teks
+        const textarea = document.createElement('textarea');
+        textarea.value = code;
+        textarea.style.position = 'fixed';
+        document.body.appendChild(textarea);
+        textarea.select();
+
+        try {
+          // Salin teks ke clipboard
+          const successful = document.execCommand('copy');
+          const msg = successful ? 'berhasil disalin!' : 'gagal disalin';
+
+          // Tampilkan notifikasi
+          const originalText = button.textContent;
+          button.textContent = 'Tersalin!';
+
+          // Kembalikan teks tombol setelah 2 detik
+          setTimeout(() => {
+            button.textContent = originalText;
+          }, 2000);
+        } catch (err) {
+          console.error('Gagal menyalin teks: ', err);
+        }
+        // Hapus textarea
+        document.body.removeChild(textarea);
+      }
+    </script>
+  </body>
+</html>

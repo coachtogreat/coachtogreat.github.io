@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>h12.html</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Pengenalan HTML</h2>
+
+      <h3 class="section-title">Struktur Dasar HTML</h3>
+      <p>
+        HTML (HyperText Markup Language) adalah bahasa markup standar untuk membuat halaman web.
+        Setiap dokumen HTML memiliki struktur dasar yang terdiri dari beberapa elemen penting yang
+        bekerja sama untuk menampilkan konten di browser. Memahami struktur ini sangat penting untuk
+        pengembangan web yang baik dan benar.
+      </p>
+      <p>Berikut adalah penjelasan mendalam tentang setiap bagian dari struktur dasar HTML:</p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>HTML</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="id"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Judul Halaman&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Halo, Dunia!&lt;/h1&gt;
+  &lt;p&gt;Ini adalah paragraf pertama.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+      </div>
+
+      <h3 class="section-title">Penjelasan Mendalam Setiap Elemen</h3>
+      <h3 class="code-highlight">&lt;!DOCTYPE html&gt;</h3>
+      <ul>
+        <li><strong>Deklarasi Tipe Dokumen</strong> yang harus ada di setiap halaman HTML.</li>
+        <li>Memberi tahu browser bahwa dokumen ini menggunakan standar HTML5.</li>
+        <li>Bukan sebuah tag HTML, melainkan instruksi untuk browser.</li>
+        <li>Harus diletakkan di baris pertama dokumen, sebelum tag &lt;html&gt;.</li>
+        <li>
+          Tidak peka huruf besar/kecil, tetapi penulisan
+          <code>&lt;!DOCTYPE html&gt;</code> direkomendasikan.
+        </li>
+      </ul>
+
+      <h3 class="code-highlight">&lt;html lang="id"&gt; ... &lt;/html&gt;</h3>
+      <ul>
+        <li>Elemen root yang membungkus seluruh konten halaman HTML.</li>
+        <li>
+          Atribut <code>lang="id"</code> penting untuk:
+          <ul>
+            <li>Pembaca layar (screen readers)</li>
+            <li>Mesin pencari (SEO)</li>
+            <li>Koreksi ejaan otomatis</li>
+            <li>Terjemahan otomatis</li>
+          </ul>
+        </li>
+        <li>Selalu tutup dengan tag <code>&lt;/html&gt;</code> di akhir dokumen.</li>
+      </ul>
+
+      <h3 class="code-highlight">&lt;head&gt;...&lt;/head&gt;</h3>
+      <ul>
+        <li>Kontainer untuk metadata (data tentang data) yang tidak ditampilkan di halaman web.</li>
+        <li>Berisi informasi penting untuk browser dan mesin pencari.</li>
+        <li>Elemen-elemen yang umumnya ada di dalam &lt;head&gt;:</li>
+      </ul>
+
+      <h4 class="code-highlight">&lt;meta charset="UTF-8"&gt;</h4>
+      <ul>
+        <li>Mendefinisikan set karakter yang digunakan dalam dokumen.</li>
+        <li>UTF-8 mencakup hampir semua karakter dan simbol dari seluruh dunia.</li>
+        <li>Mencegah masalah dengan karakter khusus seperti é, ñ, 漢字, dll.</li>
+        <li>Harus diletakkan dalam 1024 byte pertama dokumen.</li>
+      </ul>
+
+      <h4 class="code-highlight">
+        &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+      </h4>
+      <ul>
+        <li>Mengontrol tampilan halaman di perangkat mobile.</li>
+        <li>
+          <code>width=device-width</code>: Menyesuaikan lebar halaman dengan lebar layar perangkat.
+        </li>
+        <li>
+          <code>initial-scale=1.0</code>: Menetapkan level zoom awal saat halaman pertama kali
+          dimuat.
+        </li>
+        <li>
+          Parameter tambahan yang berguna:
+          <ul>
+            <li><code>maximum-scale=1.0</code>: Mencegah zoom</li>
+            <li><code>user-scalable=no</code>: Menonaktifkan zoom manual</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h4 class="code-highlight">&lt;title&gt;Judul Halaman&lt;/title&gt;</h4>
+      <ul>
+        <li>Menentukan judul yang ditampilkan di tab browser dan hasil pencarian.</li>
+        <li>Penting untuk SEO (Search Engine Optimization).</li>
+        <li>Idealnya antara 50-60 karakter.</li>
+        <li>Harus deskriptif dan relevan dengan konten halaman.</li>
+      </ul>
+
+      <h3 class="code-highlight">&lt;body&gt;...&lt;/body&gt;</h3>
+      <ul>
+        <li>Berisi semua konten yang akan ditampilkan kepada pengguna.</li>
+        <li>
+          Elemen dasar yang umum digunakan di dalam &lt;body&gt;:
+          <ul>
+            <li><code>&lt;header&gt;</code>: Bagian kepala halaman</li>
+            <li><code>&lt;nav&gt;</code>: Navigasi</li>
+            <li><code>&lt;main&gt;</code>: Konten utama</li>
+            <li><code>&lt;section&gt;</code>: Bagian dari halaman</li>
+            <li><code>&lt;article&gt;</code>: Konten mandiri</li>
+            <li><code>&lt;footer&gt;</code>: Bagian kaki halaman</li>
+          </ul>
+        </li>
+        <li>Hanya boleh ada satu elemen &lt;body&gt; dalam satu dokumen HTML.</li>
+      </ul>
+
+      <p>Contoh isi:</p>
+
+      <ul>
+        <li>
+          <span class="code-highlight">&lt;h1&gt;</span> sampai
+          <span class="code-highlight">&lt;h6&gt;</span>: heading (judul), di mana
+          <span class="code-highlight">&lt;h1&gt;</span> adalah yang paling penting.
+        </li>
+        <li><span class="code-highlight">&lt;p&gt;</span>: paragraf teks.</li>
+        <li><span class="code-highlight">&lt;a&gt;</span>: tautan (link).</li>
+        <li><span class="code-highlight">&lt;img&gt;</span>: gambar.</li>
+        <li>
+          <span class="code-highlight">&lt;div&gt;</span> dan
+          <span class="code-highlight">&lt;span&gt;</span>: elemen pembungkus (container), digunakan
+          untuk struktur dan styling.
+        </li>
+      </ul>
+
+      <h3 class="section-title">Ilustrasi Struktur Hirarki</h3>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>HTML</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>
+            <span class="red-text">HTML</span>
+            ├── head
+            │   ├── meta
+            │   ├── title
+            ├── <span class="red-text">body</span>
+                ├── <span class="red-text">h1</span>
+                ├── <span class="red-text">p</span>
+                ├── ...
+            ;
+</code></pre>
+      </div>
+
+      <h3 class="section-title">Catatan Penting</h3>
+
+      <ul>
+        <li>
+          HTML bersifat <strong>hierarkis (bertingkat)</strong>, sehingga
+          <strong>indentasi (spasi) </strong>penting untuk keterbacaan, meskipun tidak wajib.
+        </li>
+        <li>
+          HTML bersifat <strong>case-insensitive</strong>, tapi konvensi umum menulis tag dalam
+          huruf kecil.
+        </li>
+      </ul>
+
+      <br />
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='h11.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/html5.png"
+          alt="HTML"
+          onclick="window.location.href='h1.html'"
+          title="HTML"
+        />
+        <button class="btn" onclick="window.location.href='h13.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+
+    <script src="../script/copyCode.js"></script>
+    <script src="../script/script.js"></script>
+  </body>
+</html>

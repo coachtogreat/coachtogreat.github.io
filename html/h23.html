@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>h23.html</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Struktur Dasar HTML</h2>
+
+      <h3 class="section-title">Komentar dalam HTML?</h3>
+      <p>
+        <strong>Komentar HTML</strong> adalah bagian dari kode HTML yang tidak akan ditampilkan di
+        browser. Komentar digunakan untuk memberikan catatan, penjelasan, atau petunjuk dalam kode,
+        baik untuk diri sendiri maupun untuk developer lain.
+      </p>
+
+      <h3 class="section-title">Sintaks Komentar dalam HTML</h3>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>HTML</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>&lt;!-- Ini adalah komentar --&gt;
+        </code></pre>
+      </div>
+
+      <p>Ciri-ciri:</p>
+
+      <ul>
+        <li>Dimmulai dengan &lt!--</li>
+        <li>Diakhir dengan --&gt;</li>
+        <li>
+          Semua teks diantaranya <strong>tidak akan diproses</strong> atau ditampilkan di browser
+        </li>
+      </ul>
+
+      <h3 class="section-title">Contoh Penggunaan Komentar</h3>
+      <p>Contoh sederhana:</p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>HTML</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>&lt;!-- Ini adalah bagian header --&gt;
+            &lt;header&gt;
+              &lt;h1&gt;Selamat Datang&lt;/h1&gt;
+            &lt;/header&gt;                
+        </code></pre>
+      </div>
+      <br />
+
+      <p>Menonaktifkan HTML</p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>HTML</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>&lt;!-- <p>Paragraf ini tidak akan tampil di browser</p> --&gt;               
+        </code></pre>
+      </div>
+
+      <h3 class="section-title">Kapan komentar digunakan?</h3>
+      <div class="table-container">
+        <table class="attribute-table">
+          <thead>
+            <tr>
+              <th>Kebutuhan</th>
+              <th>Contoh</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Menjelaskan bagian kode</td>
+              <td><code>&lt;!-- Navigasi utama website --&gt;</code></td>
+            </tr>
+            <tr>
+              <td>Memberi catatan TODO</td>
+              <td><code>&lt;!-- TODO: Tambahkan login form --&gt;</code></td>
+            </tr>
+            <tr>
+              <td>Menonaktifkan sementara kode</td>
+              <td><code>&lt;!-- &lt;script src="app.js"&gt;&lt;/script&gt; --&gt;</code></td>
+            </tr>
+            <tr>
+              <td>Menjelaskan struktur kompleks</td>
+              <td><code>&lt;!-- Grid layout dimulai di sini --&gt;</code></td>
+            </tr>
+            <tr>
+              <td>Kolaborasi (komentar internal)</td>
+              <td><code>&lt;!-- Dikerjakan oleh tim frontend pada 2025 --&gt;</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="section-title">Hal yang perlu dihindari</h3>
+
+      <h3 class="left">
+        ⚠️ Jangan gunakan <strong><span class="code-highlight">--</span></strong> di dalam komentar.
+      </h3>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>HTML</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>&lt;!-- Salah: Jangan lakukan ini -- karena bisa error --&gt;
+        </code></pre>
+      </div>
+
+      <p>
+        HTML tidak mengizinkan penggunaan <span class="code-highlight">--</span> di dalam isi
+        komentar.
+      </p>
+      <br />
+
+      <h3 class="left">⚠️ Jangan tempatkan komentar di dalam tag HTML:</h3>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>HTML</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>&lt;!-- Salah --&gt;
+            &lt;p <span style="color: #e62020;">&lt;!-- komentar --&gt; </span> &gt;Teks&lt;/p&gt;
+            
+        </code></pre>
+      </div>
+
+      <p>Komentar tidak boleh memecah struktur tag.</p>
+
+      <h3 class="section-title">Tips Profesional:</h3>
+
+      <p>✅ Gunakan komentar untuk:</p>
+
+      <ul>
+        <li>Strukutr kode kompleks</li>
+        <li>Dokumentasi internal</li>
+        <li>Menjaga kolaborasi tim tetap jelas</li>
+      </ul>
+      <br />
+
+      <p>❌ Jangan gunakan komentar untuk:</p>
+
+      <ul>
+        <li>Menyembunyikan data sensiti</li>
+        <li>Dokumentasi panjang yang lebih cocok di file <strong>README</strong></li>
+      </ul>
+
+      <br />
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='h21.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/html5.png"
+          alt="HTML"
+          onclick="window.location.href='h1.html'"
+          title="HTML"
+        />
+        <button class="btn" onclick="window.location.href='h31.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+
+    <script src="../script/copyCode.js"></script>
+    <script src="../script/script.js"></script>
+  </body>
+</html>

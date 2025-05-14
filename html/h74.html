@@ -1,0 +1,695 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tombol Submit & Reset - Formulir HTML</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <style>
+      .form-demo {
+        background-color: #f8f9fa;
+        border-radius: 5px;
+        padding: 15px;
+        margin: 15px 0;
+        border-left: 4px solid #0d6efd;
+        overflow-x: auto;
+      }
+      .form-container {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: white;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      }
+      .form-group {
+        margin-bottom: 25px;
+        padding: 20px;
+        border: 1px solid #e9ecef;
+        border-radius: 5px;
+        background-color: #fff;
+      }
+      label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+        color: #212529;
+      }
+      input, select, textarea, button {
+        padding: 10px 12px;
+        margin: 5px 0 15px;
+        border: 1px solid #ced4da;
+        border-radius: 4px;
+        box-sizing: border-box;
+        font-size: 16px;
+        transition: all 0.15s ease-in-out;
+      }
+      button, input[type="submit"], input[type="reset"] {
+        background-color: #0d6efd;
+        color: white;
+        border: none;
+        cursor: pointer;
+        padding: 10px 20px;
+        margin-right: 10px;
+        border-radius: 4px;
+        font-weight: 500;
+      }
+      button:hover, input[type="submit"]:hover, input[type="reset"]:hover {
+        background-color: #0b5ed7;
+        transform: translateY(-1px);
+      }
+      button:active, input[type="submit"]:active, input[type="reset"]:active {
+        transform: translateY(0);
+      }
+      .btn-group {
+        display: flex;
+        gap: 10px;
+        margin: 20px 0;
+        flex-wrap: wrap;
+      }
+      .btn-secondary {
+        background-color: #6c757d;
+      }
+      .btn-danger {
+        background-color: #dc3545;
+      }
+      .btn-success {
+        background-color: #198754;
+      }
+      .btn-warning {
+        background-color: #ffc107;
+        color: #000;
+      }
+      .btn-outline-primary {
+        background-color: transparent;
+        color: #0d6efd;
+        border: 1px solid #0d6efd;
+      }
+      .btn-outline-primary:hover {
+        background-color: #0d6efd;
+        color: white;
+      }
+      .btn-block {
+        display: block;
+        width: 100%;
+        text-align: center;
+      }
+      .btn-icon {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+      }
+      .nav-buttons {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 20px 0;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      .nav-buttons .btn {
+        padding: 8px 16px;
+        font-size: 15px;
+        min-width: 120px;
+        text-align: center;
+        flex: 1 1 auto;
+      }
+      .nav-buttons .home-icon,
+      .nav-buttons img[alt="HTML"] {
+        width: 40px;
+        height: 40px;
+        padding: 8px;
+        cursor: pointer;
+        transition: transform 0.2s;
+      }
+      .nav-buttons .home-icon:hover,
+      .nav-buttons img[alt="HTML"]:hover {
+        transform: scale(1.1);
+      }
+      .code-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #343a40;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 4px 4px 0 0;
+      }
+      .copy-btn {
+        background-color: #495057;
+        color: white;
+        border: none;
+        padding: 2px 8px;
+        border-radius: 3px;
+        cursor: pointer;
+        font-size: 14px;
+      }
+      .copy-btn:hover {
+        background-color: #ffd43b;
+        color: #212529;
+      }
+      pre {
+        margin: 0;
+        padding: 0;
+      }
+      code {
+        display: block;
+        background-color: #f8f9fa;
+        padding: 15px;
+        border-radius: 0 0 4px 4px;
+        overflow-x: auto;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 14px;
+        line-height: 1.5;
+      }
+      .note {
+        background-color: #e7f5ff;
+        border-left: 4px solid #0d6efd;
+        padding: 12px 15px;
+        margin: 15px 0;
+        border-radius: 0 4px 4px 0;
+      }
+      .warning {
+        background-color: #fff3bf;
+        border-left: 4px solid #ffd43b;
+        padding: 12px 15px;
+        margin: 15px 0;
+        border-radius: 0 4px 4px 0;
+      }
+      .attribute-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+      }
+      .attribute-table th, .attribute-table td {
+        border: 1px solid #dee2e6;
+        padding: 10px;
+        text-align: left;
+      }
+      .attribute-table th {
+        background-color: #f8f9fa;
+      }
+      .attribute-table tr:nth-child(even) {
+        background-color: #f8f9fa;
+      }
+      .input-example {
+        margin: 15px 0;
+        padding: 15px;
+        border: 1px solid #e9ecef;
+        border-radius: 5px;
+        background-color: #f8f9fa;
+      }
+      .input-preview {
+        background-color: white;
+        padding: 20px;
+        border: 1px solid #dee2e6;
+        border-radius: 4px;
+        margin: 15px 0;
+      }
+      .form-preview {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      }
+      .form-group {
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="blog-container">
+      <header class="title-section">
+        <div class="title-content">
+          <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+            <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+          </a>
+        </div>
+      </header>
+
+      <main class="content-section">
+        <section class="article-content">
+          <h2 class="intro-title">Tombol Submit & Reset</h2>
+          <h3 class="section-title">Mengontrol Pengiriman dan Pengaturan Ulang Formulir</h3>
+          
+          <p>
+            Halaman ini akan membahas secara mendalam tentang tombol submit dan reset dalam formulir HTML, 
+            termasuk berbagai cara menggunakannya, memodifikasi perilakunya, dan praktik terbaik 
+            dalam pengembangan web modern.
+          </p>
+
+          <!-- Submit Button Section -->
+          <div class="form-group">
+            <h4>1. Tombol Submit (<code>&lt;input type="submit"&gt;</code> atau <code>&lt;button type="submit"&gt;</code>)</h4>
+            <p>Tombol untuk mengirim data formulir ke server.</p>
+            
+            <div class="input-example">
+              <h5>Contoh Dasar Tombol Submit:</h5>
+              <div class="input-preview">
+                <form id="form1" onsubmit="alert('Form berhasil dikirim!'); return false;">
+                  <div class="form-group">
+                    <label for="nama">Nama:</label>
+                    <input type="text" id="nama" name="nama" required>
+                  </div>
+                  <div class="btn-group">
+                    <input type="submit" value="Kirim Formulir">
+                    <button type="submit">Kirim dengan Button</button>
+                  </div>
+                </form>
+              </div>
+              
+              <div class="form-demo">
+                <div class="code-header">
+                  <span>HTML</span>
+                  <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+                </div>
+                <pre><code>&lt;!-- Menggunakan input --&gt;
+&lt;input type="submit" value="Kirim Formulir"&gt;
+
+&lt;!-- Atau menggunakan button --&gt;
+&lt;button type="submit"&gt;Kirim dengan Button&lt;/button&gt;</code></pre>
+              </div>
+              
+              <h5>Atribut Penting Tombol Submit:</h5>
+              <table class="attribute-table">
+                <tr>
+                  <th>Atribut</th>
+                  <th>Deskripsi</th>
+                  <th>Contoh</th>
+                </tr>
+                <tr>
+                  <td><code>type</code></td>
+                  <td>Harus diisi dengan "submit"</td>
+                  <td><code>type="submit"</code></td>
+                </tr>
+                <tr>
+                  <td><code>value</code></td>
+                  <td>Teks yang ditampilkan pada tombol</td>
+                  <td><code>value="Kirim"</code></td>
+                </tr>
+                <tr>
+                  <td><code>form</code></td>
+                  <td>ID formulir yang terkait (jika di luar form)</td>
+                  <td><code>form="form1"</code></td>
+                </tr>
+                <tr>
+                  <td><code>formaction</code></td>
+                  <td>Mengganti URL pengiriman form</td>
+                  <td><code>formaction="/proses"</code></td>
+                </tr>
+                <tr>
+                  <td><code>formmethod</code></td>
+                  <td>Metode HTTP (get/post/put/delete)</td>
+                  <td><code>formmethod="post"</code></td>
+                </tr>
+                <tr>
+                  <td><code>formtarget</code></td>
+                  <td>Dimana menampilkan respon</td>
+                  <td><code>formtarget="_blank"</code></td>
+                </tr>
+                <tr>
+                  <td><code>disabled</code></td>
+                  <td>Menonaktifkan tombol</td>
+                  <td><code>disabled</code></td>
+                </tr>
+              </table>
+              
+              <h5>Contoh Lanjutan Tombol Submit:</h5>
+              <div class="input-preview">
+                <form id="form2" onsubmit="alert('Form berhasil dikirim!'); return false;">
+                  <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                  </div>
+                  <div class="btn-group">
+                    <button type="submit" class="btn-icon">
+                      <span>Kirim Sekarang</span>
+                      <span>→</span>
+                    </button>
+                    <button type="submit" class="btn-outline-primary">
+                      Simpan Sebagai Draft
+                    </button>
+                    <button type="submit" class="btn-block">
+                      Daftar Sekarang
+                    </button>
+                  </div>
+                </form>
+              </div>
+              
+              <div class="form-demo">
+                <div class="code-header">
+                  <span>HTML</span>
+                  <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+                </div>
+                <pre><code>&lt;!-- Tombol dengan ikon --&gt;
+&lt;button type="submit" class="btn-icon"&gt;
+  &lt;span&gt;Kirim Sekarang&lt;/span&gt;
+  &lt;span&gt;→&lt;/span&gt;
+&lt;/button&gt;
+
+&lt;!-- Tombol outline --&gt;
+&lt;button type="submit" class="btn-outline-primary"&gt;
+  Simpan Sebagai Draft
+&lt;/button&gt;
+
+&lt;!-- Tombol lebar penuh --&gt;
+&lt;button type="submit" class="btn-block"&gt;
+  Daftar Sekarang
+&lt;/button&gt;</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <!-- Reset Button Section -->
+          <div class="form-group">
+            <h4>2. Tombol Reset (<code>&lt;input type="reset"&gt;</code> atau <code>&lt;button type="reset"&gt;</code>)</h4>
+            <p>Tombol untuk mengembalikan nilai form ke nilai default.</p>
+            
+            <div class="input-example">
+              <h5>Contoh Dasar Tombol Reset:</h5>
+              <div class="input-preview">
+                <form id="form3" onsubmit="alert('Form berhasil dikirim!'); return false;">
+                  <div class="form-group">
+                    <label for="kota">Kota Asal:</label>
+                    <input type="text" id="kota" name="kota" value="Jakarta">
+                  </div>
+                  <div class="form-group">
+                    <label for="negara">Negara:</label>
+                    <select id="negara" name="negara">
+                      <option value="id">Indonesia</option>
+                      <option value="my">Malaysia</option>
+                      <option value="sg">Singapura</option>
+                    </select>
+                  </div>
+                  <div class="btn-group">
+                    <input type="submit" value="Kirim">
+                    <input type="reset" value="Reset Form">
+                  </div>
+                </form>
+              </div>
+              
+              <div class="form-demo">
+                <div class="code-header">
+                  <span>HTML</span>
+                  <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+                </div>
+                <pre><code>&lt;form id="form3"&gt;
+  &lt;div class="form-group"&gt;
+    &lt;label for="kota"&gt;Kota Asal:&lt;/label&gt;
+    &lt;input type="text" id="kota" name="kota" value="Jakarta"&gt;
+  &lt;/div&gt;
+  &lt;div class="form-group"&gt;
+    &lt;label for="negara"&gt;Negara:&lt;/label&gt;
+    &lt;select id="negara" name="negara"&gt;
+      &lt;option value="id"&gt;Indonesia&lt;/option&gt;
+      &lt;option value="my"&gt;Malaysia&lt;/option&gt;
+      &lt;option value="sg"&gt;Singapura&lt;/option&gt;
+    &lt;/select&gt;
+  &lt;/div&gt;
+  &lt;div class="btn-group"&gt;
+    &lt;input type="submit" value="Kirim"&gt;
+    &lt;input type="reset" value="Reset Form"&gt;
+  &lt;/div&gt;
+&lt;/form&gt;</code></pre>
+              </div>
+              
+              <div class="warning">
+                <strong>Perhatian:</strong> Tombol reset akan mengembalikan semua nilai form ke nilai default,
+                yang bisa membuat pengguna kehilangan data yang sudah diisi. Gunakan dengan hati-hati dan 
+                pertimbangkan untuk menggunakan konfirmasi JavaScript sebelum mengosongkan form.
+              </div>
+              
+              <h5>Contoh dengan Konfirmasi Reset:</h5>
+              <div class="input-preview">
+                <form id="form4" onsubmit="alert('Form berhasil dikirim!'); return false;">
+                  <div class="form-group">
+                    <label for="komentar">Komentar:</label>
+                    <textarea id="komentar" name="komentar" rows="3">Coba ubah teks ini lalu klik Reset</textarea>
+                  </div>
+                  <div class="btn-group">
+                    <button type="submit">Kirim Komentar</button>
+                    <button type="button" onclick="if(confirm('Yakin ingin mengosongkan form?')) this.form.reset();">
+                      Reset dengan Konfirmasi
+                    </button>
+                  </div>
+                </form>
+              </div>
+              
+              <div class="form-demo">
+                <div class="code-header">
+                  <span>HTML & JavaScript</span>
+                  <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+                </div>
+                <pre><code>&lt;form id="form4"&gt;
+  &lt;div class="form-group"&gt;
+    &lt;label for="komentar"&gt;Komentar:&lt;/label&gt;
+    &lt;textarea id="komentar" name="komentar" rows="3"&gt;Coba ubah teks ini lalu klik Reset&lt;/textarea&gt;
+  &lt;/div&gt;
+  &lt;div class="btn-group"&gt;
+    &lt;button type="submit"&gt;Kirim Komentar&lt;/button&gt;
+    &lt;button type="button" onclick="if(confirm('Yakin ingin mengosongkan form?')) this.form.reset();"&gt;
+      Reset dengan Konfirmasi
+    &lt;/button&gt;
+  &lt;/div&gt;
+&lt;/form&gt;</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <!-- Button Styling Section -->
+          <div class="form-group">
+            <h4>3. Gaya dan Tata Letak Tombol</h4>
+            <p>Berbagai gaya dan tata letak untuk tombol formulir yang menarik.</p>
+            
+            <div class="input-example">
+              <h5>Berbagai Gaya Tombol:</h5>
+              <div class="input-preview">
+                <div class="btn-group">
+                  <button type="button" class="btn">Primary</button>
+                  <button type="button" class="btn btn-secondary">Secondary</button>
+                  <button type="button" class="btn btn-success">Success</button>
+                  <button type="button" class="btn btn-danger">Danger</button>
+                  <button type="button" class="btn btn-warning">Warning</button>
+                </div>
+                
+                <h5>Tombol dengan Ikon:</h5>
+                <div class="btn-group">
+                  <button type="button" class="btn">
+                    <span>Simpan</span>
+                    <span>💾</span>
+                  </button>
+                  <button type="button" class="btn btn-secondary">
+                    <span>🔍</span>
+                    <span>Cari</span>
+                  </button>
+                </div>
+                
+                <h5>Tombol dengan Status Loading:</h5>
+                <button type="button" class="btn" id="loadingBtn" onclick="this.classList.toggle('loading')">
+                  <span class="btn-text">Kirim Pesan</span>
+                  <span class="spinner">⏳</span>
+                </button>
+                
+                <style>
+                  .loading .btn-text { display: none; }
+                  .spinner { display: none; }
+                  .loading .spinner { display: inline-block; animation: spin 1s linear infinite; }
+                  @keyframes spin { 100% { transform: rotate(360deg); } }
+                </style>
+              </div>
+              
+              <div class="form-demo">
+                <div class="code-header">
+                  <span>HTML & CSS</span>
+                  <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+                </div>
+                <pre><code>&lt;!-- Tombol dengan berbagai gaya --&gt;
+&lt;button type="button" class="btn"&gt;Primary&lt;/button&gt;
+&lt;button type="button" class="btn btn-secondary"&gt;Secondary&lt;/button&gt;
+&lt;button type="button" class="btn btn-success"&gt;Success&lt;/button&gt;
+&lt;button type="button" class="btn btn-danger"&gt;Danger&lt;/button&gt;
+&lt;button type="button" class="btn btn-warning"&gt;Warning&lt;/button&gt;
+
+&lt;!-- Tombol dengan ikon --&gt;
+&lt;button type="button" class="btn"&gt;
+  &lt;span&gt;Simpan&lt;/span&gt;
+  &lt;span&gt;💾&lt;/span&gt;
+&lt;/button&gt;
+
+&lt;!-- Tombol dengan status loading --&gt;
+&lt;button type="button" class="btn" id="loadingBtn" onclick="this.classList.toggle('loading')"&gt;
+  &lt;span class="btn-text"&gt;Kirim Pesan&lt;/span&gt;
+  &lt;span class="spinner"&gt;⏳&lt;/span&gt;
+&lt;/button&gt;
+
+&lt;style&gt;
+  .loading .btn-text { display: none; }
+  .spinner { display: none; }
+  .loading .spinner { display: inline-block; animation: spin 1s linear infinite; }
+  @keyframes spin { 100% { transform: rotate(360deg); } }
+&lt;/style&gt;</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <!-- Form Validation Section -->
+          <div class="form-group">
+            <h4>4. Validasi Form Sebelum Submit</h4>
+            <p>Menggunakan JavaScript untuk memvalidasi form sebelum dikirim.</p>
+            
+            <div class="input-example">
+              <h5>Contoh Validasi Form:</h5>
+              <div class="input-preview">
+                <form id="validasiForm" onsubmit="return validasiForm()">
+                  <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" required minlength="3">
+                    <small>Minimal 3 karakter</small>
+                  </div>
+                  <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required minlength="6">
+                    <small>Minimal 6 karakter</small>
+                  </div>
+                  <div class="form-group">
+                    <label for="konfirmasi">Konfirmasi Password:</label>
+                    <input type="password" id="konfirmasi" name="konfirmasi" required>
+                  </div>
+                  <div class="btn-group">
+                    <button type="submit">Daftar</button>
+                    <button type="reset">Reset</button>
+                  </div>
+                </form>
+                
+                <script>
+                function validasiForm() {
+                  const username = document.getElementById('username').value;
+                  const password = document.getElementById('password').value;
+                  const konfirmasi = document.getElementById('konfirmasi').value;
+                  
+                  if (username.length < 3) {
+                    alert('Username minimal 3 karakter');
+                    return false;
+                  }
+                  
+                  if (password.length < 6) {
+                    alert('Password minimal 6 karakter');
+                    return false;
+                  }
+                  
+                  if (password !== konfirmasi) {
+                    alert('Konfirmasi password tidak cocok');
+                    return false;
+                  }
+                  
+                  alert('Pendaftaran berhasil!');
+                  return false; // Hanya untuk contoh, hapus return false di produksi
+                }
+                </script>
+              </div>
+              
+              <div class="form-demo">
+                <div class="code-header">
+                  <span>HTML & JavaScript</span>
+                  <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+                </div>
+                <pre><code>&lt;form id="validasiForm" onsubmit="return validasiForm()"&gt;
+  &lt;div class="form-group"&gt;
+    &lt;label for="username"&gt;Username:&lt;/label&gt;
+    &lt;input type="text" id="username" name="username" required minlength="3"&gt;
+    &lt;small&gt;Minimal 3 karakter&lt;/small&gt;
+  &lt;/div&gt;
+  &lt;div class="form-group"&gt;
+    &lt;label for="password"&gt;Password:&lt;/label&gt;
+    &lt;input type="password" id="password" name="password" required minlength="6"&gt;
+    &lt;small&gt;Minimal 6 karakter&lt;/small&gt;
+  &lt;/div&gt;
+  &lt;div class="form-group"&gt;
+    &lt;label for="konfirmasi"&gt;Konfirmasi Password:&lt;/label&gt;
+    &lt;input type="password" id="konfirmasi" name="konfirmasi" required&gt;
+  &lt;/div&gt;
+  &lt;div class="btn-group"&gt;
+    &lt;button type="submit"&gt;Daftar&lt;/button&gt;
+    &lt;button type="reset"&gt;Reset&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/form&gt;
+
+&lt;script&gt;
+function validasiForm() {
+  const username = document.getElementById('username').value;
+  const password = document.getElementById('password').value;
+  const konfirmasi = document.getElementById('konfirmasi').value;
+  
+  if (username.length < 3) {
+    alert('Username minimal 3 karakter');
+    return false;
+  }
+  
+  if (password.length < 6) {
+    alert('Password minimal 6 karakter');
+    return false;
+  }
+  
+  if (password !== konfirmasi) {
+    alert('Konfirmasi password tidak cocok');
+    return false;
+  }
+  
+  alert('Pendaftaran berhasil!');
+  return false; // Hanya untuk contoh, hapus return false di produksi
+}
+&lt;/script&gt;</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <div class="note">
+            <h4>Praktik Terbaik Penggunaan Tombol Formulir</h4>
+            <ul>
+              <li>Gunakan teks yang jelas dan deskriptif pada tombol</li>
+              <li>Hindari menggunakan "Klik di sini" - jelaskan apa yang akan terjadi</li>
+              <li>Buat tombol submit lebih menonjol dari tombol lainnya</li>
+              <li>Berikan umpan balik visual saat tombol ditekan</li>
+              <li>Nonaktifkan tombol submit setelah diklik untuk mencegah pengiriman ganda</li>
+              <li>Gunakan ikon yang sesuai untuk meningkatkan kejelasan</li>
+              <li>Pastikan tombol cukup besar untuk mudah ditekan di perangkat layar sentuh</li>
+              <li>Berikan cukup ruang di sekitar tombol untuk menghindari kesalahan ketuk</li>
+              <li>Gunakan warna yang sesuai dengan maknanya (hijau untuk konfirmasi, merah untuk peringatan, dll)</li>
+              <li>Uji tombol di berbagai perangkat dan ukuran layar</li>
+            </ul>
+          </div>
+        </section>
+
+        <br />
+        <nav class="navigation-section" aria-label="Halaman navigasi">
+          <div class="nav-buttons">
+            <button class="btn" onclick="window.location.href='h73.html'" title="Textarea & Select Dropdown">
+              &lt;&nbsp;Prev
+            </button>
+            <img
+              src="../assets/png/home.png"
+              alt="Home"
+              class="home-icon"
+              onclick="window.location.href='../index.html'"
+              title="Home"
+            />
+            <img
+              src="../assets/png/html5.png"
+              alt="HTML"
+              onclick="window.location.href='h1.html'"
+              title="Daftar Isi HTML"
+            />
+            <button class="btn" onclick="window.location.href='h75.html'" title="Atribut Form Lanjutan">
+              Next&nbsp;&gt;
+            </button>
+          </div>
+        </nav>
+      </main>
+    </div>
+
+    <script src="../script/copyCode.js"></script>
+    <script src="../script/script.js"></script>
+  </body>
+</html>

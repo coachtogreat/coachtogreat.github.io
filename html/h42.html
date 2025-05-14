@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Atribut Tautan HTML</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <header class="title-section">
+        <div class="title-content">
+          <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+            <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+          </a>
+        </div>
+      </header>
+
+      <main class="content-section">
+        <section class="article-content">
+          <h2 class="intro-title">Atribut Tautan HTML</h2>
+          <h3 class="section-title">Memahami Atribut &lt;a&gt; dalam HTML</h3>
+          
+          <p>
+            Tag <code>&lt;a&gt;</code> memiliki berbagai atribut yang memungkinkan Anda mengontrol 
+            perilaku tautan. Mari kita bahas setiap atribut penting beserta penggunaannya.
+          </p>
+
+          <h4>1. Atribut <code>href</code> (Hypertext Reference)</h4>
+          <p>Atribut paling penting yang menentukan tujuan tautan.</p>
+          
+          <div class="code-block">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;!-- Tautan ke halaman web --&gt;
+&lt;a href="https://contoh.com"&gt;Kunjungi Contoh.com&lt;/a&gt;
+
+&lt;!-- Tautan ke bagian dalam halaman --&gt;
+&lt;a href="#bagian2"&gt;Ke Bagian 2&lt;/a&gt;
+
+&lt;!-- Tautan email --&gt;
+&lt;a href="mailto:email@contoh.com"&gt;Kirim Email&lt;/a&gt;
+
+&lt;!-- Tautan telepon --&gt;
+&lt;a href="tel:+62123456789"&gt;Telepon Kami&lt;/a&gt;
+
+&lt;!-- Tautan untuk mengunduh file --&gt;
+&lt;a href="dokumen.pdf" download&gt;Unduh PDF&lt;/a&gt;</code></pre>
+          </div>
+
+          <h4>2. Atribut <code>target</code></h4>
+          <p>Menentukan di mana dokumen yang ditautkan akan dibuka.</p>
+          
+          <div class="code-block">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;!-- Buka di tab/jendela baru --&gt;
+&lt;a href="https://contoh.com" target="_blank"&gt;Buka di Tab Baru&lt;/a&gt;
+
+&lt;!-- Buka di frame induk --&gt;
+&lt;a href="halaman.html" target="_parent"&gt;Buka di Frame Induk&lt;/a&gt;
+
+&lt;!-- Buka di jendela saat ini (default) --&gt;
+&lt;a href="halaman.html" target="_self"&gt;Buka di Jendela Ini&lt;/a&gt;
+
+&lt;!-- Buka di frame tertentu --&gt;
+&lt;a href="halaman.html" target="nama-frame"&gt;Buka di Frame Tertentu&lt;/a&gt;</code></pre>
+          </div>
+
+          <h4>3. Atribut <code>rel</code> (Relationship)</h4>
+          <p>Menentukan hubungan antara dokumen saat ini dan dokumen yang ditautkan.</p>
+          
+          <div class="code-block">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;!-- Mencegah serangan tabnabbing --&gt;
+&lt;a href="https://eksternal.com" target="_blank" rel="noopener noreferrer"&gt;
+  Tautan Eksternal Aman
+&lt;/a&gt;
+
+&lt;!-- Tautan nofollow untuk SEO --&gt;
+&lt;a href="https://iklan.com" rel="nofollow"&gt;Iklan&lt;/a&gt;
+
+&lt;!-- Tautan sponsor --&gt;
+&lt;a href="https://sponsor.contoh" rel="sponsored"&gt;Sponsor&lt;/a&gt;
+
+&lt;!-- Tautan UGC (User Generated Content) --&gt;
+&lt;a href="#komentar" rel="ugc"&gt;Lihat Komentar&lt;/a&gt;</code></pre>
+          </div>
+
+          <h4>4. Atribut <code>download</code></h4>
+          <p>Memaksa browser untuk mengunduh file alih-alih menampilkannya.</p>
+          
+          <div class="code-block">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;!-- Unduh dengan nama file default --&gt;
+&lt;a href="laporan.pdf" download&gt;Unduh Laporan&lt;/a&gt;
+
+&lt;!-- Tentukan nama file unduhan --&gt;
+&lt;a href="laporan-januari-2023.pdf" download="laporan-terbaru.pdf"&gt;
+  Unduh Laporan Terbaru
+&lt;/a&gt;</code></pre>
+          </div>
+
+          <h4>5. Atribut <code>title</code></h4>
+          <p>Menampilkan tooltip saat pengguna mengarahkan kursor ke tautan.</p>
+          
+          <div class="code-block">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;a href="#" title="Ini adalah tooltip"&gt;Arahkan kursor ke sini&lt;/a&gt;</code></pre>
+          </div>
+
+          <h4>6. Atribut <code>hreflang</code></h4>
+          <p>Menentukan bahasa dokumen yang ditautkan.</p>
+          
+          <div class="code-block">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;!-- Tautan ke versi bahasa Inggris --&gt;
+&lt;a href="https://example.com/en" hreflang="en"&gt;English Version&lt;/a&gt;
+
+&lt;!-- Tautan ke versi bahasa Indonesia --&gt;
+&lt;a href="https://example.com/id" hreflang="id"&gt;Versi Indonesia&lt;/a&gt;</code></pre>
+          </div>
+
+          <h4>7. Atribut <code>ping</code></h4>
+          <p>Mengirim permintaan POST kecil ke URL yang ditentukan saat tautan diklik.</p>
+          
+          <div class="code-block">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;a href="https://contoh.com" ping="/track"&gt;
+  Tautan dengan Pelacakan
+&lt;/a&gt;</code></pre>
+          </div>
+
+          <h4>8. Atribut <code>referrerpolicy</code></h4>
+          <p>Mengontrol berapa banyak informasi referrer yang dikirim dengan tautan.</p>
+          
+          <div class="code-block">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;!-- Tidak mengirim informasi referrer --&gt;
+&lt;a href="https://contoh.com" referrerpolicy="no-referrer"&gt;
+  Tanpa Referrer
+&lt;/a&gt;
+
+&lt;!-- Hanya mengirim origin --&gt;
+&lt;a href="https://contoh.com" referrerpolicy="origin"&gt;
+  Hanya Origin
+&lt;/a&gt;</code></pre>
+          </div>
+
+          <h4>Praktik Terbaik</h4>
+          <ul>
+            <li>Selalu sertakan <code>rel="noopener noreferrer"</code> saat menggunakan <code>target="_blank"</code></li>
+            <li>Gunakan <code>download</code> dengan hati-hati, pastikan pengguna mengharapkan file diunduh</li>
+            <li>Gunakan <code>title</code> untuk aksesibilitas, bukan sebagai pengganti teks tautan yang jelas</li>
+            <li>Hindari membuka tautan di jendela baru kecuali benar-benar diperlukan</li>
+            <li>Gunakan <code>hreflang</code> untuk situs multibahasa</li>
+          </ul>
+        </section>
+
+        <br />
+        <nav class="navigation-section" aria-label="Halaman navigasi">
+          <div class="nav-buttons">
+            <button class="btn" onclick="window.location.href='h41.html'" title="Membuat Tautan">
+              &lt;&nbsp;Prev
+            </button>
+            <img
+              src="../assets/png/home.png"
+              alt="Home"
+              class="home-icon"
+              onclick="window.location.href='../index.html'"
+              title="Home"
+            />
+            <img
+              src="../assets/png/html5.png"
+              alt="HTML"
+              onclick="window.location.href='h1.html'"
+              title="Daftar Isi HTML"
+            />
+            <button class="btn" onclick="window.location.href='h43.html'" title="Gambar HTML">
+              Next&nbsp;&gt;
+            </button>
+          </div>
+        </nav>
+      </main>
+    </div>
+
+    <script src="../script/copyCode.js"></script>
+    <script src="../script/script.js"></script>
+  </body>
+</html>

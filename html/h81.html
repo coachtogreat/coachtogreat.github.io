@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Memahami Selemen Semantik HTML</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <style>
+      .semantic-demo {
+        background-color: #f8f9fa;
+        border-radius: 5px;
+        padding: 15px;
+        margin: 15px 0;
+        border-left: 4px solid #0d6efd;
+        overflow-x: auto;
+      }
+      .semantic-container {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: white;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      .semantic-box {
+        background-color: #e9ecef;
+        padding: 15px;
+        margin: 10px 0;
+        border-radius: 4px;
+        border: 1px solid #dee2e6;
+      }
+      .code-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #343a40;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 4px 4px 0 0;
+      }
+      .copy-btn {
+        background-color: #495057;
+        color: white;
+        border: none;
+        padding: 2px 8px;
+        border-radius: 3px;
+        cursor: pointer;
+      }
+      .copy-btn:hover {
+        background-color: #ffd43b;
+        color: #212529;
+      }
+      pre {
+        margin: 0;
+        padding: 0;
+      }
+      code {
+        display: block;
+        background-color: #f8f9fa;
+        padding: 15px;
+        border-radius: 0 0 4px 4px;
+        overflow-x: auto;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 14px;
+        line-height: 1.5;
+      }
+      .note {
+        background-color: #e7f5ff;
+        border-left: 4px solid #0d6efd;
+        padding: 12px 15px;
+        margin: 15px 0;
+        border-radius: 0 4px 4px 0;
+      }
+      .warning {
+        background-color: #fff3bf;
+        border-left: 4px solid #ffd43b;
+        padding: 12px 15px;
+        margin: 15px 0;
+        border-radius: 0 4px 4px 0;
+      }
+      .semantic-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 20px;
+        margin: 20px 0;
+      }
+      .semantic-card {
+        background: white;
+        border: 1px solid #dee2e6;
+        border-radius: 5px;
+        padding: 15px;
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+      }
+      .semantic-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+      .semantic-card h4 {
+        color: #0d6efd;
+        margin-top: 0;
+        border-bottom: 1px solid #dee2e6;
+        padding-bottom: 8px;
+      }
+      .semantic-tag {
+        display: inline-block;
+        background-color: #e9ecef;
+        padding: 2px 8px;
+        border-radius: 3px;
+        font-family: monospace;
+        font-size: 14px;
+        margin: 3px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="blog-container">
+      <header class="title-section">
+        <div class="title-content">
+          <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+            <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+          </a>
+        </div>
+      </header>
+
+      <main class="content-section">
+        <section class="article-content">
+          <h2 class="intro-title">Memahami Selemen Semantik HTML</h2>
+          <h3 class="section-title">Mengapa dan Bagaimana Menggunakan Elemen Semantik</h3>
+
+          <p>
+            Selemen semantik adalah elemen HTML yang memiliki makna tersendiri, baik untuk browser
+            maupun pengembang. Mereka dengan jelas mendefinisikan konten dan tujuannya, membuat kode
+            lebih mudah dibaca dan dipelihara.
+          </p>
+
+          <div class="note">
+            <strong>Catatan:</strong> HTML5 memperkenalkan banyak elemen semantik baru yang membantu
+            menyusun halaman web dengan lebih baik dan meningkatkan aksesibilitas.
+          </div>
+
+          <h3 style="text-align: left">1. Keuntungan Menggunakan Elemen Semantik</h3>
+          <ul>
+            <li>
+              <strong>Aksesibilitas</strong>: Membantu pembaca layar memahami struktur halaman
+            </li>
+            <li><strong>SEO</strong>: Mesin pencari dapat lebih memahami konten halaman</li>
+            <li><strong>Pemeliharaan</strong>: Kode lebih mudah dibaca dan dipelihara</li>
+            <li><strong>Responsif</strong>: Memudahkan pembuatan desain yang responsif</li>
+          </ul>
+
+          <h3 style="text-align: left">2. Elemen Semantik Utama</h3>
+
+          <div class="semantic-grid">
+            <div class="semantic-card">
+              <h4>&lt;header&gt;</h4>
+              <p>Mewakili konten pengantar atau navigasi.</p>
+              <span class="semantic-tag">&lt;header&gt;</span>
+              <p class="small">Biasanya berisi logo, judul, dan navigasi utama.</p>
+            </div>
+
+            <div class="semantic-card">
+              <h4>&lt;nav&gt;</h4>
+              <p>Berisi tautan navigasi.</p>
+              <span class="semantic-tag">&lt;nav&gt;</span>
+              <p class="small">Digunakan untuk menu navigasi utama atau sekunder.</p>
+            </div>
+
+            <div class="semantic-card">
+              <h4>&lt;main&gt;</h4>
+              <p>Konten utama dari dokumen.</p>
+              <span class="semantic-tag">&lt;main&gt;</span>
+              <p class="small">Hanya boleh ada satu elemen &lt;main&gt; per halaman.</p>
+            </div>
+
+            <div class="semantic-card">
+              <h4>&lt;article&gt;</h4>
+              <p>Konten yang berdiri sendiri.</p>
+              <span class="semantic-tag">&lt;article&gt;</span>
+              <p class="small">Seperti postingan blog, artikel berita, atau komentar.</p>
+            </div>
+
+            <div class="semantic-card">
+              <h4>&lt;section&gt;</h4>
+              <p>Pengelompokan tematis konten.</p>
+              <span class="semantic-tag">&lt;section&gt;</span>
+              <p class="small">Biasanya memiliki heading sendiri.</p>
+            </div>
+
+            <div class="semantic-card">
+              <h4>&lt;aside&gt;</h4>
+              <p>Konten samping yang terkait dengan konten utama.</p>
+              <span class="semantic-tag">&lt;aside&gt;</span>
+              <p class="small">Seperti sidebar atau catatan tambahan.</p>
+            </div>
+
+            <div class="semantic-card">
+              <h4>&lt;footer&gt;</h4>
+              <p>Bagian penutup dari sebuah bagian atau halaman.</p>
+              <span class="semantic-tag">&lt;footer&gt;</span>
+              <p class="small">Biasanya berisi informasi hak cipta, tautan terkait, dll.</p>
+            </div>
+          </div>
+
+          <h3 style="text-align: left">3. Contoh Struktur Halaman dengan Elemen Semantik</h3>
+
+          <div class="semantic-demo">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode('semantic-structure')">Salin</button>
+            </div>
+            <pre><code id="semantic-structure">&lt;!DOCTYPE html&gt;
+&lt;html lang="id"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;Judul Halaman&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;header&gt;
+    &lt;h1&gt;Judul Situs&lt;/h1&gt;
+    &lt;nav&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href="#beranda"&gt;Beranda&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#tentang"&gt;Tentang&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#kontak"&gt;Kontak&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/nav&gt;
+  &lt;/header&gt;
+
+  &lt;main&gt;
+    &lt;article&gt;
+      &lt;h2&gt;Judul Artikel&lt;/h2&gt;
+      &lt;p&gt;Isi artikel...&lt;/p&gt;
+    &lt;/article&gt;
+
+    &lt;aside&gt;
+      &lt;h3&gt;Artikel Terkait&lt;/h3&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href="#"&gt;Artikel 1&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;Artikel 2&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/aside&gt;
+  &lt;/main&gt;
+
+  &lt;footer&gt;
+    &lt;p&gt;&copy; 2025 Nama Situs. Semua hak dilindungi.&lt;/p&gt;
+  &lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          </div>
+
+          <h3 style="text-align: left">4. Elemen Semantik Lainnya</h3>
+
+          <div class="semantic-container">
+            <div class="semantic-box">
+              <h4>&lt;figure&gt; dan &lt;figcaption&gt;</h4>
+              <p>
+                Digunakan untuk menyertakan konten seperti gambar, diagram, atau kode dengan
+                keterangan.
+              </p>
+
+              <div class="semantic-demo">
+                <div class="code-header">
+                  <span>HTML</span>
+                  <button class="copy-btn" onclick="copyCode('figure-example')">Salin</button>
+                </div>
+                <pre><code id="figure-example">&lt;figure&gt;
+  &lt;img src="gambar.jpg" alt="Deskripsi gambar"&gt;
+  &lt;figcaption&gt;Keterangan untuk gambar di atas&lt;/figcaption&gt;
+&lt;/figure&gt;</code></pre>
+              </div>
+            </div>
+
+            <div class="semantic-box">
+              <h4>&lt;time&gt;</h4>
+              <p>Menandai tanggal/waktu yang dapat dibaca mesin.</p>
+
+              <div class="semantic-demo">
+                <div class="code-header">
+                  <span>HTML</span>
+                  <button class="copy-btn" onclick="copyCode('time-example')">Salin</button>
+                </div>
+                <pre><code id="time-example">&lt;p&gt;Acara akan diselenggarakan pada 
+  &lt;time datetime="2025-12-25"&gt;25 Desember 2025&lt;/time&gt;.&lt;/p&gt;</code></pre>
+              </div>
+            </div>
+
+            <div class="semantic-box">
+              <h4>&lt;mark&gt;</h4>
+              <p>Menyorot teks yang penting atau relevan.</p>
+
+              <div class="semantic-demo">
+                <div class="code-header">
+                  <span>HTML</span>
+                  <button class="copy-btn" onclick="copyCode('mark-example')">Salin</button>
+                </div>
+                <pre><code id="mark-example">&lt;p&gt;Ini adalah teks yang &lt;mark&gt;sangat penting&lt;/mark&gt; untuk diperhatikan.&lt;/p&gt;</code></pre>
+              </div>
+            </div>
+          </div>
+
+          <div class="warning">
+            <strong>Penting:</strong> Meskipun elemen semantik tidak mengubah tampilan visual
+            halaman, mereka sangat penting untuk aksesibilitas dan SEO. Selalu gunakan elemen yang
+            sesuai dengan makna konten.
+          </div>
+
+          <h3 style="text-align: left">5. Praktik Terbaik</h3>
+          <ul>
+            <li>Gunakan elemen semantik untuk struktur utama halaman</li>
+            <li>Hindari penggunaan elemen semantik hanya untuk gaya visual</li>
+            <li>Pastikan konten dalam elemen semantik sesuai dengan tujuannya</li>
+            <li>Uji aksesibilitas halaman Anda dengan pembaca layar</li>
+            <li>Gunakan validator HTML untuk memastikan penggunaan yang benar</li>
+          </ul>
+
+          <p>
+            Dengan menggunakan elemen semantik dengan benar, Anda tidak hanya membuat kode yang
+            lebih bersih dan terorganisir, tetapi juga berkontribusi pada web yang lebih inklusif
+            dan dapat diakses oleh semua pengguna.
+          </p>
+        </section>
+        <br />
+        <nav class="navigation-section" aria-label="Halaman navigasi">
+          <div class="nav-buttons">
+            <button
+              class="btn"
+              onclick="window.location.href='h75.html'"
+              title="Atribut Dasar HTML"
+            >
+              &lt;&nbsp;Prev
+            </button>
+            <img
+              src="../assets/png/home.png"
+              alt="Home"
+              class="home-icon"
+              onclick="window.location.href='../index.html'"
+              title="Home"
+            />
+            <img
+              src="../assets/png/html5.png"
+              alt="HTML"
+              onclick="window.location.href='h1.html'"
+              title="Daftar Isi HTML"
+            />
+            <button class="btn" onclick="window.location.href='h82.html'" title="Formulir Lanjutan">
+              Next&nbsp;&gt;
+            </button>
+          </div>
+        </nav>
+      </main>
+    </div>
+
+    <script>
+      function copyCode(elementId) {
+        const codeElement = document.getElementById(elementId);
+        const range = document.createRange();
+        range.selectNode(codeElement);
+        window.getSelection().removeAllRanges();
+        window.getSelection().addRange(range);
+        document.execCommand('copy');
+        window.getSelection().removeAllRanges();
+
+        // Tampilkan notifikasi
+        const button = event.target;
+        const originalText = button.textContent;
+        button.textContent = 'Tersalin!';
+        button.style.backgroundColor = '#198754';
+
+        setTimeout(() => {
+          button.textContent = originalText;
+          button.style.backgroundColor = '';
+        }, 2000);
+      }
+    </script>
+  </body>
+</html>

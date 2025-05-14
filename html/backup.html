@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>h32.html</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Teks dan Paragraf</h2>
+
+      <div class="content">
+        <p>
+          Tag heading HTML (<code>&lt;h1&gt;</code> sampai <code>&lt;h6&gt;</code>) digunakan
+          untuk mendefinisikan judul dan subjudul pada halaman web. Tag ini menciptakan struktur
+          hierarkis, dengan <code>&lt;h1&gt;</code> sebagai yang paling penting (judul utama) dan
+          <code>&lt;h6&gt;</code> sebagai yang paling tidak penting.
+        </p>
+
+        <h3>Tag Paragraph (&lt;p&gt;)</h3>
+        <p>
+          Tag <code>&lt;p&gt;</code> adalah elemen blok dasar dalam HTML yang digunakan untuk membuat paragraf teks. Setiap kali Anda menggunakan tag ini, browser akan secara otomatis menambahkan margin di atas dan bawah paragraf, memisahkannya dari elemen-elemen lain di halaman.
+        </p>
+
+        <h4>Karakteristik Utama:</h4>
+        <ul>
+          <li>Merupakan <em>block-level element</em> yang menempati satu baris penuh</li>
+          <li>Secara default memiliki margin atas dan bawah sebesar 1em (16px)</li>
+          <li>Dapat berisi teks dan <em>inline elements</em> seperti <code>&lt;strong&gt;</code>, <code>&lt;em&gt;</code>, <code>&lt;a&gt;</code>, dll.</li>
+          <li>Tidak boleh berisi elemen blok lainnya (kecuali di HTML5 yang lebih fleksibel)</li>
+        </ul>
+        
+        <h4>Contoh Penggunaan:</h4>
+        <pre><code>&lt;!-- Paragraf sederhana --&gt;
+&lt;p&gt;Ini adalah contoh paragraf pertama.&lt;/p&gt;
+
+&lt;!-- Paragraf dengan format teks --&gt;
+&lt;p&gt;Ini adalah teks &lt;strong&gt;penting&lt;/strong&gt; dalam paragraf. 
+   Kunjungi &lt;a href="https://example.com"&gt;contoh website&lt;/a&gt;.&lt;/p&gt;
+
+&lt;!-- Paragraf dengan atribut --&gt;
+&lt;p class="highlight" style="color: blue;"&gt;Paragraf dengan gaya khusus.&lt;/p&gt;</code></pre>
+        
+        <h4>Atribut yang Sering Digunakan:</h4>
+        <ul>
+          <li><code>align</code>: Mengatur perataan teks (left, right, center, justify)
+            <pre><code>&lt;p align="center"&gt;Teks ini rata tengah&lt;/p&gt;</code></pre>
+            <p class="note">Catatan: Atribut align sudah tidak disarankan di HTML5. Gunakan CSS untuk perataan teks.</p>
+          </li>
+          <li><code>class</code> dan <code>id</code>: Untuk styling dengan CSS
+            <pre><code>&lt;p class="important" id="paragraf-utama"&gt;Paragraf penting&lt;/p&gt;</code></pre>
+          </li>
+          <li><code>title</code>: Memberikan informasi tambahan saat dihover
+            <pre><code>&lt;p title="Informasi tambahan"&gt;Arahkan kursor ke sini&lt;/p&gt;</code></pre>
+          </li>
+        </ul>
+
+        <h4>Best Practices:</h4>
+        <ul>
+          <li>Gunakan satu tag <code>&lt;p&gt;</code> untuk setiap paragraf</li>
+          <li>Hindari menggunakan tag <code>&lt;br&gt;</code> untuk membuat spasi antar paragraf</li>
+          <li>Gunakan CSS untuk mengatur tampilan paragraf (margin, padding, dll)</li>
+          <li>Pastikan konten paragraf tetap terbaca dengan baik di berbagai perangkat</li>
+        </ul>
+
+
+
+
+        <br />
+        <div class="nav-buttons">
+          <button class="btn" onclick="window.location.href='h13.html'">&lt;&nbsp;Prev</button>
+          <img
+            src="../assets/png/home.png"
+            alt="Home"
+            class="home-icon"
+            onclick="window.location.href='../index.html'"
+            title="Home"
+          />
+          <img
+            src="../assets/png/html5.png"
+            alt="HTML"
+            onclick="window.location.href='h1.html'"
+            title="HTML"
+          />
+          <button class="btn" onclick="window.location.href='h22.html'">Next&nbsp;&gt;</button>
+        </div>
+      </div>
+
+    <script src="../script/copyCode.js"></script>
+    <script src="../script/script.js"></script>
+  </body>
+</html>

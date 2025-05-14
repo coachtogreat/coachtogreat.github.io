@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contoh Kode HTML</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Pengenalan HTML</h2>
+      <h3 class="section-title">Contoh Kode HTML 5</h3>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>HTML</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="id"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Profil Saya&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;header&gt;
+    &lt;h1&gt;Selamat Datang di Profil Saya&lt;/h1&gt;
+    &lt;nav&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href="#tentang"&gt;Tentang&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#hobi"&gt;Hobi&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#kontak"&gt;Kontak&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/nav&gt;
+  &lt;/header&gt;
+
+  &lt;main&gt;
+    &lt;section id="tentang"&gt;
+      &lt;h2&gt;Tentang Saya&lt;/h2&gt;
+      &lt;p&gt;Nama saya Rachman. Saya seorang pengembang web yang suka membuat aplikasi menggunakan HTML, CSS, dan JavaScript.&lt;/p&gt;
+    &lt;/section&gt;
+
+    &lt;section id="hobi"&gt;
+      &lt;h2&gt;Hobi&lt;/h2&gt;
+      &lt;ul&gt;
+        &lt;li&gt;Ngoding&lt;/li&gt;
+        &lt;li&gt;Membaca&lt;/li&gt;
+        &lt;li&gt;Jalan-jalan&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/section&gt;
+  &lt;/main&gt;
+
+  &lt;footer id="kontak"&gt;
+    &lt;h2&gt;Kontak&lt;/h2&gt;
+    &lt;p&gt;Email: &lt;a href="mailto:andi@example.com"&gt;andi@example.com&lt;/a&gt;&lt;/p&gt;
+  &lt;/footer&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+      </div>
+
+      <h3 class="section-title">Penjelasan per Detail Per Elemen</h3>
+      <h3 class="code-highlight">1. &lt;!DOCTYPE html&gt;</h3>
+      <p>
+        Menandakan bahwa ini adalah dokumen HTML5. Harus selalu berada di bagian paling atas file
+        HTML.
+      </p>
+      <h3 class="code-highlight">2. &lt;html lang="id"&gt;</h3>
+      <p>
+        Tag pembuka untuk seluruh dokumen HTML.<br />
+        <span class="code-highlight">Atribut lang="id"</span> memberitahu browser dan mesin pencari
+        bahwa halaman ini berbahasa Indonesia.
+      </p>
+
+      <h3 class="code-highlight">3. &lt;head&gt;...&lt;/head&gt;</h3>
+      <p>
+        Bagian ini tidak terlihat langsung oleh pengguna, tapi penting untuk pengaturan halaman.
+      </p>
+
+      <ul>
+        <li>
+          <span class="code-highlight">&lt;meta charset="UTF-8"&gt;</span>: Memastikan halaman bisa
+          menampilkan karakter dari berbagai bahasa dengan benar.
+        </li>
+        <li>
+          <span class="code-highlight">&lt;meta name="viewport"...&gt;</span>: Membuat tampilan
+          halaman dapat menyesuaikan ukuran layar perangkat (responsif).
+        </li>
+        <li>
+          <span class="code-highlight">&lt;title&gt;</span> Profil Saya&lt;/title&gt;: Menentukan
+          teks yang muncul di tab
+          <strong>browser.</strong>
+        </li>
+      </ul>
+
+      <h3 class="code-highlight">4. &lt;body&gt;...&lt;/body&gt;</h3>
+      <p>
+        Ini adalah <strong>bagian utama halaman web.</strong> Semua konten yang terlihat oleh
+        pengguna berada di sini.
+      </p>
+
+      <h4 class="code-highlight">&lt;header&gt;...&lt;/header&gt;</h4>
+
+      <p>
+        Bagian atas halaman, biasanya berisi judul utama dan navigasi.<br />
+        Isi:
+      </p>
+
+      <ul>
+        <li>
+          <span class="code-highlight">&lt;h1&gt;</span>: Judul besar halaman (penting untuk SEO).
+        </li>
+        <li><span class="code-highlight">&lt;nav&gt;</span>: Navigasi atau menu ke bagian lain.</li>
+        <li>
+          <span class="code-highlight">&lt;ul&gt; </span> unordered list): Daftar tanpa urutan.
+        </li>
+        <li><span class="code-highlight">&lt;li&gt;</span>: Item di dalam daftar.</li>
+        <li>
+          <span class="code-highlight">&lt;a href="#id"&gt;</span>: Tautan ke bagian dalam halaman
+          yang memiliki ID tertentu.
+        </li>
+      </ul>
+
+      <h4 class="code-highlight">&lt;main&gt;...&lt;/main&gt;</h4>
+
+      <p>Bagian utama konten. Biasanya terdiri dari beberapa section.</p>
+
+      <h4 class="code-highlight">&lt;section id="tentang"&gt;</h4>
+
+      <ul>
+        <li><span class="code-highlight">&lt;h2&gt;</span>: Subjudul bagian</li>
+        <li><span class="code-highlight">&lt;p&gt;</span>: Paragraph teks</li>
+      </ul>
+
+      <h4 class="code-highlight">&lt;section id="hobi"&gt;</h4>
+
+      <ul>
+        <li>
+          <span class="code-highlight">&lt;ul&gt;</span>: Daftar hobi dalam format tidak berurutan.
+        </li>
+      </ul>
+
+      <h4 class="code-highlight">&lt;section id="footer"&gt;</h4>
+
+      <p>Bagian paling bawah halaman, biasanya berisi:</p>
+
+      <ul>
+        <li>Informasi kontak</li>
+        <li>Hak cipta (copyright)</li>
+        <li>Tautan social media</li>
+        <li>Tautan mailto: akan membuka aplikasi email saat diklik</li>
+      </ul>
+
+      <h3 class="section-title">Tips Tambahan</h3>
+      <p>Berikut adalah beberapa elemen HTML dasar dan fungsinya:</p>
+
+      <div class="table-container">
+        <table style="border: 1px solid #ccc; border-collapse: collapse; width: 100%;">
+          <style>
+            table th, table td {
+              border: 1px solid #ccc;
+              padding: 8px;
+              text-align: left;
+            }
+            table th {
+              background-color: #f2f2f2;
+            }
+            table tr:nth-child(even) {
+              background-color: #f9f9f9;
+            }
+          </style>
+          <thead>
+            <tr>
+              <th>Elemen</th>
+              <th>Fungsi</th>
+              <th>Keterangan</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>&lt;h1&gt; - &lt;h6&gt;</code></td>
+              <td>Heading</td>
+              <td>
+                Gunakan satu &lt;h1&gt; per halaman, lalu &lt;h2&gt;, &lt;h3&gt;, dst untuk
+                sub-judul.
+              </td>
+            </tr>
+            <tr>
+              <td><code>&lt;p&gt;</code></td>
+              <td>Paragraf</td>
+              <td>Untuk teks biasa.</td>
+            </tr>
+            <tr>
+              <td><code>&lt;ul&gt;</code>, <code>&lt;ol&gt;</code>, <code>&lt;li&gt;</code></td>
+              <td>Daftar</td>
+              <td>Unordered (ul) atau ordered (ol).</td>
+            </tr>
+            <tr>
+              <td><code>&lt;a href=""&gt;</code></td>
+              <td>Tautan</td>
+              <td>Untuk navigasi ke halaman lain atau bagian lain dalam halaman.</td>
+            </tr>
+            <tr>
+              <td><code>&lt;img src="..." alt="..."&gt;</code></td>
+              <td>Gambar</td>
+              <td>Gunakan atribut alt untuk deskripsi alternatif.</td>
+            </tr>
+            <tr>
+              <td><code>&lt;div&gt;</code>, <code>&lt;span&gt;</code></td>
+              <td>Elemen kontainer</td>
+              <td>Digunakan untuk pengelompokan dan styling (CSS).</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <br />
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='h12.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/html5.png"
+          alt="HTML"
+          onclick="window.location.href='h1.html'"
+          title="HTML"
+        />
+        <button class="btn" onclick="window.location.href='h21.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+
+    <script src="../script/copyCode.js"></script>
+    <script src="../script/script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Memahami CSS Flexbox - Panduan Lengkap</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <style>
+      h2.text-center {
+        text-align: center;
+        width: 100%;
+      }
+
+      .biodata-demo {
+        background-color: #f8f9fa;
+        border-radius: 5px;
+        padding: 15px;
+        margin: 15px 0;
+        border-left: 4px solid #0d6efd;
+        overflow-x: auto;
+      }
+      .code-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #343a40;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 4px 4px 0 0;
+      }
+      .copy-btn {
+        background-color: #495057;
+        color: white !important;
+        border: none;
+        padding: 2px 8px;
+        border-radius: 3px;
+        cursor: pointer;
+        transition: color 0.3s ease;
+      }
+
+      .copy-btn:hover {
+        color: #000 !important;
+      }
+      code {
+        display: block;
+        background-color: #f8f9fa;
+        padding: 15px;
+        overflow-x: auto;
+        font-family: 'Courier New', monospace;
+        font-size: 14px;
+      }
+      .flex-container {
+        display: flex;
+        gap: 10px;
+        margin: 20px 0;
+        padding: 15px;
+        background-color: #f8f9fa;
+        border-radius: 5px;
+      }
+      .flex-item {
+        background-color: #0d6efd;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        border-radius: 4px;
+        flex: 1;
+      }
+      .flex-item:nth-child(even) {
+        background-color: #0b5ed7;
+      }
+      .flex-example {
+        border: 1px solid #dee2e6;
+        padding: 15px;
+        margin: 15px 0;
+        border-radius: 5px;
+      }
+      .flex-nav {
+        display: flex;
+        justify-content: space-between;
+        background-color: #343a40;
+        padding: 10px;
+        border-radius: 4px;
+        margin: 20px 0;
+      }
+      .nav-item {
+        color: white;
+        padding: 8px 15px;
+        text-decoration: none;
+      }
+      .nav-item:hover {
+        background-color: #495057;
+        border-radius: 3px;
+      }
+      .note {
+        background-color: #e7f5ff;
+        border-left: 4px solid #4dabf7;
+        padding: 15px;
+        margin: 15px 0;
+        border-radius: 0 5px 5px 0;
+      }
+      .warning {
+        background-color: #fff3bf;
+        border-left: 4px solid #ffd43b;
+        padding: 15px;
+        margin: 15px 0;
+        border-radius: 0 5px 5px 0;
+      }
+      .tip {
+        background-color: #ebfbee;
+        border-left: 4px solid #40c057;
+        padding: 15px;
+        margin: 15px 0;
+        border-radius: 0 5px 5px 0;
+      }
+      .flex-grow-example {
+        display: flex;
+        gap: 10px;
+        margin: 20px 0;
+      }
+      .grow-item {
+        background-color: #0d6efd;
+        color: white;
+        padding: 15px;
+        border-radius: 4px;
+      }
+      .grow-1 {
+        flex-grow: 1;
+      }
+      .grow-2 {
+        flex-grow: 2;
+      }
+      .grow-3 {
+        flex-grow: 3;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="blog-container">
+      <header class="title-section">
+        <div class="title-content">
+          <a href="https://webiddesign.com" target="_blank" rel="noopener">
+            <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+          </a>
+        </div>
+      </header>
+
+      <main class="content-section">
+        <section class="article-content">
+          <h2 class="text-center">Memahami Flexbox</h2>
+          <h3>Panduan Lengkap tentang Flexbox Layout</h3>
+
+          <p>
+            Flexbox adalah model layout satu dimensi yang memungkinkan Anda mendistribusikan ruang
+            di antara item dalam sebuah container, bahkan ketika ukuran item tidak diketahui atau
+            dinamis. Flexbox membuat tata letak yang kompleks menjadi lebih mudah dan responsif.
+          </p>
+
+          <h4>1. Dasar-dasar Flexbox</h4>
+          <p>
+            Untuk memulai dengan Flexbox, Anda perlu mendefinisikan container sebagai flex
+            container:
+          </p>
+
+          <div class="biodata-demo">
+            <div class="code-header">
+              <span>CSS</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>.container {
+  display: flex;
+  gap: 10px; /* Jarak antar item */
+}</code></pre>
+          </div>
+
+          <div class="flex-container">
+            <div class="flex-item">Item 1</div>
+            <div class="flex-item">Item 2</div>
+            <div class="flex-item">Item 3</div>
+          </div>
+
+          <div class="note">
+            <strong>Keterangan:</strong>
+            <ul>
+              <li><code>display: flex</code> - Mengubah elemen menjadi flex container</li>
+              <li><code>gap</code> - Memberi jarak antar item flex</li>
+              <li>Item secara otomatis mengisi lebar container</li>
+            </ul>
+          </div>
+
+          <h4>2. Arah Flex Container</h4>
+          <p>Anda dapat mengatur arah penempatan item menggunakan <code>flex-direction</code>:</p>
+
+          <div class="biodata-demo">
+            <div class="code-header">
+              <span>CSS</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>.container {
+  display: flex;
+  flex-direction: row; /* default: kiri ke kanan */
+  /* flex-direction: row-reverse; */
+  /* flex-direction: column; */
+  /* flex-direction: column-reverse; */
+  gap: 10px;
+}</code></pre>
+          </div>
+
+          <h4>3. Perataan Item</h4>
+          <p>Flexbox menyediakan properti untuk mengatur perataan item:</p>
+
+          <div class="biodata-demo">
+            <div class="code-header">
+              <span>CSS</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>.container {
+  display: flex;
+  justify-content: flex-start; /* default: rata kiri */
+  /* justify-content: flex-end; */
+  /* justify-content: center; */
+  /* justify-content: space-between; */
+  /* justify-content: space-around; */
+  /* justify-content: space-evenly; */
+  
+  align-items: stretch; /* default: penuh tinggi */
+  /* align-items: flex-start; */
+  /* align-items: flex-end; */
+  /* align-items: center; */
+  /* align-items: baseline; */
+  
+  gap: 10px;
+  height: 150px; /* Untuk demonstrasi align-items */
+  background-color: #f8f9fa;
+  padding: 10px;
+}</code></pre>
+          </div>
+
+          <h4>4. Flex Grow, Shrink, dan Basis</h4>
+          <p>Mengatur bagaimana item flex tumbuh dan menyusut:</p>
+
+          <div class="biodata-demo">
+            <div class="code-header">
+              <span>CSS</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>.item {
+  flex: 1; /* Shorthand untuk flex-grow: 1, flex-shrink: 1, flex-basis: 0% */
+  /* Atau tentukan masing-masing: */
+  /* flex-grow: 1; */
+  /* flex-shrink: 1; */
+  /* flex-basis: 0%; */
+}</code></pre>
+          </div>
+
+          <div class="flex-grow-example">
+            <div class="grow-item grow-1">Grow 1</div>
+            <div class="grow-item grow-2">Grow 2</div>
+            <div class="grow-item grow-3">Grow 3</div>
+          </div>
+
+          <h4>5. Contoh Praktis: Navigasi Responsif</h4>
+          <p>Berikut contoh penerapan Flexbox untuk membuat navigasi responsif:</p>
+
+          <div class="biodata-demo">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;nav class="navbar"&gt;
+  &lt;div class="logo"&gt;Logo&lt;/div&gt;
+  &lt;div class="nav-links"&gt;
+    &lt;a href="#"&gt;Beranda&lt;/a&gt;
+    &lt;a href="#"&gt;Tentang&lt;/a&gt;
+    &lt;a href="#"&gt;Layanan&lt;/a&gt;
+    &lt;a href="#"&gt;Kontak&lt;/a&gt;
+  &lt;/div&gt;
+  &lt;button class="cta-button"&gt;Login&lt;/button&gt;
+&lt;/nav&gt;</code></pre>
+          </div>
+
+          <div class="biodata-demo">
+            <div class="code-header">
+              <span>CSS</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #343a40;
+  color: white;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: #4dabf7;
+}
+
+.cta-button {
+  padding: 0.5rem 1.5rem;
+  background-color: #0d6efd;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.cta-button:hover {
+  background-color: #0b5ed7;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .nav-links {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+}</code></pre>
+          </div>
+
+          <div class="tip">
+            <strong>Best Practices Flexbox:</strong>
+            <ul>
+              <li>Gunakan <code>gap</code> untuk spasi yang konsisten</li>
+              <li>Manfaatkan <code>flex-grow</code> untuk distribusi ruang yang fleksibel</li>
+              <li>Gunakan <code>flex-wrap</code> untuk layout yang responsif</li>
+              <li>Kombinasikan dengan media queries untuk desain responsif</li>
+              <li>Hindari pengaturan tinggi tetap pada item flex jika tidak diperlukan</li>
+            </ul>
+          </div>
+
+          <div class="warning">
+            <strong>Kapan Menggunakan Flexbox:</strong>
+            <ul>
+              <li>Untuk tata letak satu dimensi (baris ATAU kolom)</li>
+              <li>Ketika Anda perlu mendistribusikan ruang antar item</li>
+              <li>Untuk membuat komponen UI yang kompleks seperti navigasi, form, card, dll</li>
+              <li>Ketika Anda membutuhkan alignment yang tepat antar item</li>
+            </ul>
+          </div>
+
+          <nav class="navigation-section" aria-label="Halaman navigasi">
+            <div class="nav-buttons">
+              <button class="btn" onclick="window.location.href='h132.html'" title="Box Model">
+                &lt;&nbsp;Prev
+              </button>
+              <img
+                src="../assets/png/home.png"
+                alt="Home"
+                class="home-icon"
+                onclick="window.location.href='../index.html'"
+                title="Home"
+              />
+              <img
+                src="../assets/png/html5.png"
+                alt="HTML"
+                onclick="window.location.href='h1.html'"
+                title="Daftar Isi HTML"
+              />
+              <button class="btn" onclick="window.location.href='h134.html'" title="CSS Grid">
+                Next&nbsp;&gt;
+              </button>
+            </div>
+          </nav>
+        </section>
+      </main>
+    </div>
+
+    <script>
+      function copyCode(button) {
+        const codeBlock = button.parentElement.nextElementSibling;
+        const code = codeBlock.textContent;
+
+        // Buat elemen textarea untuk menyalin teks
+        const textarea = document.createElement('textarea');
+        textarea.value = code;
+        textarea.style.position = 'fixed';
+        document.body.appendChild(textarea);
+        textarea.select();
+
+        try {
+          // Salin teks ke clipboard
+          const successful = document.execCommand('copy');
+          const msg = successful ? 'berhasil disalin!' : 'gagal disalin';
+
+          // Tampilkan notifikasi
+          const originalText = button.textContent;
+          button.textContent = 'Tersalin!';
+
+          // Kembalikan teks tombol setelah 2 detik
+          setTimeout(() => {
+            button.textContent = originalText;
+          }, 2000);
+        } catch (err) {
+          console.error('Gagal menyalin teks: ', err);
+        }
+        // Hapus textarea
+        document.body.removeChild(textarea);
+      }
+    </script>
+  </body>
+</html>

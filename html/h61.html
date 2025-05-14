@@ -1,0 +1,605 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Struktur Dasar Tabel HTML</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <style>
+      .table-demo {
+        background-color: #f8f9fa;
+        border-radius: 5px;
+        padding: 15px;
+        margin: 15px 0;
+        border-left: 4px solid #007bff;
+        overflow-x: auto;
+      }
+      .table-container {
+        margin: 15px 0;
+        overflow-x: auto;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 15px 0;
+      }
+      th,
+      td {
+        border: 1px solid #dee2e6;
+        padding: 12px;
+        text-align: left;
+      }
+      th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+      }
+      tr:nth-child(even) {
+        background-color: #f9f9f9;
+      }
+      tr:hover {
+        background-color: #f1f1f1;
+      }
+      .code-table {
+        background-color: #f8f9fa;
+        border-radius: 4px;
+        padding: 15px;
+        margin: 10px 0;
+        font-family: 'Courier New', Courier, monospace;
+      }
+      .tag {
+        color: #2f6f9f;
+      }
+      .attribute {
+        color: #4f9fcf;
+      }
+      .value {
+        color: #d44950;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="blog-container">
+      <header class="title-section">
+        <div class="title-content">
+          <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+            <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+          </a>
+        </div>
+      </header>
+
+      <main class="content-section">
+        <section class="article-content">
+          <h2 class="intro-title">Struktur Dasar Tabel HTML</h2>
+          <h3 class="section-title">Memahami Elemen Tabel dalam HTML</h3>
+
+          <p>
+            Tabel dalam HTML digunakan untuk menampilkan data dalam bentuk baris dan kolom. Tabel
+            terdiri dari sel-sel yang disusun dalam baris dan kolom, dengan header untuk
+            mengidentifikasi data.
+          </p>
+
+          <h4>1. Elemen Dasar Tabel</h4>
+          <p>Berikut adalah elemen-elemen dasar yang digunakan dalam membuat tabel HTML:</p>
+
+          <div class="table-demo">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;table&gt;
+  &lt;caption&gt;Judul Tabel&lt;/caption&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Header 1&lt;/th&gt;
+      &lt;th&gt;Header 2&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Data 1&lt;/td&gt;
+      &lt;td&gt;Data 2&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+  &lt;tfoot&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Footer 1&lt;/td&gt;
+      &lt;td&gt;Footer 2&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tfoot&gt;
+&lt;/table&gt;</code></pre>
+          </div>
+
+          <div class="table-container">
+            <table>
+              <caption>
+                Contoh Tabel Sederhana
+              </caption>
+              <thead>
+                <tr>
+                  <th>Nama</th>
+                  <th>Usia</th>
+                  <th>Kota</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Andi</td>
+                  <td>25</td>
+                  <td>Jakarta</td>
+                </tr>
+                <tr>
+                  <td>Budi</td>
+                  <td>30</td>
+                  <td>Bandung</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td colspan="2">Jumlah Data</td>
+                  <td>2</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+
+          <h4>2. Tag Dasar Tabel</h4>
+
+          <div class="table-demo">
+            <table>
+              <thead>
+                <tr>
+                  <th>Tag</th>
+                  <th>Deskripsi</th>
+                  <th>Contoh</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>&lt;table&gt;</code></td>
+                  <td>Membungkus seluruh elemen tabel</td>
+                  <td><code>&lt;table&gt;...&lt;/table&gt;</code></td>
+                </tr>
+                <tr>
+                  <td><code>&lt;caption&gt;</code></td>
+                  <td>Judul atau deskripsi tabel</td>
+                  <td><code>&lt;caption&gt;Daftar Mahasiswa&lt;/caption&gt;</code></td>
+                </tr>
+                <tr>
+                  <td><code>&lt;thead&gt;</code></td>
+                  <td>Mengelompokkan header tabel</td>
+                  <td><code>&lt;thead&gt;...&lt;/thead&gt;</code></td>
+                </tr>
+                <tr>
+                  <td><code>&lt;tbody&gt;</code></td>
+                  <td>Mengelompokkan isi tabel</td>
+                  <td><code>&lt;tbody&gt;...&lt;/tbody&gt;</code></td>
+                </tr>
+                <tr>
+                  <td><code>&lt;tfoot&gt;</code></td>
+                  <td>Mengelompokkan footer tabel</td>
+                  <td><code>&lt;tfoot&gt;...&lt;/tfoot&gt;</code></td>
+                </tr>
+                <tr>
+                  <td><code>&lt;tr&gt;</code></td>
+                  <td>Baris dalam tabel</td>
+                  <td><code>&lt;tr&gt;...&lt;/tr&gt;</code></td>
+                </tr>
+                <tr>
+                  <td><code>&lt;th&gt;</code></td>
+                  <td>Sel header (teks tebal dan rata tengah)</td>
+                  <td><code>&lt;th&gt;Nama&lt;/th&gt;</code></td>
+                </tr>
+                <tr>
+                  <td><code>&lt;td&gt;</code></td>
+                  <td>Sel data</td>
+                  <td><code>&lt;td&gt;Andi&lt;/td&gt;</code></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h4>3. Menggabungkan Sel</h4>
+          <p>
+            Anda dapat menggabungkan sel menggunakan atribut <code>colspan</code> dan
+            <code>rowspan</code>:
+          </p>
+
+          <h5>Menggunakan <code>colspan</code> (menggabungkan kolom)</h5>
+          <div class="table-demo">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;table border="1"&gt;
+  &lt;tr&gt;
+    &lt;th colspan="2"&gt;Nama Lengkap&lt;/th&gt;
+    &lt;th&gt;Usia&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Nama&lt;/td&gt;
+    &lt;td&gt;Nama Belakang&lt;/td&gt;
+    &lt;td&gt;Umur&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+          </div>
+
+          <div class="table-container">
+            <table border="1">
+              <tr>
+                <th colspan="2">Nama Lengkap</th>
+                <th>Usia</th>
+              </tr>
+              <tr>
+                <td>Nama</td>
+                <td>Nama Belakang</td>
+                <td>Umur</td>
+              </tr>
+            </table>
+          </div>
+
+          <h5>Menggunakan <code>rowspan</code> (menggabungkan baris)</h5>
+          <div class="table-demo">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;table border="1"&gt;
+  &lt;tr&gt;
+    &lt;th rowspan="2"&gt;No.&lt;/th&gt;
+    &lt;th colspan="2"&gt;Nama&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;th&gt;Depan&lt;/th&gt;
+    &lt;th&gt;Belakang&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;1&lt;/td&gt;
+    &lt;td&gt;Andi&lt;/td&gt;
+    &lt;td&gt;Susanto&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+          </div>
+
+          <div class="table-container">
+            <table border="1">
+              <tr>
+                <th rowspan="2">No.</th>
+                <th colspan="2">Nama</th>
+              </tr>
+              <tr>
+                <th>Depan</th>
+                <th>Belakang</th>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td>Andi</td>
+                <td>Susanto</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Budi</td>
+                <td>Santoso</td>
+              </tr>
+            </table>
+          </div>
+
+          <h4>4. Tabel dengan CSS Dasar</h4>
+          <p>Berikut contoh penerapan CSS dasar untuk mempercantik tampilan tabel:</p>
+
+          <div class="table-demo">
+            <div class="code-header">
+              <span>HTML & CSS</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;style&gt;
+  .tabel-rapi {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  }
+  .tabel-rapi thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+  }
+  .tabel-rapi th,
+  .tabel-rapi td {
+    padding: 12px 15px;
+  }
+  .tabel-rapi tbody tr {
+    border-bottom: 1px solid #dddddd;
+  }
+  .tabel-rapi tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+  }
+  .tabel-rapi tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+  }
+  .tabel-rapi tbody tr:hover {
+    font-weight: bold;
+    color: #009879;
+  }
+&lt;/style&gt;
+
+&lt;table class="tabel-rapi"&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Nama&lt;/th&gt;
+      &lt;th&gt;Posisi&lt;/th&gt;
+      &lt;th&gt;Gaji&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Andi Wijaya&lt;/td&gt;
+      &lt;td&gt;Manager&lt;/td&gt;
+      &lt;td&gt;Rp 15.000.000&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Budi Santoso&lt;/td&gt;
+      &lt;td&gt;Developer&lt;/td&gt;
+      &lt;td&gt;Rp 10.000.000&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Citra Dewi&lt;/td&gt;
+      &lt;td&gt;Designer&lt;/td&gt;
+      &lt;td&gt;Rp 9.000.000&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+          </div>
+
+          <div class="table-container">
+            <style>
+              .tabel-rapi {
+                width: 100%;
+                border-collapse: collapse;
+                margin: 25px 0;
+                font-size: 0.9em;
+                font-family: sans-serif;
+                min-width: 400px;
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+              }
+              .tabel-rapi thead tr {
+                background-color: #009879;
+                color: #ffffff;
+                text-align: left;
+              }
+              .tabel-rapi th,
+              .tabel-rapi td {
+                padding: 12px 15px;
+              }
+              .tabel-rapi tbody tr {
+                border-bottom: 1px solid #dddddd;
+              }
+              .tabel-rapi tbody tr:nth-of-type(even) {
+                background-color: #f3f3f3;
+              }
+              .tabel-rapi tbody tr:last-of-type {
+                border-bottom: 2px solid #009879;
+              }
+              .tabel-rapi tbody tr:hover {
+                font-weight: bold;
+                color: #009879;
+              }
+            </style>
+            <table class="tabel-rapi">
+              <thead>
+                <tr>
+                  <th>Nama</th>
+                  <th>Posisi</th>
+                  <th>Gaji</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Andi Wijaya</td>
+                  <td>Manager</td>
+                  <td>Rp 15.000.000</td>
+                </tr>
+                <tr>
+                  <td>Budi Santoso</td>
+                  <td>Developer</td>
+                  <td>Rp 10.000.000</td>
+                </tr>
+                <tr>
+                  <td>Citra Dewi</td>
+                  <td>Designer</td>
+                  <td>Rp 9.000.000</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h4>5. Praktik Terbaik</h4>
+          <div class="table-demo">
+            <ul>
+              <li>
+                Selalu gunakan <code>&lt;thead&gt;</code>, <code>&lt;tbody&gt;</code>, dan
+                <code>&lt;tfoot&gt;</code> untuk struktur yang lebih baik
+              </li>
+              <li>Gunakan <code>&lt;th&gt;</code> untuk header kolom atau baris</li>
+              <li>Tambahkan <code>&lt;caption&gt;</code> untuk deskripsi tabel</li>
+              <li>Gunakan <code>scope</code> pada <code>&lt;th&gt;</code> untuk aksesibilitas</li>
+              <li>Hindari tabel bersarang yang terlalu dalam</li>
+              <li>
+                Gunakan CSS untuk styling, bukan atribut HTML yang sudah usang seperti
+                <code>border</code>, <code>cellpadding</code>, dll.
+              </li>
+              <li>Pastikan tabel responsif di perangkat mobile</li>
+              <li>Gunakan <code>colspan</code> dan <code>rowspan</code> dengan bijak</li>
+            </ul>
+          </div>
+
+          <h4>6. Contoh Tabel Kompleks</h4>
+          <p>Berikut contoh tabel dengan berbagai fitur yang telah dipelajari:</p>
+
+          <div class="table-demo">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;table class="tabel-kompleks"&gt;
+  &lt;caption&gt;Jadwal Pelajaran Kelas 10A&lt;/caption&gt;
+  &lt;colgroup&gt;
+    &lt;col span="1" style="background-color:#f1f1f1"&gt;
+    &lt;col span="5" style="background-color:#ffffff"&gt;
+  &lt;/colgroup&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th scope="col"&gt;Jam&lt;/th&gt;
+      &lt;th scope="col"&gt;Senin&lt;/th&gt;
+      &lt;th scope="col"&gt;Selasa&lt;/th&gt;
+      &lt;th scope="col"&gt;Rabu&lt;/th&gt;
+      &lt;th scope="col"&gt;Kamis&lt;/th&gt;
+      &lt;th scope="col"&gt;Jumat&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;th scope="row"&gt;07.30 - 09.00&lt;/th&gt;
+      &lt;td&gt;Matematika&lt;/td&gt;
+      &lt;td&gt;Bahasa Inggris&lt;/td&gt;
+      &lt;td rowspan="2"&gt;Fisika&lt;/td&gt;
+      &lt;td&gt;Kimia&lt;/td&gt;
+      &lt;td&gt;Sejarah&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;th scope="row"&gt;09.00 - 10.30&lt;/th&gt;
+      &lt;td&gt;Bahasa Indonesia&lt;/td&gt;
+      &lt;td&gt;Biologi&lt;/td&gt;
+      &lt;td colspan="2"&gt;Pendidikan Jasmani&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+  &lt;tfoot&gt;
+    &lt;tr&gt;
+      &lt;td colspan="6"&gt;* Jadwal dapat berubah sewaktu-waktu&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tfoot&gt;
+&lt;/table&gt;</code></pre>
+          </div>
+
+          <div class="table-container">
+            <style>
+              .tabel-kompleks {
+                width: 100%;
+                border-collapse: collapse;
+                margin: 25px 0;
+                font-size: 0.9em;
+                font-family: sans-serif;
+                min-width: 400px;
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+              }
+              .tabel-kompleks caption {
+                font-size: 1.2em;
+                margin-bottom: 15px;
+                font-weight: bold;
+                text-align: left;
+              }
+              .tabel-kompleks th,
+              .tabel-kompleks td {
+                padding: 12px 15px;
+                border: 1px solid #dddddd;
+              }
+              .tabel-kompleks thead tr {
+                background-color: #009879;
+                color: #ffffff;
+                text-align: left;
+              }
+              .tabel-kompleks tbody tr {
+                border-bottom: 1px solid #dddddd;
+              }
+              .tabel-kompleks tbody tr:nth-of-type(even) {
+                background-color: #f3f3f3;
+              }
+              .tabel-kompleks tbody tr:last-of-type {
+                border-bottom: 2px solid #009879;
+              }
+              .tabel-kompleks tbody tr:hover {
+                background-color: #e8f4f8;
+              }
+              .tabel-kompleks tfoot {
+                font-size: 0.8em;
+                color: #666666;
+                text-align: center;
+                font-style: italic;
+              }
+            </style>
+            <table class="tabel-kompleks">
+              <caption>
+                Jadwal Pelajaran Kelas 10A
+              </caption>
+              <colgroup>
+                <col span="1" style="background-color: #f1f1f1" />
+                <col span="5" style="background-color: #ffffff" />
+              </colgroup>
+              <thead>
+                <tr>
+                  <th scope="col">Jam</th>
+                  <th scope="col">Senin</th>
+                  <th scope="col">Selasa</th>
+                  <th scope="col">Rabu</th>
+                  <th scope="col">Kamis</th>
+                  <th scope="col">Jumat</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">07.30 - 09.00</th>
+                  <td>Matematika</td>
+                  <td>Bahasa Inggris</td>
+                  <td rowspan="2">Fisika</td>
+                  <td>Kimia</td>
+                  <td>Sejarah</td>
+                </tr>
+                <tr>
+                  <th scope="row">09.00 - 10.30</th>
+                  <td>Bahasa Indonesia</td>
+                  <td>Biologi</td>
+                  <td colspan="2">Pendidikan Jasmani</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td colspan="6">* Jadwal dapat berubah sewaktu-waktu</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </section>
+
+        <br />
+        <nav class="navigation-section" aria-label="Halaman navigasi">
+          <div class="nav-buttons">
+            <button class="btn" onclick="window.location.href='h52.html'" title="Daftar Bersarang">
+              &lt;&nbsp;Prev
+            </button>
+            <img
+              src="../assets/png/home.png"
+              alt="Home"
+              class="home-icon"
+              onclick="window.location.href='../index.html'"
+              title="Home"
+            />
+            <img
+              src="../assets/png/html5.png"
+              alt="HTML"
+              onclick="window.location.href='h1.html'"
+              title="Daftar Isi HTML"
+            />
+            <button class="btn" onclick="window.location.href='h62.html'" title="Atribut Tabel">
+              Next&nbsp;&gt;
+            </button>
+          </div>
+        </nav>
+      </main>
+    </div>
+
+    <script src="../script/copyCode.js"></script>
+    <script src="../script/script.js"></script>
+  </body>
+</html>

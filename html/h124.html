@@ -1,0 +1,681 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Membuat Layout Website dengan Elemen Semantik - Panduan Lengkap</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <style>
+      .biodata-demo {
+        background-color: #f8f9fa;
+        border-radius: 5px;
+        padding: 15px;
+        margin: 15px 0;
+        border-left: 4px solid #0d6efd;
+        overflow-x: auto;
+      }
+      .code-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #343a40;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 4px 4px 0 0;
+      }
+      .copy-btn {
+        background-color: #495057;
+        color: white !important;
+        border: none;
+        padding: 2px 8px;
+        border-radius: 3px;
+        cursor: pointer;
+      }
+      code {
+        display: block;
+        background-color: #f8f9fa;
+        padding: 15px;
+        overflow-x: auto;
+        font-family: 'Courier New', monospace;
+        font-size: 14px;
+      }
+      .layout-preview {
+        border: 1px solid #ddd;
+        padding: 20px;
+        margin: 20px 0;
+        border-radius: 5px;
+      }
+      .semantic-example {
+        border: 1px solid #ddd;
+        margin: 20px 0;
+        border-radius: 5px;
+        overflow: hidden;
+      }
+      .semantic-header {
+        background-color: #0d6efd;
+        color: white;
+        padding: 15px;
+        text-align: center;
+      }
+      .semantic-nav {
+        background-color: #343a40;
+        padding: 10px;
+      }
+      .semantic-nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        gap: 15px;
+      }
+      .semantic-nav a {
+        color: white;
+        text-decoration: none;
+      }
+      .semantic-main {
+        display: flex;
+        min-height: 300px;
+      }
+      .semantic-article {
+        flex: 3;
+        padding: 20px;
+        background-color: #f8f9fa;
+      }
+      .semantic-aside {
+        flex: 1;
+        padding: 20px;
+        background-color: #e9ecef;
+      }
+      .semantic-section {
+        margin-bottom: 20px;
+        padding: 15px;
+        background-color: white;
+        border-radius: 5px;
+      }
+      .semantic-footer {
+        background-color: #343a40;
+        color: white;
+        text-align: center;
+        padding: 15px;
+      }
+      .layout-grid {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 15px;
+        margin: 20px 0;
+      }
+      .grid-item {
+        background-color: #e9ecef;
+        padding: 10px;
+        text-align: center;
+        border-radius: 5px;
+      }
+      .col-12 { grid-column: span 12; }
+      .col-6 { grid-column: span 6; }
+      .col-4 { grid-column: span 4; }
+      .col-3 { grid-column: span 3; }
+      @media (max-width: 768px) {
+        .semantic-main {
+          flex-direction: column;
+        }
+        .col-6, .col-4, .col-3 {
+          grid-column: span 12;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="blog-container">
+      <header class="title-section">
+        <div class="title-content">
+          <a href="https://webiddesign.com" target="_blank" rel="noopener">
+            <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+          </a>
+        </div>
+      </header>
+
+      <main class="content-section">
+        <section class="article-content">
+          <h2 class="text-center">Membuat Layout Website dengan Elemen Semantik</h2>
+          <h3>Panduan Lengkap untuk Pemula</h3>
+
+          <p>
+            Elemen semantik HTML5 memudahkan pengembang web untuk membuat struktur halaman yang lebih bermakna dan mudah dipahami. 
+            Artikel ini akan memandu Anda membuat layout website modern menggunakan elemen semantik HTML5.
+          </p>
+
+          <h4>1. Pengenalan Elemen Semantik</h4>
+          <p>
+            Elemen semantik adalah elemen HTML yang memiliki makna tersendiri, yang menjelaskan tujuannya 
+            kepada pengembang dan browser. Berikut beberapa elemen semantik utama:
+          </p>
+          
+          <ul>
+            <li><code>&lt;header&gt;</code> - Bagian kepala halaman</li>
+            <li><code>&lt;nav&gt;</code> - Navigasi utama</li>
+            <li><code>&lt;main&gt;</code> - Konten utama halaman</li>
+            <li><code>&lt;article&gt;</code> - Konten mandiri yang bisa dibagikan</li>
+            <li><code>&lt;section&gt;</code> - Pengelompokan konten yang terkait</li>
+            <li><code>&lt;aside&gt;</code> - Konten samping yang terkait dengan konten utama</li>
+            <li><code>&lt;footer&gt;</code> - Bagian kaki halaman</li>
+          </ul>
+
+          <h4>2. Struktur Dasar Layout</h4>
+          <div class="biodata-demo">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="id"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Layout Website Saya&lt;/title&gt;
+  &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;header&gt;
+    &lt;h1&gt;Judul Website&lt;/h1&gt;
+    &lt;p&gt;Tagline website Anda&lt;/p&gt;
+  &lt;/header&gt;
+
+  &lt;nav&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href="#"&gt;Beranda&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#"&gt;Tentang&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#"&gt;Layanan&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#"&gt;Kontak&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/nav&gt;
+
+  &lt;main&gt;
+    &lt;article&gt;
+      &lt;h2&gt;Judul Artikel&lt;/h2&gt;
+      &lt;p&gt;Isi artikel Anda di sini...&lt;/p&gt;
+    &lt;/article&gt;
+
+    &lt;aside&gt;
+      &lt;h3&gt;Sidebar&lt;/h3&gt;
+      &lt;p&gt;Konten sampingan&lt;/p&gt;
+    &lt;/aside&gt;
+  &lt;/main&gt;
+
+  &lt;footer&gt;
+    &lt;p&gt;Hak Cipta © 2025 Nama Anda&lt;/p&gt;
+  &lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          </div>
+
+          <h4>3. CSS untuk Layout Dasar</h4>
+          <div class="biodata-demo">
+            <div class="code-header">
+              <span>CSS (style.css)</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>/* Reset dan Variabel */
+:root {
+  --primary: #0d6efd;
+  --dark: #343a40;
+  --light: #f8f9fa;
+  --gray: #6c757d;
+  --white: #ffffff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: #212529;
+  background-color: var(--white);
+}
+
+/* Header */
+header {
+  background-color: var(--primary);
+  color: var(--white);
+  padding: 2rem;
+  text-align: center;
+}
+
+header h1 {
+  margin-bottom: 0.5rem;
+}
+
+/* Navigasi */
+nav {
+  background-color: var(--dark);
+  padding: 1rem;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+nav a {
+  color: var(--white);
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+nav a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Konten Utama */
+main {
+  display: flex;
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  gap: 2rem;
+}
+
+article {
+  flex: 3;
+}
+
+aside {
+  flex: 1;
+  background-color: var(--light);
+  padding: 1.5rem;
+  border-radius: 8px;
+  height: fit-content;
+}
+
+/* Footer */
+footer {
+  background-color: var(--dark);
+  color: var(--white);
+  text-align: center;
+  padding: 1.5rem;
+  margin-top: 2rem;
+}
+
+/* Responsif */
+@media (max-width: 768px) {
+  main {
+    flex-direction: column;
+  }
+  
+  nav ul {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+  
+  nav a {
+    display: block;
+    padding: 0.75rem;
+  }
+}</code></pre>
+          </div>
+
+          <h4>4. Layout dengan Grid CSS</h4>
+          <p>CSS Grid memungkinkan pembuatan layout yang lebih kompleks dengan mudah.</p>
+          
+          <div class="biodata-demo">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;div class="grid-container"&gt;
+  &lt;header class="grid-header"&gt;Header&lt;/header&gt;
+  &lt;nav class="grid-nav"&gt;Navigasi&lt;/nav&gt;
+  &lt;main class="grid-main"&gt;Konten Utama&lt;/main&gt;
+  &lt;aside class="grid-sidebar"&gt;Sidebar&lt;/aside&gt;
+  &lt;footer class="grid-footer"&gt;Footer&lt;/footer&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+
+          <div class="biodata-demo">
+            <div class="code-header">
+              <span>CSS</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>.grid-container {
+  display: grid;
+  grid-template-areas:
+    "header header header"
+    "nav nav nav"
+    "main main sidebar"
+    "footer footer footer";
+  grid-template-columns: 1fr 1fr 300px;
+  grid-template-rows: auto auto 1fr auto;
+  min-height: 100vh;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.grid-header {
+  grid-area: header;
+  background-color: var(--primary);
+  color: white;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.grid-nav {
+  grid-area: nav;
+  background-color: var(--dark);
+  color: white;
+  padding: 1rem;
+}
+
+.grid-main {
+  grid-area: main;
+  background-color: var(--light);
+  padding: 1.5rem;
+  border-radius: 8px;
+}
+
+.grid-sidebar {
+  grid-area: sidebar;
+  background-color: var(--light);
+  padding: 1.5rem;
+  border-radius: 8px;
+}
+
+.grid-footer {
+  grid-area: footer;
+  background-color: var(--dark);
+  color: white;
+  text-align: center;
+  padding: 1.5rem;
+}
+
+/* Responsif */
+@media (max-width: 768px) {
+  .grid-container {
+    grid-template-areas:
+      "header"
+      "nav"
+      "main"
+      "sidebar"
+      "footer";
+    grid-template-columns: 1fr;
+  }
+}</code></pre>
+          </div>
+
+          <h4>5. Contoh Layout dengan Flexbox</h4>
+          <div class="biodata-demo">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;div class="flex-container"&gt;
+  &lt;header class="flex-header"&gt;Header&lt;/header&gt;
+  &lt;div class="flex-content"&gt;
+    &lt;nav class="flex-nav"&gt;Navigasi&lt;/nav&gt;
+    &lt;main class="flex-main"&gt;Konten Utama&lt;/main&gt;
+    &lt;aside class="flex-sidebar"&gt;Sidebar&lt;/aside&gt;
+  &lt;/div&gt;
+  &lt;footer class="flex-footer"&gt;Footer&lt;/footer&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+
+          <div class="biodata-demo">
+            <div class="code-header">
+              <span>CSS</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>.flex-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.flex-header {
+  background-color: var(--primary);
+  color: white;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.flex-content {
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+}
+
+.flex-nav {
+  flex: 0 0 100%;
+  background-color: var(--dark);
+  color: white;
+  padding: 1rem;
+}
+
+.flex-main {
+  flex: 3;
+  padding: 1.5rem;
+  background-color: var(--light);
+}
+
+.flex-sidebar {
+  flex: 1;
+  padding: 1.5rem;
+  background-color: #e9ecef;
+}
+
+.flex-footer {
+  background-color: var(--dark);
+  color: white;
+  text-align: center;
+  padding: 1.5rem;
+}
+
+/* Responsif */
+@media (max-width: 768px) {
+  .flex-content {
+    flex-direction: column;
+  }
+  
+  .flex-main,
+  .flex-sidebar {
+    flex: 1 0 100%;
+  }
+}</code></pre>
+          </div>
+
+          <h4>6. Contoh Layout dengan CSS Grid Modern</h4>
+          <div class="biodata-demo">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;div class="modern-grid"&gt;
+  &lt;header&gt;Header&lt;/header&gt;
+  &lt;nav&gt;Navigasi&lt;/nav&gt;
+  &lt;main&gt;Konten Utama&lt;/main&gt;
+  &lt;aside&gt;Sidebar&lt;/aside&gt;
+  &lt;footer&gt;Footer&lt;/footer&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+
+          <div class="biodata-demo">
+            <div class="code-header">
+              <span>CSS</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>.modern-grid {
+  --header-height: 100px;
+  --footer-height: 80px;
+  --nav-height: 60px;
+  
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 250px 1fr 200px;
+  grid-template-rows: var(--header-height) var(--nav-height) 1fr var(--footer-height);
+  grid-template-areas:
+    "header header header"
+    "nav nav nav"
+    "sidebar main main"
+    "footer footer footer";
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.modern-grid > header {
+  grid-area: header;
+  background-color: var(--primary);
+  color: white;
+  padding: 1rem;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+}
+
+.modern-grid > nav {
+  grid-area: nav;
+  background-color: var(--dark);
+  color: white;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.modern-grid > main {
+  grid-area: main;
+  background-color: var(--light);
+  padding: 1.5rem;
+  border-radius: 8px;
+}
+
+.modern-grid > aside {
+  grid-area: sidebar;
+  background-color: #e9ecef;
+  padding: 1.5rem;
+  border-radius: 8px;
+}
+
+.modern-grid > footer {
+  grid-area: footer;
+  background-color: var(--dark);
+  color: white;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+}
+
+/* Responsif */
+@media (max-width: 1024px) {
+  .modern-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+      "header"
+      "nav"
+      "main"
+      "sidebar"
+      "footer";
+  }
+  
+  .modern-grid > * {
+    min-height: 100px;
+  }
+}</code></pre>
+          </div>
+
+          <div class="note">
+            <strong>Tips untuk Layout yang Lebih Baik:</strong>
+            <ul>
+              <li>Gunakan elemen semantik dengan benar sesuai fungsinya</li>
+              <li>Pertimbangkan aksesibilitas dalam membuat layout</li>
+              <li>Gunakan CSS Grid untuk layout dua dimensi yang kompleks</li>
+              <li>Gunakan Flexbox untuk penataan dalam satu dimensi</li>
+              <li>Selalu buat desain responsif</li>
+              <li>Uji layout di berbagai perangkat dan ukuran layar</li>
+            </ul>
+          </div>
+
+          <div class="warning">
+            <strong>Praktik Terbaik:</strong>
+            <ul>
+              <li>Gunakan nama class yang deskriptif dan konsisten</li>
+              <li>Manfaatkan variabel CSS untuk warna dan ukuran</li>
+              <li>Gunakan unit relatif (rem, em, %) untuk ukuran yang responsif</li>
+              <li>Optimalkan performa dengan menghindari nested grid/flex yang berlebihan</li>
+              <li>Selalu sertakan fallback untuk browser lama</li>
+            </ul>
+          </div>
+
+          <nav class="navigation-section" aria-label="Halaman navigasi">
+            <div class="nav-buttons">
+              <button
+                class="btn"
+                onclick="window.location.href='h123.html'"
+                title="Membuat form kontak sederhana"
+              >
+                &lt;&nbsp;Prev
+              </button>
+              <img
+                src="../assets/png/home.png"
+                alt="Home"
+                class="home-icon"
+                onclick="window.location.href='../index.html'"
+                title="Home"
+              />
+              <img
+                src="../assets/png/html5.png"
+                alt="HTML"
+                onclick="window.location.href='h1.html'"
+                title="Daftar Isi HTML"
+              />
+              <button
+                class="btn"
+                onclick="window.location.href='h131.html'"
+                title="Struktur File Website"
+              >
+                Next&nbsp;&gt;
+              </button>
+            </div>
+          </nav>
+        </section>
+      </main>
+    </div>
+
+    <script>
+      function copyCode(button) {
+        const codeBlock = button.parentElement.nextElementSibling;
+        const code = codeBlock.textContent;
+
+        // Buat elemen textarea untuk menyalin teks
+        const textarea = document.createElement('textarea');
+        textarea.value = code;
+        textarea.style.position = 'fixed';
+        document.body.appendChild(textarea);
+        textarea.select();
+
+        try {
+          // Salin teks ke clipboard
+          const successful = document.execCommand('copy');
+          const msg = successful ? 'berhasil disalin!' : 'gagal disalin';
+
+          // Tampilkan notifikasi
+          const originalText = button.textContent;
+          button.textContent = 'Tersalin!';
+
+          // Kembalikan teks tombol setelah 2 detik
+          setTimeout(() => {
+            button.textContent = originalText;
+          }, 2000);
+        } catch (err) {
+          console.error('Gagal menyalin teks: ', err);
+        }
+        // Hapus textarea
+        document.body.removeChild(textarea);
+      }
+    </script>
+  </body>
+</html>

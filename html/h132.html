@@ -1,0 +1,449 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Memahami Box Model CSS - Panduan Lengkap</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <style>
+      h2.text-center {
+        text-align: center;
+        width: 100%;
+      }
+
+      .biodata-demo {
+        background-color: #f8f9fa;
+        border-radius: 5px;
+        padding: 15px;
+        margin: 15px 0;
+        border-left: 4px solid #0d6efd;
+        overflow-x: auto;
+      }
+      .code-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #343a40;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 4px 4px 0 0;
+      }
+      .copy-btn {
+        background-color: #495057;
+        color: white !important;
+        border: none;
+        padding: 2px 8px;
+        border-radius: 3px;
+        cursor: pointer;
+        transition: color 0.3s ease;
+      }
+
+      .copy-btn:hover {
+        color: #000 !important;
+      }
+      code {
+        display: block;
+        background-color: #f8f9fa;
+        padding: 15px;
+        overflow-x: auto;
+        font-family: 'Courier New', monospace;
+        font-size: 14px;
+      }
+      .box-model-demo {
+        width: 200px;
+        height: 100px;
+        padding: 20px;
+        border: 10px solid #0d6efd;
+        margin: 30px auto;
+        background-color: #e9ecef;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+      }
+      .box-model-demo::before {
+        content: 'Margin';
+        position: absolute;
+        top: -25px;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        color: #6c757d;
+        font-size: 12px;
+      }
+      .box-model-demo::after {
+        content: 'Padding';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #0d6efd;
+        color: white;
+        padding: 5px;
+        font-size: 12px;
+        border-radius: 3px;
+      }
+      .box-model-container {
+        width: 300px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px dashed #6c757d;
+        position: relative;
+      }
+      .box-model-container::before {
+        content: 'Border';
+        position: absolute;
+        bottom: -15px;
+        right: 10px;
+        background-color: #0d6efd;
+        color: white;
+        padding: 2px 5px;
+        font-size: 12px;
+        border-radius: 3px;
+      }
+      .note {
+        background-color: #e7f5ff;
+        border-left: 4px solid #4dabf7;
+        padding: 15px;
+        margin: 15px 0;
+        border-radius: 0 5px 5px 0;
+      }
+      .warning {
+        background-color: #fff3bf;
+        border-left: 4px solid #ffd43b;
+        padding: 15px;
+        margin: 15px 0;
+        border-radius: 0 5px 5px 0;
+      }
+      .tip {
+        background-color: #ebfbee;
+        border-left: 4px solid #40c057;
+        padding: 15px;
+        margin: 15px 0;
+        border-radius: 0 5px 5px 0;
+      }
+      .box-example {
+        border: 1px solid #dee2e6;
+        padding: 15px;
+        margin: 15px 0;
+        border-radius: 5px;
+      }
+      .box {
+        width: 100px;
+        height: 100px;
+        background-color: #0d6efd;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 10px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="blog-container">
+      <header class="title-section">
+        <div class="title-content">
+          <a href="https://webiddesign.com" target="_blank" rel="noopener">
+            <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+          </a>
+        </div>
+      </header>
+
+      <main class="content-section">
+        <section class="article-content">
+          <h2 class="text-center">Memahami Box Model</h2>
+          <h3>Panduan Lengkap tentang Box Model</h3>
+
+          <p>
+            Box Model adalah konsep fundamental yang menjelaskan bagaimana elemen HTML ditampilkan
+            di halaman web. Setiap elemen HTML dapat dianggap sebagai kotak yang terdiri dari
+            konten, padding, border, dan margin.
+          </p>
+
+          <h4>1. Komponen Box Model</h4>
+          <p>Box Model terdiri dari empat komponen utama:</p>
+
+          <div class="box-model-container">
+            <div class="box-model-demo">Konten</div>
+          </div>
+
+          <div class="note">
+            <strong>Penjelasan Komponen:</strong>
+            <ul>
+              <li>
+                <strong>Konten (Content)</strong> - Area yang berisi teks, gambar, atau elemen
+                lainnya
+              </li>
+              <li><strong>Padding</strong> - Ruang antara konten dan border</li>
+              <li><strong>Border</strong> - Garis yang mengelilingi padding dan konten</li>
+              <li>
+                <strong>Margin</strong> - Ruang di luar border yang memisahkan elemen dengan elemen
+                lain
+              </li>
+            </ul>
+          </div>
+
+          <h4>2. Ukuran Kotak (Box Sizing)</h4>
+          <p>
+            Secara default, lebar dan tinggi elemen hanya berlaku untuk konten. Padding dan border
+            ditambahkan ke ukuran tersebut.
+          </p>
+
+          <div class="biodata-demo">
+            <div class="code-header">
+              <span>CSS</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>.box {
+  width: 300px;
+  height: 100px;
+  padding: 20px;
+  border: 10px solid #0d6efd;
+  margin: 30px;
+  background-color: #e9ecef;
+}</code></pre>
+          </div>
+
+          <p>Total lebar elemen di atas adalah:</p>
+          <p>
+            <code
+              >lebar total = margin-kiri + border-kiri + padding-kiri + width + padding-kanan +
+              border-kanan + margin-kanan</code
+            >
+          </p>
+          <p><code>lebar total = 30px + 10px + 20px + 300px + 20px + 10px + 30px = 420px</code></p>
+
+          <div class="warning">
+            <strong>Perhatian:</strong> Perilaku default ini bisa menyebabkan masalah tata letak
+            yang tidak terduga. Untuk menghindarinya, gunakan <code>box-sizing: border-box</code>.
+          </div>
+
+          <h4>3. Menggunakan box-sizing: border-box</h4>
+          <p>
+            Dengan <code>box-sizing: border-box</code>, padding dan border termasuk dalam lebar dan
+            tinggi yang ditentukan.
+          </p>
+
+          <div class="biodata-demo">
+            <div class="code-header">
+              <span>CSS</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>/* Menerapkan ke semua elemen */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.box {
+  width: 300px;  /* Termasuk padding dan border */
+  padding: 20px;
+  border: 10px solid #0d6efd;
+}</code></pre>
+          </div>
+
+          <div class="tip">
+            <strong>Tips Praktis:</strong>
+            <ul>
+              <li>Selalu gunakan <code>box-sizing: border-box</code> di awal file CSS Anda</li>
+              <li>
+                Gunakan unit relatif seperti <code>rem</code> atau <code>%</code> untuk ukuran yang
+                lebih responsif
+              </li>
+              <li>Gunakan shorthand properties untuk menulis kode yang lebih ringkas</li>
+            </ul>
+          </div>
+
+          <h4>4. Margin Collapsing</h4>
+          <p>
+            Margin atas dan bawah dari dua elemen yang berdekatan bisa saling tumpang tindih
+            (collapse).
+          </p>
+
+          <div class="biodata-demo">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;div class="box" style="margin-bottom: 30px;"&gt;Kotak 1&lt;/div&gt;
+&lt;div class="box" style="margin-top: 40px;"&gt;Kotak 2&lt;/div&gt;</code></pre>
+          </div>
+
+          <p>Jarak antar kotak di atas adalah 40px (bukan 70px) karena margin collapsing.</p>
+
+          <div class="note">
+            <strong>Kapan Margin Collapsing Terjadi:</strong>
+            <ul>
+              <li>Antara elemen blok yang berdekatan</li>
+              <li>
+                Antara parent dan child pertama/terakhir (jika parent tidak memiliki border,
+                padding, atau konten inline)
+              </li>
+              <li>
+                Pada elemen kosong (tidak memiliki border, padding, atau tinggi yang ditentukan)
+              </li>
+            </ul>
+          </div>
+
+          <h4>5. Contoh Praktis</h4>
+          <p>Berikut contoh penerapan box model dalam membuat card sederhana:</p>
+
+          <div class="biodata-demo">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;div class="card"&gt;
+  &lt;img src="gambar.jpg" alt="Contoh Gambar" class="card-img"&gt;
+  &lt;div class="card-body"&gt;
+    &lt;h3 class="card-title"&gt;Judul Card&lt;/h3&gt;
+    &lt;p class="card-text"&gt;Ini adalah contoh card sederhana dengan box model.&lt;/p&gt;
+    &lt;a href="#" class="btn"&gt;Baca Selengkapnya&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+
+          <div class="biodata-demo">
+            <div class="code-header">
+              <span>CSS</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>/* Reset dan Box Sizing */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Style Card */
+.card {
+  width: 300px;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.card-title {
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.card-text {
+  color: #6c757d;
+  margin-bottom: 15px;
+  line-height: 1.5;
+}
+
+.btn {
+  display: inline-block;
+  background-color: #0d6efd;
+  color: white;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 14px;
+  transition: background-color 0.3s;
+}
+
+.btn:hover {
+  background-color: #0b5ed7;
+}</code></pre>
+          </div>
+
+          <div class="tip">
+            <strong>Best Practices Box Model:</strong>
+            <ul>
+              <li>
+                Selalu gunakan <code>box-sizing: border-box</code> untuk perhitungan ukuran yang
+                lebih mudah
+              </li>
+              <li>Gunakan margin untuk jarak antar elemen</li>
+              <li>Gunakan padding untuk jarak antara border dan konten</li>
+              <li>Manfaatkan shorthand properties (contoh: <code>margin: 10px 20px;</code>)</li>
+              <li>
+                Gunakan unit relatif seperti <code>rem</code> atau <code>em</code> untuk ukuran yang
+                responsif
+              </li>
+            </ul>
+          </div>
+
+          <nav class="navigation-section" aria-label="Halaman navigasi">
+            <div class="nav-buttons">
+              <button
+                class="btn"
+                onclick="window.location.href='h131.html'"
+                title="Struktur File Website"
+              >
+                &lt;&nbsp;Prev
+              </button>
+              <img
+                src="../assets/png/home.png"
+                alt="Home"
+                class="home-icon"
+                onclick="window.location.href='../index.html'"
+                title="Home"
+              />
+              <img
+                src="../assets/png/html5.png"
+                alt="HTML"
+                onclick="window.location.href='h1.html'"
+                title="Daftar Isi HTML"
+              />
+              <button class="btn" onclick="window.location.href='h133.html'" title="Flex Box">
+                Next&nbsp;&gt;
+              </button>
+            </div>
+          </nav>
+        </section>
+      </main>
+    </div>
+
+    <script>
+      function copyCode(button) {
+        const codeBlock = button.parentElement.nextElementSibling;
+        const code = codeBlock.textContent;
+
+        // Buat elemen textarea untuk menyalin teks
+        const textarea = document.createElement('textarea');
+        textarea.value = code;
+        textarea.style.position = 'fixed';
+        document.body.appendChild(textarea);
+        textarea.select();
+
+        try {
+          // Salin teks ke clipboard
+          const successful = document.execCommand('copy');
+          const msg = successful ? 'berhasil disalin!' : 'gagal disalin';
+
+          // Tampilkan notifikasi
+          const originalText = button.textContent;
+          button.textContent = 'Tersalin!';
+
+          // Kembalikan teks tombol setelah 2 detik
+          setTimeout(() => {
+            button.textContent = originalText;
+          }, 2000);
+        } catch (err) {
+          console.error('Gagal menyalin teks: ', err);
+        }
+        // Hapus textarea
+        document.body.removeChild(textarea);
+      }
+    </script>
+  </body>
+</html>

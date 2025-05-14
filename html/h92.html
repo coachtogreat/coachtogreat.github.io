@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Memasukkan Audio di HTML</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <style>
+      .audio-demo {
+        background-color: #f8f9fa;
+        border-radius: 5px;
+        padding: 15px;
+        margin: 15px 0;
+        border-left: 4px solid #0d6efd;
+        overflow-x: auto;
+      }
+      .audio-container {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: white;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      .audio-preview {
+        width: 100%;
+        max-width: 640px;
+        margin: 15px 0;
+      }
+      .code-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #343a40;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 4px 4px 0 0;
+      }
+      .copy-btn {
+        background-color: #495057;
+        color: white !important;
+        border: none;
+        padding: 2px 8px;
+        border-radius: 3px;
+        cursor: pointer;
+      }
+      
+      .copy-btn:hover {
+        color: white !important;
+      }
+      .copy-btn:hover {
+        background-color: #0d6efd;
+      }
+
+      .btn:hover {
+        color: white !important;
+      }
+      pre {
+        margin: 0;
+        padding: 0;
+      }
+      code {
+        display: block;
+        background-color: #f8f9fa;
+        padding: 15px;
+        border-radius: 0 0 4px 4px;
+        overflow-x: auto;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 14px;
+        line-height: 1.5;
+        transition: background-color 0.2s ease;
+      }
+
+      code:hover {
+        background-color: #e9ecef;
+        cursor: pointer;
+      }
+      .note {
+        background-color: #e7f5ff;
+        border-left: 4px solid #0d6efd;
+        padding: 12px 15px;
+        margin: 15px 0;
+        border-radius: 0 4px 4px 0;
+      }
+      .warning {
+        background-color: #fff3bf;
+        border-left: 4px solid #ffd43b;
+        padding: 12px 15px;
+        margin: 15px 0;
+        border-radius: 0 4px 4px 0;
+      }
+      .tip {
+        background-color: #d4edda;
+        border-left: 4px solid #28a745;
+        padding: 12px 15px;
+        margin: 15px 0;
+        border-radius: 0 4px 4px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="blog-container">
+      <header class="title-section">
+        <div class="title-content">
+          <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+            <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+          </a>
+        </div>
+      </header>
+
+      <main class="content-section">
+        <section class="article-content">
+          <h2 class="intro-title">Memasukkan Audio di HTML</h2>
+          <h3 class="section-title">Panduan Lengkap Menambahkan Audio ke Halaman Web</h3>
+
+          <p>
+            HTML5 menyediakan elemen <code>&lt;audio&gt;</code> yang memudahkan kita untuk
+            menambahkan file audio ke dalam halaman web. Mari kita pelajari cara menggunakannya
+            dengan benar.
+          </p>
+
+          <div class="note">
+            <strong>Catatan:</strong> Format audio yang didukung bervariasi tergantung browser.
+            Format yang umum didukung adalah MP3, WAV, dan OGG.
+          </div>
+
+          <h4>1. Dasar-dasar Elemen &lt;audio&gt;</h4>
+          <p>Berikut contoh sederhana penggunaan elemen &lt;audio&gt;:</p>
+
+          <div class="audio-demo">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;audio controls&gt;
+  &lt;source src="audio/contoh.mp3" type="audio/mp3"&gt;
+  Browser Anda tidak mendukung elemen audio.
+&lt;/audio&gt;</code></pre>
+
+            <div class="audio-preview">
+              <audio controls>
+                <source
+                  src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
+                  type="audio/mp3"
+                />
+                Browser Anda tidak mendukung elemen audio.
+              </audio>
+            </div>
+          </div>
+
+          <h4>2. Atribut Penting &lt;audio&gt;</h4>
+          <div class="audio-container">
+            <ul>
+              <li>
+                <code>controls</code>: Menampilkan kontrol pemutaran audio (play, pause, volume,
+                dll)
+              </li>
+              <li><code>autoplay</code>: Audio akan otomatis diputar saat halaman dimuat</li>
+              <li><code>loop</code>: Audio akan diulang secara otomatis setelah selesai</li>
+              <li><code>muted</code>: Audio akan dimulai dalam keadaan mute</li>
+              <li><code>preload</code>: Mengontrol pra-pemuatan audio (auto, metadata, none)</li>
+            </ul>
+          </div>
+
+          <h4>3. Beberapa Sumber Audio</h4>
+          <p>
+            Anda dapat menyediakan beberapa format audio untuk kompatibilitas browser yang lebih
+            baik:
+          </p>
+
+          <div class="audio-demo">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;audio controls&gt;
+  &lt;source src="audio/contoh.mp3" type="audio/mp3"&gt;
+  &lt;source src="audio/contoh.ogg" type="audio/ogg"&gt;
+  &lt;source src="audio/contoh.wav" type="audio/wav"&gt;
+  Browser Anda tidak mendukung elemen audio HTML5.
+  &lt;a href="audio/contoh.mp3"&gt;Unduh audio&lt;/a&gt; sebagai gantinya.
+&lt;/audio&gt;</code></pre>
+          </div>
+
+          <div class="tip">
+            <strong>Tip:</strong> Format MP3 didukung oleh hampir semua browser modern. Gunakan
+            format ini sebagai format utama dan sertakan format lain sebagai cadangan.
+          </div>
+
+          <h4>4. Audio dengan Autoplay dan Loop</h4>
+          <p>
+            Gunakan atribut <code>autoplay</code> dan <code>loop</code> untuk pemutaran otomatis dan
+            berulang:
+          </p>
+
+          <div class="audio-demo">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;audio autoplay loop&gt;
+  &lt;source src="audio/lagu-latar.mp3" type="audio/mp3"&gt;
+  Browser Anda tidak mendukung elemen audio.
+&lt;/audio&gt;</code></pre>
+          </div>
+
+          <div class="warning">
+            <strong>Peringatan:</strong> Penggunaan <code>autoplay</code> mungkin tidak berfungsi di
+            beberapa browser karena kebijakan autoplay yang ketat. Biasanya, audio hanya akan
+            otomatis diputar jika pengguna telah berinteraksi dengan halaman terlebih dahulu.
+          </div>
+
+          <h4>5. Mengontrol Audio dengan JavaScript</h4>
+          <p>Anda dapat mengontrol pemutaran audio menggunakan JavaScript:</p>
+
+          <div class="audio-demo">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;audio id="myAudio"&gt;
+  &lt;source src="audio/efek-suaraku.mp3" type="audio/mp3"&gt;
+&lt;/audio&gt;
+
+&lt;button onclick="document.getElementById('myAudio').play()"&gt;Putar&lt;/button&gt;
+&lt;button onclick="document.getElementById('myAudio').pause()"&gt;Jeda&lt;/button&gt;
+&lt;button onclick="document.getElementById('myAudio').volume += 0.1"&gt;Volume +&lt;/button&gt;
+&lt;button onclick="document.getElementById('myAudio').volume -= 0.1"&gt;Volume -&lt;/button&gt;</code></pre>
+          </div>
+
+          <h4>6. Menyembunyikan Kontrol Audio</h4>
+          <p>Untuk audio latar belakang, Anda bisa menyembunyikan kontrolnya:</p>
+
+          <div class="audio-demo">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;audio autoplay loop style="display: none;"&gt;
+  &lt;source src="audio/lagu-latar.mp3" type="audio/mp3"&gt;
+  Browser Anda tidak mendukung elemen audio.
+&lt;/audio&gt;</code></pre>
+          </div>
+
+          <div class="note">
+            <strong>Penting:</strong> Selalu pertimbangkan pengalaman pengguna saat menggunakan
+            audio otomatis. Beri pengguna kendali untuk mematikan atau menyesuaikan volume audio.
+          </div>
+
+          <h4>7. Format Audio yang Direkomendasikan</h4>
+          <table style="width: 100%; border-collapse: collapse; margin: 20px 0">
+            <tr>
+              <th style="border: 1px solid #ddd; padding: 8px">Format</th>
+              <th style="border: 1px solid #ddd; padding: 8px">MIME Type</th>
+              <th style="border: 1px solid #ddd; padding: 8px">Keterangan</th>
+            </tr>
+            <tr>
+              <td style="border: 1px solid #ddd; padding: 8px">MP3</td>
+              <td style="border: 1px solid #ddd; padding: 8px">audio/mp3</td>
+              <td style="border: 1px solid #ddd; padding: 8px">
+                Format paling populer, didukung oleh hampir semua browser
+              </td>
+            </tr>
+            <tr>
+              <td style="border: 1px solid #ddd; padding: 8px">WAV</td>
+              <td style="border: 1px solid #ddd; padding: 8px">audio/wav</td>
+              <td style="border: 1px solid #ddd; padding: 8px">
+                Kualitas tinggi, tetapi ukuran file besar
+              </td>
+            </tr>
+            <tr>
+              <td style="border: 1px solid #ddd; padding: 8px">OGG</td>
+              <td style="border: 1px solid #ddd; padding: 8px">audio/ogg</td>
+              <td style="border: 1px solid #ddd; padding: 8px">
+                Format terbuka dengan kompresi yang baik
+              </td>
+            </tr>
+          </table>
+
+          <div class="tip">
+            <strong>Tip Lanjutan:</strong> Untuk pengalaman audio yang lebih kaya, pertimbangkan
+            untuk menggunakan Web Audio API yang menyediakan kontrol yang lebih canggih atas
+            pemrosesan dan sintesis audio.
+          </div>
+
+          <br />
+          <nav class="navigation-section" aria-label="Halaman navigasi">
+            <div class="nav-buttons">
+              <button
+                class="btn"
+                onclick="window.location.href='h91.html'"
+                title="Elemen Semantik HTML5"
+              >
+                &lt;&nbsp;Prev
+              </button>
+              <img
+                src="../assets/png/home.png"
+                alt="Home"
+                class="home-icon"
+                onclick="window.location.href='../index.html'"
+                title="Home"
+              />
+              <img
+                src="../assets/png/html5.png"
+                alt="HTML"
+                onclick="window.location.href='h1.html'"
+                title="Daftar Isi HTML"
+              />
+              <button
+                class="btn"
+                onclick="window.location.href='h93.html'"
+                title="Memasukkan Audio di HTML"
+              >
+                Next&nbsp;&gt;
+              </button>
+            </div>
+          </nav>
+        </section>
+      </main>
+    </div>
+
+    <script>
+      function copyCode(button) {
+        const codeBlock = button.parentElement.nextElementSibling;
+        const code = codeBlock.textContent;
+
+        // Buat elemen textarea untuk menyalin teks
+        const textarea = document.createElement('textarea');
+        textarea.value = code;
+        textarea.style.position = 'fixed'; // Menghindari scroll otomatis
+        document.body.appendChild(textarea);
+        textarea.select();
+
+        try {
+          // Salin teks ke clipboard
+          const successful = document.execCommand('copy');
+          const msg = successful ? 'berhasil disalin!' : 'gagal disalin';
+
+          // Tampilkan notifikasi
+          const originalText = button.textContent;
+          button.textContent = 'Tersalin!';
+
+          // Kembalikan teks tombol setelah 2 detik
+          setTimeout(() => {
+            button.textContent = originalText;
+          }, 2000);
+        } catch (err) {
+          console.error('Gagal menyalin teks: ', err);
+        }
+
+        // Hapus textarea
+        document.body.removeChild(textarea);
+      }
+    </script>
+  </body>
+</html>

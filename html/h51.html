@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Daftar Berurutan (Ordered List) HTML</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <style>
+      .list-demo {
+        background-color: #f8f9fa;
+        border-radius: 5px;
+        padding: 15px;
+        margin: 15px 0;
+        border-left: 4px solid #007bff;
+      }
+      .list-type {
+        font-weight: bold;
+        color: #0056b3;
+        margin: 10px 0 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="blog-container">
+      <header class="title-section">
+        <div class="title-content">
+          <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+            <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+          </a>
+        </div>
+      </header>
+
+      <main class="content-section">
+        <section class="article-content">
+          <h2 class="intro-title">Daftar Berurutan (Ordered List) HTML</h2>
+          <h3 class="section-title">Memahami Tag &lt;ol&gt; dan &lt;li&gt; dalam HTML</h3>
+
+          <p>
+            Daftar berurutan (ordered list) digunakan untuk menampilkan daftar item yang memiliki
+            urutan atau langkah-langkah. Setiap item dalam daftar secara otomatis diberi nomor oleh
+            browser.
+          </p>
+
+          <h4>1. Dasar Penggunaan &lt;ol&gt;</h4>
+          <p>Berikut adalah contoh dasar penggunaan tag <code>&lt;ol&gt;</code>:</p>
+
+          <div class="code-block">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;ol&gt;
+  &lt;li&gt;Item pertama&lt;/li&gt;
+  &lt;li&gt;Item kedua&lt;/li&gt;
+  &lt;li&gt;Item ketiga&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+          </div>
+
+          <div class="list-demo">
+            <strong>Hasil:</strong>
+            <ol>
+              <li>Item pertama</li>
+              <li>Item kedua</li>
+              <li>Item ketiga</li>
+            </ol>
+          </div>
+
+          <h4>2. Atribut Utama &lt;ol&gt;</h4>
+
+          <h5><code>type</code></h5>
+          <p>Menentukan jenis penomoran yang digunakan:</p>
+
+          <div class="code-block">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;ol type="1"&gt;...&lt;/ol&gt; &lt;!-- Angka (default) --&gt;
+&lt;ol type="A"&gt;...&lt;/ol&gt; &lt;!-- Huruf besar (A, B, C) --&gt;
+&lt;ol type="a"&gt;...&lt;/ol&gt; &lt;!-- Huruf kecil (a, b, c) --&gt;
+&lt;ol type="I"&gt;...&lt;/ol&gt; &lt;!-- Angka Romawi besar (I, II, III) --&gt;
+&lt;ol type="i"&gt;...&lt;/ol&gt; &lt;!-- Angka Romawi kecil (i, ii, iii) --&gt;</code></pre>
+          </div>
+
+          <div class="list-demo">
+            <strong>Contoh:</strong><br />
+            <span class="list-type">Angka (1, 2, 3):</span>
+            <ol type="1">
+              <li>Pertama</li>
+              <li>Kedua</li>
+            </ol>
+
+            <span class="list-type">Huruf Besar (A, B, C):</span>
+            <ol type="A">
+              <li>Pertama</li>
+              <li>Kedua</li>
+            </ol>
+
+            <span class="list-type">Angka Romawi (I, II, III):</span>
+            <ol type="I">
+              <li>Pertama</li>
+              <li>Kedua</li>
+            </ol>
+          </div>
+
+          <h5><code>start</code></h5>
+          <p>Menentukan nomor awal untuk daftar:</p>
+
+          <div class="code-block">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;ol start="5"&gt;
+  &lt;li&gt;Item kelima&lt;/li&gt;
+  &lt;li&gt;Item keenam&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+          </div>
+
+          <div class="list-demo">
+            <strong>Hasil:</strong>
+            <ol start="5">
+              <li>Item kelima</li>
+              <li>Item keenam</li>
+            </ol>
+          </div>
+
+          <h5><code>reversed</code></h5>
+          <p>Mengurutkan daftar secara terbalik (tidak memerlukan nilai):</p>
+
+          <div class="code-block">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;ol reversed&gt;
+  &lt;li&gt;Item ketiga&lt;/li&gt;
+  &lt;li&gt;Item kedua&lt;/li&gt;
+  &lt;li&gt;Item pertama&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+          </div>
+
+          <div class="list-demo">
+            <strong>Hasil:</strong>
+            <ol reversed>
+              <li>Item ketiga</li>
+              <li>Item kedua</li>
+              <li>Item pertama</li>
+            </ol>
+          </div>
+
+          <h4>3. Atribut &lt;li&gt;</h4>
+
+          <h5><code>value</code></h5>
+          <p>Mengubah nomor urut untuk item tertentu:</p>
+
+          <div class="code-block">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;ol&gt;
+  &lt;li&gt;Pertama&lt;/li&gt;
+  &lt;li value="5"&gt;Lima&lt;/li&gt;
+  &lt;li&gt;Enam&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+          </div>
+
+          <div class="list-demo">
+            <strong>Hasil:</strong>
+            <ol>
+              <li>Pertama</li>
+              <li value="5">Lima</li>
+              <li>Enam</li>
+            </ol>
+          </div>
+
+          <h4>4. Daftar Bersarang (Nested Lists)</h4>
+          <p>
+            Anda dapat membuat daftar di dalam daftar untuk membuat hierarki yang lebih kompleks:
+          </p>
+
+          <div class="code-block">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;ol&gt;
+  &lt;li&gt;Bab 1
+    &lt;ol type="a"&gt;
+      &lt;li&gt;Sub-bab 1.1&lt;/li&gt;
+      &lt;li&gt;Sub-bab 1.2&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Bab 2
+    &lt;ol type="i"&gt;
+      &lt;li&gt;Sub-bab 2.1&lt;/li&gt;
+      &lt;li&gt;Sub-bab 2.2&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+          </div>
+
+          <div class="list-demo">
+            <strong>Hasil:</strong>
+            <ol>
+              <li>
+                Bab 1
+                <ol type="a">
+                  <li>Sub-bab 1.1</li>
+                  <li>Sub-bab 1.2</li>
+                </ol>
+              </li>
+              <li>
+                Bab 2
+                <ol type="i">
+                  <li>Sub-bab 2.1</li>
+                  <li>Sub-bab 2.2</li>
+                </ol>
+              </li>
+            </ol>
+          </div>
+
+          <h4>5. Menggabungkan dengan CSS</h4>
+          <p>Anda menyesuaikan tampilan daftar dengan CSS:</p>
+
+          <div class="code-block">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;style&gt;
+  .daftar-kustom {
+    list-style-type: none;
+    counter-reset: langkah;
+    padding: 0;
+  }
+  .daftar-kustom li {
+    counter-increment: langkah;
+    margin-bottom: 10px;
+    position: relative;
+    padding-left: 40px;
+  }
+  .daftar-kustom li::before {
+    content: counter(langkah);
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+&lt;/style&gt;
+
+&lt;ol class="daftar-kustom"&gt;
+  &lt;li&gt;Langkah pertama&lt;/li&gt;
+  &lt;li&gt;Langkah kedua&lt;/li&gt;
+  &lt;li&gt;Langkah ketiga&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+          </div>
+
+          <div class="list-demo">
+            <strong>Hasil:</strong>
+            <style>
+              .daftar-kustom {
+                list-style-type: none;
+                counter-reset: langkah;
+                padding: 0;
+              }
+              .daftar-kustom li {
+                counter-increment: langkah;
+                margin-bottom: 10px;
+                position: relative;
+                padding-left: 40px;
+              }
+              .daftar-kustom li::before {
+                content: counter(langkah);
+                background-color: #007bff;
+                color: white;
+                font-weight: bold;
+                border-radius: 50%;
+                width: 25px;
+                height: 25px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                position: absolute;
+                left: 0;
+                top: 0;
+              }
+            </style>
+            <ol class="daftar-kustom">
+              <li>Langkah pertama</li>
+              <li>Langkah kedua</li>
+              <li>Langkah ketiga</li>
+            </ol>
+          </div>
+
+          <h4>6. Praktik Terbaik</h4>
+          <ul>
+            <li>Gunakan daftar berurutan hanya ketika urutan item memang penting</li>
+            <li>Hindari menggunakan daftar hanya untuk tujuan indentasi</li>
+            <li>
+              Gunakan CSS untuk mengubah gaya daftar daripada menggunakan atribut yang sudah tidak
+              didukung seperti <code>compact</code>
+            </li>
+            <li>Pastikan daftar tetap dapat dibaca dan dipahami tanpa CSS</li>
+            <li>
+              Gunakan daftar bersarang dengan bijak untuk menghindari hierarki yang terlalu dalam
+            </li>
+          </ul>
+        </section>
+
+        <br />
+        <nav class="navigation-section" aria-label="Halaman navigasi">
+          <div class="nav-buttons">
+            <button class="btn" onclick="window.location.href='h43.html'" title="Atribut Gambar">
+              &lt;&nbsp;Prev
+            </button>
+            <img
+              src="../assets/png/home.png"
+              alt="Home"
+              class="home-icon"
+              onclick="window.location.href='../index.html'"
+              title="Home"
+            />
+            <img
+              src="../assets/png/html5.png"
+              alt="HTML"
+              onclick="window.location.href='h1.html'"
+              title="Daftar Isi HTML"
+            />
+            <button
+              class="btn"
+              onclick="window.location.href='h52.html'"
+              title="Daftar Tidak Berurutan"
+            >
+              Next&nbsp;&gt;
+            </button>
+          </div>
+        </nav>
+      </main>
+    </div>
+
+    <script src="../script/copyCode.js"></script>
+    <script src="../script/script.js"></script>
+  </body>
+</html>

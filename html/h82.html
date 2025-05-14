@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Elemen Semantik HTML5</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <style>
+      .semantic-demo {
+        background-color: #f8f9fa;
+        border-radius: 5px;
+        padding: 15px;
+        margin: 15px 0;
+        border-left: 4px solid #0d6efd;
+      }
+      .semantic-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 15px;
+        margin: 20px 0;
+      }
+      .semantic-card {
+        background: white;
+        border: 1px solid #dee2e6;
+        border-radius: 5px;
+        padding: 15px;
+        transition: transform 0.2s;
+      }
+      .semantic-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      }
+      .semantic-card h4 {
+        color: #0d6efd;
+        margin-top: 0;
+        border-bottom: 1px solid #dee2e6;
+        padding-bottom: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="blog-container">
+      <header class="title-section">
+        <div class="title-content">
+          <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+            <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+          </a>
+        </div>
+      </header>
+
+      <main class="content-section">
+        <section class="article-content">
+          <h2 class="intro-title">Elemen Semantik HTML5</h2>
+          <h3 class="section-title">Memahami Elemen Semantik dalam HTML5</h3>
+          
+          <p>
+            HTML5 memperkenalkan elemen semantik yang memberikan makna lebih pada struktur halaman web.
+            Elemen-elemen ini membantu mesin pencari dan teknologi bantu memahami struktur dan makna konten.
+          </p>
+
+          <h4>1. Elemen Semantik Utama</h4>
+          <p>Berikut adalah elemen semantik utama dalam HTML5:</p>
+          
+          <div class="semantic-grid">
+            <div class="semantic-card">
+              <h4>&lt;header&gt;</h4>
+              <p>Mewakili konten pengantar atau navigasi. Bisa berisi judul, logo, dan menu navigasi.</p>
+              <pre><code>&lt;header&gt;
+  &lt;h1&gt;Judul Situs&lt;/h1&gt;
+  &lt;nav&gt;...&lt;/nav&gt;
+&lt;/header&gt;</code></pre>
+            </div>
+
+            <div class="semantic-card">
+              <h4>&lt;nav&gt;</h4>
+              <p>Menandai bagian navigasi utama. Biasanya berisi menu atau daftar tautan navigasi.</p>
+              <pre><code>&lt;nav&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Beranda&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Tentang&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+            </div>
+
+            <div class="semantic-card">
+              <h4>&lt;main&gt;</h4>
+              <p>Menandai konten utama dari halaman. Hanya boleh ada satu elemen &lt;main&gt; per halaman.</p>
+              <pre><code>&lt;main&gt;
+  &lt;h1&gt;Judul Utama&lt;/h1&gt;
+  &lt;article&gt;...&lt;/article&gt;
+&lt;/main&gt;</code></pre>
+            </div>
+
+            <div class="semantic-card">
+              <h4>&lt;article&gt;</h4>
+              <p>Mewakili konten yang berdiri sendiri dan dapat didistribusikan secara terpisah.</p>
+              <pre><code>&lt;article&gt;
+  &lt;h2&gt;Judul Artikel&lt;/h2&gt;
+  &lt;p&gt;Isi artikel...&lt;/p&gt;
+&lt;/article&gt;</code></pre>
+            </div>
+
+            <div class="semantic-card">
+              <h4>&lt;section&gt;</h4>
+              <p>Mengelompokkan konten yang terkait secara tematis.</p>
+              <pre><code>&lt;section&gt;
+  &lt;h2&gt;Pendahuluan&lt;/h2&gt;
+  &lt;p&gt;Isi pendahuluan...&lt;/p&gt;
+&lt;/section&gt;</code></pre>
+            </div>
+
+            <div class="semantic-card">
+              <h4>&lt;aside&gt;</h4>
+              <p>Menandai konten samping yang terkait dengan konten utama.</p>
+              <pre><code>&lt;aside&gt;
+  &lt;h3&gt;Info Tambahan&lt;/h3&gt;
+  &lt;p&gt;Konten terkait...&lt;/p&gt;
+&lt;/aside&gt;</code></pre>
+            </div>
+
+            <div class="semantic-card">
+              <h4>&lt;footer&gt;</h4>
+              <p>Menandai bagian kaki dari sebuah halaman atau bagian.</p>
+              <pre><code>&lt;footer&gt;
+  &lt;p&gt;&copy; 2023 Nama Situs. Hak Cipta Dilindungi.&lt;/p&gt;
+&lt;/footer&gt;</code></pre>
+            </div>
+          </div>
+
+          <h4>2. Elemen Semantik Tambahan</h4>
+          <div class="semantic-demo">
+            <h5>a. &lt;figure&gt; dan &lt;figcaption&gt;</h5>
+            <p>Digunakan untuk mengelompokkan konten seperti gambar, diagram, atau kode dengan keterangannya.</p>
+            <pre><code>&lt;figure&gt;
+  &lt;img src="gambar.jpg" alt="Deskripsi gambar"&gt;
+  &lt;figcaption&gt;Keterangan untuk gambar di atas&lt;/figcaption&gt;
+&lt;/figure&gt;</code></pre>
+          </div>
+
+          <div class="semantic-demo">
+            <h5>b. &lt;time&gt;</h5>
+            <p>Menandai tanggal/waktu yang dapat dibaca mesin.</p>
+            <pre><code>&lt;p&gt;Artikel ini diterbitkan pada &lt;time datetime="2023-11-15"&gt;15 November 2023&lt;/time&gt;.&lt;/p&gt;</code></pre>
+          </div>
+
+          <div class="semantic-demo">
+            <h5>c. &lt;mark&gt;</h5>
+            <p>Menyorot teks yang relevan dalam konteks tertentu.</p>
+            <pre><code>&lt;p&gt;Ini adalah teks biasa dengan &lt;mark&gt;bagian yang disorot&lt;/mark&gt;.&lt;/p&gt;</code></pre>
+          </div>
+
+          <h4>3. Contoh Struktur Halaman HTML5</h4>
+          <div class="semantic-demo">
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="id"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Contoh Halaman HTML5 Semantik&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;header&gt;
+    &lt;h1&gt;Judul Situs&lt;/h1&gt;
+    &lt;nav&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href="#beranda"&gt;Beranda&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#artikel"&gt;Artikel&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#tentang"&gt;Tentang&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/nav&gt;
+  &lt;/header&gt;
+
+  &lt;main&gt;
+    &lt;article&gt;
+      &lt;header&gt;
+        &lt;h2&gt;Judul Artikel&lt;/h2&gt;
+        &lt;p&gt;Dipublikasikan pada &lt;time datetime="2023-11-15"&gt;15 November 2023&lt;/time&gt;&lt;/p&gt;
+      &lt;/header&gt;
+      
+      &lt;section&gt;
+        &lt;h3&gt;Pendahuluan&lt;/h3&gt;
+        &lt;p&gt;Isi pendahuluan artikel...&lt;/p&gt;
+      &lt;/section&gt;
+      
+      &lt;section&gt;
+        &lt;h3&gt;Pembahasan&lt;/h3&gt;
+        &lt;p&gt;Isi pembahasan artikel...&lt;/p&gt;
+        
+        &lt;figure&gt;
+          &lt;img src="gambar.jpg" alt="Ilustrasi"&gt;
+          &lt;figcaption&gt;Gambar ilustrasi untuk artikel&lt;/figcaption&gt;
+        &lt;/figure&gt;
+      &lt;/section&gt;
+      
+      &lt;aside&gt;
+        &lt;h4&gt;Bacaan Terkait&lt;/h4&gt;
+        &lt;ul&gt;
+          &lt;li&gt;&lt;a href="#"&gt;Artikel Terkait 1&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href="#"&gt;Artikel Terkait 2&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/aside&gt;
+    &lt;/article&gt;
+  &lt;/main&gt;
+
+  &lt;footer&gt;
+    &lt;p&gt;&copy; 2023 Nama Situs. Hak Cipta Dilindungi.&lt;/p&gt;
+    &lt;address&gt;
+      Hubungi kami di &lt;a href="mailto:info@contoh.com"&gt;info@contoh.com&lt;/a&gt;
+    &lt;/address&gt;
+  &lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          </div>
+
+          <h4>4. Manfaat Menggunakan Elemen Semantik</h4>
+          <ul>
+            <li><strong>SEO yang Lebih Baik</strong> - Mesin pencari dapat memahami struktur konten dengan lebih baik</li>
+            <li><strong>Aksesibilitas</strong> - Membantu pengguna dengan teknologi bantu memahami struktur halaman</li>
+            <li><strong>Pemeliharaan Kode</strong> - Kode lebih mudah dibaca dan dipelihara</li>
+            <li><strong>Konsistensi</strong> - Membuat struktur halaman lebih konsisten di seluruh situs</li>
+            <li><strong>Masa Depan</strong> - Kompatibel dengan teknologi web masa depan</li>
+          </ul>
+        </section>
+
+        <br />
+        <nav class="navigation-section" aria-label="Halaman navigasi">
+          <div class="nav-buttons">
+            <button class="btn" onclick="window.location.href='h81.html'" title="Jenis Input Lainnya">
+              &lt;&nbsp;Prev
+            </button>
+            <img
+              src="../assets/png/home.png"
+              alt="Home"
+              class="home-icon"
+              onclick="window.location.href='../index.html'"
+              title="Home"
+            />
+            <img
+              src="../assets/png/html5.png"
+              alt="HTML"
+              onclick="window.location.href='h1.html'"
+              title="Daftar Isi HTML"
+            />
+            <button class="btn" onclick="window.location.href='h83.html'" title="Fitur HTML5 Lanjutan">
+              Next&nbsp;&gt;
+            </button>
+          </div>
+        </nav>
+      </main>
+    </div>
+
+    <script>
+      function copyCode(button) {
+        const codeBlock = button.parentElement.nextElementSibling;
+        const range = document.createRange();
+        range.selectNode(codeBlock);
+        window.getSelection().removeAllRanges();
+        window.getSelection().addRange(range);
+        
+        try {
+          const successful = document.execCommand('copy');
+          const message = successful ? 'Kode disalin!' : 'Gagal menyalin kode';
+          const originalText = button.textContent;
+          button.textContent = message;
+          setTimeout(() => {
+            button.textContent = originalText;
+          }, 2000);
+        } catch (err) {
+          console.error('Gagal menyalin kode: ', err);
+        }
+        
+        window.getSelection().removeAllRanges();
+      }
+    </script>
+  </body>
+</html>

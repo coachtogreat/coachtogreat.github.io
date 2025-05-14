@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pemformatan Teks HTML</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <header class="title-section">
+        <div class="title-content">
+          <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+            <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+          </a>
+        </div>
+      </header>
+
+      <main class="content-section">
+        <section class="article-content">
+          <h2 class="intro-title">Pemformatan Teks</h2>
+          <h3 class="section-title">Tag Pemformatan Teks dalam HTML</h3>
+          <p>
+            HTML menyediakan berbagai tag untuk memformat teks. Berikut adalah beberapa tag pemformatan teks yang paling umum digunakan:
+          </p>
+
+          <h4>1. Teks Tebal</h4>
+          <p>Ada dua cara untuk membuat teks tebal:</p>
+          <ul>
+            <li><code>&lt;b&gt;Teks Tebal&lt;/b&gt;</code> - <b>Hanya membuat teks tebal</b> (tanpa makna semantik)</li>
+            <li><code>&lt;strong&gt;Teks Penting&lt;/strong&gt;</code> - <strong>Menandakan teks penting</strong> (memiliki makna semantik)</li>
+          </ul>
+
+          <h4>2. Teks Miring</h4>
+          <p>Ada dua cara untuk membuat teks miring:</p>
+          <ul>
+            <li><code>&lt;i&gt;Teks Miring&lt;/i&gt;</code> - <i>Hanya membuat teks miring</i> (tanpa makna semantik)</li>
+            <li><code>&lt;em&gt;Teks Ditekankan&lt;/em&gt;</code> - <em>Menandakan teks yang ditekankan</em> (memiliki makna semantik)</li>
+          </ul>
+
+          <h4>3. Garis Bawah dan Coret</h4>
+          <ul>
+            <li><code>&lt;u&gt;Teks Bergaris Bawah&lt;/u&gt;</code> - <u>Membuat teks bergaris bawah</u></li>
+            <li><code>&lt;del&gt;Teks Dihapus&lt;/del&gt;</code> - <del>Menunjukkan teks yang dihapus</del></li>
+            <li><code>&lt;s&gt;Tesk Tidak Akurat&lt;/s&gt;</code> - <s>Menandakan teks yang tidak akurat</s></li>
+          </ul>
+
+          <h4>4. Teks Tanda Sisipan dan Markah</h4>
+          <ul>
+            <li><code>&lt;ins&gt;Teks Disisipkan&lt;/ins&gt;</code> - <ins>Menandai teks yang disisipkan</ins></li>
+            <li><code>&lt;mark&gt;Teks Ditandai&lt;/mark&gt;</code> - <mark>Menyorot teks penting</mark></li>
+          </ul>
+
+          <h4>5. Ukuran Teks Kecil dan Besar</h4>
+          <ul>
+            <li><code>&lt;small&gt;Teks Kecil&lt;/small&gt;</code> - <small>Membuat teks lebih kecil</small></li>
+            <li><code>&lt;big&gt;Teks Besar&lt;/big&gt;</code> - <big>Membuat teks lebih besar</big> (tidak disarankan, gunakan CSS)</li>
+          </ul>
+
+          <h4>6. Subskrip dan Superskrip</h4>
+          <ul>
+            <li><code>&lt;sub&gt;Subskrip&lt;/sub&gt;</code> - Teks<sub>subskrip</sub></li>
+            <li><code>&lt;sup&gt;Superskrip&lt;/sup&gt;</code> - Teks<sup>superskrip</sup></li>
+          </ul>
+
+          <h4>Contoh Penggabungan Beberapa Format:</h4>
+          <div class="code-block">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;p&gt;
+  &lt;strong&gt;Peringatan!&lt;/strong&gt; &lt;em&gt;Jangan&lt;/em&gt; sentuh kabel yang &lt;u&gt;terkelupas&lt;/u&gt;.
+  Suhu saat ini adalah 30&amp;deg;C (H&amp;lt;sub&amp;gt;2&amp;lt;/sub&amp;gt;O mendidih pada 100&amp;deg;C).
+  &lt;mark&gt;Penting:&lt;/mark&gt; &lt;del&gt;Jangan lupa matikan kompor&lt;/del&gt;.
+  &lt;ins&gt;Matikan kompor setelah digunakan.&lt;/ins&gt;
+&lt;/p&gt;</code></pre>
+          </div>
+
+          <h5>Hasil:</h5>
+          <div class="example-output">
+            <p>
+              <strong>Peringatan!</strong> <em>Jangan</em> sentuh kabel yang <u>terkelupas</u>.
+              Suhu saat ini adalah 30°C (H<sub>2</sub>O mendidih pada 100°C).
+              <mark>Penting:</mark> <del>Jangan lupa matikan kompor</del>.
+              <ins>Matikan kompor setelah digunakan.</ins>
+            </p>
+          </div>
+
+          <h4>Poin Penting:</h4>
+          <ul>
+            <li>Gunakan tag semantik (<code>&lt;strong&gt;</code>, <code>&lt;em&gt;</code>) untuk aksesibilitas dan SEO yang lebih baik</li>
+            <li>Hindari menggunakan tag <code>&lt;b&gt;</code> dan <code>&lt;i&gt;</code> kecuali benar-benar diperlukan</li>
+            <li>Gunakan CSS untuk pemformatan yang lebih kompleks</li>
+            <li>Selalu uji tampilan di berbagai perangkat dan browser</li>
+          </ul>
+        </section>
+
+        <br />
+        <nav class="navigation-section" aria-label="Halaman navigasi">
+          <div class="nav-buttons">
+            <button class="btn" onclick="window.location.href='h32.html'" title="Paragraf HTML">&lt;&nbsp;Prev</button>
+            <img
+              src="../assets/png/home.png"
+              alt="Home"
+              class="home-icon"
+              onclick="window.location.href='../index.html'"
+              title="Home"
+            />
+            <img
+              src="../assets/png/html5.png"
+              alt="HTML"
+              onclick="window.location.href='h1.html'"
+              title="Daftar Isi HTML"
+            />
+            <button class="btn" onclick="window.location.href='h34.html'" title="Daftar HTML">Next&nbsp;&gt;</button>
+          </div>
+        </nav>
+      </main>
+    </div>
+
+    <script src="../script/copyCode.js"></script>
+    <script src="../script/script.js"></script>
+  </body>
+</html>

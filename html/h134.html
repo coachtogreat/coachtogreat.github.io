@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Memahami CSS Grid - Panduan Lengkap</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <style>
+      h2.text-center {
+        text-align: center;
+        width: 100%;
+      }
+
+      .biodata-demo {
+        background-color: #f8f9fa;
+        border-radius: 5px;
+        padding: 15px;
+        margin: 15px 0;
+        border-left: 4px solid #0d6efd;
+        overflow-x: auto;
+      }
+      .code-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #343a40;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 4px 4px 0 0;
+      }
+      .copy-btn {
+        background-color: #495057;
+        color: white !important;
+        border: none;
+        padding: 2px 8px;
+        border-radius: 3px;
+        cursor: pointer;
+        transition: color 0.3s ease;
+      }
+
+      .copy-btn:hover {
+        color: #000 !important;
+      }
+      code {
+        display: block;
+        background-color: #f8f9fa;
+        padding: 15px;
+        overflow-x: auto;
+        font-family: 'Courier New', monospace;
+        font-size: 14px;
+      }
+      .grid-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        margin: 20px 0;
+        padding: 10px;
+        background-color: #f8f9fa;
+        border-radius: 5px;
+      }
+      .grid-item {
+        background-color: #0d6efd;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        border-radius: 4px;
+      }
+      .grid-item:nth-child(even) {
+        background-color: #0b5ed7;
+      }
+      .grid-example {
+        border: 1px solid #dee2e6;
+        padding: 15px;
+        margin: 15px 0;
+        border-radius: 5px;
+      }
+      .grid-area-example {
+        display: grid;
+        grid-template-areas:
+          'header header header'
+          'sidebar main main'
+          'footer footer footer';
+        gap: 10px;
+        margin: 20px 0;
+      }
+      .header {
+        grid-area: header;
+        background-color: #0d6efd;
+        color: white;
+        padding: 20px;
+        text-align: center;
+      }
+      .sidebar {
+        grid-area: sidebar;
+        background-color: #6c757d;
+        color: white;
+        padding: 20px;
+        min-height: 200px;
+      }
+      .main {
+        grid-area: main;
+        background-color: #e9ecef;
+        padding: 20px;
+      }
+      .footer {
+        grid-area: footer;
+        background-color: #212529;
+        color: white;
+        padding: 10px;
+        text-align: center;
+      }
+
+      .note {
+        background-color: #e7f5ff;
+        border-left: 4px solid #4dabf7;
+        padding: 15px;
+        margin: 15px 0;
+        border-radius: 0 5px 5px 0;
+      }
+      .warning {
+        background-color: #fff3bf;
+        border-left: 4px solid #ffd43b;
+        padding: 15px;
+        margin: 15px 0;
+        border-radius: 0 5px 5px 0;
+      }
+      .tip {
+        background-color: #ebfbee;
+        border-left: 4px solid #40c057;
+        padding: 15px;
+        margin: 15px 0;
+        border-radius: 0 5px 5px 0;
+      }
+      .responsive-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+        margin: 20px 0;
+      }
+      .responsive-item {
+        background-color: #0d6efd;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        border-radius: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="blog-container">
+      <header class="title-section">
+        <div class="title-content">
+          <a href="https://webiddesign.com" target="_blank" rel="noopener">
+            <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+          </a>
+        </div>
+      </header>
+
+      <main class="content-section">
+        <section class="article-content">
+          <h2 class="text-center">Memahami Grid Model</h2>
+          <h3>Panduan Lengkap tentang Grid Layout</h3>
+
+          <p>
+            Grid adalah sistem layout dua dimensi yang memungkinkan Anda membuat tata letak yang
+            kompleks dengan mudah. Berbeda dengan Flexbox yang satu dimensi, Grid memungkinkan
+            pengaturan kolom dan baris sekaligus, membuatnya sangat kuat untuk membuat desain web
+            yang responsif.
+          </p>
+
+          <h4>1. Dasar-dasar Grid</h4>
+          <p>Untuk memulai dengan Grid, Anda perlu mendefinisikan container sebagai grid:</p>
+
+          <div class="biodata-demo">
+            <div class="code-header">
+              <span>CSS</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr; /* 3 kolom dengan lebar yang sama */
+  gap: 10px; /* Jarak antar item */
+}</code></pre>
+          </div>
+
+          <div class="grid-container">
+            <div class="grid-item">Item 1</div>
+            <div class="grid-item">Item 2</div>
+            <div class="grid-item">Item 3</div>
+            <div class="grid-item">Item 4</div>
+            <div class="grid-item">Item 5</div>
+            <div class="grid-item">Item 6</div>
+          </div>
+
+          <div class="note">
+            <strong>Keterangan:</strong>
+            <ul>
+              <li><code>display: grid</code> - Mengubah elemen menjadi grid container</li>
+              <li><code>grid-template-columns</code> - Mendefinisikan kolom grid</li>
+              <li><code>gap</code> - Memberi jarak antar item grid</li>
+              <li><code>fr</code> - Unit fraksi yang membagi ruang yang tersedia</li>
+            </ul>
+          </div>
+
+          <h4>2. Grid Template Areas</h4>
+          <p>
+            Anda dapat membuat layout yang lebih kompleks dengan menggunakan grid-template-areas:
+          </p>
+
+          <div class="biodata-demo">
+            <div class="code-header">
+              <span>CSS</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>.container {
+  display: grid;
+  grid-template-areas:
+    'header header header'
+    'sidebar main main'
+    'footer footer footer';
+  gap: 10px;
+}
+
+.header { grid-area: header; }
+.sidebar { grid-area: sidebar; }
+.main { grid-area: main; }
+.footer { grid-area: footer; }</code></pre>
+          </div>
+
+          <div class="grid-area-example">
+            <div class="header">Header</div>
+            <div class="sidebar">Sidebar</div>
+            <div class="main">Konten Utama</div>
+            <div class="footer">Footer</div>
+          </div>
+
+          <h4>3. Responsive Grid</h4>
+          <p>Buat grid yang responsif dengan mudah menggunakan fitur-fitur CSS Grid:</p>
+
+          <div class="biodata-demo">
+            <div class="code-header">
+              <span>CSS</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>.responsive-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+}</code></pre>
+          </div>
+
+          <div class="responsive-grid">
+            <div class="responsive-item">Item 1</div>
+            <div class="responsive-item">Item 2</div>
+            <div class="responsive-item">Item 3</div>
+            <div class="responsive-item">Item 4</div>
+            <div class="responsive-item">Item 5</div>
+            <div class="responsive-item">Item 6</div>
+          </div>
+
+          <div class="tip">
+            <strong>Penjelasan:</strong>
+            <ul>
+              <li><code>auto-fit</code> - Secara otomatis menyesuaikan jumlah kolom</li>
+              <li><code>minmax(200px, 1fr)</code> - Setiap kolom minimal 200px dan maksimal 1fr</li>
+              <li>Grid akan menyesuaikan jumlah kolom berdasarkan lebar layar</li>
+            </ul>
+          </div>
+
+          <h4>4. Grid vs Flexbox</h4>
+          <p>Kapan sebaiknya menggunakan Grid dan kapan menggunakan Flexbox?</p>
+
+          <div class="note">
+            <strong>Gunakan CSS Grid ketika:</strong>
+            <ul>
+              <li>Membuat layout dua dimensi (baris dan kolom)</li>
+              <li>Membuat tata letak yang kompleks dengan area yang didefinisikan dengan jelas</li>
+              <li>Membutuhkan kontrol yang lebih ketat terhadap tata letak</li>
+            </ul>
+          </div>
+
+          <div class="warning">
+            <strong>Gunakan Flexbox ketika:</strong>
+            <ul>
+              <li>Mengatur item dalam satu dimensi (baris ATAU kolom)</li>
+              <li>Membutuhkan penjajaran konten yang lebih sederhana</li>
+              <li>Bekerja dengan komponen kecil dalam aplikasi</li>
+            </ul>
+          </div>
+
+          <h4>5. Contoh Praktis: Membuat Galeri Foto</h4>
+          <p>Berikut contoh penerapan CSS Grid untuk membuat galeri foto yang responsif:</p>
+
+          <div class="biodata-demo">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;div class="gallery"&gt;
+  &lt;div class="gallery-item"&gt;&lt;img src="foto1.jpg" alt="Foto 1"&gt;&lt;/div&gt;
+  &lt;div class="gallery-item"&gt;&lt;img src="foto2.jpg" alt="Foto 2"&gt;&lt;/div&gt;
+  &lt;div class="gallery-item"&gt;&lt;img src="foto3.jpg" alt="Foto 3"&gt;&lt;/div&gt;
+  &lt;!-- tambahkan lebih banyak item --&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+
+          <div class="biodata-demo">
+            <div class="code-header">
+              <span>CSS</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 15px;
+  padding: 15px;
+}
+
+.gallery-item {
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.05);
+}</code></pre>
+          </div>
+
+          <div class="tip">
+            <strong>Best Practices CSS Grid:</strong>
+            <ul>
+              <li>Gunakan <code>grid-template-areas</code> untuk layout yang kompleks</li>
+              <li>Manfaatkan <code>minmax()</code> untuk grid yang responsif</li>
+              <li>Gunakan <code>gap</code> untuk spasi yang konsisten</li>
+              <li>Kombinasikan dengan Flexbox untuk hasil terbaik</li>
+              <li>Selalu uji di berbagai ukuran layar</li>
+            </ul>
+          </div>
+
+          <nav class="navigation-section" aria-label="Halaman navigasi">
+            <div class="nav-buttons">
+              <button class="btn" onclick="window.location.href='h132.html'" title="Box Model">
+                &lt;&nbsp;Prev
+              </button>
+              <img
+                src="../assets/png/home.png"
+                alt="Home"
+                class="home-icon"
+                onclick="window.location.href='../index.html'"
+                title="Home"
+              />
+              <img
+                src="../assets/png/html5.png"
+                alt="HTML"
+                onclick="window.location.href='h1.html'"
+                title="Daftar Isi HTML"
+              />
+              <button class="btn" onclick="window.location.href='h134.html'" title="Flexbox">
+                Next&nbsp;&gt;
+              </button>
+            </div>
+          </nav>
+        </section>
+      </main>
+    </div>
+
+    <script>
+      function copyCode(button) {
+        const codeBlock = button.parentElement.nextElementSibling;
+        const code = codeBlock.textContent;
+
+        // Buat elemen textarea untuk menyalin teks
+        const textarea = document.createElement('textarea');
+        textarea.value = code;
+        textarea.style.position = 'fixed';
+        document.body.appendChild(textarea);
+        textarea.select();
+
+        try {
+          // Salin teks ke clipboard
+          const successful = document.execCommand('copy');
+          const msg = successful ? 'berhasil disalin!' : 'gagal disalin';
+
+          // Tampilkan notifikasi
+          const originalText = button.textContent;
+          button.textContent = 'Tersalin!';
+
+          // Kembalikan teks tombol setelah 2 detik
+          setTimeout(() => {
+            button.textContent = originalText;
+          }, 2000);
+        } catch (err) {
+          console.error('Gagal menyalin teks: ', err);
+        }
+        // Hapus textarea
+        document.body.removeChild(textarea);
+      }
+    </script>
+  </body>
+</html>

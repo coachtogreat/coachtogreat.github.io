@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>h21.html</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Struktur Dasar HTML</h2>
+
+      <h3 class="section-title">1. Apa itu Tag HTML?</h3>
+      <p>
+        Tag HTML adalah komponen dasar dari HTML (HyperText Markup Language) yang digunakan untuk
+        memberi struktur dan makna pada konten web. Setiap tag memiliki fungsi spesifik yang
+        memberitahu browser bagaimana menampilkan konten tersebut.
+      </p>
+      <p>
+        Tag HTML dapat berupa elemen pembuka, isi, dan penutup, atau bisa juga berupa self-closing
+        tag untuk elemen yang tidak memerlukan konten.
+      </p>
+
+      <h3 class="code-highlight">Struktur Dasar Tag HTML:</h3>
+      <p>Tag HTML umumnya memiliki struktur sebagai berikut:</p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>HTML</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>&lt;tagname&gt;Konten&lt;/tagname&gt;
+        </code></pre>
+      </div>
+
+      <p>Contoh:</p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>HTML</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>&lt;p&gt;Ini adalah paragraph.&lt;/p&gt;
+        </code></pre>
+      </div>
+      <br />
+      <h4>Komponen Utama Tag HTML:</h4>
+      <ul>
+        <li>
+          <strong>Tag Pembuka</strong>: Diawali dengan <code>&lt;</code> dan diakhiri dengan
+          <code>&gt;</code>, contoh: <code>&lt;p&gt;</code>
+        </li>
+        <li>
+          <strong>Konten</strong>: Teks atau elemen lain yang berada di antara tag pembuka dan
+          penutup
+        </li>
+        <li>
+          <strong>Tag Penutup</strong>: Sama seperti tag pembuka tapi dengan garis miring
+          <code>/</code> sebelum nama tag, contoh: <code>&lt;/p&gt;</code>
+        </li>
+        <li>
+          <strong>Atribut</strong>: Informasi tambahan yang diletakkan di dalam tag pembuka, contoh:
+          <code>&lt;a href="https://example.com"&gt;</code>
+        </li>
+      </ul>
+
+      <h3 class="section-title">2. Self-Closing Tag (Void Elements)</h3>
+      <p>
+        Beberapa elemen HTML tidak memerlukan tag penutup karena tidak memiliki konten.
+        Elemen-elemen ini disebut void elements atau self-closing tags.
+      </p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>HTML</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>&lt;img src="gambar.jpg" alt="Deskripsi gambar" /&gt;
+&lt;br /&gt;
+&lt;hr /&gt;
+        </code></pre>
+      </div>
+
+      <h3 class="section-title">3. Apa itu Elemen HTML?</h3>
+      <p>
+        Elemen HTML adalah komponen lengkap yang terdiri dari tag pembuka, konten (opsional), dan
+        tag penutup. Elemen adalah blok bangunan dasar dari halaman web.
+      </p>
+      <p>
+        Setiap elemen dapat memiliki atribut yang memberikan informasi tambahan tentang elemen
+        tersebut.
+      </p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>HTML</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>&lt;h1&gt;Judul Utama&lt;/h1&gt;
+        </code></pre>
+      </div>
+
+      <p>Itu adalah elemen &lt;h1&gt;.</p>
+
+      <p>Elemen bisa juga hanya tag tunggal (self-closing) seperti:</p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>HTML</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>&lt;img src="assets/png/logo.png" alt="Logo" /&gt;
+        </code></pre>
+      </div>
+
+      <h3 class="section-title">4. Kategori Elemen HTML Berdasarkan Fungsi</h3>
+      <p>
+        Elemen HTML dapat dikelompokkan berdasarkan fungsinya dalam membangun struktur dan tampilan
+        halaman web.
+      </p>
+
+      <h3 class="code-highlight">A. Elemen Struktur Dokumen</h3>
+      <p>
+        Elemen-elemen yang membentuk kerangka dasar dokumen HTML dan mengatur struktur keseluruhan
+        halaman.
+      </p>
+
+      <ul>
+        <li><span class="code-highlight">&lt;html&gt;</span> - Elemen utama dari dokument HTML.</li>
+        <li>
+          <span class="code-highlight">&lt;head&gt;</span> - Bagian kepala (metadata, title, link ke
+          CSS, dll).
+        </li>
+        <li>
+          <span class="code-highlight">&lt;title&gt;</span> - Judul halaman (muncul di tab browser).
+        </li>
+        <li>
+          <span class="code-highlight">&lt;body&gt;</span> - Isi halaman (semua yang terlihat oleh
+          pengguna).
+        </li>
+      </ul>
+
+      <h3 class="code-highlight">B. Elemen Heading (Judul)</h3>
+      <p>
+        Digunakan untuk membuat judul dan subjudul, dengan <code>&lt;h1&gt;</code> sebagai judul
+        utama (hanya satu per halaman untuk SEO) dan <code>&lt;h2&gt;</code> sampai
+        <code>&lt;h6&gt;</code> untuk subjudul dengan tingkat kepentingan yang menurun.
+      </p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>HTML</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>&lt;h1&gt;Judul 1&lt;/h1&gt; sampai &lt;h6&gt;Judul 6&lt;/h6&gt;
+        </code></pre>
+      </div>
+
+      <h3 class="code-highlight">C. Elemen Teks dan Paragraf</h3>
+      <p>Elemen-elemen untuk mengatur teks dan paragraf dalam dokumen HTML.</p>
+
+      <ul>
+        <li><span class="code-highlight">&lt;p&gt;</span> - Paragraph.</li>
+        <li><span class="code-highlight">&lt;br&gt;</span> - Baris baru.</li>
+        <li><span class="code-highlight">&lt;hr&gt;</span> - Garis Horizontal.</li>
+        <li>
+          <span class="code-highlight">&lt;strong&gt;</span> - <strong>Teks tebal (bold).</strong>
+        </li>
+        <li><span class="code-highlight">&lt;em&gt;</span> - <em>Teks miring (italic).</em></li>
+      </ul>
+
+      <h3 class="code-highlight">D. Elemen Link dan Gambar</h3>
+      <p>Elemen untuk menambahkan hyperlink dan gambar ke dalam halaman web.</p>
+
+      <ul>
+        <li>
+          <span class="code-highlight">&lt;a href="url"&gt;Teks Link&lt;/a&gt;</span> - Hyperlink
+        </li>
+        <li>
+          <span class="code-highlight">&lt;img src="url" alt="deskripsi"&gt;</span> - Baris baru.
+        </li>
+      </ul>
+
+      <h3 class="code-highlight">E. Elemen Layout dan Struktur</h3>
+      <p>Elemen-elemen yang digunakan untuk mengatur tata letak dan struktur halaman web.</p>
+
+      <ul>
+        <li><span class="code-highlight">&lt;div&gt;</span> - Kontainer umum (block level)</li>
+        <li><span class="code-highlight">&lt;span&gt;</span> - Kontainer kecil (inline)</li>
+        <li><span class="code-highlight">&lt;section&gt;</span> - Bagian dokumen</li>
+        <li><span class="code-highlight">&lt;article&gt;</span> - Konten independen</li>
+        <li><span class="code-highlight">&lt;nav&gt;</span> - Navigasi</li>
+        <li>
+          <span class="code-highlight">&lt;header&gt;&nbsp;&lt;footer&gt;</span> - Bagian atas dan
+          bawah.
+        </li>
+      </ul>
+
+      <h3 class="code-highlight">F. Elemen Daftar</h3>
+      <p>Digunakan untuk membuat daftar terurut (bernomor) dan tidak terurut (berpoin).</p>
+
+      <ul>
+        <li><span class="code-highlight">&lt;ol&gt;</span> - Daftar beurutan (angka)</li>
+        <li><span class="code-highlight">&lt;ul&gt;</span> - Daftar tidak berurutan (bullets)</li>
+        <li><span class="code-highlight">&lt;li&gt;</span> - Item dalam daftar</li>
+      </ul>
+
+      <h3 class="code-highlight">G. Elemen Tabel</h3>
+      <p>Digunakan untuk menampilkan data dalam bentuk tabel dengan baris dan kolom.</p>
+
+      <ul>
+        <li><span class="code-highlight">&lt;table&gt;</span> - Tabel</li>
+        <li><span class="code-highlight">&lt;th&gt;</span> - Header kolom</li>
+        <li><span class="code-highlight">&lt;tr&gt;</span> - Tabel baris</li>
+        <li><span class="code-highlight">&lt;td&gt;</span> - Tabel Data</li>
+      </ul>
+
+      <h3 class="code-highlight">H. Elemen Formulir</h3>
+      <p>Digunakan untuk membuat form interaktif yang memungkinkan pengguna memasukkan data.</p>
+
+      <ul>
+        <li><span class="code-highlight">&lt;form&gt;</span> - Formulir</li>
+        <li><span class="code-highlight">&lt;input&gt;</span> - Kolom input</li>
+        <li><span class="code-highlight">&lt;textarea&gt;</span> - Area teks</li>
+        <li><span class="code-highlight">&lt;button&gt;</span> - Tombol</li>
+        <li>
+          <span class="code-highlight">&lt;select&gt;</span> dan
+          <span class="code-highlight">&lt;option&gt;</span> - Dropdown
+        </li>
+      </ul>
+
+      <h3 class="code-highlight">I. Elemen Multimedia</h3>
+      <p>
+        Elemen untuk menambahkan konten multimedia seperti audio, video, dan canvas ke dalam halaman
+        web.
+      </p>
+
+      <ul>
+        <li><span class="code-highlight">&lt;audio&gt;</span> - Audio</li>
+        <li><span class="code-highlight">&lt;video&gt;</span> - video</li>
+        <li><span class="code-highlight">&lt;source&gt;</span> - Sumber Media</li>
+      </ul>
+
+      <br />
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='h13.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/html5.png"
+          alt="HTML"
+          onclick="window.location.href='h1.html'"
+          title="HTML"
+        />
+        <button class="btn" onclick="window.location.href='h22.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+
+    <script src="../script/copyCode.js"></script>
+    <script src="../script/script.js"></script>
+  </body>
+</html>

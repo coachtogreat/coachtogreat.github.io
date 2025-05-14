@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Memasukkan Video di HTML</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <style>
+      .video-demo {
+        background-color: #f8f9fa;
+        border-radius: 5px;
+        padding: 15px;
+        margin: 15px 0;
+        border-left: 4px solid #0d6efd;
+        overflow-x: auto;
+      }
+      .video-container {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: white;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      .video-preview {
+        width: 100%;
+        max-width: 640px;
+        margin: 15px 0;
+        border: 1px solid #dee2e6;
+        border-radius: 4px;
+        overflow: hidden;
+      }
+      .code-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #343a40;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 4px 4px 0 0;
+      }
+      .copy-btn {
+        background-color: #495057;
+        color: white !important;
+        border: none;
+        padding: 2px 8px;
+        border-radius: 3px;
+        cursor: pointer;
+      }
+
+      .copy-btn:hover {
+        color: white !important;
+        background-color: #0d6efd;
+      }
+      pre {
+        margin: 0;
+        padding: 0;
+      }
+      code {
+        display: block;
+        background-color: #f8f9fa;
+        padding: 15px;
+        border-radius: 0 0 4px 4px;
+        overflow-x: auto;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 14px;
+        line-height: 1.5;
+      }
+      .note {
+        background-color: #e7f5ff;
+        border-left: 4px solid #0d6efd;
+        padding: 12px 15px;
+        margin: 15px 0;
+        border-radius: 0 4px 4px 0;
+      }
+      .warning {
+        background-color: #fff3bf;
+        border-left: 4px solid #ffd43b;
+        padding: 12px 15px;
+        margin: 15px 0;
+        border-radius: 0 4px 4px 0;
+      }
+      .tip {
+        background-color: #d4edda;
+        border-left: 4px solid #28a745;
+        padding: 12px 15px;
+        margin: 15px 0;
+        border-radius: 0 4px 4px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="blog-container">
+      <header class="title-section">
+        <div class="title-content">
+          <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+            <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+          </a>
+        </div>
+      </header>
+
+      <main class="content-section">
+        <section class="article-content">
+          <h2 class="intro-title">Memasukkan Video di HTML</h2>
+          <h3 class="section-title">Panduan Lengkap Menambahkan Video ke Halaman Web</h3>
+
+          <p>
+            HTML5 menyediakan elemen <code>&lt;video&gt;</code> yang memudahkan kita untuk
+            menambahkan video ke dalam halaman web. Mari kita pelajari cara menggunakannya dengan
+            benar.
+          </p>
+
+          <div class="note">
+            <strong>Catatan:</strong> Format video yang didukung bervariasi tergantung browser.
+            Format yang umum didukung adalah MP4, WebM, dan Ogg.
+          </div>
+
+          <h4>1. Dasar-dasar Elemen &lt;video&gt;</h4>
+          <p>Berikut contoh sederhana penggunaan elemen &lt;video&gt;:</p>
+
+          <div class="video-demo">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;video width="640" height="360" controls&gt;
+  &lt;source src="video/contoh.mp4" type="video/mp4"&gt;
+  Browser Anda tidak mendukung elemen video.
+&lt;/video&gt;</code></pre>
+
+            <div class="video-preview">
+              <video width="100%" controls>
+                <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
+                Browser Anda tidak mendukung elemen video.
+              </video>
+            </div>
+          </div>
+
+          <h4>2. Atribut Penting &lt;video&gt;</h4>
+          <div class="video-container">
+            <ul>
+              <li>
+                <code>controls</code>: Menampilkan kontrol pemutaran video (play, pause, volume,
+                dll)
+              </li>
+              <li><code>autoplay</code>: Video akan otomatis diputar saat halaman dimuat</li>
+              <li><code>loop</code>: Video akan diulang secara otomatis setelah selesai</li>
+              <li><code>muted</code>: Video akan dimulai dalam keadaan mute</li>
+              <li>
+                <code>poster</code>: Menentukan gambar yang akan ditampilkan sebelum video diputar
+              </li>
+              <li><code>width</code> dan <code>height</code>: Mengatur ukuran video</li>
+              <li><code>preload</code>: Mengontrol pra-pemuasan video (auto, metadata, none)</li>
+            </ul>
+          </div>
+
+          <h4>3. Beberapa Sumber Video</h4>
+          <p>
+            Anda dapat menyediakan beberapa format video untuk kompatibilitas browser yang lebih
+            baik:
+          </p>
+
+          <div class="video-demo">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;video width="640" height="360" controls&gt;
+  &lt;source src="video/contoh.mp4" type="video/mp4"&gt;
+  &lt;source src="video/contoh.webm" type="video/webm"&gt;
+  &lt;source src="video/contoh.ogv" type="video/ogg"&gt;
+  Browser Anda tidak mendukung elemen video HTML5.
+  &lt;a href="video/contoh.mp4"&gt;Unduh video&lt;/a&gt; sebagai gantinya.
+&lt;/video&gt;</code></pre>
+          </div>
+
+          <div class="tip">
+            <strong>Tip:</strong> Selalu sertakan teks alternatif atau tautan unduh untuk browser
+            yang tidak mendukung elemen video.
+          </div>
+
+          <h4>4. Video dengan Gambar Thumbnail</h4>
+          <p>Gunakan atribut <code>poster</code> untuk menampilkan gambar sebelum video diputar:</p>
+
+          <div class="video-demo">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;video width="640" height="360" controls 
+       poster="images/thumbnail.jpg"&gt;
+  &lt;source src="video/contoh.mp4" type="video/mp4"&gt;
+  Browser Anda tidak mendukung elemen video.
+&lt;/video&gt;</code></pre>
+          </div>
+
+          <h4>5. Video dengan Autoplay dan Loop</h4>
+          <p>Contoh video yang otomatis diputar dan diulang:</p>
+
+          <div class="video-demo">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;video width="320" height="240" autoplay loop muted&gt;
+  &lt;source src="video/iklan.mp4" type="video/mp4"&gt;
+  Browser Anda tidak mendukung elemen video.
+&lt;/video&gt;</code></pre>
+
+            <div class="warning">
+              <strong>Perhatian:</strong> Banyak browser memblokir autoplay untuk video dengan suara
+              untuk pengalaman pengguna yang lebih baik. Gunakan <code>muted</code> untuk memastikan
+              autoplay berfungsi.
+            </div>
+          </div>
+
+          <h4>6. Menyematkan Video dari YouTube</h4>
+          <p>Anda juga dapat menyematkan video dari YouTube menggunakan iframe:</p>
+
+          <div class="video-demo">
+            <div class="code-header">
+              <span>HTML</span>
+              <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+            </div>
+            <pre><code>&lt;iframe 
+  width="560" 
+  height="315" 
+  src="https://www.youtube.com/embed/ID_VIDEO" 
+  title="Video YouTube" 
+  frameborder="0" 
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+  allowfullscreen&gt;
+&lt;/iframe&gt;</code></pre>
+
+            <div class="video-preview">
+              <iframe
+                width="100%"
+                height="315"
+                src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                title="Contoh Video YouTube"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              >
+              </iframe>
+            </div>
+          </div>
+
+          <h4>7. Praktik Terbaik</h4>
+          <div class="video-container">
+            <ul>
+              <li>Selalu sertakan teks alternatif untuk aksesibilitas</li>
+              <li>Gunakan format MP4 untuk kompatibilitas terluas</li>
+              <li>Optimalkan ukuran file video untuk pengalaman pengguna yang lebih baik</li>
+              <li>Pertimbangkan untuk menggunakan CDN untuk video berukuran besar</li>
+              <li>Uji video di berbagai perangkat dan browser</li>
+              <li>Gunakan thumbnail yang menarik untuk meningkatkan rasio klik</li>
+              <li>Pertimbangkan untuk menambahkan transkrip video untuk aksesibilitas</li>
+            </ul>
+          </div>
+
+          <div class="tip">
+            <strong>Tip:</strong> Untuk video yang lebih panjang, pertimbangkan untuk menggunakan
+            layanan streaming video seperti YouTube atau Vimeo untuk menghemat bandwidth server.
+          </div>
+        </section>
+
+        <br />
+        <nav class="navigation-section" aria-label="Halaman navigasi">
+          <div class="nav-buttons">
+            <button
+              class="btn"
+              onclick="window.location.href='h83.html'"
+              title="Elemen Semantik HTML5"
+            >
+              &lt;&nbsp;Prev
+            </button>
+            <img
+              src="../assets/png/home.png"
+              alt="Home"
+              class="home-icon"
+              onclick="window.location.href='../index.html'"
+              title="Home"
+            />
+            <img
+              src="../assets/png/html5.png"
+              alt="HTML"
+              onclick="window.location.href='h1.html'"
+              title="Daftar Isi HTML"
+            />
+            <button
+              class="btn"
+              onclick="window.location.href='h92.html'"
+              title="Memasukkan Audio di HTML"
+            >
+              Next&nbsp;&gt;
+            </button>
+          </div>
+        </nav>
+      </main>
+    </div>
+
+    <script>
+      function copyCode(button) {
+        const codeBlock = button.parentElement.nextElementSibling;
+        const range = document.createRange();
+        range.selectNode(codeBlock);
+        window.getSelection().removeAllRanges();
+        window.getSelection().addRange(range);
+
+        try {
+          const successful = document.execCommand('copy');
+          const message = successful ? 'Kode disalin!' : 'Gagal menyalin kode';
+          const originalText = button.textContent;
+          button.textContent = message;
+          setTimeout(() => {
+            button.textContent = originalText;
+          }, 2000);
+        } catch (err) {
+          console.error('Gagal menyalin kode: ', err);
+        }
+
+        window.getSelection().removeAllRanges();
+      }
+    </script>
+  </body>
+</html>

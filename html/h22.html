@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>h22.html</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Struktur Dasar HTML</h2>
+
+      <h3 class="section-title">Apa itu Atribut HTML?</h3>
+      <p>
+        Atribut HTML adalah komponen penting yang memberikan informasi tambahan tentang elemen HTML.
+        Setiap atribut memiliki fungsi spesifik yang memodifikasi perilaku atau tampilan elemen
+        tersebut. Atribut selalu didefinisikan dalam tag pembuka elemen HTML dan biasanya terdiri
+        dari pasangan nama dan nilai (name="value").
+      </p>
+      <p>Penggunaan atribut yang tepat sangat penting untuk:</p>
+      <ul>
+        <li>Meningkatkan aksesibilitas web</li>
+        <li>Memperbaiki SEO (Search Engine Optimization)</li>
+        <li>Mengontrol perilaku dan tampilan elemen</li>
+        <li>Menambahkan metadata dan informasi tambahan</li>
+      </ul>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>HTML</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>&lt;tagname atribut="nilai"&gt;Konten&lt;/tagname&gt;
+
+        </code></pre>
+      </div>
+
+      <h3 class="section-title">Struktur Dasar Atribut HTML</h3>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>HTML</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>&lt;elemen nama_atribut="nilai_atribut"&gt;Isi&lt;/elemen&gt;    
+        </code></pre>
+      </div>
+
+      <h4>Komponen Utama Atribut HTML:</h4>
+      <ul>
+        <li>
+          <strong>Nama Atribut</strong>: Mengidentifikasi jenis atribut (contoh: href, src, alt,
+          class, id). Nama atribut bersifat case-insensitive tetapi sebaiknya menggunakan huruf
+          kecil.
+        </li>
+        <li><strong>Tanda Sama Dengan (=)</strong>: Memisahkan nama atribut dengan nilainya.</li>
+        <li>
+          <strong>Nilai Atribut</strong>:
+          <ul>
+            <li>Biasanya diapit tanda kutip ganda ("), bisa juga kutip tunggal (').</li>
+            <li>Untuk nilai yang berisi spasi, harus menggunakan tanda kutip.</li>
+            <li>Beberapa atribut tidak memerlukan nilai (boolean attributes).</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h3 class="section-title">Jenis-jenis Atribut HTML</h3>
+      <p>Atribut HTML dapat dikelompokkan menjadi beberapa kategori berdasarkan fungsinya:</p>
+
+      <h3 class="code-highlight">1. Atribut Dasar</h3>
+      <p>Atribut yang umum digunakan di hampir semua elemen HTML:</p>
+
+      <div class="table-container">
+        <table class="attribute-table">
+          <thead>
+            <tr>
+              <th>Atribut</th>
+              <th>Elemen yang Umum Digunakan</th>
+              <th>Deskripsi</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>id</td>
+              <td>Semua elemen</td>
+              <td>Memberikan identitas unik ke elemen.</td>
+            </tr>
+            <tr>
+              <td>class</td>
+              <td>Semua elemen</td>
+              <td>Menentukan satu atau lebih kelas CSS.</td>
+            </tr>
+            <tr>
+              <td>style</td>
+              <td>Semua elemen</td>
+              <td>Menambahkan gaya CSS langsung pada elemen (inline styling).</td>
+            </tr>
+            <tr>
+              <td>title</td>
+              <td>Semua elemen</td>
+              <td>Memberikan informasi tambahan saat hover.</td>
+            </tr>
+            <tr>
+              <td>href</td>
+              <td>&lt;a&gt;</td>
+              <td>Menentukan tujuan tautan (URL).</td>
+            </tr>
+            <tr>
+              <td>src</td>
+              <td>&lt;img&gt;, &lt;script&gt;, dll.</td>
+              <td>Menentukan sumber eksternal (gambar, script, dll).</td>
+            </tr>
+            <tr>
+              <td>alt</td>
+              <td>&lt;img&gt;</td>
+              <td>Teks alternatif saat gambar tidak bisa ditampilkan.</td>
+            </tr>
+            <tr>
+              <td>type</td>
+              <td>&lt;input&gt;, &lt;button&gt;</td>
+              <td>Menentukan tipe input (seperti text, password, submit, dll).</td>
+            </tr>
+            <tr>
+              <td>value</td>
+              <td>&lt;input&gt;, &lt;option&gt;</td>
+              <td>Menentukan nilai awal elemen.</td>
+            </tr>
+            <tr>
+              <td>name</td>
+              <td>&lt;input&gt;, &lt;form&gt;</td>
+              <td>Nama elemen, penting saat mengirim data form.</td>
+            </tr>
+            <tr>
+              <td>placeholder</td>
+              <td>&lt;input&gt;, &lt;textarea&gt;</td>
+              <td>Teks petunjuk dalam input sebelum user mengetik.</td>
+            </tr>
+            <tr>
+              <td>disabled</td>
+              <td>Form elements</td>
+              <td>Menonaktifkan input/form.</td>
+            </tr>
+            <tr>
+              <td>readonly</td>
+              <td>&lt;input&gt;, &lt;textarea&gt;</td>
+              <td>Hanya bisa dibaca, tidak bisa diubah.</td>
+            </tr>
+            <tr>
+              <td>checked</td>
+              <td>&lt;input type="checkbox"&gt;</td>
+              <td>Menentukan apakah checkbox tercentang.</td>
+            </tr>
+            <tr>
+              <td>selected</td>
+              <td>&lt;option&gt;</td>
+              <td>Menentukan opsi yang dipilih secara default.</td>
+            </tr>
+            <tr>
+              <td>required</td>
+              <td>Form elements</td>
+              <td>Wajib diisi sebelum form bisa dikirim.</td>
+            </tr>
+            <tr>
+              <td>action</td>
+              <td>&lt;form&gt;</td>
+              <td>URL tujuan saat form dikirim.</td>
+            </tr>
+            <tr>
+              <td>method</td>
+              <td>&lt;form&gt;</td>
+              <td>Metode pengiriman (GET atau POST).</td>
+            </tr>
+            <tr>
+              <td>target</td>
+              <td>&lt;a&gt;, &lt;form&gt;</td>
+              <td>Menentukan di mana membuka tautan/form (misalnya: _blank, _self).</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="code-highlight">2. Atribut Global</h3>
+      <p>
+        Atribut yang dapat digunakan pada semua elemen HTML, terlepas dari jenis elemennya. Atribut
+        ini mendukung aksesibilitas, penanganan kejadian, dan fungsionalitas dasar lainnya.
+      </p>
+
+      <div class="table-container">
+        <table class="attribute-table">
+          <thead>
+            <tr>
+              <th>Atribut</th>
+              <th>Deskripsi</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>id</td>
+              <td>Identifikasi unik.</td>
+            </tr>
+            <tr>
+              <td>class</td>
+              <td>Kelas CSS.</td>
+            </tr>
+            <tr>
+              <td>style</td>
+              <td>Gaya CSS langsung.</td>
+            </tr>
+            <tr>
+              <td>title</td>
+              <td>Tooltip saat hover.</td>
+            </tr>
+            <tr>
+              <td>hidden</td>
+              <td>Menyembunyikan elemen dari tampilan.</td>
+            </tr>
+            <tr>
+              <td>data-*</td>
+              <td>Atribut khusus untuk menyimpan data kustom (digunakan di JS).</td>
+            </tr>
+            <tr>
+              <td>tabindex</td>
+              <td>Urutan tab navigasi.</td>
+            </tr>
+            <tr>
+              <td>contenteditable</td>
+              <td>Membuat elemen bisa diedit.</td>
+            </tr>
+            <tr>
+              <td>draggable</td>
+              <td>Menentukan apakah elemen bisa di-drag.</td>
+            </tr>
+            <tr>
+              <td>lang</td>
+              <td>Menentukan bahasa konten (en, id, dsb).</td>
+            </tr>
+            <tr>
+              <td>dir</td>
+              <td>Arah teks: ltr (kiri ke kanan), rtl (kanan ke kiri).</td>
+            </tr>
+            <tr>
+              <td>accesskey</td>
+              <td>Shortcut keyboard untuk elemen.</td>
+            </tr>
+            <tr>
+              <td>role</td>
+              <td>Peran aksesibilitas elemen (digunakan untuk screen reader).</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="code-highlight">3. Atribut Boolean</h3>
+      <p>
+        Atribut boolean adalah atribut yang tidak memerlukan nilai. Keberadaan atribut ini saja
+        sudah cukup untuk mengaktifkan fungsinya.
+      </p>
+      <ul>
+        <li><code>disabled</code> - Menonaktifkan elemen form</li>
+        <li><code>readonly</code> - Membuat input hanya bisa dibaca</li>
+        <li><code>required</code> - Menjadikan input wajib diisi</li>
+        <li><code>autofocus</code> - Fokus otomatis ke elemen saat halaman dimuat</li>
+        <li><code>multiple</code> - Memungkinkan banyak nilai untuk input</li>
+      </ul>
+
+      <h3 class="code-highlight">4. Atribut Khusus Elemen</h3>
+      <p>
+        Atribut yang hanya berlaku untuk elemen tertentu dan memiliki fungsi spesifik untuk elemen
+        tersebut.
+      </p>
+      <ul>
+        <li>
+          <code>href</code>, <code>target</code> - Khusus elemen <code>&lt;a&gt;</code> (link)
+        </li>
+        <li>
+          <code>src</code>, <code>alt</code> - Khusus elemen <code>&lt;img&gt;</code> (gambar)
+        </li>
+        <li><code>action</code>, <code>method</code> - Khusus elemen <code>&lt;form&gt;</code></li>
+        <li><code>colspan</code>, <code>rowspan</code> - Khusus elemen tabel</li>
+      </ul>
+
+      <h3 class="section-title">Contoh Penggunaan Praktis</h3>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>HTML</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>&lt;!-- Link dengan title dan target --&gt;
+&lt;a href="https://contoh.com" target="_blank" title="Kunjungi Situs Contoh"&gt;
+  Kunjungi Situs Kami
+&lt;/a&gt;
+
+&lt;!-- Input teks dengan placeholder dan required --&gt;
+&lt;input 
+  type="email" 
+  name="email" 
+  placeholder="Masukkan email Anda" 
+  required
+&gt;
+
+&lt;!-- Gambar dengan alt text dan dimensi --&gt;
+&lt;img 
+  src="foto-profil.jpg" 
+  alt="Foto Profil Pengguna" 
+  width="250" 
+  height="250"
+  class="profile-pic"
+&gt;
+        </code></pre>
+      </div>
+
+      <h3 class="section-title">Best Practices Penggunaan Atribut</h3>
+
+      <ul>
+        <li>
+          <strong>Atribut Boolean</strong>: Tidak perlu nilai, cukup tulis nama atributnya saja.
+          <div class="code-block" style="margin: 10px 0">
+            <pre><code>&lt;input type="checkbox" checked&gt;
+&lt;button disabled&gt;Submit&lt;/button&gt;</code></pre>
+          </div>
+        </li>
+        <li>
+          <strong>Atribut Data Kustom</strong>: Gunakan awalan <code>data-</code> untuk menyimpan
+          data khusus.
+          <div class="code-block" style="margin: 10px 0">
+            <pre><code>&lt;div data-user-id="1234" data-role="admin"&gt;&lt;/div&gt;</code></pre>
+          </div>
+        </li>
+        <li>
+          <strong>Atribut ARIA</strong>: Gunakan untuk meningkatkan aksesibilitas.
+          <div class="code-block" style="margin: 10px 0">
+            <pre><code>&lt;button aria-label="Tutup menu"&gt;×&lt;/button&gt;</code></pre>
+          </div>
+        </li>
+        <li>
+          <strong>Atribut Performa</strong>: Seperti <code>loading="lazy"</code> untuk gambar dan
+          iframe.
+          <div class="code-block" style="margin: 10px 0">
+            <pre><code>&lt;img src="gambar-besar.jpg" loading="lazy" alt="Deskripsi"&gt;</code></pre>
+          </div>
+        </li>
+      </ul>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>HTML</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>&lt;input type="checkbox" checked&gt;
+        </code></pre>
+      </div>
+
+      <ul>
+        <li>
+          Atribut <span class="code-highlight">data-* </span>digunakan untuk menyimpan data kustom:
+        </li>
+      </ul>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>HTML</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>&lt;div data-user-id="1234"&gt;&lt;/div&gt;
+        </code></pre>
+      </div>
+
+      <br />
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='h21.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/html5.png"
+          alt="HTML"
+          onclick="window.location.href='h1.html'"
+          title="HTML"
+        />
+        <button class="btn" onclick="window.location.href='h23.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+
+    <script src="../script/copyCode.js"></script>
+    <script src="../script/script.js"></script>
+  </body>
+</html>

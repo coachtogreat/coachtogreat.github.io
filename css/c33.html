@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Margin dan Padding di CSS</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <style>
+      .box {
+        border: 2px solid #3498db;
+        background-color: #f0f8ff;
+        margin: 10px;
+        padding: 15px;
+        border-radius: 5px;
+      }
+      .visual-box {
+        background-color: #e3f2fd;
+        border: 1px solid #90caf9;
+        height: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 10px 0;
+        position: relative;
+      }
+      .visual-box::before {
+        content: 'Konten';
+        background-color: #bbdefb;
+        padding: 15px;
+        border: 1px dashed #64b5f6;
+      }
+      .margin-example {
+        border: 2px dashed #e91e63;
+        background-color: #fce4ec;
+        margin: 20px;
+      }
+      .padding-example {
+        background-color: #e8f5e9;
+        border: 2px solid #81c784;
+        padding: 20px;
+      }
+      .shorthand-example {
+        background-color: #fff8e1;
+        border: 2px solid #ffd54f;
+        padding: 15px;
+        margin: 15px;
+      }
+      .code-comparison {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin: 20px 0;
+      }
+      @media (max-width: 768px) {
+        .code-comparison {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Memahami Margin dan Padding di CSS</h2>
+
+      <p>
+        Margin dan padding adalah dua properti CSS dasar yang mengatur ruang di sekitar dan di dalam
+        elemen. Memahami perbedaan dan cara menggunakannya dengan benar sangat penting untuk tata
+        letak yang rapi dan responsif.
+      </p>
+
+      <div class="info-box">
+        <h4>Perbedaan Utama:</h4>
+        <ul>
+          <li>
+            <strong>Margin</strong>: Ruang di <em>luar</em> border elemen, memisahkan elemen dari
+            elemen lain di sekitarnya.
+          </li>
+          <li>
+            <strong>Padding</strong>: Ruang di <em>dalam</em> border elemen, memisahkan konten dari
+            border elemen tersebut.
+          </li>
+        </ul>
+      </div>
+
+      <h3 class="section-title">1. Margin</h3>
+      <p>
+        Margin digunakan untuk menciptakan ruang di sekitar elemen, di luar border. Margin bersifat
+        transparan dan tidak memiliki warna latar belakang.
+      </p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>CSS</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>/* Sintaks dasar */
+elemen {
+  margin: nilai;
+}
+
+/* Contoh nilai */
+.margin-1 {
+  margin: 10px; /* Semua sisi */
+}
+
+.margin-2 {
+  margin: 10px 20px; /* Atas-bawah: 10px, Kiri-kanan: 20px */
+}
+
+.margin-3 {
+  margin: 5px 10px 15px; /* Atas: 5px, Kiri-kanan: 10px, Bawah: 15px */
+}
+
+.margin-4 {
+  margin: 5px 10px 15px 20px; /* Atas, Kanan, Bawah, Kiri (searah jarum jam) */
+}
+
+/* Properti individu */
+.individu {
+  margin-top: 10px;
+  margin-right: 15px;
+  margin-bottom: 20px;
+  margin-left: 25px;
+}
+
+/* Nilai khusus */
+.auto {
+  margin: 0 auto; /* Posisi tengah horizontal */
+}
+
+.negatif {
+  margin-top: -10px; /* Margin negatif */
+}</code></pre>
+      </div>
+
+      <h4>Contoh Visual Margin:</h4>
+      <div class="visual-box" style="margin: 30px; background-color: #f3e5f5; border-color: #ce93d8">
+        <div style="background-color: #e1bee7; padding: 15px; border: 1px dashed #9c27b0">
+          Elemen dengan margin
+        </div>
+      </div>
+
+      <h3 class="section-title">2. Padding</h3>
+      <p>
+        Padding digunakan untuk menciptakan ruang di dalam elemen, antara konten dan border. Berbeda
+        dengan margin, padding akan mewarisi warna latar belakang elemen.
+      </p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>CSS</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>/* Sintaks dasar */
+elemen {
+  padding: nilai;
+}
+
+/* Contoh nilai */
+.padding-1 {
+  padding: 15px; /* Semua sisi */
+}
+
+.padding-2 {
+  padding: 10px 20px; /* Atas-bawah: 10px, Kiri-kanan: 20px */
+}
+
+.padding-3 {
+  padding: 10px 15px 20px; /* Atas: 10px, Kiri-kanan: 15px, Bawah: 20px */
+}
+
+.padding-4 {
+  padding: 5px 10px 15px 20px; /* Atas, Kanan, Bawah, Kiri (searah jarum jam) */
+}
+
+/* Properti individu */
+.individu-padding {
+  padding-top: 10px;
+  padding-right: 15px;
+  padding-bottom: 20px;
+  padding-left: 25px;
+}</code></pre>
+      </div>
+
+      <h4>Contoh Visual Padding:</h4>
+      <div
+        class="visual-box"
+        style="padding: 30px; background-color: #e8f5e9; border-color: #a5d6a7"
+      >
+        <div style="background-color: #c8e6c9; padding: 15px; border: 1px dashed #4caf50">
+          Elemen dengan padding
+        </div>
+      </div>
+
+      <h3 class="section-title">3. Perbandingan Margin dan Padding</h3>
+
+      <div class="code-comparison">
+        <div>
+          <h4>Margin</h4>
+          <div class="code-block">
+            <div class="code-header">
+              <span>CSS</span>
+              <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            </div>
+            <pre><code>.box {
+  margin: 20px;
+  background-color: lightblue;
+  border: 2px solid blue;
+}</code></pre>
+          </div>
+          <div class="visual-box" style="margin: 20px; background-color: #bbdefb; border-color: #2196f3">
+            Kotak dengan margin
+          </div>
+        </div>
+
+        <div>
+          <h4>Padding</h4>
+          <div class="code-block">
+            <div class="code-header">
+              <span>CSS</span>
+              <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            </div>
+            <pre><code>.box {
+  padding: 20px;
+  background-color: lightgreen;
+  border: 2px solid green;
+}</code></pre>
+          </div>
+          <div class="visual-box" style="padding: 20px; background-color: #c8e6c9; border-color: #4caf50">
+            Kotak dengan padding
+          </div>
+        </div>
+      </div>
+
+      <h3 class="section-title">4. Box Model dan Box-Sizing</h3>
+      <p>
+        Untuk memahami margin dan padding dengan baik, penting untuk memahami CSS Box Model:
+      </p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>CSS</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>/* Default box-sizing */
+.default-box {
+  width: 300px;
+  padding: 20px;
+  border: 5px solid #333;
+  margin: 10px;
+  /* Lebar total = width + padding kiri/kanan + border kiri/kanan */
+  /* 300px + 40px + 10px = 350px */
+}
+
+/* Border-box sizing */
+.border-box {
+  box-sizing: border-box;
+  width: 300px;
+  padding: 20px;
+  border: 5px solid #333;
+  margin: 10px;
+  /* Lebar total = width (termasuk padding dan border) = 300px */
+}</code></pre>
+      </div>
+
+      <div class="info-box">
+        <h4>Tip Praktis:</h4>
+        <ul>
+          <li>
+            Gunakan <code>box-sizing: border-box</code> untuk mempermudah perhitungan ukuran elemen.
+          </li>
+          <li>Margin bisa bernilai negatif, sedangkan padding tidak bisa.</li>
+          <li>Margin bisa collapse (bergabung) dengan margin elemen lain, padding tidak bisa.</li>
+          <li>Gunakan developer tools browser untuk memeriksa box model elemen.</li>
+        </ul>
+      </div>
+
+      <h3 class="section-title">5. Kasus Penggunaan Umum</h3>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>CSS</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>/* Membuat tombol dengan padding yang baik */
+.tombol {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #3498db;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  margin: 5px;
+  transition: background-color 0.3s;
+}
+
+.tombol:hover {
+  background-color: #2980b9;
+}
+
+/* Membuat card dengan margin dan padding */
+.card {
+  width: 300px;
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Membuat layout dengan margin auto */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto; /* Posisi tengah */
+  padding: 0 15px;
+}</code></pre>
+      </div>
+
+      <div class="info-box">
+        <h4>Praktik Terbaik:</h4>
+        <ul>
+          <li>Gunakan unit relatif (em, rem, %) untuk margin dan padding agar lebih responsif.</li>
+          <li>Gunakan variabel CSS untuk nilai margin/padding yang konsisten.</li>
+          <li>Hindari margin pada elemen yang memiliki float atau position: absolute.</li>
+          <li>Gunakan shorthand properties untuk kode yang lebih bersih.</li>
+        </ul>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='c32.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/css.png"
+          alt="CSS"
+          onclick="window.location.href='c1.html'"
+          title="CSS"
+        />
+        <button class="btn" onclick="window.location.href='c34.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+
+    <script>
+      function copyCode(button) {
+        const codeBlock = button.parentElement.nextElementSibling.querySelector('code');
+        const textArea = document.createElement('textarea');
+        textArea.value = codeBlock.textContent;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+
+        // Ubah teks tombol sementara
+        const originalText = button.textContent;
+        button.textContent = 'Tersalin!';
+
+        // Kembalikan teks asli setelah 2 detik
+        setTimeout(() => {
+          button.textContent = originalText;
+        }, 2000);
+      }
+    </script>
+  </body>
+</html>

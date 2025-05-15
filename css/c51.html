@@ -1,0 +1,519 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Daftar Berurutan (Ordered List) di HTML & CSS</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <style>
+      .box {
+        border: 2px solid #3498db;
+        background-color: #f0f8ff;
+        margin: 10px;
+        padding: 15px;
+        border-radius: 5px;
+      }
+      .demo-container {
+        background-color: #f9f9f9;
+        border: 1px solid #e0e0e0;
+        padding: 20px;
+        margin: 20px 0;
+        overflow: hidden;
+      }
+      .list-container {
+        background-color: #e3f2fd;
+        padding: 20px;
+        margin: 15px 0;
+        border: 2px dashed #2196f3;
+        border-radius: 5px;
+      }
+      .list-preview {
+        background-color: white;
+        padding: 15px;
+        border-radius: 4px;
+        margin: 10px 0;
+      }
+      .controls {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 10px;
+        margin: 15px 0;
+      }
+      .control-group {
+        background-color: #f5f5f5;
+        padding: 10px;
+        border-radius: 4px;
+      }
+      .control-group h4 {
+        margin-top: 0;
+        color: #333;
+      }
+      .nav-buttons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 30px 0;
+        gap: 20px;
+      }
+      .btn {
+        padding: 10px 20px;
+        background-color: #3498db;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+      .btn:hover {
+        background-color: #2980b9;
+      }
+      .home-icon {
+        width: 24px;
+        height: 24px;
+        cursor: pointer;
+        transition: transform 0.3s;
+      }
+      .home-icon:hover {
+        transform: scale(1.1);
+      }
+      .code-block {
+        position: relative;
+        background-color: #f5f5f5;
+        border-radius: 4px;
+        padding: 15px;
+        margin: 15px 0;
+        overflow-x: auto;
+      }
+      .code-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+        font-family: monospace;
+      }
+      .copy-btn {
+        background-color: #e0e0e0;
+        border: none;
+        padding: 3px 8px;
+        border-radius: 3px;
+        cursor: pointer;
+        font-size: 12px;
+      }
+      .copy-btn:hover {
+        background-color: #d0d0d0;
+      }
+      pre {
+        margin: 0;
+      }
+      code {
+        font-family: 'Courier New', Courier, monospace;
+      }
+      .section-title {
+        color: #2c3e50;
+        margin-top: 30px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #3498db;
+      }
+      .info-box {
+        background-color: #e8f4f8;
+        border-left: 4px solid #3498db;
+        padding: 15px;
+        margin: 20px 0;
+        border-radius: 0 4px 4px 0;
+      }
+      .info-box h4 {
+        margin-top: 0;
+        color: #2c3e50;
+      }
+      .info-box ul {
+        margin-bottom: 0;
+      }
+      .visual-container {
+        width: 100%;
+        overflow-x: auto;
+      }
+      .visual-title {
+        font-weight: bold;
+        margin: 15px 0 10px;
+        color: #333;
+      }
+      .list-demo {
+        counter-reset: my-counter;
+        padding-left: 0;
+      }
+      .list-demo li {
+        position: relative;
+        padding-left: 30px;
+        margin-bottom: 10px;
+        list-style-type: none;
+      }
+      .list-demo li::before {
+        counter-increment: my-counter;
+        content: counter(my-counter);
+        position: absolute;
+        left: 0;
+        width: 24px;
+        height: 24px;
+        background-color: #3498db;
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Daftar Berurutan (Ordered List) di HTML & CSS</h2>
+
+      <p>
+        Daftar berurutan (Ordered List) adalah elemen HTML yang digunakan untuk menampilkan daftar
+        item secara berurutan dengan nomor atau huruf. Berbeda dengan daftar tidak berurutan yang
+        menggunakan bullet, daftar berurutan menggunakan penomoran untuk menandai setiap item.
+      </p>
+
+      <div class="info-box">
+        <h4>Konsep Dasar Ordered List:</h4>
+        <ul>
+          <li>
+            <strong>&lt;ol&gt;</strong>: Tag pembungkus untuk membuat daftar berurutan (ordered
+            list)
+          </li>
+          <li><strong>&lt;li&gt;</strong>: Tag untuk setiap item dalam daftar (list item)</li>
+          <li>
+            <strong>Atribut type</strong>: Menentukan jenis penomoran (1, A, a, I, i)
+          </li>
+          <li>
+            <strong>Atribut start</strong>: Menentukan nomor awal penomoran
+          </li>
+          <li>
+            <strong>Atribut reversed</strong>: Membalik urutan penomoran
+          </li>
+        </ul>
+      </div>
+
+      <h3 class="section-title">1. Daftar Berurutan Dasar</h3>
+      <p>
+        Berikut adalah contoh sederhana penggunaan ordered list dengan penomoran default (angka):
+      </p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>HTML</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>&lt;ol&gt;
+  &lt;li&gt;Bangun tidur&lt;/li&gt;
+  &lt;li&gt;Mandi pagi&lt;/li&gt;
+  &lt;li&gt;Sarapan&lt;/li&gt;
+  &lt;li&gt;Berangkat kerja&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+      </div>
+
+      <h4>Hasil:</h4>
+      <div class="list-container">
+        <div class="list-preview">
+          <ol>
+            <li>Bangun tidur</li>
+            <li>Mandi pagi</li>
+            <li>Sarapan</li>
+            <li>Berangkat kerja</li>
+          </ol>
+        </div>
+      </div>
+
+      <h3 class="section-title">2. Jenis Penomoran</h3>
+      <p>Anda dapat mengubah jenis penomoran menggunakan atribut <code>type</code>:</p>
+
+      <div class="controls">
+        <div class="control-group">
+          <h4>type:</h4>
+          <button onclick="updateListType('1')">Angka (1, 2, 3)</button>
+          <button onclick="updateListType('A')">Huruf Besar (A, B, C)</button>
+          <button onclick="updateListType('a')">Huruf Kecil (a, b, c)</button>
+          <button onclick="updateListType('I')">Romawi Besar (I, II, III)</button>
+          <button onclick="updateListType('i')">Romawi Kecil (i, ii, iii)</button>
+        </div>
+        <div class="control-group">
+          <h4>Atribut Tambahan:</h4>
+          <button onclick="updateListStart()">start="5"</button>
+          <button onclick="toggleReversed()">reversed</button>
+          <button onclick="resetList()">Reset</button>
+        </div>
+      </div>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>HTML</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code id="list-type-code">&lt;ol type="1"&gt;
+  &lt;li&gt;Item pertama&lt;/li&gt;
+  &lt;li&gt;Item kedua&lt;/li&gt;
+  &lt;li&gt;Item ketiga&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+      </div>
+
+      <h4>Hasil:</h4>
+      <div class="list-container">
+        <div class="list-preview">
+          <ol id="demo-list" type="1">
+            <li>Item pertama</li>
+            <li>Item kedua</li>
+            <li>Item ketiga</li>
+          </ol>
+        </div>
+      </div>
+
+      <h3 class="section-title">3. Styling dengan CSS</h3>
+      <p>Anda dapat mengubah tampilan daftar berurutan menggunakan CSS:</p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>CSS</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>.custom-list {
+  list-style-type: none;
+  counter-reset: my-counter;
+  padding-left: 0;
+}
+
+.custom-list li {
+  position: relative;
+  padding-left: 40px;
+  margin-bottom: 15px;
+  line-height: 30px;
+  background-color: #f5f5f5;
+  border-radius: 4px;
+  padding: 10px 10px 10px 50px;
+}
+
+.custom-list li::before {
+  counter-increment: my-counter;
+  content: counter(my-counter);
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 30px;
+  height: 30px;
+  background-color: #3498db;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 14px;
+}</code></pre>
+      </div>
+
+      <h4>Hasil:</h4>
+      <div class="list-container">
+        <div class="list-preview">
+          <ol class="list-demo">
+            <li>Pertama, siapkan bahan-bahan</li>
+            <li>Kedua, campurkan semua bahan</li>
+            <li>Ketiga, aduk hingga rata</li>
+            <li>Keempat, masak dengan api sedang</li>
+            <li>Kelima, sajikan selagi hangat</li>
+          </ol>
+        </div>
+      </div>
+
+      <h3 class="section-title">4. Daftar Bersarang (Nested List)</h3>
+      <p>Anda dapat membuat daftar di dalam daftar untuk membuat hierarki yang lebih kompleks:</p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>HTML</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>&lt;ol&gt;
+  &lt;li&gt;Bab 1: Pengenalan
+    &lt;ol type="a"&gt;
+      &lt;li&gt;1.1 Pendahuluan&lt;/li&gt;
+      &lt;li&gt;1.2 Tujuan&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Bab 2: Pembahasan
+    &lt;ol type="a"&gt;
+      &lt;li&gt;2.1 Metodologi
+        &lt;ol type="i"&gt;
+          &lt;li&gt;2.1.1 Alat&lt;/li&gt;
+          &lt;li&gt;2.1.2 Bahan&lt;/li&gt;
+        &lt;/ol&gt;
+      &lt;/li&gt;
+      &lt;li&gt;2.2 Hasil&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Bab 3: Penutup&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+      </div>
+
+      <h4>Hasil:</h4>
+      <div class="list-container">
+        <div class="list-preview">
+          <ol>
+            <li>
+              Bab 1: Pengenalan
+              <ol type="a">
+                <li>1.1 Pendahuluan</li>
+                <li>1.2 Tujuan</li>
+              </ol>
+            </li>
+            <li>
+              Bab 2: Pembahasan
+              <ol type="a">
+                <li>
+                  2.1 Metodologi
+                  <ol type="i">
+                    <li>2.1.1 Alat</li>
+                    <li>2.1.2 Bahan</li>
+                  </ol>
+                </li>
+                <li>2.2 Hasil</li>
+              </ol>
+            </li>
+            <li>Bab 3: Penutup</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='c45.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/css.png"
+          alt="CSS"
+          onclick="window.location.href='c1.html'"
+          title="CSS"
+        />
+        <button class="btn" onclick="window.location.href='c52.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+
+    <script>
+      // Fungsi untuk menyalin kode
+      function copyCode(button) {
+        const codeBlock = button.parentElement.nextElementSibling;
+        const code = codeBlock.textContent;
+
+        navigator.clipboard
+          .writeText(code)
+          .then(() => {
+            const originalText = button.textContent;
+            button.textContent = 'Tersalin!';
+            button.style.backgroundColor = '#4caf50';
+            button.style.color = 'white';
+
+            setTimeout(() => {
+              button.textContent = originalText;
+              button.style.backgroundColor = '';
+              button.style.color = '';
+            }, 2000);
+          })
+          .catch((err) => {
+            console.error('Gagal menyalin teks: ', err);
+          });
+      }
+
+
+      // Fungsi untuk memperbarui tipe daftar
+      function updateListType(type) {
+        const demoList = document.getElementById('demo-list');
+        const codeElement = document.querySelector('#list-type-code');
+        
+        demoList.setAttribute('type', type);
+        
+        // Update kode contoh
+        const newCode = `&lt;ol type="${type}"&gt;
+  &lt;li&gt;Item pertama&lt;/li&gt;
+  &lt;li&gt;Item kedua&lt;/li&gt;
+  &lt;li&gt;Item ketiga&lt;/li&gt;
+&lt;/ol>`;
+        
+        codeElement.innerHTML = newCode;
+      }
+
+      // Fungsi untuk mengatur nomor awal
+      function updateListStart() {
+        const demoList = document.getElementById('demo-list');
+        const codeElement = document.querySelector('#list-type-code');
+        
+        if (demoList.hasAttribute('start')) {
+          demoList.removeAttribute('start');
+          codeElement.textContent = codeElement.textContent.replace(/start="\d+"\s*/, '');
+        } else {
+          demoList.setAttribute('start', '5');
+          const type = demoList.getAttribute('type') || '1';
+          const newCode = `&lt;ol type="${type}" start="5"&gt;
+  &lt;li&gt;Item pertama&lt;/li&gt;
+  &lt;li&gt;Item kedua&lt;/li&gt;
+  &lt;li&gt;Item ketiga&lt;/li&gt;
+&lt;/ol>`;
+          codeElement.innerHTML = newCode;
+        }
+      }
+
+
+      // Fungsi untuk membalik urutan
+      function toggleReversed() {
+        const demoList = document.getElementById('demo-list');
+        const codeElement = document.querySelector('#list-type-code');
+        
+        if (demoList.hasAttribute('reversed')) {
+          demoList.removeAttribute('reversed');
+          codeElement.textContent = codeElement.textContent.replace(' reversed', '');
+        } else {
+          demoList.setAttribute('reversed', '');
+          const type = demoList.getAttribute('type') || '1';
+          const start = demoList.hasAttribute('start') ? ' start="5"' : '';
+          const newCode = `&lt;ol type="${type}"${start} reversed&gt;
+  &lt;li&gt;Item pertama&lt;/li&gt;
+  &lt;li&gt;Item kedua&lt;/li&gt;
+  &lt;li&gt;Item ketiga&lt;/li&gt;
+&lt;/ol>`;
+          codeElement.innerHTML = newCode;
+        }
+      }
+
+
+      // Fungsi untuk mereset daftar ke pengaturan awal
+      function resetList() {
+        const demoList = document.getElementById('demo-list');
+        const codeElement = document.querySelector('#list-type-code');
+        
+        demoList.setAttribute('type', '1');
+        demoList.removeAttribute('start');
+        demoList.removeAttribute('reversed');
+        
+        codeElement.innerHTML = `&lt;ol type="1"&gt;
+  &lt;li&gt;Item pertama&lt;/li&gt;
+  &lt;li&gt;Item kedua&lt;/li&gt;
+  &lt;li&gt;Item ketiga&lt;/li&gt;
+&lt;/ol>`;
+      }
+
+      // Inisialisasi
+      document.addEventListener('DOMContentLoaded', function () {
+        // Setel tombol default sebagai aktif
+        updateListType('1');
+      });
+    </script>
+  </body>
+</html>

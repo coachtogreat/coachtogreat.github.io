@@ -1,0 +1,579 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Attribute Selector CSS</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <style>
+      /* Styling untuk contoh */
+      .container {
+        max-width: 100%;
+        padding: 1rem;
+        margin: 0 auto;
+        overflow: hidden;
+      }
+
+      .example-box {
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 4px;
+        padding: 1.5rem;
+        margin: 1rem 0;
+        overflow: hidden;
+      }
+
+      .demo-box {
+        background-color: #e9f7fe;
+        border: 1px solid #3498db;
+        border-radius: 4px;
+        padding: 1.5rem;
+        margin: 1rem 0;
+      }
+
+      .highlight {
+        background-color: #fff3cd;
+        border-left: 4px solid #ffc107;
+        padding: 0.5rem 1rem;
+        margin: 1rem 0;
+      }
+
+      /* Styling untuk contoh attribute selector */
+      [data-priority='high'] {
+        border-left: 4px solid #e91e63;
+        padding-left: 1rem;
+        background-color: #fce4ec;
+      }
+
+      [data-category^='tech'] {
+        background-color: #e3f2fd;
+        border: 1px solid #2196f3;
+      }
+
+      [class*='btn-'] {
+        display: inline-block;
+        padding: 0.5rem 1rem;
+        margin: 0.25rem;
+        border-radius: 4px;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+      }
+
+      [class$='-primary'] {
+        background-color: #2196f3;
+        color: white;
+      }
+
+      [class$='-primary']:hover {
+        background-color: #1976d2;
+      }
+
+      [class$='-success'] {
+        background-color: #4caf50;
+        color: white;
+      }
+
+      [class$='-success']:hover {
+        background-color: #388e3c;
+      }
+
+      /* Styling untuk form demo */
+      .form-group {
+        margin-bottom: 1rem;
+      }
+
+      .form-label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+      }
+
+      .form-control {
+        width: 100%;
+        padding: 0.5rem;
+        border: 1px solid #ced4da;
+        border-radius: 4px;
+        font-size: 1rem;
+      }
+
+      /* Styling untuk tabel demo */
+      .table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1rem 0;
+      }
+
+      .table th,
+      .table td {
+        padding: 0.75rem;
+        border: 1px solid #dee2e6;
+        text-align: left;
+      }
+
+      .table th {
+        background-color: #f8f9fa;
+        font-weight: 600;
+      }
+
+      /* Styling untuk card */
+      .card {
+        border: 1px solid #e0e0e0;
+        border-radius: 4px;
+        overflow: hidden;
+        margin: 1rem 0;
+      }
+
+      .card-header {
+        background-color: #f5f5f5;
+        padding: 1rem;
+        border-bottom: 1px solid #e0e0e0;
+        font-weight: 600;
+      }
+
+      .card-body {
+        padding: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Attribute Selector CSS: [type="text"] dan Lainnya</h2>
+
+      <p>
+        Attribute selector adalah selector CSS yang memungkinkan Anda memilih elemen berdasarkan
+        atribut atau nilai atribut tertentu. Ini sangat berguna ketika Anda ingin menargetkan elemen
+        dengan atribut spesifik tanpa perlu menambahkan class atau ID tambahan.
+      </p>
+
+      <h3 class="section-title">1. Dasar Attribute Selector</h3>
+
+      <h4>[attribute]</h4>
+      <p>Memilih elemen yang memiliki atribut tertentu, terlepas dari nilainya.</p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>CSS</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>/* Memilih semua elemen yang memiliki atribut 'target' */
+a[target] {
+  color: #e91e63;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* Memilih semua gambar yang memiliki atribut 'alt' */
+img[alt] {
+  border: 2px solid #4caf50;
+  border-radius: 4px;
+}
+
+/* Memilih semua input yang memiliki atribut 'required' */
+input[required] {
+  border-left: 3px solid #ff5722;
+  padding-left: 8px;
+}</code></pre>
+      </div>
+
+      <div class="example-box">
+        <h5>Contoh [attribute]:</h5>
+        <div class="demo-box">
+          <p><a href="#" target="_blank">Link dengan target _blank</a></p>
+          <p><a href="#">Link biasa (tanpa target)</a></p>
+
+          <div class="form-group">
+            <label class="form-label">Nama (wajib diisi):</label>
+            <input type="text" class="form-control" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email (opsional):</label>
+            <input type="email" class="form-control" />
+          </div>
+        </div>
+      </div>
+
+      <h3 class="section-title">2. Attribute Selector dengan Nilai Spesifik</h3>
+
+      <h4>[attribute="value"]</h4>
+      <p>Memilih elemen dengan atribut yang persis sama dengan nilai yang ditentukan.</p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>CSS</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>/* Memilih input dengan type="submit" */
+input[type="submit"] {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Memilih link dengan target="_blank" */
+a[target="_blank"]::after {
+  content: " ↗";
+  font-size: 0.8em;
+  opacity: 0.7;
+}
+
+/* Memilih elemen dengan data-status="completed" */
+[data-status="completed"] {
+  text-decoration: line-through;
+  color: #9e9e9e;
+}</code></pre>
+      </div>
+
+      <div class="example-box">
+        <h5>Contoh [attribute="value"]:</h5>
+        <div class="demo-box">
+          <div class="form-group">
+            <input
+              type="submit"
+              value="Kirim"
+              class="form-control"
+              style="width: auto; cursor: pointer"
+            />
+          </div>
+
+          <ul style="list-style: none; padding: 0">
+            <li data-status="pending">Membeli bahan makanan</li>
+            <li data-status="completed">Menyelesaikan laporan</li>
+            <li data-status="pending">Menelepon klien</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3 class="section-title">3. Attribute Selector dengan Pencocokan Parsial</h3>
+
+      <h4>[attribute^="value"] (Dimulai dengan)</h4>
+      <p>Memilih elemen yang nilai atributnya dimulai dengan nilai tertentu.</p>
+
+      <h4>[attribute$="value"] (Diakhiri dengan)</h4>
+      <p>Memilih elemen yang nilai atributnya diakhiri dengan nilai tertentu.</p>
+
+      <h4>[attribute*="value"] (Mengandung)</h4>
+      <p>Memilih elemen yang nilai atributnya mengandung nilai tertentu di mana saja.</p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>CSS</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>/* Link yang dimulai dengan "https://" */
+a[href^="https://"] {
+  color: #4caf50;
+  font-weight: 500;
+}
+
+/* Link yang diakhiri dengan ".pdf" */
+a[href$=".pdf"]::after {
+  content: " (PDF)";
+  font-size: 0.8em;
+  color: #f44336;
+}
+
+/* Gambar dengan "logo" di mana saja di src */
+img[src*="logo"] {
+  border: 2px solid #9c27b0;
+  border-radius: 50%;
+  padding: 5px;
+}
+
+/* Class yang diakhiri dengan "-primary" */
+[class$="-primary"] {
+  background-color: #2196f3;
+  color: white;
+}
+
+/* Class yang mengandung "btn" */
+[class*="btn"] {
+  display: inline-block;
+  padding: 8px 16px;
+  margin: 4px;
+  border-radius: 4px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}</code></pre>
+      </div>
+
+      <div class="example-box">
+        <h5>Contoh Pencocokan Parsial:</h5>
+        <div class="demo-box">
+          <div style="margin-bottom: 1rem">
+            <a href="https://example.com" class="btn-primary">Kunjungi Website</a>
+            <a href="document.pdf" class="btn-success">Unduh PDF</a>
+          </div>
+
+          <div>
+            <img
+              src="company-logo.png"
+              alt="Logo Perusahaan"
+              style="max-width: 100px; height: auto"
+            />
+            <p style="font-size: 0.8em; margin-top: 0.5rem">Gambar dengan "logo" di URL</p>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="section-title">4. Attribute Selector dengan Pencocokan Case-Insensitive</h3>
+
+      <h4>[attribute="value" i]</h4>
+      <p>Memilih elemen dengan nilai atribut yang cocok, tidak memperhatikan huruf besar/kecil.</p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>CSS</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>/* Cocok dengan "success", "SUCCESS", "Success", dll */
+[data-status="success" i] {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+  padding: 0.5rem;
+  border-left: 3px solid #4caf50;
+}
+
+/* Cocok dengan "error", "ERROR", "Error", dll */
+[data-status="error" i] {
+  background-color: #ffebee;
+  color: #c62828;
+  padding: 0.5rem;
+  border-left: 3px solid #f44336;
+}</code></pre>
+      </div>
+
+      <div class="example-box">
+        <h5>Contoh Case-Insensitive Matching:</h5>
+        <div class="demo-box">
+          <div data-status="success">Status: Sukses (case-sensitive)</div>
+          <div data-status="SUCCESS">Status: SUKSES (uppercase)</div>
+          <div data-status="Success">Status: Success (title case)</div>
+          <div data-status="error">Status: Error (case-sensitive)</div>
+          <div data-status="ERROR">Status: ERROR (uppercase)</div>
+        </div>
+      </div>
+
+      <h3 class="section-title">5. Attribute Selector dengan Pencocokan Kata Utuh</h3>
+
+      <h4>[attribute~="value"]</h4>
+      <p>Memilih elemen dengan atribut yang berisi kata tertentu yang dipisahkan spasi.</p>
+
+      <h4>[attribute|="value"]</h4>
+      <p>
+        Memilih elemen dengan atribut yang dimulai dengan kata yang diberikan, diikuti oleh tanda
+        hubung (-).
+      </p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>CSS</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>/* Memilih elemen dengan class yang berisi kata "warning" */
+[class~="warning"] {
+  background-color: #fff8e1;
+  border-left: 4px solid #ffc107;
+  padding: 1rem;
+  margin: 0.5rem 0;
+}
+
+/* Memilih elemen dengan hreflang yang dimulai dengan "en" */
+[hreflang|="en"] {
+  border: 1px solid #2196f3;
+  padding: 0.25rem 0.5rem;
+  display: inline-block;
+  margin: 0.25rem;
+  border-radius: 3px;
+  font-size: 0.8em;
+}</code></pre>
+      </div>
+
+      <div class="example-box">
+        <h5>Contoh Pencocokan Kata Utuh:</h5>
+        <div class="demo-box">
+          <div class="alert warning">Ini adalah peringatan penting!</div>
+          <div class="alert">Ini pesan biasa</div>
+
+          <div style="margin-top: 1rem">
+            <a href="#" hreflang="en-US">English (US)</a> |
+            <a href="#" hreflang="en-GB">English (UK)</a> |
+            <a href="#" hreflang="id">Bahasa Indonesia</a>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="section-title">Contoh Praktis Penggunaan Attribute Selector</h3>
+
+      <p>
+        Berikut adalah contoh praktis bagaimana attribute selector dapat digunakan dalam
+        pengembangan web:
+      </p>
+
+      <div class="example-box">
+        <h5>1. Styling Formulir</h5>
+        <div class="demo-box">
+          <form>
+            <div class="form-group">
+              <label class="form-label">Nama Lengkap:</label>
+              <input type="text" class="form-control" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Email:</label>
+              <input type="email" class="form-control" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Telepon:</label>
+              <input
+                type="tel"
+                class="form-control"
+                pattern="[0-9]{10,13}"
+                placeholder="Contoh: 081234567890"
+              />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Jenis Kelamin:</label><br />
+              <input type="radio" id="male" name="gender" value="male" />
+              <label for="male">Laki-laki</label><br />
+              <input type="radio" id="female" name="gender" value="female" />
+              <label for="female">Perempuan</label>
+            </div>
+            <button type="submit" class="btn-primary">Daftar</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="example-box">
+        <h5>2. Tabel dengan Status</h5>
+        <div class="demo-box">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>No.</th>
+                <th>Nama</th>
+                <th>Status</th>
+                <th>Prioritas</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr data-status="completed" data-priority="high">
+                <td>1</td>
+                <td>Membuat laporan bulanan</td>
+                <td>Selesai</td>
+                <td>Tinggi</td>
+              </tr>
+              <tr data-status="in-progress" data-priority="medium">
+                <td>2</td>
+                <td>Memperbarui website</td>
+                <td>Dalam Proses</td>
+                <td>Sedang</td>
+              </tr>
+              <tr data-status="pending" data-priority="high">
+                <td>3</td>
+                <td>Merespons email klien</td>
+                <td>Menunggu</td>
+                <td>Tinggi</td>
+              </tr>
+              <tr data-status="pending" data-priority="low">
+                <td>4</td>
+                <td>Memperbarui dokumentasi</td>
+                <td>Menunggu</td>
+                <td>Rendah</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <h3 class="section-title">Kesimpulan</h3>
+
+      <p>
+        Attribute selector adalah fitur CSS yang sangat kuat yang memungkinkan Anda memilih elemen
+        berdasarkan atribut atau nilai atributnya. Dengan menguasai berbagai jenis attribute
+        selector, Anda dapat menulis CSS yang lebih efisien dan meminimalkan kebutuhan akan class
+        tambahan.
+      </p>
+
+      <p>Beberapa keuntungan menggunakan attribute selector:</p>
+
+      <ul>
+        <li><strong>Spesifisitas yang lebih rendah</strong> dibandingkan class dan ID</li>
+        <li><strong>Kode yang lebih bersih</strong> dengan mengurangi kebutuhan class tambahan</li>
+        <li>
+          <strong>Fleksibilitas</strong> dalam menargetkan elemen berdasarkan karakteristiknya
+        </li>
+        <li><strong>Pemeliharaan yang lebih mudah</strong> dengan pengelompokan gaya yang logis</li>
+      </ul>
+
+      <p>
+        Namun, perlu diingat bahwa beberapa attribute selector mungkin memiliki dukungan browser
+        yang lebih terbatas dibandingkan selector dasar. Selalu uji kompatibilitas browser saat
+        menggunakan selector yang lebih baru.
+      </p>
+
+      <p>
+        Dengan memahami dan menerapkan attribute selector dengan benar, Anda dapat menulis CSS yang
+        lebih efisien dan mudah dikelola untuk proyek web Anda.
+      </p>
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='c24.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/css.png"
+          alt="CSS"
+          onclick="window.location.href='c1.html'"
+          title="CSS"
+        />
+        <button class="btn" onclick="window.location.href='c31.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+
+    <script>
+      function copyCode(button) {
+        const codeBlock = button.nextElementSibling.querySelector('code');
+        const range = document.createRange();
+        range.selectNode(codeBlock);
+        window.getSelection().removeAllRanges();
+        window.getSelection().addRange(range);
+
+        try {
+          const successful = document.execCommand('copy');
+          const originalText = button.textContent;
+          button.textContent = successful ? 'Tersalin!' : 'Gagal menyalin';
+
+          setTimeout(() => {
+            button.textContent = originalText;
+          }, 2000);
+        } catch (err) {
+          console.error('Gagal menyalin teks: ', err);
+        }
+
+        window.getSelection().removeAllRanges();
+      }
+
+      // Menambahkan style untuk tabel baris genap/ganjil
+      document.addEventListener('DOMContentLoaded', function () {
+        const tableRows = document.querySelectorAll('tr[data-status]');
+        tableRows.forEach((row, index) => {
+          if (index % 2 === 0) {
+            row.style.backgroundColor = '#f8f9fa';
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

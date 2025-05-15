@@ -1,0 +1,600 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>c13.html</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Cara Menghubungkan CSS ke HTML</h2>
+
+      <p>
+        Ada tiga cara utama untuk menghubungkan CSS ke HTML: inline, internal (embedded), dan eksternal.
+        Setiap metode memiliki kegunaan dan kasus penggunaannya masing-masing. Mari kita bahas
+        masing-masing metode tersebut beserta kelebihan dan kekurangannya.
+      </p>
+
+      <h3 class="section-title">1. Inline CSS</h3>
+      <p>
+        Inline CSS adalah metode penulisan CSS langsung di dalam tag HTML menggunakan atribut
+        <code>style</code>. Ini adalah cara yang paling spesifik dan memiliki prioritas tertinggi
+        dalam CSS.
+      </p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>HTML</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Contoh Inline CSS&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1 style="color: blue; font-size: 24px;"&gt;Judul dengan Inline CSS&lt;/h1&gt;
+    &lt;p style="color: #333; line-height: 1.6;"&gt;
+      Ini adalah contoh paragraf dengan gaya inline CSS.
+    &lt;/p&gt;
+    &lt;div style="background-color: #f0f0f0; padding: 15px; border-radius: 5px;"&gt;
+      &lt;button style="background-color: #4CAF50; color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer;"&gt;
+        Tombol
+      &lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+      </div>
+
+      <div class="info-box">
+        <h4>Kelebihan Inline CSS:</h4>
+        <ul>
+          <li>Mudah dan cepat untuk perubahan kecil</li>
+          <li>Memiliki spesifisitas tertinggi (akan mengalahkan CSS internal dan eksternal)</li>
+          <li>Berguna untuk pengujian cepat</li>
+        </ul>
+
+        <h4>Kekurangan Inline CSS:</h4>
+        <ul>
+          <li>Tidak efisien untuk styling banyak elemen</li>
+          <li>Membuat kode HTML berantakan</li>
+          <li>Sulit untuk pemeliharaan jangka panjang</li>
+          <li>Tidak bisa menggunakan fitur CSS yang lebih canggih seperti media queries</li>
+        </ul>
+      </div>
+
+      <h3 class="section-title">2. Internal CSS (Embedded CSS)</h3>
+      <p>
+        Internal CSS ditulis di dalam tag <code>&lt;style&gt;</code> yang biasanya ditempatkan di
+        dalam bagian <code>&lt;head&gt;</code> dokumen HTML. Gaya ini hanya berlaku untuk satu halaman
+        web.
+      </p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>HTML</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Contoh Internal CSS&lt;/title&gt;
+    &lt;style&gt;
+      /* Reset default margin dan padding */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      /* Styling untuk body */
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      /* Styling untuk header */
+      header {
+        background-color: #2c3e50;
+        color: white;
+        padding: 1rem 0;
+        text-align: center;
+        margin-bottom: 2rem;
+        border-radius: 5px;
+      }
+
+      /* Styling untuk navigation */
+      nav ul {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        padding: 1rem 0;
+      }
+
+      nav a {
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s;
+      }
+
+      nav a:hover {
+        color: #3498db;
+      }
+
+      /* Styling untuk tombol */
+      .btn {
+        display: inline-block;
+        background-color: #3498db;
+        color: white;
+        padding: 0.5rem 1rem;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        text-decoration: none;
+        transition: background-color 0.3s;
+      }
+
+      .btn:hover {
+        background-color: #2980b9;
+      }
+    &lt;/style&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;header&gt;
+      &lt;h1&gt;Website Saya&lt;/h1&gt;
+      &lt;nav&gt;
+        &lt;ul&gt;
+          &lt;li&gt;&lt;a href="#"&gt;Beranda&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href="#"&gt;Tentang&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href="#"&gt;Layanan&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href="#"&gt;Kontak&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/nav&gt;
+    &lt;/header&gt;
+
+    &lt;main&gt;
+      &lt;h2&gt;Selamat Datang di Website Kami&lt;/h2&gt;
+      &lt;p&gt;Ini adalah contoh penggunaan internal CSS pada halaman web.&lt;/p&gt;
+      &lt;a href="#" class="btn"&gt;Pelajari Lebih Lanjut&lt;/a&gt;
+    &lt;/main&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+      </div>
+
+      <div class="info-box">
+        <h4>Kelebihan Internal CSS:</h4>
+        <ul>
+          <li>Lebih terorganisir dibanding inline CSS</li>
+          <li>Dapat menggunakan semua fitur CSS termasuk media queries</li>
+          <li>Cocok untuk halaman tunggal yang membutuhkan gaya khusus</li>
+          <li>Mengurangi permintaan HTTP (tidak perlu file terpisah)</li>
+        </ul>
+
+        <h4>Kekurangan Internal CSS:</h4>
+        <ul>
+          <li>Hanya berlaku untuk satu halaman</li>
+          <li>Dapat membuat file HTML menjadi besar</li>
+          <li>Kurang efisien untuk situs dengan banyak halaman</li>
+        </ul>
+      </div>
+
+      <h3 class="section-title">3. Eksternal CSS</h3>
+      <p>
+        Eksternal CSS adalah metode yang paling direkomendasikan untuk menghubungkan CSS ke HTML. Gaya
+        ditulis dalam file terpisah dengan ekstensi <code>.css</code> dan dihubungkan ke HTML
+        menggunakan tag <code>&lt;link&gt;</code> di dalam <code>&lt;head&gt;</code>.
+      </p>
+
+      <h4>Struktur File:</h4>
+      <div class="file-structure">
+        <div class="folder">
+          <span>📁 website/</span>
+          <div class="nested">
+            <div>📄 index.html</div>
+            <div>📁 css/</div>
+            <div class="nested">
+              <div>📄 style.css</div>
+            </div>
+            <div>📁 images/</div>
+          </div>
+        </div>
+      </div>
+
+      <h4>File HTML (index.html):</h4>
+      <div class="code-block">
+        <div class="code-header">
+          <span>HTML</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="id"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8" /&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+    &lt;title&gt;Website dengan Eksternal CSS&lt;/title&gt;
+    &lt;link rel="stylesheet" href="css/style.css" /&gt;
+    &lt;!-- Menghubungkan file CSS eksternal --&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;header class="site-header"&gt;
+      &lt;div class="container"&gt;
+        &lt;h1 class="logo"&gt;Nama Situs&lt;/h1&gt;
+        &lt;nav class="main-nav"&gt;
+          &lt;ul&gt;
+            &lt;li&gt;&lt;a href="#" class="active"&gt;Beranda&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#"&gt;Tentang&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#"&gt;Layanan&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#"&gt;Portofolio&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#"&gt;Kontak&lt;/a&gt;&lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/nav&gt;
+      &lt;/div&gt;
+    &lt;/header&gt;
+
+    &lt;main class="main-content"&gt;
+      &lt;section class="hero"&gt;
+        &lt;div class="container"&gt;
+          &lt;h2&gt;Selamat Datang di Website Kami&lt;/h2&gt;
+          &lt;p&gt;Kami menyediakan solusi digital kreatif untuk bisnis Anda.&lt;/p&gt;
+          &lt;a href="#" class="btn btn-primary"&gt;Mulai Sekarang&lt;/a&gt;
+        &lt;/div&gt;
+      &lt;/section&gt;
+
+      &lt;section class="features"&gt;
+        &lt;div class="container"&gt;
+          &lt;h2 class="section-title"&gt;Mengapa Memilih Kami?&lt;/h2&gt;
+          &lt;div class="features-grid"&gt;
+            &lt;div class="feature"&gt;
+              &lt;div class="feature-icon"&gt;🚀&lt;/div&gt;
+              &lt;h3&gt;Cepat&lt;/h3&gt;
+              &lt;p&gt;Waktu loading yang sangat cepat untuk pengalaman pengguna yang lebih baik.&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class="feature"&gt;
+              &lt;div class="feature-icon"&gt;🎨&lt;/div&gt;
+              &lt;h3&gt;Kreatif&lt;/h3&gt;
+              &lt;p&gt;Desain yang unik dan kreatif untuk membedakan merek Anda.&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class="feature"&gt;
+              &lt;div class="feature-icon"&gt;📱&lt;/div&gt;
+              &lt;h3&gt;Responsif&lt;/h3&gt;
+              &lt;p&gt;Tampilan yang sempurna di semua perangkat.&lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/section&gt;
+    &lt;/main&gt;
+
+    &lt;footer class="site-footer"&gt;
+      &lt;div class="container"&gt;
+        &lt;p&gt;&copy; 2025 Nama Perusahaan. Semua hak dilindungi.&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/footer&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+      </div>
+
+      <h4>File CSS (css/style.css):</h4>
+      <div class="code-block">
+        <div class="code-header">
+          <span>CSS</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>/* Reset dan Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #f9f9f9;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Header Styles */
+.site-header {
+  background-color: #2c3e50;
+  color: white;
+  padding: 1rem 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.site-header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.main-nav ul {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+
+.main-nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.5rem 0;
+  position: relative;
+  transition: color 0.3s;
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+  color: #3498db;
+}
+
+.main-nav a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background-color: #3498db;
+  bottom: 0;
+  left: 0;
+  transition: width 0.3s;
+}
+
+.main-nav a:hover::after,
+.main-nav a.active::after {
+  width: 100%;
+}
+
+/* Hero Section */
+.hero {
+  background: linear-gradient(135deg, #3498db, #2c3e50);
+  color: white;
+  padding: 6rem 0;
+  text-align: center;
+}
+
+.hero h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  max-width: 700px;
+  margin: 0 auto 2rem;
+  opacity: 0.9;
+}
+
+/* Button Styles */
+.btn {
+  display: inline-block;
+  padding: 0.8rem 1.8rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 500;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.btn-primary {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #c0392b;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Features Section */
+.features {
+  padding: 5rem 0;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 3rem;
+  font-size: 2rem;
+  color: #2c3e50;
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background-color: #3498db;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.feature {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  text-align: center;
+}
+
+.feature:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.feature-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.feature h3 {
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+/* Footer */
+.site-footer {
+  background-color: #2c3e50;
+  color: white;
+  padding: 2rem 0;
+  text-align: center;
+  margin-top: 4rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .site-header .container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .main-nav {
+    margin-top: 1rem;
+  }
+
+  .main-nav ul {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .hero {
+    padding: 4rem 0;
+  }
+
+  .hero h2 {
+    font-size: 2rem;
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.feature {
+  animation: fadeIn 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+.feature:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.feature:nth-child(2) {
+  animation-delay: 0.3s;
+}
+
+.feature:nth-child(3) {
+  animation-delay: 0.5s;
+}</code></pre>
+      </div>
+
+      <div class="info-box">
+        <h4>Kelebihan Eksternal CSS:</h4>
+        <ul>
+          <li>Dapat digunakan di banyak halaman sekaligus</li>
+          <li>Membuat kode lebih bersih dan terorganisir</li>
+          <li>Meningkatkan kecepatan loading halaman (browser meng-cache file CSS)</li>
+          <li>Mudah untuk pemeliharaan dan pembaruan</li>
+          <li>Mengurangi duplikasi kode</li>
+        </ul>
+
+        <h4>Kekurangan Eksternal CSS:</h4>
+        <ul>
+          <li>Membutuhkan permintaan HTTP tambahan (tetapi diimbangi dengan caching)</li>
+          <li>Jika file CSS gagal dimuat, halaman akan kehilangan gaya</li>
+        </ul>
+      </div>
+
+      <h3 class="section-title">Kesimpulan</h3>
+      <p>
+        Memilih metode yang tepat untuk menghubungkan CSS ke HTML tergantung pada kebutuhan proyek Anda:
+      </p>
+      <ul>
+        <li>
+          <strong>Inline CSS</strong>: Gunakan hanya untuk pengujian cepat atau untuk mengesampingkan
+          gaya tertentu.
+        </li>
+        <li>
+          <strong>Internal CSS</strong>: Cocok untuk halaman tunggal atau ketika Anda perlu gaya yang
+          hanya berlaku untuk satu halaman tertentu.
+        </li>
+        <li>
+          <strong>Eksternal CSS</strong>: Pilihan terbaik untuk sebagian besar proyek, terutama yang
+          terdiri dari banyak halaman.
+        </li>
+      </ul>
+      <p>
+        Untuk proyek yang lebih besar, Anda bahkan dapat membagi CSS Anda menjadi beberapa file
+        eksternal (seperti <code>reset.css</code>, <code>layout.css</code>,
+        <code>components.css</code>, dll.) untuk pengelolaan yang lebih baik.
+      </p>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='c12.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/css.png"
+          alt="CSS"
+          onclick="window.location.href='c1.html'"
+          title="Daftar Isi CSS"
+        />
+        <button class="btn" onclick="window.location.href='c14.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+
+    <script src="../script/copyCode.js"></script>
+    <script src="../script/script.js"></script>
+  </body>
+</html>

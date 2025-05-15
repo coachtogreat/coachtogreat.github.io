@@ -1,0 +1,538 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>c14.html</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Struktur Dasar Sintaks CSS</h2>
+
+      <p>
+        CSS (Cascading Style Sheets) memiliki struktur sintaks yang konsisten yang terdiri dari
+        beberapa komponen utama. Memahami struktur ini adalah dasar untuk menulis CSS yang efektif.
+      </p>
+
+      <h3 class="section-title">1. Komponen Dasar Sintaks CSS</h3>
+      <p>Setiap aturan CSS terdiri dari tiga komponen utama:</p>
+
+      <div class="syntax-box">
+        <div class="syntax-selector">selector</div>
+        <div class="syntax-brace">{</div>
+        <div class="syntax-property">property</div>
+        <div class="syntax-colon">:</div>
+        <div class="syntax-value">value</div>
+        <div class="syntax-semicolon">;</div>
+        <div class="syntax-brace">}</div>
+      </div>
+
+      <h4>Contoh:</h4>
+      <div class="code-block">
+        <div class="code-header">
+          <span>CSS</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>h1 {
+  color: blue;
+  font-size: 24px;
+  margin-bottom: 20px;
+}</code></pre>
+      </div>
+
+      <h3 class="section-title">2. Penjelasan Komponen</h3>
+
+      <h4>a. Selector</h4>
+      <p>
+        Selector adalah pola yang digunakan untuk memilih elemen HTML yang ingin diberi gaya. Ada
+        beberapa jenis selector:
+      </p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>CSS</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>/* Selector Elemen */
+p {
+  color: #333;
+}
+
+/* Selector Class */
+.tombol {
+  background-color: #3498db;
+}
+
+/* Selector ID */
+#header {
+  padding: 20px;
+}
+
+/* Selector Atribut */
+input[type="text"] {
+  border: 1px solid #ddd;
+}
+
+/* Selector Pseudo-class */
+a:hover {
+  color: #e74c3c;
+}
+
+/* Selector Pseudo-element */
+p::first-line {
+  font-weight: bold;
+}
+
+/* Selector Universal */
+* {
+  box-sizing: border-box;
+}
+
+/* Selector Descendant */
+nav ul {
+  list-style: none;
+}
+
+/* Selector Child */
+nav > ul > li {
+  display: inline-block;
+}
+
+/* Selector Adjacent Sibling */
+h2 + p {
+  margin-top: 0;
+}
+
+/* Selector General Sibling */
+h2 ~ p {
+  color: #666;
+}</code></pre>
+      </div>
+
+      <h4>b. Property</h4>
+      <p>
+        Property adalah aspek spesifik dari elemen yang ingin Anda ubah. Setiap property memiliki
+        nama yang telah ditentukan oleh spesifikasi CSS.
+      </p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>CSS</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>/* Property untuk teks */
+color: #333;
+font-family: Arial, sans-serif;
+font-size: 16px;
+line-height: 1.6;
+text-align: center;
+
+/* Property untuk box model */
+width: 100%;
+max-width: 1200px;
+margin: 0 auto;
+padding: 20px;
+border: 1px solid #ddd;
+border-radius: 4px;
+
+/* Property untuk warna dan latar belakang */
+background-color: #f9f9f9;
+background-image: url('gambar.jpg');
+background-size: cover;
+
+/* Property untuk layout */
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+position: relative;
+
+/* Property untuk efek visual */
+box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+transition: all 0.3s ease;
+opacity: 0.9;
+
+/* Property untuk transformasi */
+transform: rotate(5deg);
+
+/* Property untuk animasi */
+animation: fadeIn 1s ease-in-out;</code></pre>
+      </div>
+
+      <h4>c. Value</h4>
+      <p>
+        Value adalah pengaturan spesifik yang diberikan ke property. Tipe value tergantung pada
+        property yang digunakan.
+      </p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>CSS</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>/* Warna */
+color: red;                  /* Nama warna */
+color: #ff0000;              /* Kode heksadesimal */
+color: rgb(255, 0, 0);       /* RGB */
+color: rgba(255, 0, 0, 0.5); /* RGB dengan transparansi */
+color: hsl(0, 100%, 50%);    /* HSL */
+
+/* Ukuran */
+width: 100%;                 /* Persentase */
+width: 300px;                /* Piksel */
+width: 50vw;                 /* Viewport width */
+width: 50vh;                 /* Viewport height */
+width: 5em;                  /* Relatif terhadap ukuran font elemen */
+width: 5rem;                 /* Relatif terhadap ukuran font root */
+
+/* Font */
+font-family: "Times New Roman", Times, serif; /* Daftar font fallback */
+font-size: 1.2rem;
+font-weight: bold;
+font-style: italic;
+line-height: 1.5;
+
+/* Margin dan Padding */
+margin: 10px;                /* Semua sisi */
+margin: 10px 20px;           /* Atas-bawah kiri-kanan */
+margin: 10px 20px 15px;      /* Atas kanan-bawah kiri */
+margin: 10px 20px 15px 5px;  /* Atas kanan bawah kiri */
+
+/* Border */
+border: 1px solid #000;     /* Lebar gaya warna */
+border-radius: 5px;         /* Sudut melengkung */
+
+/* Background */
+background: linear-gradient(to right, #ff0000, #0000ff); /* Gradien */
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+
+/* Transisi dan Animasi */
+transition: all 0.3s ease-in-out;
+animation: fadeIn 1s forwards;
+
+/* Transformasi */
+transform: translateX(10px) rotate(45deg) scale(1.2);
+
+/* Flexbox */
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+align-items: center;
+flex-wrap: wrap;
+
+gap: 10px;
+
+/* Grid */
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+grid-gap: 20px;
+
+/* Pseudo-classes */
+:hover { color: blue; }
+:focus { outline: 2px solid blue; }
+:first-child { margin-left: 0; }
+:last-child { margin-right: 0; }
+:nth-child(odd) { background: #f5f5f5; }</code></pre>
+      </div>
+
+      <h3 class="section-title">3. Deklarasi dan Aturan CSS</h3>
+
+      <h4>a. Deklarasi Tunggal</h4>
+      <p>Setiap pasangan property dan value disebut sebagai deklarasi.</p>
+      <div class="code-block">
+        <div class="code-header">
+          <span>CSS</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>color: blue;  /* Ini adalah satu deklarasi */
+font-size: 16px;  /* Ini adalah deklarasi lain */</code></pre>
+      </div>
+
+      <h4>b. Deklarasi Berganda</h4>
+      <p>Beberapa deklarasi dapat dikelompokkan dalam satu blok aturan.</p>
+      <div class="code-block">
+        <div class="code-header">
+          <span>CSS</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>h1 {
+  color: blue;
+  font-size: 32px;
+  margin-bottom: 20px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}</code></pre>
+      </div>
+
+      <h4>c. Multiple Selectors</h4>
+      <p>Beberapa selector dapat dikelompokkan dengan koma.</p>
+      <div class="code-block">
+        <div class="code-header">
+          <span>CSS</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>h1, h2, h3, h4, h5, h6 {
+  font-family: 'Arial', sans-serif;
+  margin-top: 0;
+  color: #2c3e50;
+  line-height: 1.2;
+}</code></pre>
+      </div>
+
+      <h3 class="section-title">4. Komentar dalam CSS</h3>
+      <p>Komentar digunakan untuk memberikan catatan atau penjelasan dalam kode CSS.</p>
+      <div class="code-block">
+        <div class="code-header">
+          <span>CSS</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>/* Ini adalah komentar satu baris */
+
+/*
+  Ini adalah komentar
+  yang mencakup beberapa baris
+*/
+
+/* ========================
+   BAGIAN HEADER
+   ======================== */
+.header {
+  /* Warna latar belakang header */
+  background-color: #2c3e50;
+  
+  /* Padding atas dan bawah 15px, kiri kanan 0 */
+  padding: 15px 0;
+  
+  /* Posisi tetap di bagian atas */
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+/* Tombol Utama */
+.btn {
+  display: inline-block;
+  padding: 0.5rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  
+  /* Fallback untuk browser lama */
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+}
+
+/* Warna tombol primer */
+.btn-primary {
+  background-color: #3498db;
+  color: white;
+}
+
+/* Efek hover untuk tombol */
+.btn-primary:hover {
+  background-color: #2980b9;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Media Query untuk perangkat mobile */
+@media (max-width: 768px) {
+  .header {
+    padding: 10px 0;
+  }
+  
+  .btn {
+    padding: 0.4rem 1rem;
+    font-size: 0.9rem;
+  }
+}</code></pre>
+      </div>
+
+      <h3 class="section-title">5. Spesifisitas dan Kaskade</h3>
+      <p>
+        CSS mengikuti aturan kaskade dan spesifisitas untuk menentukan gaya mana yang akan diterapkan
+        ketika ada konflik.
+      </p>
+
+      <h4>a. Kaskade</h4>
+      <p>Urutan prioritas (dari terendah ke tertinggi):</p>
+      <ol>
+        <li>Browser default styles</li>
+        <li>User stylesheet</li>
+        <li>Author stylesheet (CSS yang Anda tulis)</li>
+        <li>!important rules (hindari penggunaan yang berlebihan)</li>
+      </ol>
+
+      <h4>b. Spesifisitas</h4>
+      <p>Urutan spesifisitas (dari terendah ke tertinggi):</p>
+      <ol>
+        <li>Type selectors (h1, p, div) dan pseudo-elements (::before, ::after)</li>
+        <li>Class selectors (.class), attributes ([type="text"]), dan pseudo-classes (:hover)</li>
+        <li>ID selectors (#id)</li>
+        <li>Inline styles (style="...")</li>
+        <li>!important (mengatasi semua aturan lainnya)</li>
+      </ol>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>CSS</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>/* Spesifisitas: 1 (elemen) */
+body {
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+/* Spesifisitas: 10 (class) */
+.text-red {
+  color: red;
+}
+
+/* Spesifisitas: 100 (ID) */
+#special-text {
+  color: blue;
+}
+
+/* Spesifisitas: 1 (elemen) + 10 (class) = 11 */
+p.highlight {
+  background-color: yellow;
+}
+
+/* Spesifisitas: 1 (elemen) + 10 (class) + 10 (pseudo-class) = 21 */
+a.btn:hover {
+  background-color: #e74c3c;
+}
+
+/* Spesifisitas: 10 (class) + 10 (class) = 20 */
+.btn.primary {
+  background-color: #2ecc71;
+}
+
+/* !important mengesampingkan semua aturan spesifisitas */
+.override {
+  color: purple !important;
+}</code></pre>
+      </div>
+
+      <h3 class="section-title">6. Praktik Terbaik Menulis CSS</h3>
+      <ol>
+        <li>
+          <strong>Gunakan indentasi yang konsisten</strong> (biasanya 2 atau 4 spasi)
+        </li>
+        <li>
+          <strong>Kelompokkan properti yang terkait</strong> (layout, box model, typography, dll)
+        </li>
+        <li>
+          <strong>Gunakan nama class yang deskriptif</strong> dan mengikuti konvensi (seperti BEM)
+        </li>
+        <li>
+          <strong>Hindari penggunaan ID untuk styling</strong> (kecuali benar-benar diperlukan)
+        </li>
+        <li>
+          <strong>Gunakan unit relatif</strong> (rem, em, %, vh, vw) untuk layout yang lebih responsif
+        </li>
+        <li><strong>Minimalkan penggunaan !important</strong></li>
+        <li>
+          <strong>Gunakan CSS variables</strong> untuk nilai yang digunakan berulang (warna, spacing,
+          dll)
+        </li>
+        <li>
+          <strong>Gunakan preprocessor</strong> seperti SASS atau LESS untuk fitur tambahan seperti
+          nesting dan mixins
+        </li>
+      </ol>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>CSS</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>/* Variabel CSS untuk tema */
+:root {
+  --primary-color: #3498db;
+  --secondary-color: #2ecc71;
+  --text-color: #2c3e50;
+  --light-gray: #f5f6fa;
+  --spacing-unit: 1rem;
+  --border-radius: 4px;
+  --transition: all 0.3s ease;
+}
+
+/* Penggunaan variabel */
+.btn {
+  padding: calc(var(--spacing-unit) * 0.5) calc(var(--spacing-unit) * 1.5);
+  border-radius: var(--border-radius);
+  transition: var(--transition);
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #2980b9;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Media queries dengan variabel */
+@media (max-width: 768px) {
+  :root {
+    --spacing-unit: 0.8rem;
+  }
+  
+  .btn {
+    width: 100%;
+    margin-bottom: var(--spacing-unit);
+  }
+}</code></pre>
+      </div>
+
+      <p>
+        Dengan memahami struktur dasar sintaks CSS, Anda dapat menulis kode yang lebih terorganisir,
+        mudah dipelihara, dan efisien. Di bab selanjutnya, kita akan mempelajari lebih dalam tentang
+        selector CSS dan bagaimana menggunakannya secara efektif.
+      </p>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='c13.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/css.png"
+          alt="CSS"
+          onclick="window.location.href='c1.html'"
+          title="Daftar Isi CSS"
+        />
+        <button class="btn" onclick="window.location.href='c21.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+
+    <script src="../script/copyCode.js"></script>
+    <script src="../script/script.js"></script>
+  </body>
+</html>

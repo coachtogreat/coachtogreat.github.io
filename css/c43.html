@@ -1,0 +1,546 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Float dan Clear di CSS</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <style>
+      .box {
+        border: 2px solid #3498db;
+        background-color: #f0f8ff;
+        margin: 10px;
+        padding: 15px;
+        border-radius: 5px;
+      }
+      .demo-container {
+        background-color: #f9f9f9;
+        border: 1px solid #e0e0e0;
+        padding: 20px;
+        margin: 20px 0;
+        overflow: hidden;
+      }
+      .float-box {
+        width: 150px;
+        height: 100px;
+        padding: 15px;
+        margin: 10px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        transition: all 0.3s ease;
+      }
+      .float-box:hover {
+        opacity: 0.9;
+        transform: scale(1.02);
+      }
+      .float-left {
+        float: left;
+        background-color: #e3f2fd;
+        border: 2px solid #2196f3;
+      }
+      .float-right {
+        float: right;
+        background-color: #e8f5e9;
+        border: 2px solid #4caf50;
+      }
+      .clear-demo {
+        background-color: #fff8e1;
+        border: 2px solid #ffc107;
+        padding: 15px;
+        margin: 10px 0;
+      }
+      .clearfix::after {
+        content: '';
+        display: table;
+        clear: both;
+      }
+      .content-box {
+        background-color: #f3e5f5;
+        border: 1px solid #9c27b0;
+        padding: 15px;
+        margin: 10px 0;
+      }
+      .nav-buttons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 30px 0;
+        gap: 20px;
+      }
+      .btn {
+        padding: 10px 20px;
+        background-color: #3498db;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+      .btn:hover {
+        background-color: #2980b9;
+      }
+      .home-icon {
+        width: 24px;
+        height: 24px;
+        cursor: pointer;
+        transition: transform 0.3s;
+      }
+      .home-icon:hover {
+        transform: scale(1.1);
+      }
+      .code-block {
+        position: relative;
+        background-color: #f5f5f5;
+        border-radius: 4px;
+        padding: 15px;
+        margin: 15px 0;
+        overflow-x: auto;
+      }
+      .code-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+        font-family: monospace;
+      }
+      .copy-btn {
+        background-color: #e0e0e0;
+        border: none;
+        padding: 3px 8px;
+        border-radius: 3px;
+        cursor: pointer;
+        font-size: 12px;
+      }
+      .copy-btn:hover {
+        background-color: #d0d0d0;
+      }
+      pre {
+        margin: 0;
+      }
+      code {
+        font-family: 'Courier New', Courier, monospace;
+      }
+      .section-title {
+        color: #2c3e50;
+        margin-top: 30px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #3498db;
+      }
+      .info-box {
+        background-color: #e8f4f8;
+        border-left: 4px solid #3498db;
+        padding: 15px;
+        margin: 20px 0;
+        border-radius: 0 4px 4px 0;
+      }
+      .info-box h4 {
+        margin-top: 0;
+        color: #2c3e50;
+      }
+      .info-box ul {
+        margin-bottom: 0;
+      }
+      .image-float-demo {
+        max-width: 300px;
+        margin: 15px;
+      }
+      .image-float-demo img {
+        max-width: 100%;
+        height: auto;
+        border: 1px solid #ddd;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Memahami Float dan Clear di CSS</h2>
+
+      <p>
+        Properti <code>float</code> dan <code>clear</code> adalah bagian penting dari CSS yang
+        digunakan untuk mengatur tata letak elemen, terutama untuk teks yang mengelilingi gambar
+        atau membuat layout kolom. Meskipun saat ini ada teknik layout yang lebih modern seperti
+        Flexbox dan Grid, memahami <code>float</code> dan <code>clear</code> tetap penting untuk
+        pemeliharaan kode lama dan kasus penggunaan tertentu.
+      </p>
+
+      <div class="info-box">
+        <h4>Konsep Dasar:</h4>
+        <ul>
+          <li>
+            <code>float: left</code> - Elemen mengapung ke kiri, konten mengalir di sekitarnya
+          </li>
+          <li>
+            <code>float: right</code> - Elemen mengapung ke kanan, konten mengalir di sekitarnya
+          </li>
+          <li><code>float: none</code> - Nilai default, elemen tidak mengapung</li>
+          <li><code>clear: left</code> - Mencegah elemen mengapung di sebelah kiri</li>
+          <li><code>clear: right</code> - Mencegah elemen mengapung di sebelah kanan</li>
+          <li><code>clear: both</code> - Mencegah elemen mengapung di kedua sisi</li>
+          <li><code>clear: none</code> - Nilai default, elemen dapat mengapung di kedua sisi</li>
+        </ul>
+      </div>
+
+      <h3 class="section-title">1. Menggunakan Float</h3>
+      <p>
+        Properti <code>float</code> memungkinkan elemen mengapung ke kiri atau kanan dalam
+        kontainer, sementara konten di sekitarnya mengalir di sekitarnya. Ini sangat berguna untuk
+        mengatur teks di sekitar gambar atau membuat tata letak kolom.
+      </p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>CSS</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>.gambar {
+  float: left;
+  margin: 0 15px 10px 0;
+  width: 200px;
+}
+
+.kolom {
+  float: left;
+  width: 48%;
+  margin-right: 4%;
+}
+
+.kolom:last-child {
+  margin-right: 0;
+}</code></pre>
+      </div>
+
+      <h4>Contoh Float Kiri dan Kanan:</h4>
+      <div class="demo-container clearfix">
+        <div class="float-box float-left">Float Kiri</div>
+        <div class="float-box float-right">Float Kanan</div>
+        <p>
+          Ini adalah contoh teks yang mengalir di sekitar elemen yang di-float. Float digunakan
+          untuk memposisikan elemen ke kiri atau kanan, memungkinkan konten lain mengelilinginya.
+          Teknik ini sering digunakan untuk gambar dalam artikel atau membuat tata letak kolom.
+        </p>
+        <p>
+          Perhatikan bagaimana teks ini mengalir di sekitar kedua kotak yang di-float. Ketika ruang
+          horizontal tidak cukup, elemen yang di-float akan turun ke baris berikutnya.
+        </p>
+      </div>
+
+      <h3 class="section-title">2. Masalah dengan Float</h3>
+      <p>
+        Salah satu masalah umum dengan float adalah bahwa elemen induk tidak akan menyesuaikan
+        tingginya untuk menampung elemen yang di-float, yang dapat menyebabkan tumpang tindih atau
+        tata letak yang rusak.
+      </p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>CSS</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>.container {
+  border: 2px solid #f00; /* Garis merah untuk menunjukkan container */
+  padding: 10px;
+}
+
+.anak {
+  float: left;
+  width: 100px;
+  height: 100px;
+  background-color: #e3f2fd;
+  margin: 10px;
+}</code></pre>
+      </div>
+
+      <h4>Masalah Tinggi Container:</h4>
+      <div style="border: 2px solid #f00; padding: 10px; margin: 20px 0">
+        <div
+          style="float: left; width: 100px; height: 100px; background-color: #e3f2fd; margin: 10px"
+        >
+          Float 1
+        </div>
+        <div
+          style="float: left; width: 100px; height: 100px; background-color: #e8f5e9; margin: 10px"
+        >
+          Float 2
+        </div>
+        <!-- Tidak ada clearfix -->
+      </div>
+      <p>Perhatikan bagaimana container (garis merah) tidak menutupi elemen anak yang di-float.</p>
+
+      <h3 class="section-title">3. Memperbaiki Masalah Float dengan Clear</h3>
+      <p>
+        Properti <code>clear</code> digunakan untuk mengontrol perilaku elemen yang berada di
+        sekitar elemen yang di-float. Ini memastikan bahwa elemen yang diberi <code>clear</code>
+        akan muncul di bawah elemen yang di-float.
+      </p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>CSS</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>/* Solusi 1: Menggunakan elemen kosong dengan clear */
+.clear {
+  clear: both;
+}
+
+/* Solusi 2: Menggunakan pseudo-element (clearfix) */
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Solusi 3: Menggunakan overflow pada container */
+.container {
+  overflow: auto; /* atau overflow: hidden */
+}</code></pre>
+      </div>
+
+      <h4>Contoh Clearfix:</h4>
+      <div style="border: 2px solid #4caf50; padding: 10px; margin: 20px 0" class="clearfix">
+        <div
+          style="float: left; width: 100px; height: 100px; background-color: #e3f2fd; margin: 10px"
+        >
+          Float 1
+        </div>
+        <div
+          style="float: left; width: 100px; height: 100px; background-color: #e8f5e9; margin: 10px"
+        >
+          Float 2
+        </div>
+        <!-- Clearfix diterapkan menggunakan class -->
+      </div>
+      <p>Dengan menggunakan clearfix, container sekarang menutupi elemen anak yang di-float.</p>
+
+      <h3 class="section-title">4. Membuat Layout dengan Float</h3>
+      <p>
+        Sebelum ada Flexbox dan Grid, float adalah cara utama untuk membuat layout kolom. Berikut
+        contoh membuat layout tiga kolom dengan float:
+      </p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>CSS</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>.header, .footer {
+  background-color: #e3f2fd;
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.kolom {
+  float: left;
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+.sidebar {
+  width: 25%;
+  background-color: #e8f5e9;
+}
+
+.konten-utama {
+  width: 50%;
+  background-color: #fff3e0;
+  margin: 0 2%;
+}
+
+.footer {
+  clear: both;
+  margin-top: 10px;
+}</code></pre>
+      </div>
+
+      <h4>Contoh Layout Tiga Kolom:</h4>
+      <div style="margin: 20px 0">
+        <div
+          style="background-color: #e3f2fd; padding: 20px; text-align: center; margin-bottom: 10px"
+        >
+          Header
+        </div>
+
+        <div class="clearfix">
+          <div
+            style="
+              float: left;
+              width: 25%;
+              padding: 15px;
+              box-sizing: border-box;
+              background-color: #e8f5e9;
+            "
+          >
+            <h3>Sidebar</h3>
+            <p>Konten sidebar di sini</p>
+          </div>
+
+          <div
+            style="
+              float: left;
+              width: 46%;
+              padding: 15px;
+              box-sizing: border-box;
+              background-color: #fff3e0;
+              margin: 0 2%;
+            "
+          >
+            <h3>Konten Utama</h3>
+            <p>Konten utama di sini. Ini adalah kolom tengah yang lebih lebar.</p>
+          </div>
+
+          <div
+            style="
+              float: left;
+              width: 25%;
+              padding: 15px;
+              box-sizing: border-box;
+              background-color: #e8f5e9;
+            "
+          >
+            <h3>Sidebar Kanan</h3>
+            <p>Konten sidebar kanan di sini</p>
+          </div>
+        </div>
+
+        <div
+          style="
+            clear: both;
+            background-color: #e3f2fd;
+            padding: 20px;
+            text-align: center;
+            margin-top: 10px;
+          "
+        >
+          Footer
+        </div>
+      </div>
+
+      <h3 class="section-title">5. Float vs Flexbox/Grid Modern</h3>
+      <p>
+        Meskipun float masih berfungsi dengan baik untuk tujuan awalnya (membuat teks mengalir di
+        sekitar gambar), untuk tata letak halaman yang kompleks, lebih disarankan untuk menggunakan
+        Flexbox atau Grid yang dirancang khusus untuk keperluan tersebut.
+      </p>
+
+      <div class="info-box">
+        <h4>Kapan Menggunakan Float:</h4>
+        <ul>
+          <li>Membuat teks mengalir di sekitar gambar</li>
+          <li>Membuat layout sederhana dengan dukungan browser lama</li>
+          <li>
+            Ketika Anda perlu mendukung browser yang sangat lama yang tidak mendukung Flexbox/Grid
+          </li>
+        </ul>
+
+        <h4>Kapan Beralih ke Flexbox/Grid:</h4>
+        <ul>
+          <li>Membuat layout kompleks dengan banyak baris dan kolom</li>
+          <li>Membutuhkan kontrol yang lebih baik atas perataan dan distribusi ruang</li>
+          <li>Membuat desain yang responsif dengan lebih mudah</li>
+        </ul>
+      </div>
+
+      <h3 class="section-title">6. Tips dan Praktik Terbaik</h3>
+      <div class="info-box">
+        <h4>1. Selalu Gunakan Clearfix</h4>
+        <p>
+          Gunakan teknik clearfix untuk mencegah masalah tumpang tindih dan memastikan container
+          menutupi elemen anak yang di-float.
+        </p>
+
+        <h4>2. Gunakan Box-Sizing: Border-Box</h4>
+        <p>
+          Selalu gunakan <code>box-sizing: border-box</code> untuk memastikan padding dan border
+          tidak mempengaruhi lebar elemen yang sudah ditentukan.
+        </p>
+
+        <h4>3. Pertimbangkan Responsivitas</h4>
+        <p>
+          Saat menggunakan float untuk layout, pastikan untuk menggunakan media queries agar tata
+          letak beradaptasi dengan baik di berbagai ukuran layar.
+        </p>
+
+        <h4>4. Gunakan Unit Relatif</h4>
+        <p>
+          Gunakan persentase atau unit relatif lainnya untuk lebar kolom agar lebih fleksibel di
+          berbagai perangkat.
+        </p>
+
+        <h4>5. Pertimbangkan untuk Beralih ke Flexbox/Grid</h4>
+        <p>
+          Untuk proyek baru, pertimbangkan untuk menggunakan Flexbox atau Grid yang menawarkan
+          kontrol yang lebih baik dan kode yang lebih bersih untuk tata letak yang kompleks.
+        </p>
+      </div>
+
+      <div class="conclusion">
+        <h3>Kesimpulan</h3>
+        <p>
+          Meskipun <code>float</code> dan <code>clear</code> bukan lagi metode utama untuk membuat
+          tata letak di era modern, pemahaman tentang cara kerjanya tetap penting, terutama untuk
+          pemeliharaan kode lama atau untuk kasus penggunaan spesifik seperti mengelilingi teks di
+          sekitar gambar.
+        </p>
+        <p>
+          Untuk tata letak yang lebih kompleks, pertimbangkan untuk mempelajari dan menggunakan
+          Flexbox dan Grid yang menawarkan solusi yang lebih kuat dan mudah dikelola.
+        </p>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='c42.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/css.png"
+          alt="CSS"
+          onclick="window.location.href='c1.html'"
+          title="CSS"
+        />
+        <button class="btn" onclick="window.location.href='c44.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+
+    <script>
+      // Fungsi untuk menyalin kode
+      function copyCode(button) {
+        const codeBlock = button.parentElement.nextElementSibling;
+        const range = document.createRange();
+        range.selectNode(codeBlock);
+        window.getSelection().removeAllRanges();
+        window.getSelection().addRange(range);
+        document.execCommand('copy');
+        window.getSelection().removeAllRanges();
+
+        // Ubah teks tombol sementara
+        const originalText = button.textContent;
+        button.textContent = 'Tersalin!';
+        button.style.backgroundColor = '#4caf50';
+
+        // Kembalikan teks tombol setelah 2 detik
+        setTimeout(() => {
+          button.textContent = originalText;
+          button.style.backgroundColor = '';
+        }, 2000);
+      }
+
+      // Inisialisasi
+      document.addEventListener('DOMContentLoaded', function () {
+        // Tambahkan kode inisialisasi di sini jika diperlukan
+      });
+    </script>
+  </body>
+</html>

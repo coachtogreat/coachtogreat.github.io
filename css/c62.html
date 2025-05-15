@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Unit Responsif di CSS: %, em, rem, vh, vw</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <style>
+      .box {
+        border: 2px solid #3498db;
+        background-color: #f0f8ff;
+        margin: 10px;
+        padding: 15px;
+        border-radius: 5px;
+      }
+      .demo-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        margin: 20px 0;
+      }
+      .unit-demo {
+        margin: 15px 0;
+        padding: 15px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        background-color: #f9f9f9;
+      }
+      .unit-box {
+        background-color: #e3f2fd;
+        border: 1px solid #90caf9;
+        margin: 10px 0;
+        padding: 10px;
+        text-align: center;
+        transition: all 0.3s ease;
+      }
+      .unit-value {
+        font-family: monospace;
+        background-color: #f1f1f1;
+        padding: 2px 6px;
+        border-radius: 3px;
+      }
+      .visual-guide {
+        background-color: #f5f5f5;
+        border-left: 4px solid #3498db;
+        padding: 15px;
+        margin: 20px 0;
+      }
+      .comparison {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        margin: 20px 0;
+      }
+      .comparison-item {
+        border: 1px solid #ddd;
+        padding: 15px;
+        border-radius: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Unit Responsif di CSS: %, em, rem, vh, vw</h2>
+
+      <p>
+        Unit responsif di CSS memungkinkan kita membuat tata letak yang fleksibel dan adaptif
+        terhadap berbagai ukuran layar. Berbeda dengan unit tetap seperti <code>px</code>, unit
+        responsif menyesuaikan ukurannya berdasarkan konteks tertentu.
+      </p>
+
+      <div class="info-box">
+        <h4>Jenis-Jenis Unit Responsif:</h4>
+        <ul>
+          <li><code>%</code> - Persentase dari elemen induk</li>
+          <li><code>em</code> - Relatif terhadap ukuran font elemen saat ini</li>
+          <li><code>rem</code> - Relatif terhadap ukuran font elemen root (html)</li>
+          <li><code>vh</code> - 1% dari tinggi viewport</li>
+          <li><code>vw</code> - 1% dari lebar viewport</li>
+        </ul>
+      </div>
+
+      <h3 class="section-title">1. Persentase (%)</h3>
+      <p>
+        Unit persentase relatif terhadap ukuran elemen induknya. Berguna untuk membuat lebar yang
+        fleksibel.
+      </p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>CSS</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>.container {
+  width: 80%; /* 80% dari lebar induk */
+  margin: 0 auto;
+}
+
+.box {
+  width: 50%; /* 50% dari lebar .container */
+  padding: 2%; /* 2% dari lebar elemen */
+}</code></pre>
+      </div>
+
+      <div class="unit-demo">
+        <div style="width: 80%; margin: 0 auto; background: #e3f2fd; padding: 10px;">
+          Container (80% lebar)
+          <div style="width: 50%; background: #bbdefb; padding: 10px; margin: 10px 0;">
+            Box (50% dari container)
+          </div>
+        </div>
+      </div>
+
+      <h3 class="section-title">2. Unit em</h3>
+      <p>
+        <code>em</code> relatif terhadap ukuran font elemen saat ini. Jika digunakan untuk properti
+        selain <code>font-size</code>, 1em sama dengan ukuran font yang dihitung dari elemen saat
+        ini.
+      </p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>CSS</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>body {
+  font-size: 16px;
+}
+
+.box {
+  font-size: 1.5em; /* 24px (16 * 1.5) */
+  margin: 1em; /* 24px (sama dengan font-size elemen ini) */
+  padding: 0.5em; /* 12px */
+}
+
+/* Contoh efek kompounding */
+.nested-box {
+  font-size: 2em; /* 48px (24 * 2) */
+}</code></pre>
+      </div>
+
+      <div class="visual-guide">
+        <p>
+          <strong>Perhatian:</strong> Penggunaan <code>em</code> yang bersarang dapat menyebabkan
+          efek kompounding di mana ukuran menjadi semakin besar/kecil secara eksponensial.
+        </p>
+      </div>
+
+      <h3 class="section-title">3. Unit rem (Root em)</h3>
+      <p>
+        <code>rem</code> selalu relatif terhadap ukuran font elemen root (<code>html</code>).
+        Menghindari masalah kompounding yang terjadi pada <code>em</code>.
+      </p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>CSS</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>html {
+  font-size: 16px; /* 1rem = 16px */
+}
+
+.box {
+  font-size: 1.5rem; /* 24px */
+  padding: 1rem; /* 16px */
+  margin: 0.5rem; /* 8px */
+}
+
+/* Tidak ada efek kompounding */
+.nested-box {
+  font-size: 2rem; /* 32px */
+}</code></pre>
+      </div>
+
+      <div class="comparison">
+        <div class="comparison-item">
+          <h4>em vs rem</h4>
+          <p>
+            <strong>em:</strong> Relatif terhadap font-size elemen induk terdekat yang memiliki
+            font-size ditentukan.
+          </p>
+          <p><strong>rem:</strong> Selalu relatif terhadap font-size elemen root (html).</p>
+        </div>
+        <div class="comparison-item">
+          <h4>Kapan Menggunakan?</h4>
+          <p><strong>Gunakan em:</strong> Untuk properti yang ingin mengikuti font-size elemen.</p>
+          <p>
+            <strong>Gunakan rem:</strong> Untuk ukuran yang konsisten di seluruh halaman, terutama
+            untuk spacing dan layout.
+          </p>
+        </div>
+      </div>
+
+      <h3 class="section-title">4. Viewport Units: vh dan vw</h3>
+      <p>
+        Viewport units relatif terhadap ukuran viewport (area yang terlihat di browser).
+      </p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>CSS</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>.header {
+  height: 100vh; /* 100% tinggi viewport */
+  width: 100vw; /* 100% lebar viewport */
+}
+
+.section {
+  min-height: 50vh; /* Minimal 50% tinggi viewport */
+  padding: 5vw; /* Padding 5% dari lebar viewport */
+}
+
+.box {
+  width: 50vw; /* 50% lebar viewport */
+  height: 25vh; /* 25% tinggi viewport */
+}</code></pre>
+      </div>
+
+      <div class="unit-demo" style="border: 1px solid #ddd; padding: 15px;">
+        <div style="height: 20vh; background: #e3f2fd; margin: 10px 0; display: flex; align-items: center; justify-content: center;">
+          Kotak dengan tinggi 20vh
+        </div>
+        <div style="width: 70vw; max-width: 100%; background: #bbdefb; margin: 10px 0; padding: 10px; box-sizing: border-box;">
+          Kotak dengan lebar 70vw (maksimal 100% lebar container)
+        </div>
+      </div>
+
+      <h3 class="section-title">5. Unit Responsif Lainnya</h3>
+      <div class="info-box">
+        <h4>Unit Tambahan:</h4>
+        <ul>
+          <li>
+            <code>vmin</code>: 1% dari ukuran viewport yang lebih kecil (lebar atau tinggi)
+          </li>
+          <li>
+            <code>vmax</code>: 1% dari ukuran viewport yang lebih besar (lebar atau tinggi)
+          </li>
+          <li>
+            <code>ch</code>: Lebar karakter "0" (nol) dari font saat ini
+          </li>
+          <li><code>lh</code>: Tinggi baris (line-height) elemen saat ini</li>
+        </ul>
+      </div>
+
+      <div class="visual-guide">
+        <h4>Best Practices:</h4>
+        <ul>
+          <li>Gunakan <code>rem</code> untuk ukuran font dan spacing untuk konsistensi</li>
+          <li>Gunakan <code>em</code> untuk properti yang perlu diskalakan dengan ukuran font</li>
+          <li>Gunakan <code>%</code> untuk lebar dan tinggi yang fleksibel dalam container</li>
+          <li>Gunakan <code>vh</code>/<code>vw</code> untuk elemen yang perlu mengisi viewport</li>
+          <li>Hindari mencampur terlalu banyak jenis unit dalam satu komponen</li>
+        </ul>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='c61.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/css.png"
+          alt="CSS"
+          onclick="window.location.href='c1.html'"
+          title="CSS"
+        />
+        <button class="btn" onclick="window.location.href='c63.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+
+    <script>
+      // Fungsi untuk menyalin kode
+      function copyCode(button) {
+        const codeBlock = button.parentElement.nextElementSibling;
+        const code = codeBlock.textContent;
+
+        navigator.clipboard
+          .writeText(code)
+          .then(() => {
+            // Ubah teks tombol sementara
+            const originalText = button.textContent;
+            button.textContent = 'Tersalin!';
+            button.style.backgroundColor = '#4CAF50';
+
+            // Kembalikan ke teks asli setelah 2 detik
+            setTimeout(() => {
+              button.textContent = originalText;
+              button.style.backgroundColor = '';
+            }, 2000);
+          })
+          .catch((err) => {
+            console.error('Gagal menyalin teks: ', err);
+          });
+      }
+    </script>
+  </body>
+</html>

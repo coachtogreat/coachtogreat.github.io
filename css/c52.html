@@ -1,0 +1,514 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Daftar Tidak Berurutan (Unordered List) di HTML & CSS</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <style>
+      .box {
+        border: 2px solid #3498db;
+        background-color: #f0f8ff;
+        margin: 10px;
+        padding: 15px;
+        border-radius: 5px;
+      }
+      .demo-container {
+        background-color: #f9f9f9;
+        border: 1px solid #e0e0e0;
+        padding: 20px;
+        margin: 20px 0;
+        overflow: hidden;
+      }
+      .list-container {
+        background-color: #e3f2fd;
+        padding: 20px;
+        margin: 15px 0;
+        border: 2px dashed #2196f3;
+        border-radius: 5px;
+      }
+      .list-preview {
+        background-color: white;
+        padding: 15px;
+        border-radius: 4px;
+        margin: 10px 0;
+      }
+      .controls {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 10px;
+        margin: 15px 0;
+      }
+      .control-group {
+        background-color: #f5f5f5;
+        padding: 10px;
+        border-radius: 4px;
+      }
+      .control-group h4 {
+        margin-top: 0;
+        color: #333;
+      }
+      .nav-buttons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 30px 0;
+        gap: 20px;
+      }
+      .btn {
+        padding: 10px 20px;
+        background-color: #3498db;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+      .btn:hover {
+        background-color: #2980b9;
+      }
+      .home-icon {
+        width: 24px;
+        height: 24px;
+        cursor: pointer;
+        transition: transform 0.3s;
+      }
+      .home-icon:hover {
+        transform: scale(1.1);
+      }
+      .code-block {
+        position: relative;
+        background-color: #f5f5f5;
+        border-radius: 4px;
+        padding: 15px;
+        margin: 15px 0;
+        overflow-x: auto;
+      }
+      .code-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+        font-family: monospace;
+      }
+      .copy-btn {
+        background-color: #e0e0e0;
+        border: none;
+        padding: 3px 8px;
+        border-radius: 3px;
+        cursor: pointer;
+        font-size: 12px;
+      }
+      .copy-btn:hover {
+        background-color: #d0d0d0;
+      }
+      pre {
+        margin: 0;
+      }
+      code {
+        font-family: 'Courier New', Courier, monospace;
+      }
+      .section-title {
+        color: #2c3e50;
+        margin-top: 30px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #3498db;
+      }
+      .info-box {
+        background-color: #e8f4f8;
+        border-left: 4px solid #3498db;
+        padding: 15px;
+        margin: 20px 0;
+        border-radius: 0 4px 4px 0;
+      }
+      .info-box h4 {
+        margin-top: 0;
+        color: #2c3e50;
+      }
+      .info-box ul {
+        margin-bottom: 0;
+      }
+      .visual-container {
+        width: 100%;
+        overflow-x: auto;
+      }
+      .visual-title {
+        font-weight: bold;
+        margin: 15px 0 10px;
+        color: #333;
+      }
+      .custom-list {
+        list-style-type: none;
+        padding-left: 0;
+      }
+      .custom-list li {
+        position: relative;
+        padding-left: 30px;
+        margin-bottom: 10px;
+        line-height: 30px;
+      }
+      .custom-list li::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 16px;
+        height: 16px;
+        background-color: #3498db;
+        border-radius: 50%;
+      }
+      .checkmark-list li::before {
+        content: '✓';
+        background-color: transparent;
+        color: #4caf50;
+        font-weight: bold;
+        width: 20px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .arrow-list li::before {
+        content: '→';
+        background-color: transparent;
+        color: #2196f3;
+        font-weight: bold;
+        width: 20px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Daftar Tidak Berurutan (Unordered List) di HTML & CSS</h2>
+
+      <p>
+        Daftar tidak berurutan (Unordered List) adalah elemen HTML yang digunakan untuk menampilkan
+        daftar item tanpa urutan tertentu. Setiap item dalam daftar biasanya diawali dengan bullet
+        atau simbol lainnya.
+      </p>
+
+      <div class="info-box">
+        <h4>Konsep Dasar Unordered List:</h4>
+        <ul>
+          <li>
+            <strong>&lt;ul&gt;</strong>: Tag pembungkus untuk membuat daftar tidak berurutan
+            (unordered list)
+          </li>
+          <li><strong>&lt;li&gt;</strong>: Tag untuk setiap item dalam daftar (list item)</li>
+          <li>
+            <strong>Atribut type</strong>: Menentukan jenis bullet (disc, circle, square, none)
+          </li>
+          <li>
+            <strong>list-style-type</strong>: Properti CSS untuk mengubah tampilan bullet
+          </li>
+          <li>
+            <strong>list-style-image</strong>: Properti CSS untuk menggunakan gambar sebagai bullet
+          </li>
+        </ul>
+      </div>
+
+      <h3 class="section-title">1. Daftar Tidak Berurutan Dasar</h3>
+      <p>Berikut adalah contoh sederhana penggunaan unordered list dengan bullet default:</p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>HTML</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>&lt;ul&gt;
+  &lt;li&gt;Nasi Goreng&lt;/li&gt;
+  &lt;li&gt;Mie Goreng&lt;/li&gt;
+  &lt;li&gt;Soto Ayam&lt;/li&gt;
+  &lt;li&gt;Gado-gado&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+      </div>
+
+      <h4>Hasil:</h4>
+      <div class="list-container">
+        <div class="list-preview">
+          <ul>
+            <li>Nasi Goreng</li>
+            <li>Mie Goreng</li>
+            <li>Soto Ayam</li>
+            <li>Gado-gado</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3 class="section-title">2. Jenis Bullet</h3>
+      <p>Anda dapat mengubah jenis bullet menggunakan properti CSS <code>list-style-type</code>:</p>
+
+      <div class="controls">
+        <div class="control-group">
+          <h4>list-style-type:</h4>
+          <button onclick="updateListStyle('disc')">disc (default)</button>
+          <button onclick="updateListStyle('circle')">circle</button>
+          <button onclick="updateListStyle('square')">square</button>
+          <button onclick="updateListStyle('none')">none</button>
+        </div>
+        <div class="control-group">
+          <h4>Custom Bullet:</h4>
+          <button onclick="updateListStyle('decimal')">Angka (1, 2, 3)</button>
+          <button onclick="updateListStyle('lower-roman')">Romawi Kecil (i, ii, iii)</button>
+          <button onclick="updateListStyle('upper-alpha')">Huruf Besar (A, B, C)</button>
+        </div>
+      </div>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>CSS</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code id="list-style-code">ul.custom-list {
+  list-style-type: disc;
+  padding-left: 20px;
+}</code></pre>
+      </div>
+
+      <h4>Hasil:</h4>
+      <div class="list-container">
+        <div class="list-preview">
+          <ul id="demo-list" class="custom-list">
+            <li>Item pertama</li>
+            <li>Item kedua</li>
+            <li>Item ketiga</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3 class="section-title">3. Styling dengan CSS</h3>
+      <p>Anda dapat mengubah tampilan daftar tidak berurutan menggunakan CSS:</p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>CSS</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>/* Menggunakan karakter khusus sebagai bullet */
+.checkmark-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.checkmark-list li {
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 10px;
+}
+
+.checkmark-list li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #4caf50;
+  font-weight: bold;
+}
+
+/* Menggunakan gambar sebagai bullet */
+.custom-bullet {
+  list-style-image: url('path/ke/gambar-bullet.png');
+  padding-left: 25px;
+}
+
+/* Menghilangkan bullet dan menambahkan border */
+.no-bullet {
+  list-style: none;
+  padding-left: 0;
+}
+
+.no-bullet li {
+  padding: 8px 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+/* Horizontal list */
+.horizontal-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 15px;
+}
+
+.horizontal-list li {
+  background-color: #f0f0f0;
+  padding: 5px 10px;
+  border-radius: 4px;
+}</code></pre>
+      </div>
+
+      <h4>Contoh Penggunaan:</h4>
+      <div class="list-container">
+        <div class="list-preview">
+          <h5>Daftar dengan Checkmark:</h5>
+          <ul class="checkmark-list">
+            <li>Fitur pertama</li>
+            <li>Fitur kedua</li>
+            <li>Fitur ketiga</li>
+          </ul>
+
+          <h5>Daftar Horizontal:</h5>
+          <ul class="horizontal-list">
+            <li>Beranda</li>
+            <li>Tentang</li>
+            <li>Layanan</li>
+            <li>Kontak</li>
+          </ul>
+
+          <h5>Daftar Tanpa Bullet dengan Border:</h5>
+          <ul class="no-bullet">
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3 class="section-title">4. Daftar Bersarang (Nested List)</h3>
+      <p>Anda dapat membuat daftar di dalam daftar untuk membuat hierarki yang lebih kompleks:</p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>HTML</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>&lt;ul&gt;
+  &lt;li&gt;Perangkat Elektronik
+    &lt;ul&gt;
+      &lt;li&gt;Smartphone
+        &lt;ul&gt;
+          &lt;li&gt;Android&lt;/li&gt;
+          &lt;li&gt;iOS&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Laptop
+        &lt;ul&gt;
+          &lt;li&gt;Windows&lt;/li&gt;
+          &lt;li&gt;MacOS&lt;/li&gt;
+          &lt;li&gt;Linux&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Perabotan Rumah
+    &lt;ul&gt;
+      &lt;li&gt;Kursi&lt;/li&gt;
+      &lt;li&gt;Meja&lt;/li&gt;
+      &lt;li&gt;Lemari&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+      </div>
+
+      <h4>Hasil:</h4>
+      <div class="list-container">
+        <div class="list-preview">
+          <ul>
+            <li>
+              Perangkat Elektronik
+              <ul>
+                <li>
+                  Smartphone
+                  <ul>
+                    <li>Android</li>
+                    <li>iOS</li>
+                  </ul>
+                </li>
+                <li>
+                  Laptop
+                  <ul>
+                    <li>Windows</li>
+                    <li>MacOS</li>
+                    <li>Linux</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li>
+              Perabotan Rumah
+              <ul>
+                <li>Kursi</li>
+                <li>Meja</li>
+                <li>Lemari</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='c51.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/css.png"
+          alt="CSS"
+          onclick="window.location.href='c1.html'"
+          title="CSS"
+        />
+        <button class="btn" onclick="window.location.href='c61.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+
+    <script>
+      // Fungsi untuk menyalin kode
+      function copyCode(button) {
+        const codeBlock = button.parentElement.nextElementSibling;
+        const code = codeBlock.textContent;
+
+        navigator.clipboard
+          .writeText(code)
+          .then(() => {
+            const originalText = button.textContent;
+            button.textContent = 'Tersalin!';
+            button.style.backgroundColor = '#4caf50';
+            button.style.color = 'white';
+
+            setTimeout(() => {
+              button.textContent = originalText;
+              button.style.backgroundColor = '';
+              button.style.color = '';
+            }, 2000);
+          })
+          .catch((err) => {
+            console.error('Gagal menyalin teks: ', err);
+          });
+      }
+
+      // Fungsi untuk memperbarui gaya daftar
+      function updateListStyle(style) {
+        const demoList = document.getElementById('demo-list');
+        const codeElement = document.querySelector('#list-style-code');
+        
+        demoList.style.listStyleType = style;
+        
+        // Update kode contoh
+        const newCode = `ul.custom-list {
+  list-style-type: ${style};
+  padding-left: 20px;
+}`;
+        
+        codeElement.textContent = newCode;
+      }
+
+      // Inisialisasi
+      document.addEventListener('DOMContentLoaded', function () {
+        // Setel tombol default sebagai aktif
+        updateListStyle('disc');
+      });
+    </script>
+  </body>
+</html>

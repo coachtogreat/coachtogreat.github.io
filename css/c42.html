@@ -1,0 +1,575 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Position di CSS: Static, Relative, Absolute, Fixed, Sticky</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <style>
+      .box {
+        border: 2px solid #3498db;
+        background-color: #f0f8ff;
+        margin: 10px;
+        padding: 15px;
+        border-radius: 5px;
+      }
+      .demo-container {
+        position: relative;
+        min-height: 200px;
+        border: 2px dashed #90caf9;
+        padding: 20px;
+        margin: 20px 0;
+        background-color: #f5f9ff;
+      }
+      .position-box {
+        width: 100px;
+        height: 80px;
+        background-color: #e3f2fd;
+        border: 2px solid #2196f3;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 10px;
+        transition: all 0.3s ease;
+      }
+      .position-box:hover {
+        opacity: 0.9;
+        transform: scale(1.02);
+      }
+      .static {
+        position: static;
+        background-color: #e3f2fd;
+      }
+      .relative {
+        position: relative;
+        background-color: #e8f5e9;
+        border-color: #4caf50;
+      }
+      .absolute {
+        position: absolute;
+        background-color: #fff3e0;
+        border-color: #ff9800;
+      }
+      .fixed {
+        position: fixed;
+        background-color: #f3e5f5;
+        border-color: #9c27b0;
+      }
+      .sticky {
+        position: sticky;
+        background-color: #e8eaf6;
+        border-color: #3f51b5;
+      }
+      .offset {
+        top: 20px;
+        left: 20px;
+      }
+      .parent-relative {
+        position: relative;
+        background-color: #fff8e1;
+        border: 2px solid #ffc107;
+        min-height: 200px;
+        padding: 20px;
+        margin: 20px 0;
+      }
+      .z-index-demo {
+        position: relative;
+        height: 150px;
+        margin: 30px 0;
+      }
+      .z-box {
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: bold;
+      }
+      .z-1 {
+        background-color: #f44336;
+        z-index: 1;
+        top: 20px;
+        left: 20px;
+      }
+      .z-2 {
+        background-color: #4caf50;
+        z-index: 2;
+        top: 40px;
+        left: 40px;
+      }
+      .z-3 {
+        background-color: #2196f3;
+        z-index: 3;
+        top: 60px;
+        left: 60px;
+      }
+      .nav-buttons {
+        display: flex;
+        justify-content: space-between;
+        margin: 30px 0;
+        gap: 10px;
+      }
+      .btn {
+        padding: 10px 20px;
+        background-color: #3498db;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+      .btn:hover {
+        background-color: #2980b9;
+      }
+      .home-icon {
+        width: 24px;
+        height: 24px;
+        cursor: pointer;
+        transition: transform 0.3s;
+      }
+      .home-icon:hover {
+        transform: scale(1.1);
+      }
+      .code-block {
+        position: relative;
+        background-color: #f5f5f5;
+        border-radius: 4px;
+        padding: 15px;
+        margin: 15px 0;
+        overflow-x: auto;
+      }
+      .code-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+        font-family: monospace;
+      }
+      .copy-btn {
+        background-color: #e0e0e0;
+        border: none;
+        padding: 3px 8px;
+        border-radius: 3px;
+        cursor: pointer;
+        font-size: 12px;
+      }
+      .copy-btn:hover {
+        background-color: #d0d0d0;
+      }
+      pre {
+        margin: 0;
+      }
+      code {
+        font-family: 'Courier New', Courier, monospace;
+      }
+      .section-title {
+        color: #2c3e50;
+        margin-top: 30px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #3498db;
+      }
+      .info-box {
+        background-color: #e8f4f8;
+        border-left: 4px solid #3498db;
+        padding: 15px;
+        margin: 20px 0;
+        border-radius: 0 4px 4px 0;
+      }
+      .info-box h4 {
+        margin-top: 0;
+        color: #2c3e50;
+      }
+      .info-box ul {
+        margin-bottom: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Memahami Properti Position di CSS</h2>
+
+      <p>
+        Properti <code>position</code> adalah salah satu properti CSS yang paling penting untuk 
+        mengontrol tata letak elemen di halaman web. Dengan properti ini, kita bisa menentukan 
+        bagaimana sebuah elemen diposisikan dalam dokumen dan relatif terhadap elemen lainnya.
+      </p>
+
+      <div class="info-box">
+        <h4>Nilai-nilai Position:</h4>
+        <ul>
+          <li><code>static</code>: Nilai default, elemen mengikuti alur normal dokumen</li>
+          <li><code>relative</code>: Posisi elemen relatif terhadap posisi normalnya</li>
+          <li><code>absolute</code>: Posisi elemen relatif terhadap elemen leluhur terdekat yang memiliki <code>position</code> selain <code>static</code></li>
+          <li><code>fixed</code>: Posisi elemen relatif terhadap viewport (tetap di tempat saat di-scroll)</li>
+          <li><code>sticky</code>: Gabungan antara <code>relative</code> dan <code>fixed</code>, bergantung pada posisi scroll</li>
+        </ul>
+      </div>
+
+      <h3 class="section-title">1. Position: Static</h3>
+      <p>
+        <code>position: static</code> adalah nilai default untuk semua elemen HTML. Elemen dengan <code>position: static</code> 
+        diposisikan sesuai dengan alur normal dokumen. Properti <code>top</code>, <code>right</code>, <code>bottom</code>, <code>left</code>, 
+        dan <code>z-index</code> <strong>tidak berpengaruh</strong> pada elemen dengan <code>position: static</code>.
+      </p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>CSS</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>.static-box {
+  position: static;
+  background-color: #e3f2fd;
+  border: 2px solid #2196f3;
+  padding: 10px;
+  margin: 10px 0;
+}</code></pre>
+      </div>
+
+      <div class="demo-container">
+        <div class="position-box static">Static
+          <div>Position: static</div>
+          <div>(Default)</div>
+        </div>
+        <p>Ini adalah elemen dengan <code>position: static</code>. Elemen ini mengikuti alur normal dokumen.</p>
+      </div>
+
+      <h3 class="section-title">2. Position: Relative</h3>
+      <p>
+        <code>position: relative</code> memposisikan elemen relatif terhadap posisi normalnya. 
+        Elemen dengan <code>position: relative</code> dapat diatur menggunakan properti <code>top</code>, <code>right</code>, 
+        <code>bottom</code>, dan <code>left</code>. Ruang yang awalnya ditempati oleh elemen ini 
+        tetap dipertahankan dalam alur dokumen.
+      </p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>CSS</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>.relative-box {
+  position: relative;
+  top: 20px;
+  left: 30px;
+  background-color: #e8f5e9;
+  border: 2px solid #4caf50;
+  padding: 10px;
+  margin: 10px 0;
+}</code></pre>
+      </div>
+
+      <div class="demo-container">
+        <div class="position-box">Elemen Normal</div>
+        <div class="position-box relative" style="top: 20px; left: 30px;">
+          Relative
+          <div>top: 20px</div>
+          <div>left: 30px</div>
+        </div>
+        <div class="position-box">Elemen Berikutnya</div>
+      </div>
+
+      <h3 class="section-title">3. Position: Absolute</h3>
+      <p>
+        <code>position: absolute</code> memposisikan elemen relatif terhadap elemen leluhur terdekat 
+        yang memiliki <code>position</code> selain <code>static</code>. Jika tidak ada elemen leluhur 
+        yang memenuhi syarat, elemen akan diposisikan relatif terhadap <code>&lt;html&gt;</code>.
+      </p>
+      <p>
+        Elemen dengan <code>position: absolute</code> dikeluarkan dari alur normal dokumen, 
+        artinya tidak ada ruang yang dialokasikan untuk elemen tersebut dalam tata letak halaman.
+      </p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>CSS</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>.parent {
+  position: relative;
+  height: 200px;
+  background-color: #fff8e1;
+  border: 2px solid #ffc107;
+}
+
+.absolute-box {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 100px;
+  height: 60px;
+  background-color: #fff3e0;
+  border: 2px solid #ff9800;
+}</code></pre>
+      </div>
+
+      <div class="parent-relative">
+        <div class="position-box absolute" style="top: 20px; right: 20px;">
+          Absolute
+          <div>top: 20px</div>
+          <div>right: 20px</div>
+        </div>
+        <p>Ini adalah elemen parent dengan <code>position: relative</code>.</p>
+        <p>Kotak di atas menggunakan <code>position: absolute</code> dan diposisikan relatif terhadap parent ini.</p>
+      </div>
+
+      <h3 class="section-title">4. Position: Fixed</h3>
+      <p>
+        <code>position: fixed</code> memposisikan elemen relatif terhadap viewport, yang berarti 
+        elemen akan tetap berada di posisi yang sama meskipun halaman di-scroll. Seperti <code>absolute</code>, 
+        elemen dengan <code>position: fixed</code> dikeluarkan dari alur normal dokumen.
+      </p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>CSS</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>.fixed-box {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 100px;
+  height: 60px;
+  background-color: #f3e5f5;
+  border: 2px solid #9c27b0;
+  z-index: 1000;
+}</code></pre>
+      </div>
+
+      <div class="demo-container">
+        <div class="position-box fixed" style="bottom: 20px; right: 20px;">
+          Fixed
+          <div>bottom: 20px</div>
+          <div>right: 20px</div>
+        </div>
+        <p>Elemen dengan <code>position: fixed</code> akan tetap terlihat di posisi yang sama meskipun halaman di-scroll.</p>
+        <p>Coba scroll halaman ini ke atas dan bawah, dan perhatikan kotak di pojok kanan bawah.</p>
+        <div style="height: 1000px;">
+          <!-- Elemen kosong untuk membuat scroll -->
+        </div>
+      </div>
+
+      <h3 class="section-title">5. Position: Sticky</h3>
+      <p>
+        <code>position: sticky</code> adalah gabungan antara <code>relative</code> dan <code>fixed</code>. 
+        Elemen dengan <code>position: sticky</code> akan berperilaku seperti <code>relative</code> 
+        sampai mencapai titik scroll tertentu, kemudian akan berperilaku seperti <code>fixed</code>.
+      </p>
+      <p>
+        Untuk mengaktifkan <code>position: sticky</code>, Anda perlu menentukan setidaknya satu 
+        properti <code>top</code>, <code>right</code>, <code>bottom</code>, atau <code>left</code>.
+      </p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>CSS</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>.sticky-header {
+  position: sticky;
+  top: 0;
+  background-color: #e8eaf6;
+  border: 2px solid #3f51b5;
+  padding: 10px;
+  z-index: 100;
+}</code></pre>
+      </div>
+
+      <div class="demo-container" style="height: 300px; overflow-y: auto;">
+        <div class="position-box sticky" style="top: 0; left: 0; width: auto; margin: 0 0 10px 0;">
+          Sticky Header (akan menempel di atas saat discroll)
+        </div>
+        <p>Ini adalah konten di bawah sticky header.</p>
+        <p>Coba scroll ke bawah...</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl eget ultricies tincidunt, nunc nisl aliquam nunc, vitae aliquam nisl nunc vitae nisl.</p>
+        <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+        <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      </div>
+
+      <h3 class="section-title">6. Z-index dan Stacking Context</h3>
+      <p>
+        Properti <code>z-index</code> mengontrol tumpukan elemen yang diposisikan (elemen dengan <code>position</code> 
+        selain <code>static</code>). Nilai yang lebih tinggi akan menempati posisi di atas nilai yang lebih rendah.
+      </p>
+      <p>
+        <strong>Catatan:</strong> <code>z-index</code> hanya bekerja pada elemen yang memiliki <code>position</code> 
+        selain <code>static</code> (yaitu <code>relative</code>, <code>absolute</code>, <code>fixed</code>, atau <code>sticky</code>).
+      </p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>CSS</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>.box-1 {
+  position: relative;
+  z-index: 1;
+  background-color: #f44336;
+  top: 20px;
+  left: 20px;
+}
+
+.box-2 {
+  position: relative;
+  z-index: 2;
+  background-color: #4caf50;
+  top: 40px;
+  left: 40px;
+}
+
+.box-3 {
+  position: relative;
+  z-index: 3;
+  background-color: #2196f3;
+  top: 60px;
+  left: 60px;
+}</code></pre>
+      </div>
+
+      <div class="z-index-demo">
+        <div class="z-box z-1">z-index: 1</div>
+        <div class="z-box z-2">z-index: 2</div>
+        <div class="z-box z-3">z-index: 3</div>
+      </div>
+
+      <h3 class="section-title">7. Kapan Menggunakan Masing-masing Position?</h3>
+      <div class="info-box">
+        <h4>Gunakan <code>static</code> ketika:</h4>
+        <ul>
+          <li>Anda ingin elemen mengikuti alur normal dokumen</li>
+          <li>Tidak memerlukan pengaturan posisi khusus</li>
+        </ul>
+        
+        <h4>Gunakan <code>relative</code> ketika:</h4>
+        <ul>
+          <li>Anda ingin memindahkan elemen dari posisi normalnya tanpa mempengaruhi elemen lain</li>
+          <li>Membuat referensi untuk elemen anak dengan <code>position: absolute</code></li>
+        </ul>
+        
+        <h4>Gunakan <code>absolute</code> ketika:</h4>
+        <ul>
+          <li>Anda ingin memposisikan elemen secara tepat relatif terhadap elemen leluhur yang diposisikan</li>
+          <li>Membuat komponen UI seperti tooltip, dropdown, atau modal</li>
+        </ul>
+        
+        <h4>Gunakan <code>fixed</code> ketika:</h4>
+        <ul>
+          <li>Anda ingin elemen tetap terlihat saat halaman di-scroll (seperti navbar atau tombol kembali ke atas)</li>
+          <li>Membuat elemen yang harus selalu terlihat di layar</li>
+        </ul>
+        
+        <h4>Gunakan <code>sticky</code> ketika:</h4>
+        <ul>
+          <li>Anda ingin elemen mengikuti scroll sampai titik tertentu, lalu menempel</li>
+          <li>Membuat header tabel yang tetap terlihat saat menscroll isi tabel yang panjang</li>
+        </ul>
+      </div>
+
+      <h3 class="section-title">8. Tips dan Praktik Terbaik</h3>
+      <div class="info-box">
+        <h4>1. Gunakan <code>position: relative</code> pada Parent</h4>
+        <p>
+          Saat menggunakan <code>position: absolute</code> pada elemen anak, pastikan elemen parent-nya 
+          memiliki <code>position: relative</code> (atau selain <code>static</code>) untuk membatasi 
+          area referensi posisi.
+        </p>
+        
+        <h4>2. Hati-hati dengan <code>z-index</code> yang Tinggi</h4>
+        <p>
+          Hindari menggunakan nilai <code>z-index</code> yang sangat tinggi (seperti 9999) karena 
+          dapat menyebabkan masalah manajemen tumpukan yang kompleks. Usahakan untuk menggunakan 
+          nilai yang terkecil yang memungkinkan.
+        </p>
+        
+        <h4>3. Perhatikan Kinerja</h4>
+        <p>
+          <code>position: fixed</code> dan <code>position: sticky</code> dapat mempengaruhi kinerja 
+          pada perangkat dengan spesifikasi rendah karena memerlukan komposisi ulang (reflow) 
+          yang lebih sering saat scrolling.
+        </p>
+        
+        <h4>4. Uji di Berbagai Perangkat</h4>
+        <p>
+          Selalu uji tata letak yang menggunakan <code>position</code> di berbagai ukuran layar dan 
+          perangkat untuk memastikan tampilan yang konsisten.
+        </p>
+        
+        <h4>5. Gunakan dengan Bijak</h4>
+        <p>
+          Meskipun properti <code>position</code> sangat berguna, usahakan untuk tidak terlalu 
+          banyak menggunakannya. Terlalu banyak elemen yang diposisikan secara absolut dapat 
+          membuat tata letak menjadi rapuh dan sulit dikelola.
+        </p>
+      </div>
+
+      <div class="conclusion">
+        <h3>Kesimpulan</h3>
+        <p>
+          Memahami properti <code>position</code> sangat penting dalam pengembangan web modern. 
+          Setiap nilai memiliki kasus penggunaan yang berbeda-beda, dan memilih yang tepat 
+          akan membuat pengembangan menjadi lebih mudah dan efisien.
+        </p>
+        <p>
+          Mulailah dengan memahami dasar-dasarnya (<code>static</code>, <code>relative</code>), 
+          kemudian pelajari penggunaan yang lebih lanjut seperti <code>absolute</code>, <code>fixed</code>, 
+          dan <code>sticky</code> untuk membuat desain yang lebih kompleks dan interaktif.
+        </p>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='c41.html'">&lt;&nbsp;Prev</button>
+        <img 
+          src="../assets/png/home.png" 
+          alt="Home" 
+          class="home-icon" 
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img 
+          src="../assets/png/css.png" 
+          alt="CSS" 
+          onclick="window.location.href='c1.html'"
+          title="CSS"
+        />
+        <button class="btn" onclick="window.location.href='c43.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+
+    <script>
+      // Fungsi untuk menyalin kode
+      function copyCode(button) {
+        const codeBlock = button.parentElement.nextElementSibling;
+        const range = document.createRange();
+        range.selectNode(codeBlock);
+        window.getSelection().removeAllRanges();
+        window.getSelection().addRange(range);
+        document.execCommand('copy');
+        window.getSelection().removeAllRanges();
+        
+        // Ubah teks tombol sementara
+        const originalText = button.textContent;
+        button.textContent = 'Tersalin!';
+        button.style.backgroundColor = '#4caf50';
+        
+        // Kembalikan teks tombol setelah 2 detik
+        setTimeout(() => {
+          button.textContent = originalText;
+          button.style.backgroundColor = '';
+        }, 2000);
+      }
+
+      // Inisialisasi
+      document.addEventListener('DOMContentLoaded', function() {
+        // Tambahkan kode inisialisasi di sini jika diperlukan
+      });
+    </script>
+  </body>
+</html>

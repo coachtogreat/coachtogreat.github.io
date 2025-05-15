@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pseudo-element CSS</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <style>
+      /* Styling untuk contoh */
+      .container {
+        max-width: 100%;
+        padding: 1rem;
+        margin: 0 auto;
+        overflow: hidden;
+      }
+
+      .example-box {
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 4px;
+        padding: 1.5rem;
+        margin: 1rem 0;
+        overflow: hidden;
+      }
+
+      .demo-box {
+        background-color: #e9f7fe;
+        border: 1px solid #3498db;
+        border-radius: 4px;
+        padding: 1rem;
+        margin: 1rem 0;
+      }
+
+      .highlight {
+        background-color: #fff3cd;
+        border-left: 4px solid #ffc107;
+        padding: 0.5rem;
+        margin: 1rem 0;
+      }
+
+      /* Contoh pseudo-element styling */
+      .before-demo::before {
+        content: '→ ';
+        color: #e91e63;
+        font-weight: bold;
+      }
+
+      .after-demo::after {
+        content: ' ←';
+        color: #2196f3;
+        font-style: italic;
+      }
+
+      .first-line-demo::first-line {
+        font-weight: bold;
+        color: #4caf50;
+        text-transform: uppercase;
+      }
+
+      .first-letter-demo::first-letter {
+        font-size: 2.5em;
+        float: left;
+        line-height: 1;
+        margin-right: 0.1em;
+        color: #9c27b0;
+        font-weight: bold;
+      }
+
+      .selection-demo::selection {
+        background-color: #ffeb3b;
+        color: #000;
+      }
+
+      .marker-demo::marker {
+        color: #ff5722;
+        font-weight: bold;
+      }
+
+      .placeholder-demo::placeholder {
+        color: #9e9e9e;
+        font-style: italic;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Pseudo-element CSS: ::before, ::after, dan Lainnya</h2>
+
+      <p>
+        Pseudo-element adalah kata kunci yang ditambahkan ke selector yang memungkinkan Anda menata
+        bagian tertentu dari elemen yang dipilih. Berbeda dengan pseudo-class yang menargetkan state
+        tertentu, pseudo-element memungkinkan Anda menambahkan elemen semu ke halaman tanpa perlu
+        menambahkan elemen HTML tambahan.
+      </p>
+
+      <h3 class="section-title">1. ::before dan ::after</h3>
+
+      <p>
+        Pseudo-element <code>::before</code> dan <code>::after</code> memungkinkan Anda menyisipkan
+        konten sebelum atau sesudah konten elemen.
+      </p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>CSS</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>/* Menambahkan ikon sebelum elemen */
+.before-demo::before {
+  content: "→ ";
+  color: #e91e63;
+  font-weight: bold;
+}
+
+/* Menambahkan teks setelah elemen */
+.after-demo::after {
+  content: " ←";
+  color: #2196f3;
+  font-style: italic;
+}
+
+/* Menggunakan atribut data-* untuk konten dinamis */
+[data-tooltip]::after {
+  content: attr(data-tooltip);
+  display: none;
+  /* Tambahan styling untuk tooltip */
+}
+[data-tooltip]:hover::after {
+  display: block;
+  /* Tambahan styling untuk tooltip saat dihover */
+}</code></pre>
+      </div>
+
+      <div class="example-box">
+        <h5>Contoh ::before dan ::after:</h5>
+        <div class="demo-box">
+          <p class="before-demo">Ini adalah teks dengan pseudo-element ::before</p>
+          <p class="after-demo">Ini adalah teks dengan pseudo-element ::after</p>
+          <p
+            data-tooltip="Ini adalah tooltip!"
+            style="cursor: help; display: inline-block; border-bottom: 1px dotted #000"
+          >
+            Arahkan kursor ke sini
+          </p>
+        </div>
+      </div>
+
+      <div class="highlight">
+        <strong>Catatan:</strong> Properti <code>content</code> diperlukan untuk menampilkan
+        pseudo-element ::before dan ::after. Nilainya bisa berupa teks, gambar, atau bahkan kosong
+        (tetapi propertinya tetap harus dideklarasikan).
+      </div>
+
+      <h3 class="section-title">2. ::first-line dan ::first-letter</h3>
+
+      <p>Pseudo-element ini memungkinkan Anda menata baris pertama atau huruf pertama dari teks.</p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>CSS</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>/* Menata baris pertama teks */
+.first-line-demo::first-line {
+  font-weight: bold;
+  color: #4caf50;
+  text-transform: uppercase;
+}
+
+/* Menata huruf pertama teks (drop cap) */
+.first-letter-demo::first-letter {
+  font-size: 2.5em;
+  float: left;
+  line-height: 1;
+  margin-right: 0.1em;
+  color: #9c27b0;
+  font-weight: bold;
+}</code></pre>
+      </div>
+
+      <div class="example-box">
+        <h5>Contoh ::first-line dan ::first-letter:</h5>
+        <div class="demo-box">
+          <p class="first-line-demo">
+            Ini adalah contoh teks dengan pseudo-element ::first-line. Hanya baris pertama yang akan
+            terpengaruh oleh styling ini. Perhatikan bagaimana hanya baris pertama yang memiliki
+            gaya berbeda.
+          </p>
+
+          <p class="first-letter-demo">
+            Ini adalah contoh teks dengan pseudo-element ::first-letter. Perhatikan huruf pertama
+            yang lebih besar dan berwarna ungu. Teknik ini sering digunakan untuk membuat efek drop
+            cap pada artikel.
+          </p>
+        </div>
+      </div>
+
+      <h3 class="section-title">3. ::selection</h3>
+
+      <p>Memungkinkan Anda menata teks yang dipilih oleh pengguna.</p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>CSS</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>/* Mengubah warna teks yang dipilih */
+.selection-demo::selection {
+  background-color: #ffeb3b;
+  color: #000;
+  text-shadow: none;
+}
+
+/* Untuk seluruh dokumen */
+::selection {
+  background: #ff4081;
+  color: white;
+}</code></pre>
+      </div>
+
+      <div class="example-box">
+        <h5>Contoh ::selection:</h5>
+        <div class="demo-box">
+          <p class="selection-demo">
+            Coba pilih teks ini untuk melihat efek ::selection. Teks yang Anda pilih akan memiliki
+            latar belakang kuning dengan teks hitam.
+          </p>
+        </div>
+      </div>
+
+      <h3 class="section-title">4. Pseudo-element Lainnya</h3>
+
+      <h4>::marker</h4>
+      <p>Memungkinkan Anda menata bullet atau nomor pada daftar.</p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>CSS</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>/* Menata bullet/nomor pada daftar */
+.marker-demo li::marker {
+  color: #ff5722;
+  font-weight: bold;
+  content: "→ "; /* Beberapa browser mendukung penggantian konten */
+}</code></pre>
+      </div>
+
+      <div class="example-box">
+        <h5>Contoh ::marker:</h5>
+        <div class="demo-box">
+          <ul class="marker-demo" style="padding-left: 2rem">
+            <li>Item daftar pertama</li>
+            <li>Item daftar kedua</li>
+            <li>Item daftar ketiga</li>
+          </ul>
+        </div>
+      </div>
+
+      <h4>::placeholder</h4>
+      <p>Memungkinkan Anda menata placeholder pada input form.</p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>CSS</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>/* Menata teks placeholder */
+.placeholder-demo::placeholder {
+  color: #9e9e9e;
+  font-style: italic;
+  opacity: 1; /* Beberapa browser memerlukan ini */
+}
+
+/* Vendor prefix untuk kompatibilitas */
+.placeholder-demo::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #9e9e9e;
+  font-style: italic;
+}
+.placeholder-demo::-moz-placeholder { /* Firefox 19+ */
+  color: #9e9e9e;
+  font-style: italic;
+  opacity: 1;
+}
+.placeholder-demo:-ms-input-placeholder { /* IE 10+ */
+  color: #9e9e9e;
+  font-style: italic;
+}
+.placeholder-demo:-moz-placeholder { /* Firefox 18- */
+  color: #9e9e9e;
+  font-style: italic;
+}</code></pre>
+      </div>
+
+      <div class="example-box">
+        <h5>Contoh ::placeholder:</h5>
+        <div class="demo-box">
+          <input
+            type="text"
+            class="placeholder-demo"
+            placeholder="Ketik sesuatu di sini..."
+            style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px"
+          />
+        </div>
+      </div>
+
+      <h3 class="section-title">Kesimpulan</h3>
+
+      <p>
+        Pseudo-element CSS memberikan fleksibilitas tambahan dalam menata elemen-elemen HTML tanpa
+        perlu menambahkan markup tambahan. Dengan menggunakan pseudo-element seperti
+        <code>::before</code>, <code>::after</code>, <code>::first-line</code>, dan lainnya, Anda
+        dapat menciptakan efek visual yang menarik dan meningkatkan pengalaman pengguna.
+      </p>
+
+      <p>Beberapa hal penting yang perlu diingat:</p>
+
+      <ul>
+        <li>
+          Pseudo-element memerlukan properti <code>content</code> untuk ditampilkan (kecuali
+          <code>::first-line</code> dan <code>::first-letter</code>)
+        </li>
+        <li>Pseudo-element bersifat inline secara default</li>
+        <li>
+          Beberapa pseudo-element seperti <code>::placeholder</code> memerlukan vendor prefix untuk
+          kompatibilitas browser yang lebih luas
+        </li>
+        <li>
+          Gunakan pseudo-element dengan bijak untuk meningkatkan aksesibilitas, bukan menguranginya
+        </li>
+      </ul>
+
+      <p>
+        Dengan memahami dan memanfaatkan pseudo-element dengan baik, Anda dapat menciptakan desain
+        yang lebih bersih, efisien, dan menarik.
+      </p>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='c23.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/css.png"
+          alt="CSS"
+          onclick="window.location.href='c1.html'"
+          title="CSS"
+        />
+        <button class="btn" onclick="window.location.href='c25.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+
+    <script>
+      function copyCode(button) {
+        const codeBlock = button.nextElementSibling.querySelector('code');
+        const range = document.createRange();
+        range.selectNode(codeBlock);
+        window.getSelection().removeAllRanges();
+        window.getSelection().addRange(range);
+
+        try {
+          const successful = document.execCommand('copy');
+          const originalText = button.textContent;
+          button.textContent = successful ? 'Tersalin!' : 'Gagal menyalin';
+
+          setTimeout(() => {
+            button.textContent = originalText;
+          }, 2000);
+        } catch (err) {
+          console.error('Gagal menyalin teks: ', err);
+        }
+
+        window.getSelection().removeAllRanges();
+      }
+    </script>
+  </body>
+</html>

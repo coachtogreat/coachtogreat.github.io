@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS-in-JS dengan styled-components dan Emotion</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <style>
+      :root {
+        --bg-color: #ffffff;
+        --text-color: #333333;
+        --primary-color: #3498db;
+        --secondary-color: #2ecc71;
+        --border-color: #dddddd;
+        --card-bg: #f8f9fa;
+        --code-bg: #2d2d2d;
+      }
+
+      [data-theme='dark'] {
+        --bg-color: #1a1a1a;
+        --text-color: #f0f0f0;
+        --primary-color: #5dade2;
+        --secondary-color: #58d68d;
+        --border-color: #444444;
+        --card-bg: #2d2d2d;
+        --code-bg: #1e1e1e;
+      }
+
+      body {
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        transition: all 0.3s ease;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      .section {
+        margin: 30px 0;
+        padding: 25px;
+        background: var(--card-bg);
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .code-block {
+        background: var(--code-bg);
+        color: #f8f8f2;
+        padding: 15px;
+        border-radius: 5px;
+        overflow-x: auto;
+        margin: 15px 0;
+        font-family: 'Courier New', Courier, monospace;
+      }
+
+      .theme-toggle {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: 8px 16px;
+        background: var(--primary-color);
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      .highlight {
+        color: var(--primary-color);
+        font-weight: bold;
+      }
+
+      .note {
+        background-color: rgba(46, 204, 113, 0.1);
+        border-left: 4px solid var(--secondary-color);
+        padding: 12px 20px;
+        margin: 15px 0;
+        border-radius: 0 4px 4px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <button class="theme-toggle" onclick="toggleTheme()">
+      <span id="theme-icon">🌙</span> Ganti Tema
+    </button>
+
+    <div class="blog-container">
+      <h1>CSS-in-JS dengan styled-components dan Emotion</h1>
+
+      <div class="section">
+        <h2>Apa itu CSS-in-JS?</h2>
+        <p>
+          CSS-in-JS adalah pendekatan untuk menulis CSS langsung di dalam kode
+          JavaScript/TypeScript. Teknik ini populer di ekosistem React karena menyediakan solusi
+          untuk beberapa masalah umum dalam pengembangan antarmuka pengguna.
+        </p>
+
+        <div class="note">
+          <strong>Keuntungan CSS-in-JS:</strong>
+          <ul>
+            <li>Scoped styles (gaya terisolasi komponen)</li>
+            <li>Dinamis berdasarkan props/state</li>
+            <li>Pemuatan kode yang lebih efisien</li>
+            <li>Mudah untuk maintenance</li>
+            <li>Dukungan tema yang kuat</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>styled-components</h2>
+        <p>
+          styled-components adalah salah satu library CSS-in-JS yang paling populer. Berikut contoh
+          penggunaannya:
+        </p>
+
+        <div class="code-block">
+          <pre><code>// Instalasi
+// npm install --save styled-components
+// npm install --save-dev @types/styled-components
+
+import styled from 'styled-components';
+
+// Membuat komponen tombol dengan styled-components
+const Button = styled.button`
+  background: ${props => props.primary ? '#3498db' : 'white'};
+  color: ${props => props.primary ? 'white' : '#3498db'};
+  font-size: 1em;
+  margin: 1em;
+  padding: 0.5em 1.5em;
+  border: 2px solid #3498db;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background: ${props => props.primary ? '#2980b9' : '#f8f9fa'};
+  }
+`;
+
+// Penggunaan
+function App() {
+  return (
+    <div>
+      <Button>Normal Button</Button>
+      <Button primary>Primary Button</Button>
+    </div>
+  );
+}
+
+export default App;</code></pre>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Emotion</h2>
+        <p>
+          Emotion adalah library CSS-in-JS yang ringan dan berkinerja tinggi. Berikut contoh
+          penggunaannya:
+        </p>
+
+        <div class="code-block">
+          <pre><code>// Instalasi
+// npm install @emotion/react @emotion/styled
+
+/** @jsxImportSource @emotion/react */
+import { css, jsx } from '@emotion/react';
+import styled from '@emotion/styled';
+
+// Menggunakan css prop
+const style = css`
+  padding: 32px;
+  background-color: hotpink;
+  font-size: 24px;
+  border-radius: 4px;
+  
+  &:hover {
+    color: white;
+  }
+`;
+
+// Menggunakan styled API
+const StyledDiv = styled.div`
+  background: ${props => props.theme.colors.primary};
+  color: white;
+  padding: 20px;
+  border-radius: 4px;
+`;
+
+// Komponen dengan tema
+function ThemedComponent() {
+  return (
+    <div
+      css={theme => ({
+        backgroundColor: theme.colors.background,
+        color: theme.colors.text,
+      })}
+    >
+      Styled with theme
+    </div>
+  );
+}
+
+// Provider tema
+const theme = {
+  colors: {
+    primary: '#3498db',
+    background: '#f8f9fa',
+    text: '#333',
+  },
+};
+
+function App() {
+  return (
+    <ThemeProvider theme={theme}>
+      <div css={style}>Hover me!</div>
+      <StyledDiv>Styled with Emotion</StyledDiv>
+      <ThemedComponent />
+    </ThemeProvider>
+  );
+}
+
+export default App;</code></pre>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Perbandingan styled-components vs Emotion</h2>
+
+        <table style="width: 100%; border-collapse: collapse; margin: 20px 0">
+          <thead>
+            <tr style="background-color: var(--primary-color); color: white">
+              <th style="padding: 12px; text-align: left">Fitur</th>
+              <th style="padding: 12px; text-align: left">styled-components</th>
+              <th style="padding: 12px; text-align: left">Emotion</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid var(--border-color)">
+              <td style="padding: 12px">Ukuran (gzip)</td>
+              <td style="padding: 12px">~16KB</td>
+              <td style="padding: 12px">~11KB</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border-color)">
+              <td style="padding: 12px">Runtime</td>
+              <td style="padding: 12px">Lebih besar</td>
+              <td style="padding: 12px">Lebih ringan</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border-color)">
+              <td style="padding: 12px">Sintaks</td>
+              <td style="padding: 12px">Template literals</td>
+              <td style="padding: 12px">Template literals & object styles</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border-color)">
+              <td style="padding: 12px">Server-side rendering</td>
+              <td style="padding: 12px">✔️</td>
+              <td style="padding: 12px">✔️</td>
+            </tr>
+            <tr>
+              <td style="padding: 12px">Theming</td>
+              <td style="padding: 12px">Built-in</td>
+              <td style="padding: 12px">Built-in</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="section">
+        <h2>Kapan Menggunakan CSS-in-JS?</h2>
+        <p>CSS-in-JS sangat cocok untuk:</p>
+        <ul>
+          <li>Aplikasi React yang kompleks dengan banyak komponen</li>
+          <li>Tim yang ingin menerapkan design system yang konsisten</li>
+          <li>Proyek yang membutuhkan tema dinamis</li>
+          <li>Aplikasi yang membutuhkan style yang bergantung pada props/state</li>
+        </ul>
+
+        <div class="note">
+          <p>
+            <strong>Tip:</strong> Untuk proyek kecil atau prototipe, pertimbangkan untuk menggunakan
+            CSS biasa atau CSS Modules terlebih dahulu sebelum beralih ke CSS-in-JS.
+          </p>
+        </div>
+      </div>
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='c83.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/css.png"
+          alt="CSS"
+          onclick="window.location.href='c1.html'"
+          title="CSS"
+        />
+        <button class="btn" onclick="window.location.href='c85.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+
+    <script>
+      function toggleTheme() {
+        const html = document.documentElement;
+        const currentTheme = html.getAttribute('data-theme');
+
+        if (currentTheme === 'dark') {
+          html.setAttribute('data-theme', 'light');
+          localStorage.setItem('theme', 'light');
+          document.getElementById('theme-icon').textContent = '🌙';
+        } else {
+          html.setAttribute('data-theme', 'dark');
+          localStorage.setItem('theme', 'dark');
+          document.getElementById('theme-icon').textContent = '☀️';
+        }
+      }
+
+      document.addEventListener('DOMContentLoaded', () => {
+        const savedTheme =
+          localStorage.getItem('theme') ||
+          (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        document.getElementById('theme-icon').textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+      });
+    </script>
+  </body>
+</html>

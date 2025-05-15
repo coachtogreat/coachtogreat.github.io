@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Media Queries di CSS: Membuat Tampilan Adaptif</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <style>
+      .box {
+        border: 2px solid #3498db;
+        background-color: #f0f8ff;
+        margin: 10px;
+        padding: 15px;
+        border-radius: 5px;
+      }
+      .demo-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        margin: 20px 0;
+      }
+      .demo-box {
+        background-color: #e3f2fd;
+        border: 1px solid #90caf9;
+        padding: 15px;
+        margin: 10px 0;
+        min-height: 50px;
+        transition: all 0.3s ease;
+      }
+      .responsive-demo {
+        width: 100%;
+        height: 100px;
+        background-color: #e3f2fd;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        border: 1px solid #90caf9;
+        margin: 10px 0;
+      }
+      .device-size {
+        background-color: #f8f9fa;
+        padding: 5px 10px;
+        border-radius: 4px;
+        font-family: monospace;
+        margin: 10px 0;
+      }
+      .visual-guide {
+        background-color: #f9f9f9;
+        border: 1px solid #e0e0e0;
+        padding: 15px;
+        margin: 20px 0;
+        border-radius: 4px;
+      }
+      @media (max-width: 600px) {
+        .responsive-demo {
+          background-color: #e8f5e9;
+          border-color: #a5d6a7;
+        }
+      }
+      @media (min-width: 1024px) {
+        .responsive-demo {
+          background-color: #fff3e0;
+          border-color: #ffcc80;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Media Queries di CSS: Membuat Tampilan Adaptif</h2>
+
+      <p>
+        Media Queries adalah fitur CSS yang memungkinkan kita menerapkan gaya yang berbeda
+        berdasarkan karakteristik perangkat, seperti lebar layar, orientasi, atau resolusi. Dengan
+        Media Queries, kita bisa membuat desain web yang responsif dan terlihat bagus di berbagai
+        perangkat.
+      </p>
+
+      <div class="info-box">
+        <h4>Breakpoint Umum:</h4>
+        <ul>
+          <li><code>max-width: 600px</code>: Perangkat mobile</li>
+          <li><code>min-width: 600px</code>: Tablet dan lebih besar</li>
+          <li><code>min-width: 768px</code>: Tablet landscape</li>
+          <li><code>min-width: 992px</code>: Desktop</li>
+          <li><code>min-width: 1200px</code>: Layar lebar</li>
+        </ul>
+      </div>
+
+      <h3 class="section-title">1. Sintaks Dasar Media Query</h3>
+      <p>
+        Media Query dimulai dengan <code>@media</code> diikuti dengan kondisi tertentu. Berikut
+        adalah contoh sederhana:
+      </p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>CSS</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>/* Gaya default */
+body {
+  background-color: white;
+  color: black;
+}
+
+/* Gaya untuk layar dengan lebar maksimal 600px */
+@media (max-width: 600px) {
+  body {
+    background-color: lightblue;
+    color: darkblue;
+  }
+}</code></pre>
+      </div>
+
+      <h3 class="section-title">2. Contoh Media Query untuk Berbagai Perangkat</h3>
+      <p>Berikut contoh penerapan Media Query untuk berbagai ukuran layar:</p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>CSS</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>/* Gaya default untuk mobile first */
+.container {
+  width: 100%;
+  padding: 10px;
+}
+
+/* Tablet - 600px ke atas */
+@media (min-width: 600px) {
+  .container {
+    width: 90%;
+    margin: 0 auto;
+    padding: 15px;
+  }
+}
+
+/* Desktop - 992px ke atas */
+@media (min-width: 992px) {
+  .container {
+    width: 80%;
+    max-width: 1200px;
+    padding: 20px;
+  }
+}</code></pre>
+      </div>
+
+      <h3 class="section-title">3. Demo Responsif</h3>
+      <p>
+        Coba ubah ukuran jendela browser Anda untuk melihat efek Media Query pada kotak di bawah
+        ini:
+      </p>
+
+      <div class="responsive-demo" id="responsiveDemo">
+        <div class="device-size" id="deviceSize">Ukuran Layar:</div>
+      </div>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>CSS</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>.responsive-demo {
+  width: 100%;
+  height: 100px;
+  background-color: #e3f2fd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+/* Gaya untuk layar kecil */
+@media (max-width: 600px) {
+  .responsive-demo {
+    background-color: #e8f5e9; /* Hijau muda */
+  }
+}
+
+/* Gaya untuk layar besar */
+@media (min-width: 1024px) {
+  .responsive-demo {
+    background-color: #fff3e0; /* Oranye muda */
+  }
+}</code></pre>
+      </div>
+
+      <h3 class="section-title">4. Media Query untuk Orientasi</h3>
+      <p>Media Query juga bisa digunakan untuk menargetkan orientasi perangkat:</p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>CSS</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>/* Potret (tinggi > lebar) */
+@media (orientation: portrait) {
+  body {
+    background-color: #fff8e1;
+  }
+}
+
+/* Lanskap (lebar > tinggi) */
+@media (orientation: landscape) {
+  body {
+    background-color: #e8f5e9;
+  }
+}
+
+/* Kombinasi dengan lebar layar */
+@media (max-width: 600px) and (orientation: landscape) {
+  body {
+    font-size: 14px;
+  }
+}</code></pre>
+      </div>
+
+      <h3 class="section-title">5. Media Query untuk Resolusi Tinggi (Retina Display)</h3>
+      <p>Untuk perangkat dengan layar beresolusi tinggi seperti Retina Display:</p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>CSS</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>/* Untuk layar dengan kepadatan piksel 2x */
+@media 
+  (-webkit-min-device-pixel-ratio: 2), 
+  (min-resolution: 192dpi) { 
+  .logo {
+    background-image: url('logo@2x.png');
+    background-size: contain;
+  }
+}</code></pre>
+      </div>
+
+      <div class="info-box">
+        <h4>Tips Penggunaan Media Query:</h4>
+        <ul>
+          <li>
+            Gunakan pendekatan <strong>Mobile First</strong> - mulailah dengan gaya untuk perangkat
+            mobile terlebih dahulu, lalu tambahkan media queries untuk layar yang lebih besar.
+          </li>
+          <li>
+            Hindari terlalu banyak breakpoint. Gunakan hanya yang diperlukan berdasarkan konten
+            Anda.
+          </li>
+          <li>Uji di perangkat nyata, bukan hanya di emulator browser.</li>
+          <li>
+            Gunakan unit relatif seperti <code>%</code>, <code>vw</code>, <code>vh</code>,
+            <code>rem</code>, dan <code>em</code> untuk ukuran yang lebih fleksibel.
+          </li>
+        </ul>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='c52.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/css.png"
+          alt="CSS"
+          onclick="window.location.href='c1.html'"
+          title="CSS"
+        />
+        <button class="btn" onclick="window.location.href='c62.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+
+    <script>
+      // Fungsi untuk menampilkan ukuran layar saat ini
+      function updateScreenSize() {
+        const width = window.innerWidth;
+        const height = window.innerHeight;
+        document.getElementById('deviceSize').textContent =
+          `Ukuran Layar: ${width}px × ${height}px`;
+      }
+
+      // Update saat ukuran jendela berubah
+      window.addEventListener('resize', updateScreenSize);
+
+      // Update saat halaman dimuat
+      document.addEventListener('DOMContentLoaded', updateScreenSize);
+
+      // Fungsi untuk menyalin kode
+      function copyCode(button) {
+        const codeBlock = button.parentElement.nextElementSibling;
+        const code = codeBlock.textContent;
+
+        navigator.clipboard
+          .writeText(code)
+          .then(() => {
+            // Ubah teks tombol sementara
+            const originalText = button.textContent;
+            button.textContent = 'Tersalin!';
+            button.style.backgroundColor = '#4CAF50';
+
+            // Kembalikan ke teks asli setelah 2 detik
+            setTimeout(() => {
+              button.textContent = originalText;
+              button.style.backgroundColor = '';
+            }, 2000);
+          })
+          .catch((err) => {
+            console.error('Gagal menyalin teks: ', err);
+          });
+      }
+    </script>
+  </body>
+</html>

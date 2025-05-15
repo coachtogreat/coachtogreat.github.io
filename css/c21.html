@@ -1,0 +1,430 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>h21.html</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Selector Dasar CSS: Element, Class, dan ID</h2>
+
+      <p>
+        Selector adalah komponen penting dalam CSS yang memungkinkan kita memilih dan menata elemen HTML
+        yang ingin kita beri gaya. Pada bab ini, kita akan mempelajari tiga jenis selector dasar:
+        element, class, dan ID.
+      </p>
+
+      <h3 class="section-title">1. Element Selector</h3>
+      <p>
+        Element selector memungkinkan kita memilih elemen HTML berdasarkan nama tag-nya. Ini adalah
+        selector yang paling dasar dalam CSS.
+      </p>
+
+      <h4>Contoh:</h4>
+      <div class="code-block">
+        <div class="code-header">
+          <span>CSS</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>/* Memilih semua elemen <p> */
+p {
+  color: #333;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+/* Memilih semua elemen <h1> */
+h1 {
+  color: #2c3e50;
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Memilih semua elemen <a> */
+a {
+  color: #3498db;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Memilih semua elemen <button> */
+button {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #2980b9;
+}</code></pre>
+      </div>
+
+      <div class="info-box">
+        <h4>Kelebihan Element Selector:</h4>
+        <ul>
+          <li>Sangat berguna untuk mengatur gaya dasar elemen HTML</li>
+          <li>Mudah digunakan dan dipahami</li>
+          <li>Berguna untuk reset CSS atau normalisasi gaya bawaan browser</li>
+        </ul>
+
+        <h4>Kekurangan Element Selector:</h4>
+        <ul>
+          <li>Tidak spesifik - akan mempengaruhi semua elemen dengan tag yang sama</li>
+          <li>Bisa menyebabkan konflik gaya yang tidak diinginkan</li>
+        </ul>
+      </div>
+
+      <h3 class="section-title">2. Class Selector (.class)</h3>
+      <p>
+        Class selector memungkinkan kita memilih elemen berdasarkan nilai atribut <code>class</code>.
+        Class selector diawali dengan tanda titik (.) diikuti dengan nama class.
+      </p>
+
+      <h4>Contoh:</h4>
+      <div class="code-block">
+        <div class="code-header">
+          <span>HTML</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>&lt;button class="btn"&gt;Biasa&lt;/button&gt;
+&lt;button class="btn btn-primary"&gt;Utama&lt;/button&gt;
+&lt;button class="btn btn-danger"&gt;Hapus&lt;/button&gt;
+&lt;button class="btn btn-success"&gt;Simpan&lt;/button&gt;
+&lt;button class="btn btn-outline"&gt;Batal&lt;/button&gt;</code></pre>
+      </div>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>CSS</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>/* Style dasar untuk semua tombol */
+.btn {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Modifier class untuk tombol utama */
+.btn-primary {
+  background-color: #3498db;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #2980b9;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Modifier class untuk tombol bahaya */
+.btn-danger {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.btn-danger:hover {
+  background-color: #c0392b;
+}
+
+/* Modifier class untuk tombol sukses */
+.btn-success {
+  background-color: #2ecc71;
+  color: white;
+}
+
+.btn-success:hover {
+  background-color: #27ae60;
+}
+
+/* Modifier class untuk tombol outline */
+.btn-outline {
+  background-color: transparent;
+  border: 1px solid #3498db;
+  color: #3498db;
+}
+
+.btn-outline:hover {
+  background-color: rgba(52, 152, 219, 0.1);
+}</code></pre>
+      </div>
+
+      <div class="info-box">
+        <h4>Kelebihan Class Selector:</h4>
+        <ul>
+          <li>Dapat digunakan kembali di banyak elemen</li>
+          <li>Dapat menggabungkan beberapa class dalam satu elemen</li>
+          <li>Lebih spesifik daripada element selector</li>
+          <li>Mudah dipelihara dan diubah</li>
+        </ul>
+
+        <h4>Praktik Terbaik:</h4>
+        <ul>
+          <li>Gunakan nama class yang deskriptif dan bermakna</li>
+          <li>Ikuti konvensi penamaan yang konsisten (contoh: BEM, kebab-case)</li>
+          <li>Hindari nama class yang menggambarkan tampilan visual</li>
+        </ul>
+      </div>
+
+      <h3 class="section-title">3. ID Selector (#id)</h3>
+      <p>
+        ID selector memilih elemen berdasarkan nilai atribut <code>id</code>. ID selector diawali
+        dengan tanda pagar (#) diikuti dengan nama ID. Berbeda dengan class, ID harus unik dalam
+        satu halaman.
+      </p>
+
+      <h4>Contoh:</h4>
+      <div class="code-block">
+        <div class="code-header">
+          <span>HTML</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>&lt;header id="main-header"&gt;
+  &lt;h1&gt;Selamat Datang di Website Kami&lt;/h1&gt;
+  &lt;nav id="main-nav"&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href="#home"&gt;Beranda&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#about"&gt;Tentang&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#services"&gt;Layanan&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#contact"&gt;Kontak&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/nav&gt;
+&lt;/header&gt;
+
+&lt;main id="main-content"&gt;
+  &lt;section id="hero"&gt;
+    &lt;h2&gt;Solusi Digital untuk Bisnis Anda&lt;/h2&gt;
+    &lt;p&gt;Kami menyediakan layanan terbaik untuk mengembangkan bisnis Anda secara online.&lt;/p&gt;
+    &lt;button id="cta-button" class="btn btn-primary"&gt;Mulai Sekarang&lt;/button&gt;
+  &lt;/section&gt;
+&lt;/main&gt;
+
+&lt;footer id="main-footer"&gt;
+  &lt;p&gt;&copy; 2025 Nama Perusahaan. Semua hak dilindungi.&lt;/p&gt;
+&lt;/footer&gt;</code></pre>
+      </div>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>CSS</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>/* Styling header utama */
+#main-header {
+  background-color: #2c3e50;
+  color: white;
+  padding: 1.5rem 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Navigasi utama */
+#main-nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 1rem 0 0;
+  padding: 0;
+}
+
+#main-nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+#main-nav a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Konten utama */
+#main-content {
+  margin-top: 120px; /* Memberi ruang untuk header tetap */
+  padding: 2rem 0;
+}
+
+/* Hero section */
+#hero {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Tombol CTA */
+#cta-button {
+  font-size: 1.2rem;
+  padding: 0.8rem 2rem;
+  margin-top: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* Footer */
+#main-footer {
+  background-color: #2c3e50;
+  color: white;
+  text-align: center;
+  padding: 1.5rem 0;
+  margin-top: 3rem;
+}</code></pre>
+      </div>
+
+      <div class="info-box">
+        <h4>Kapan Menggunakan ID Selector?</h4>
+        <ul>
+          <li>Untuk elemen yang benar-benar unik di halaman</li>
+          <li>Untuk navigasi atau anchor link</li>
+          <li>Untuk JavaScript/DOM manipulation</li>
+          <li>Untuk menandai bagian utama halaman (header, nav, main, footer)</li>
+        </ul>
+
+        <h4>Mengapa Harus Hati-hati dengan ID Selector?</h4>
+        <ul>
+          <li>Spesifisitas yang tinggi bisa menyulitkan override style</li>
+          <li>Tidak bisa digunakan kembali seperti class</li>
+          <li>Bisa menyebabkan masalah dengan CSS yang tidak terduga</li>
+        </ul>
+      </div>
+
+      <h3 class="section-title">Perbandingan Spesifisitas</h3>
+      <p>Berikut urutan spesifisitas dari yang terendah ke tertinggi:</p>
+      <ol>
+        <li><strong>Element selectors</strong> (h1, p, div) - Spesifisitas terendah</li>
+        <li><strong>Class selectors</strong> (.btn, .header) - Spesifisitas menengah</li>
+        <li><strong>ID selectors</strong> (#header, #main-nav) - Spesifisitas tinggi</li>
+        <li><strong>Inline styles</strong> - Spesifisitas sangat tinggi</li>
+        <li><strong>!important</strong> - Spesifisitas tertinggi (hindari jika memungkinkan)</li>
+      </ol>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>CSS</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>/* Spesifisitas: 1 (elemen) */
+p {
+  color: black;
+}
+
+/* Spesifisitas: 10 (class) */
+.text-red {
+  color: red;
+}
+
+/* Spesifisitas: 100 (ID) */
+#special-text {
+  color: blue;
+}
+
+/* Spesifisitas: 1 (elemen) + 10 (class) = 11 */
+p.highlight {
+  background-color: yellow;
+}
+
+/* Spesifisitas: 1 (elemen) + 10 (class) + 10 (pseudo-class) = 21 */
+a.btn:hover {
+  text-decoration: underline;
+}
+
+/* Spesifisitas: 10 (class) + 10 (class) = 20 */
+.btn.primary {
+  font-weight: bold;
+}
+
+/* !important mengesampingkan semua aturan spesifisitas */
+.override {
+  color: purple !important;
+}</code></pre>
+      </div>
+
+      <h3 class="section-title">Kesimpulan dan Praktik Terbaik</h3>
+      <p>Berikut beberapa praktik terbaik dalam menggunakan selector CSS:</p>
+      <ol>
+        <li>
+          <strong>Gunakan class selector sebagai pilihan utama</strong> untuk styling yang dapat
+          digunakan kembali.
+        </li>
+        <li>
+          <strong>Gunakan ID selector dengan bijak</strong>, terutama untuk:
+          <ul>
+            <li>Anchor links</li>
+            <li>Elemen yang benar-benar unik di halaman</li>
+            <li>JavaScript hooks</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Hindari penggunaan !important</strong> kecuali benar-benar diperlukan, karena bisa
+          menyulitkan pemeliharaan kode.
+        </li>
+        <li>
+          <strong>Pertahankan spesifisitas tetap rendah</strong> untuk memudahkan override style di
+          kemudian hari.
+        </li>
+        <li>
+          <strong>Gunakan nama yang deskriptif</strong> untuk class dan ID agar kode lebih mudah
+          dibaca dan dipahami.
+        </li>
+      </ol>
+
+      <p>
+        Dengan memahami selector dasar ini, Anda sudah memiliki fondasi yang kuat untuk menulis CSS
+        yang lebih terstruktur dan mudah dikelola. Di bab selanjutnya, kita akan mempelajari selector
+        kombinasi yang lebih canggih.
+      </p>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='c14.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/css.png"
+          alt="CSS"
+          onclick="window.location.href='c1.html'"
+          title="Daftar Isi CSS"
+        />
+        <button class="btn" onclick="window.location.href='c22.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+
+    <script src="../script/copyCode.js"></script>
+    <script src="../script/script.js"></script>
+  </body>
+</html>

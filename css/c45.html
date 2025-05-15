@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grid Layout di CSS: Container, Kolom, dan Baris</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <style>
+      .box {
+        border: 2px solid #3498db;
+        background-color: #f0f8ff;
+        margin: 10px;
+        padding: 15px;
+        border-radius: 5px;
+      }
+      .demo-container {
+        background-color: #f9f9f9;
+        border: 1px solid #e0e0e0;
+        padding: 20px;
+        margin: 20px 0;
+        overflow: hidden;
+      }
+      .grid-container {
+        display: grid;
+        background-color: #e3f2fd;
+        padding: 10px;
+        margin: 15px 0;
+        min-height: 200px;
+        border: 2px dashed #2196f3;
+      }
+      .grid-item {
+        background-color: #2196f3;
+        color: white;
+        padding: 15px;
+        margin: 5px;
+        border-radius: 4px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+      }
+      .grid-item:hover {
+        transform: scale(1.05);
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      }
+      .grid-item:nth-child(odd) {
+        background-color: #1976d2;
+      }
+      .controls {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 10px;
+        margin: 15px 0;
+      }
+      .control-group {
+        background-color: #f5f5f5;
+        padding: 10px;
+        border-radius: 4px;
+      }
+      .control-group h4 {
+        margin-top: 0;
+        color: #333;
+      }
+      .nav-buttons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 30px 0;
+        gap: 20px;
+      }
+      .btn {
+        padding: 10px 20px;
+        background-color: #3498db;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+      .btn:hover {
+        background-color: #2980b9;
+      }
+      .home-icon {
+        width: 24px;
+        height: 24px;
+        cursor: pointer;
+        transition: transform 0.3s;
+      }
+      .home-icon:hover {
+        transform: scale(1.1);
+      }
+      .code-block {
+        position: relative;
+        background-color: #f5f5f5;
+        border-radius: 4px;
+        padding: 15px;
+        margin: 15px 0;
+        overflow-x: auto;
+      }
+      .code-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+        font-family: monospace;
+      }
+      .copy-btn {
+        background-color: #e0e0e0;
+        border: none;
+        padding: 3px 8px;
+        border-radius: 3px;
+        cursor: pointer;
+        font-size: 12px;
+      }
+      .copy-btn:hover {
+        background-color: #d0d0d0;
+      }
+      pre {
+        margin: 0;
+      }
+      code {
+        font-family: 'Courier New', Courier, monospace;
+      }
+      .section-title {
+        color: #2c3e50;
+        margin-top: 30px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #3498db;
+      }
+      .info-box {
+        background-color: #e8f4f8;
+        border-left: 4px solid #3498db;
+        padding: 15px;
+        margin: 20px 0;
+        border-radius: 0 4px 4px 0;
+      }
+      .info-box h4 {
+        margin-top: 0;
+        color: #2c3e50;
+      }
+      .info-box ul {
+        margin-bottom: 0;
+      }
+      .grid-visual {
+        display: grid;
+        margin: 15px 0;
+        gap: 10px;
+      }
+      .visual-container {
+        width: 100%;
+        overflow-x: auto;
+      }
+      .visual-title {
+        font-weight: bold;
+        margin: 15px 0 10px;
+        color: #333;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Memahami Grid Layout di CSS</h2>
+
+      <p>
+        CSS Grid Layout adalah sistem tata letak dua dimensi yang memungkinkan Anda membuat desain
+        web yang kompleks dan responsif dengan mudah. Berbeda dengan Flexbox yang satu dimensi, Grid
+        memungkinkan pengaturan baik baris maupun kolom secara bersamaan.
+      </p>
+
+      <div class="info-box">
+        <h4>Konsep Dasar Grid:</h4>
+        <ul>
+          <li><strong>Grid Container</strong>: Elemen induk yang menampung item-item grid</li>
+          <li><strong>Grid Item</strong>: Elemen-elemen anak langsung dari grid container</li>
+          <li><strong>Grid Line</strong>: Garis pembatas yang membentuk struktur grid</li>
+          <li>
+            <strong>Grid Track</strong>: Ruang antara dua garis grid yang berdekatan (baris atau
+            kolom)
+          </li>
+          <li><strong>Grid Cell</strong>: Perpotongan antara satu baris dan satu kolom</li>
+          <li>
+            <strong>Grid Area</strong>: Satu atau lebih sel grid yang membentuk area persegi panjang
+          </li>
+        </ul>
+      </div>
+
+      <h3 class="section-title">1. Membuat Grid Container</h3>
+      <p>
+        Untuk memulai menggunakan Grid, Anda perlu mengubah elemen menjadi grid container dengan
+        menetapkan <code>display: grid</code> atau <code>display: inline-grid</code>.
+      </p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>CSS</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 100px 200px;
+  gap: 10px;
+  padding: 10px;
+}
+
+.item {
+  background-color: #2196f3;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}</code></pre>
+      </div>
+
+      <h4>Contoh Grid Dasar:</h4>
+      <div
+        class="grid-container"
+        style="grid-template-columns: 1fr 1fr 1fr; grid-template-rows: 100px 100px; gap: 10px"
+      >
+        <div class="grid-item">1</div>
+        <div class="grid-item">2</div>
+        <div class="grid-item">3</div>
+        <div class="grid-item">4</div>
+        <div class="grid-item">5</div>
+        <div class="grid-item">6</div>
+      </div>
+
+      <div class="controls">
+        <div class="control-group">
+          <h4>grid-template-columns:</h4>
+          <button onclick="updateGridStyle('grid-template-columns', '1fr 1fr 1fr')">
+            3 kolom sama
+          </button>
+          <button onclick="updateGridStyle('grid-template-columns', '1fr 2fr 1fr')">
+            Kolom tengah lebih lebar
+          </button>
+          <button
+            onclick="updateGridStyle('grid-template-columns', 'repeat(3, minmax(100px, 1fr))')"
+          >
+            Responsif
+          </button>
+        </div>
+        <div class="control-group">
+          <h4>grid-template-rows:</h4>
+          <button onclick="updateGridStyle('grid-template-rows', '100px 100px')">
+            2 baris @100px
+          </button>
+          <button onclick="updateGridStyle('grid-template-rows', '50px 150px')">
+            Baris berbeda
+          </button>
+          <button onclick="updateGridStyle('grid-template-rows', 'min-content 1fr')">
+            Min-content & 1fr
+          </button>
+        </div>
+        <div class="control-group">
+          <h4>gap:</h4>
+          <button onclick="updateGridStyle('gap', '5px')">Kecil (5px)</button>
+          <button onclick="updateGridStyle('gap', '15px')">Sedang (15px)</button>
+          <button onclick="updateGridStyle('gap', '25px')">Besar (25px)</button>
+        </div>
+      </div>
+
+      <h3 class="section-title">2. Penempatan Item di Grid</h3>
+      <p>
+        Anda dapat mengontrol posisi dan ukuran item grid menggunakan properti grid-column dan
+        grid-row.
+      </p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>CSS</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>.header {
+  grid-column: 1 / 4;  /* Mulai dari line 1 sampai 4 */
+  grid-row: 1;
+}
+
+.sidebar {
+  grid-column: 1;
+  grid-row: 2 / 4;  /* Mulai dari line 2 sampai 4 */
+}
+
+.main {
+  grid-column: 2 / 4;
+  grid-row: 2;
+}
+
+.footer {
+  grid-column: 1 / 4;
+  grid-row: 3;
+}</code></pre>
+      </div>
+
+      <h4>Contoh Layout Website:</h4>
+      <div
+        class="grid-container"
+        style="grid-template-columns: 200px 1fr 1fr; grid-template-rows: 80px 1fr 80px; gap: 10px"
+      >
+        <div class="grid-item" style="background-color: #4caf50; grid-column: 1 / 4">Header</div>
+        <div class="grid-item" style="background-color: #ff9800; grid-row: 2 / 4">Sidebar</div>
+        <div class="grid-item" style="background-color: #9c27b0; grid-column: 2 / 4">
+          Main Content
+        </div>
+        <div class="grid-item" style="background-color: #607d8b; grid-column: 2 / 4">Footer</div>
+      </div>
+
+      <h3 class="section-title">3. Area Grid</h3>
+      <p>
+        Grid Template Areas memungkinkan Anda mendefinisikan layout menggunakan nama-nama area yang
+        deskriptif.
+      </p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>CSS</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>.container {
+  display: grid;
+  grid-template-areas:
+    "header header header"
+    "sidebar main main"
+    "footer footer footer";
+  grid-template-columns: 200px 1fr 1fr;
+  grid-template-rows: 80px 1fr 80px;
+  gap: 10px;
+  height: 400px;
+}
+
+.header { grid-area: header; }
+.sidebar { grid-area: sidebar; }
+.main { grid-area: main; }
+.footer { grid-area: footer; }</code></pre>
+      </div>
+
+      <h4>Contoh Grid Template Areas:</h4>
+      <div
+        class="grid-container"
+        style="
+          grid-template-areas: 'header header header' 'sidebar main main' 'footer footer footer';
+          grid-template-columns: 200px 1fr 1fr;
+          grid-template-rows: 80px 1fr 80px;
+          height: 300px;
+        "
+      >
+        <div class="grid-item" style="background-color: #4caf50; grid-area: header">Header</div>
+        <div class="grid-item" style="background-color: #ff9800; grid-area: sidebar">Sidebar</div>
+        <div class="grid-item" style="background-color: #9c27b0; grid-area: main">Main Content</div>
+        <div class="grid-item" style="background-color: #607d8b; grid-area: footer">Footer</div>
+      </div>
+
+      <h3 class="section-title">4. Grid Responsif</h3>
+      <p>
+        Grid dapat dengan mudah dibuat responsif menggunakan media queries dan fungsi repeat()
+        dengan auto-fill/fit.
+      </p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>CSS</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Untuk layar lebih kecil dari 600px */
+@media (max-width: 600px) {
+  .grid-container {
+    grid-template-columns: 1fr;
+  }
+}</code></pre>
+      </div>
+
+      <h4>Contoh Grid Responsif:</h4>
+      <p>Ubah ukuran jendela browser untuk melihat perubahannya:</p>
+      <div
+        class="grid-container"
+        style="
+          grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+          gap: 15px;
+          padding: 15px;
+          transition: all 0.3s ease;
+        "
+      >
+        <div class="grid-item">Item 1</div>
+        <div class="grid-item">Item 2</div>
+        <div class="grid-item">Item 3</div>
+        <div class="grid-item">Item 4</div>
+        <div class="grid-item">Item 5</div>
+        <div class="grid-item">Item 6</div>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='c44.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/css.png"
+          alt="CSS"
+          onclick="window.location.href='c1.html'"
+          title="CSS"
+        />
+        <button class="btn" onclick="window.location.href='c51.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+
+    <script>
+      // Fungsi untuk menyalin kode
+      function copyCode(button) {
+        const codeBlock = button.parentElement.nextElementSibling;
+        const code = codeBlock.textContent;
+
+        navigator.clipboard
+          .writeText(code)
+          .then(() => {
+            const originalText = button.textContent;
+            button.textContent = 'Tersalin!';
+            button.style.backgroundColor = '#4caf50';
+            button.style.color = 'white';
+
+            setTimeout(() => {
+              button.textContent = originalText;
+              button.style.backgroundColor = '';
+              button.style.color = '';
+            }, 2000);
+          })
+          .catch((err) => {
+            console.error('Gagal menyalin teks: ', err);
+          });
+      }
+
+      // Fungsi untuk memperbarui style grid container
+      function updateGridStyle(property, value) {
+        const gridContainer = document.querySelector('.grid-container');
+        if (gridContainer) {
+          gridContainer.style[property] = value;
+
+          // Update visual feedback untuk tombol yang aktif
+          const buttons = document.querySelectorAll(`[onclick*="${property}"]`);
+          buttons.forEach((btn) => {
+            if (
+              btn.textContent.includes(value) ||
+              btn.getAttribute('onclick').includes(`'${value}'`)
+            ) {
+              btn.style.backgroundColor = '#4caf50';
+              btn.style.color = 'white';
+            } else {
+              btn.style.backgroundColor = '';
+              btn.style.color = '';
+            }
+          });
+        }
+      }
+
+      // Inisialisasi
+      document.addEventListener('DOMContentLoaded', function () {
+        // Setel tombol default sebagai aktif
+        updateGridStyle('grid-template-columns', '1fr 1fr 1fr');
+        updateGridStyle('grid-template-rows', '100px 100px');
+        updateGridStyle('gap', '10px');
+      });
+    </script>
+  </body>
+</html>

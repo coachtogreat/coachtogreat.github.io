@@ -1,0 +1,589 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flexbox di CSS: Container, Direction, dan Alignment</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <style>
+      .box {
+        border: 2px solid #3498db;
+        background-color: #f0f8ff;
+        margin: 10px;
+        padding: 15px;
+        border-radius: 5px;
+      }
+      .demo-container {
+        background-color: #f9f9f9;
+        border: 1px solid #e0e0e0;
+        padding: 20px;
+        margin: 20px 0;
+        overflow: hidden;
+      }
+      .flex-container {
+        display: flex;
+        background-color: #e3f2fd;
+        padding: 10px;
+        margin: 15px 0;
+        min-height: 100px;
+        border: 2px dashed #2196f3;
+      }
+      .flex-item {
+        background-color: #2196f3;
+        color: white;
+        padding: 15px;
+        margin: 5px;
+        border-radius: 4px;
+        text-align: center;
+        min-width: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+      }
+      .flex-item:hover {
+        transform: scale(1.05);
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      }
+      .flex-item:nth-child(odd) {
+        background-color: #1976d2;
+      }
+      .flex-item.large {
+        min-height: 80px;
+      }
+      .controls {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 10px;
+        margin: 15px 0;
+      }
+      .control-group {
+        background-color: #f5f5f5;
+        padding: 10px;
+        border-radius: 4px;
+      }
+      .control-group h4 {
+        margin-top: 0;
+        color: #333;
+      }
+      .nav-buttons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 30px 0;
+        gap: 20px;
+      }
+      .btn {
+        padding: 10px 20px;
+        background-color: #3498db;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+      .btn:hover {
+        background-color: #2980b9;
+      }
+      .home-icon {
+        width: 24px;
+        height: 24px;
+        cursor: pointer;
+        transition: transform 0.3s;
+      }
+      .home-icon:hover {
+        transform: scale(1.1);
+      }
+      .code-block {
+        position: relative;
+        background-color: #f5f5f5;
+        border-radius: 4px;
+        padding: 15px;
+        margin: 15px 0;
+        overflow-x: auto;
+      }
+      .code-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+        font-family: monospace;
+      }
+      .copy-btn {
+        background-color: #e0e0e0;
+        border: none;
+        padding: 3px 8px;
+        border-radius: 3px;
+        cursor: pointer;
+        font-size: 12px;
+      }
+      .copy-btn:hover {
+        background-color: #d0d0d0;
+      }
+      pre {
+        margin: 0;
+      }
+      code {
+        font-family: 'Courier New', Courier, monospace;
+      }
+      .section-title {
+        color: #2c3e50;
+        margin-top: 30px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #3498db;
+      }
+      .info-box {
+        background-color: #e8f4f8;
+        border-left: 4px solid #3498db;
+        padding: 15px;
+        margin: 20px 0;
+        border-radius: 0 4px 4px 0;
+      }
+      .info-box h4 {
+        margin-top: 0;
+        color: #2c3e50;
+      }
+      .info-box ul {
+        margin-bottom: 0;
+      }
+      .flex-visual {
+        display: flex;
+        margin: 15px 0;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+      .visual-container {
+        flex: 1;
+        min-width: 300px;
+      }
+      .visual-title {
+        font-weight: bold;
+        margin-bottom: 10px;
+        color: #333;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Memahami Flexbox di CSS</h2>
+
+      <p>
+        Flexbox (Flexible Box Layout) adalah model layout satu dimensi di CSS yang memudahkan 
+        perancangan tata letak yang fleksibel dan responsif. Dengan Flexbox, Anda dapat dengan 
+        mudah mengatur distribusi ruang dan perataan item dalam container, bahkan ketika ukuran 
+        item tidak diketahui atau dinamis.
+      </p>
+
+      <div class="info-box">
+        <h4>Konsep Dasar Flexbox:</h4>
+        <ul>
+          <li><strong>Flex Container</strong>: Elemen induk yang menampung item-item flex</li>
+          <li><strong>Flex Items</strong>: Elemen-elemen anak langsung dari flex container</li>
+          <li><strong>Main Axis</strong>: Sumbu utama tempat item-item flex diatur (default: horizontal)</li>
+          <li><strong>Cross Axis</strong>: Sumbu yang tegak lurus dengan main axis (default: vertikal)</li>
+        </ul>
+      </div>
+
+      <h3 class="section-title">1. Membuat Flex Container</h3>
+      <p>
+        Untuk memulai menggunakan Flexbox, Anda perlu mengubah elemen menjadi flex container 
+        dengan menetapkan <code>display: flex</code> atau <code>display: inline-flex</code>.
+      </p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>CSS</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>.container {
+  display: flex; /* atau inline-flex */
+  border: 2px solid #3498db;
+  padding: 10px;
+  background-color: #e3f2fd;
+  min-height: 100px;
+}
+
+.item {
+  background-color: #2196f3;
+  color: white;
+  padding: 15px;
+  margin: 5px;
+  border-radius: 4px;
+}</code></pre>
+      </div>
+
+      <h4>Contoh Flex Container:</h4>
+      <div class="flex-container">
+        <div class="flex-item">1</div>
+        <div class="flex-item">2</div>
+        <div class="flex-item">3</div>
+        <div class="flex-item">4</div>
+      </div>
+
+      <h3 class="section-title">2. Flex Direction</h3>
+      <p>
+        Properti <code>flex-direction</code> menentukan arah sumbu utama (main axis) dan 
+        arah item-item flex dalam container.
+      </p>
+
+      <div class="controls">
+        <div class="control-group">
+          <h4>flex-direction:</h4>
+          <button onclick="updateFlexStyle('flex-direction', 'row')">row (default)</button>
+          <button onclick="updateFlexStyle('flex-direction', 'row-reverse')">row-reverse</button>
+          <button onclick="updateFlexStyle('flex-direction', 'column')">column</button>
+          <button onclick="updateFlexStyle('flex-direction', 'column-reverse')">column-reverse</button>
+        </div>
+      </div>
+
+      <div class="flex-visual">
+        <div class="visual-container">
+          <div class="visual-title">row (default)</div>
+          <div class="flex-container" style="flex-direction: row;">
+            <div class="flex-item">1</div>
+            <div class="flex-item">2</div>
+            <div class="flex-item">3</div>
+          </div>
+        </div>
+        <div class="visual-container">
+          <div class="visual-title">row-reverse</div>
+          <div class="flex-container" style="flex-direction: row-reverse;">
+            <div class="flex-item">1</div>
+            <div class="flex-item">2</div>
+            <div class="flex-item">3</div>
+          </div>
+        </div>
+      </div>
+      <div class="flex-visual">
+        <div class="visual-container">
+          <div class="visual-title">column</div>
+          <div class="flex-container" style="flex-direction: column; min-height: 200px;">
+            <div class="flex-item">1</div>
+            <div class="flex-item">2</div>
+            <div class="flex-item">3</div>
+          </div>
+        </div>
+        <div class="visual-container">
+          <div class="visual-title">column-reverse</div>
+          <div class="flex-container" style="flex-direction: column-reverse; min-height: 200px;">
+            <div class="flex-item">1</div>
+            <div class="flex-item">2</div>
+            <div class="flex-item">3</div>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="section-title">3. Flex Wrap</h3>
+      <p>
+        Secara default, flex item akan mencoba untuk muat dalam satu baris. Anda dapat mengubah 
+        ini dengan properti <code>flex-wrap</code>.
+      </p>
+
+      <div class="controls">
+        <div class="control-group">
+          <h4>flex-wrap:</h4>
+          <button onclick="updateFlexStyle('flex-wrap', 'nowrap')">nowrap (default)</button>
+          <button onclick="updateFlexStyle('flex-wrap', 'wrap')">wrap</button>
+          <button onclick="updateFlexStyle('flex-wrap', 'wrap-reverse')">wrap-reverse</button>
+        </div>
+      </div>
+
+      <div class="flex-container" id="wrapDemo" style="flex-wrap: nowrap;">
+        <div class="flex-item">1</div>
+        <div class="flex-item">2</div>
+        <div class="flex-item">3</div>
+        <div class="flex-item">4</div>
+        <div class="flex-item">5</div>
+        <div class="flex-item">6</div>
+      </div>
+
+      <h3 class="section-title">4. Justify Content</h3>
+      <p>
+        <code>justify-content</code> mendefinisikan perataan sepanjang sumbu utama. 
+        Ini membantu mendistribusikan ruang ekstra yang tersisa ketika item-item pada 
+        baris utama tidak fleksibel, atau fleksibel tetapi telah mencapai ukuran maksimumnya.
+      </p>
+
+      <div class="controls">
+        <div class="control-group">
+          <h4>justify-content:</h4>
+          <button onclick="updateFlexStyle('justify-content', 'flex-start')">flex-start (default)</button>
+          <button onclick="updateFlexStyle('justify-content', 'flex-end')">flex-end</button>
+          <button onclick="updateFlexStyle('justify-content', 'center')">center</button>
+          <button onclick="updateFlexStyle('justify-content', 'space-between')">space-between</button>
+          <button onclick="updateFlexStyle('justify-content', 'space-around')">space-around</button>
+          <button onclick="updateFlexStyle('justify-content', 'space-evenly')">space-evenly</button>
+        </div>
+      </div>
+
+      <div class="flex-container" id="justifyDemo" style="justify-content: flex-start;">
+        <div class="flex-item">1</div>
+        <div class="flex-item">2</div>
+        <div class="flex-item">3</div>
+      </div>
+
+      <h3 class="section-title">5. Align Items</h3>
+      <p>
+        <code>align-items</code> mendefinisikan perilaku default untuk bagaimana item-item flex 
+        diletakkan di sepanjang sumbu silang (cross axis) pada baris saat ini.
+      </p>
+
+      <div class="controls">
+        <div class="control-group">
+          <h4>align-items:</h4>
+          <button onclick="updateFlexStyle('align-items', 'stretch')">stretch (default)</button>
+          <button onclick="updateFlexStyle('align-items', 'flex-start')">flex-start</button>
+          <button onclick="updateFlexStyle('align-items', 'flex-end')">flex-end</button>
+          <button onclick="updateFlexStyle('align-items', 'center')">center</button>
+          <button onclick="updateFlexStyle('align-items', 'baseline')">baseline</button>
+        </div>
+      </div>
+
+      <div class="flex-container" id="alignItemsDemo" style="align-items: stretch; min-height: 150px;">
+        <div class="flex-item" style="padding: 20px 15px;">1</div>
+        <div class="flex-item" style="padding: 30px 15px;">2</div>
+        <div class="flex-item" style="padding: 10px 15px;">3</div>
+        <div class="flex-item" style="padding: 40px 15px;">4</div>
+      </div>
+
+      <h3 class="section-title">6. Align Content</h3>
+      <p>
+        <code>align-content</code> mengatur distribusi ruang di antara dan di sekitar item konten 
+        di sepanjang sumbu silang (cross axis) dari flex container ketika ada ruang ekstra.
+      </p>
+
+      <div class="controls">
+        <div class="control-group">
+          <h4>align-content:</h4>
+          <button onclick="updateFlexStyle('align-content', 'stretch')">stretch (default)</button>
+          <button onclick="updateFlexStyle('align-content', 'flex-start')">flex-start</button>
+          <button onclick="updateFlexStyle('align-content', 'flex-end')">flex-end</button>
+          <button onclick="updateFlexStyle('align-content', 'center')">center</button>
+          <button onclick="updateFlexStyle('align-content', 'space-between')">space-between</button>
+          <button onclick="updateFlexStyle('align-content', 'space-around')">space-around</button>
+        </div>
+      </div>
+
+      <div class="flex-container" id="alignContentDemo" style="flex-wrap: wrap; align-content: stretch; min-height: 200px;">
+        <div class="flex-item">1</div>
+        <div class="flex-item">2</div>
+        <div class="flex-item">3</div>
+        <div class="flex-item">4</div>
+        <div class="flex-item">5</div>
+        <div class="flex-item">6</div>
+      </div>
+
+      <h3 class="section-title">7. Flex Grow, Shrink, dan Basis</h3>
+      <p>
+        Properti ini mengontrol bagaimana item flex tumbuh dan menyusut untuk mengisi ruang yang tersedia.
+      </p>
+
+      <div class="info-box">
+        <h4>Properti Item Flex:</h4>
+        <ul>
+          <li><code>flex-grow</code>: Menentukan seberapa besar item akan tumbuh relatif terhadap item lainnya</li>
+          <li><code>flex-shrink</code>: Menentukan seberapa banyak item akan menyusut relatif terhadap item lainnya</li>
+          <li><code>flex-basis</code>: Menentukan ukuran awal item sebelum ruang didistribusikan</li>
+          <li><code>flex</code>: Shorthand untuk grow, shrink, dan basis (contoh: flex: 1 1 auto)</li>
+        </ul>
+      </div>
+
+      <h4>Contoh Flex Grow:</h4>
+      <div class="flex-container">
+        <div class="flex-item" style="flex-grow: 1;">1 (grow: 1)</div>
+        <div class="flex-item" style="flex-grow: 2;">2 (grow: 2)</div>
+        <div class="flex-item" style="flex-grow: 1;">3 (grow: 1)</div>
+      </div>
+
+      <h3 class="section-title">8. Contoh Layout dengan Flexbox</h3>
+      <p>Berikut contoh layout header, konten, dan footer menggunakan Flexbox:</p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>HTML</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>&lt;div class="app-layout"&gt;
+  &lt;header&gt;Header&lt;/header&gt;
+  &lt;div class="main-content"&gt;
+    &lt;aside class="sidebar"&gt;Sidebar&lt;/aside&gt;
+    &lt;main class="content"&gt;Konten Utama&lt;/main&gt;
+  &lt;/div&gt;
+  &lt;footer&gt;Footer&lt;/footer&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>CSS</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>.app-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header, footer {
+  padding: 1rem;
+  background-color: #333;
+  color: white;
+}
+
+.main-content {
+  display: flex;
+  flex: 1;
+}
+
+.sidebar {
+  width: 250px;
+  background-color: #f4f4f4;
+  padding: 1rem;
+}
+
+.content {
+  flex: 1;
+  padding: 1rem;
+  background-color: #fff;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .main-content {
+    flex-direction: column;
+  }
+  
+  .sidebar {
+    width: 100%;
+  }
+}</code></pre>
+      </div>
+
+      <h4>Hasil:</h4>
+      <div style="border: 2px solid #ddd; margin: 20px 0; min-height: 400px;">
+        <div style="display: flex; flex-direction: column; min-height: 400px;">
+          <header style="padding: 1rem; background-color: #333; color: white;">Header</header>
+          <div style="display: flex; flex: 1;">
+            <aside style="width: 250px; background-color: #f4f4f4; padding: 1rem;">Sidebar</aside>
+            <main style="flex: 1; padding: 1rem; background-color: #fff;">Konten Utama</main>
+          </div>
+          <footer style="padding: 1rem; background-color: #333; color: white;">Footer</footer>
+        </div>
+      </div>
+
+      <div class="info-box">
+        <h4>Tips Penggunaan Flexbox:</h4>
+        <ul>
+          <li>Gunakan <code>flex: 1</code> pada item yang ingin mengisi ruang yang tersedia</li>
+          <li>Gunakan <code>flex-wrap: wrap</code> untuk membuat layout yang responsif</li>
+          <li>Manfaatkan <code>gap</code> untuk memberikan jarak konsisten antar item</li>
+          <li>Gunakan <code>align-items: center</code> untuk perataan vertikal tengah</li>
+          <li>Kombinasikan dengan media queries untuk desain yang responsif</li>
+        </ul>
+      </div>
+
+      <div class="conclusion">
+        <h3>Kesimpulan</h3>
+        <p>
+          Flexbox adalah alat yang sangat kuat untuk membuat tata letak yang fleksibel dan responsif 
+          dengan CSS. Dengan memahami konsep container, direction, dan alignment, Anda dapat membuat 
+          berbagai macam desain yang sebelumnya membutuhkan banyak kode CSS atau bahkan hack.
+        </p>
+        <p>
+          Meskipun Flexbox sangat berguna untuk tata letak satu dimensi, untuk tata letak dua 
+          dimensi yang lebih kompleks, pertimbangkan untuk menggunakan CSS Grid yang akan kita 
+          bahas pada bab berikutnya.
+        </p>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='c43.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/css.png"
+          alt="CSS"
+          onclick="window.location.href='c1.html'"
+          title="CSS"
+        />
+        <button class="btn" onclick="window.location.href='c45.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+
+    <script>
+      // Fungsi untuk menyalin kode
+      function copyCode(button) {
+        const codeBlock = button.parentElement.nextElementSibling;
+        const range = document.createRange();
+        range.selectNode(codeBlock);
+        window.getSelection().removeAllRanges();
+        window.getSelection().addRange(range);
+        document.execCommand('copy');
+        window.getSelection().removeAllRanges();
+        
+        // Ubah teks tombol sementara
+        const originalText = button.textContent;
+        button.textContent = 'Tersalin!';
+        button.style.backgroundColor = '#4caf50';
+        
+        // Kembalikan teks tombol setelah 2 detik
+        setTimeout(() => {
+          button.textContent = originalText;
+          button.style.backgroundColor = '';
+        }, 2000);
+      }
+
+      // Fungsi untuk memperbarui style flex container
+      function updateFlexStyle(property, value) {
+        // Dapatkan elemen demo yang sesuai
+        let demoId = '';
+        if (property === 'flex-direction') demoId = 'directionDemo';
+        else if (property === 'flex-wrap') demoId = 'wrapDemo';
+        else if (property === 'justify-content') demoId = 'justifyDemo';
+        else if (property === 'align-items') demoId = 'alignItemsDemo';
+        else if (property === 'align-content') demoId = 'alignContentDemo';
+        
+        const demo = document.getElementById(demoId);
+        if (demo) {
+          demo.style[property] = value;
+          
+          // Update tombol aktif
+          const buttons = document.querySelectorAll(`button[onclick*="${property}"]`);
+          buttons.forEach(btn => {
+            if (btn.textContent.includes(value) || 
+                (value === 'stretch' && btn.textContent.includes('stretch (default)')) ||
+                (value === 'nowrap' && btn.textContent.includes('nowrap (default)')) ||
+                (value === 'row' && btn.textContent.includes('row (default)')) ||
+                (value === 'flex-start' && btn.textContent.includes('flex-start (default)')) ||
+                (value === 'flex-start' && btn.textContent.includes('flex-start'))) {
+              btn.style.backgroundColor = '#4caf50';
+              btn.style.color = 'white';
+            } else {
+              btn.style.backgroundColor = '';
+              btn.style.color = '';
+            }
+          });
+        }
+      }
+
+      // Inisialisasi
+      document.addEventListener('DOMContentLoaded', function() {
+        // Setel tombol default sebagai aktif
+        updateFlexStyle('flex-direction', 'row');
+        updateFlexStyle('flex-wrap', 'nowrap');
+        updateFlexStyle('justify-content', 'flex-start');
+        updateFlexStyle('align-items', 'stretch');
+        updateFlexStyle('align-content', 'stretch');
+      });
+    </script>
+  </body>
+</html>

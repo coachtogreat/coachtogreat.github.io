@@ -1,0 +1,465 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Border dan Outline di CSS</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <style>
+      .box {
+        border: 2px solid #3498db;
+        background-color: #f0f8ff;
+        margin: 10px;
+        padding: 15px;
+        border-radius: 5px;
+      }
+      .visual-box {
+        background-color: #e3f2fd;
+        border: 1px solid #90caf9;
+        height: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 20px 0;
+        position: relative;
+      }
+      .visual-box::before {
+        content: 'Konten';
+        background-color: #bbdefb;
+        padding: 15px;
+        border: 1px dashed #64b5f6;
+      }
+      .border-example {
+        background-color: #fff3e0;
+        padding: 20px;
+        margin: 15px 0;
+      }
+      .outline-example {
+        background-color: #f3e5f5;
+        padding: 20px;
+        margin: 15px 0;
+      }
+      .code-comparison {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin: 20px 0;
+      }
+      @media (max-width: 768px) {
+        .code-comparison {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Memahami Border dan Outline di CSS</h2>
+
+      <p>
+        Border dan outline adalah properti CSS yang digunakan untuk memberikan garis tepi pada
+        elemen. Meskipun terlihat mirip, keduanya memiliki perbedaan penting dalam penggunaannya dan
+        cara kerjanya.
+      </p>
+
+      <div class="info-box">
+        <h4>Perbedaan Utama:</h4>
+        <ul>
+          <li>
+            <strong>Border</strong>: Bagian dari box model, mempengaruhi layout dan menempati ruang
+            di halaman.
+          </li>
+          <li>
+            <strong>Outline</strong>: Tidak mempengaruhi layout, digambar di atas elemen, dan tidak
+            mengambil ruang.
+          </li>
+        </ul>
+      </div>
+
+      <h3 class="section-title">1. Border</h3>
+      <p>
+        Border adalah garis yang mengelilingi elemen HTML. Border merupakan bagian dari box model
+        dan mempengaruhi tata letak halaman. Setiap border memiliki tiga properti utama: width,
+        style, dan color.
+      </p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>CSS</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>/* Sintaks dasar */
+elemen {
+  border: [width] [style] [color];
+}
+
+/* Contoh penggunaan */
+.border-solid {
+  border: 2px solid #3498db; /* Garis solid */
+}
+
+.border-dashed {
+  border: 3px dashed #e74c3c; /* Garis putus-putus */
+}
+
+.border-dotted {
+  border: 2px dotted #2ecc71; /* Garis titik-titik */
+}
+
+/* Properti individu */
+.border-individu {
+  border-width: 2px 4px 6px 8px; /* Atas, Kanan, Bawah, Kiri */
+  border-style: solid dashed dotted double;
+  border-color: #3498db #e74c3c #2ecc71 #f39c12;
+}
+
+/* Border radius untuk sudut melengkung */
+.rounded {
+  border-radius: 10px; /* Semua sudut */
+  /* Atau */
+  border-radius: 10px 5px 15px 20px; /* Masing-masing sudut */
+}</code></pre>
+      </div>
+
+      <h4>Contoh Visual Border:</h4>
+      <div class="visual-box" style="border: 4px solid #3498db; background-color: #e3f2fd">
+        <p>Border Solid</p>
+      </div>
+      <div class="visual-box" style="border: 3px dashed #e74c3c; background-color: #fde8e8">
+        <p>Border Dashed</p>
+      </div>
+      <div class="visual-box" style="border: 3px dotted #2ecc71; background-color: #e8f8f0">
+        <p>Border Dotted</p>
+      </div>
+
+      <h3 class="section-title">2. Outline</h3>
+      <p>
+        Outline adalah garis yang digambar di sekitar elemen, di luar border. Berbeda dengan border,
+        outline tidak mempengaruhi tata letak halaman dan tidak mengambil ruang. Outline sering
+        digunakan untuk aksesibilitas atau memberikan fokus pada elemen.
+      </p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>CSS</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>/* Sintaks dasar */
+elemen {
+  outline: [width] [style] [color];
+}
+
+/* Contoh penggunaan */
+.outline-basic {
+  outline: 2px solid #9b59b6;
+}
+
+/* Outline untuk fokus */
+button:focus {
+  outline: 3px solid #3498db;
+  outline-offset: 2px; /* Jarak dari border */
+}
+
+/* Menghilangkan outline (tidak disarankan untuk aksesibilitas) */
+button:focus {
+  outline: none; /* Hati-hati, bisa mengurangi aksesibilitas */
+}</code></pre>
+      </div>
+
+      <h4>Contoh Visual Outline:</h4>
+      <div
+        class="visual-box"
+        style="outline: 4px solid #9b59b6; outline-offset: 5px; background-color: #f5eef8"
+      >
+        <p>Dengan Outline</p>
+      </div>
+
+      <h3 class="section-title">3. Perbandingan Border dan Outline</h3>
+
+      <div class="code-comparison">
+        <div>
+          <h4>Border</h4>
+          <ul>
+            <li>Mempengaruhi layout dan mengambil ruang</li>
+            <li>Dapat memiliki radius (border-radius)</li>
+            <li>Dapat diterapkan pada sisi tertentu (atas, kanan, bawah, kiri)</li>
+            <li>Bagian dari box model</li>
+            <li>Dapat memiliki bayangan (box-shadow)</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Outline</h4>
+          <ul>
+            <li>Tidak mempengaruhi layout</li>
+            <li>Tidak dapat memiliki radius</li>
+            <li>Selalu mengelilingi semua sisi</li>
+            <li>Bukan bagian dari box model</li>
+            <li>Berguna untuk aksesibilitas (fokus keyboard)</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3 class="section-title">4. Kapan Menggunakan Masing-masing?</h3>
+
+      <div class="info-box">
+        <h4>Gunakan Border ketika:</h4>
+        <ul>
+          <li>Membuat desain visual yang konsisten</li>
+          <li>Membutuhkan sudut melengkung (border-radius)</li>
+          <li>Membutuhkan efek bayangan (box-shadow)</li>
+          <li>Menggunakan border pada sisi tertentu saja</li>
+        </ul>
+
+        <h4>Gunakan Outline ketika:</h4>
+        <ul>
+          <li>Membuat indikator fokus untuk aksesibilitas</li>
+          <li>Tidak ingin mempengaruhi tata letak</li>
+          <li>Membutuhkan garis di luar border yang tidak menggeser elemen lain</li>
+          <li>Membuat highlight sementara tanpa mengubah layout</li>
+        </ul>
+      </div>
+
+      <h3 class="section-title">5. Tips Praktis</h3>
+
+      <div class="box">
+        <h4>Kombinasi Border dan Outline</h4>
+        <p>Anda bisa menggunakan keduanya bersama-sama untuk efek yang menarik:</p>
+
+        <div class="code-block">
+          <div class="code-header">
+            <span>CSS</span>
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+          </div>
+          <pre><code>.fancy-button {
+  border: 2px solid #3498db;
+  border-radius: 5px;
+  padding: 10px 20px;
+  background: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.fancy-button:hover {
+  background: #3498db;
+  color: white;
+  outline: 3px solid rgba(52, 152, 219, 0.5);
+  outline-offset: 2px;
+}</code></pre>
+        </div>
+
+        <div
+          class="visual-box"
+          style="
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #fff;
+            border: 2px solid #3498db;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+          "
+          onmouseover="this.style.background='#3498db'; this.style.color='white'; this.style.outline='3px solid rgba(52, 152, 219, 0.5)'; this.style.outlineOffset='2px'"
+          onmouseout="this.style.background='#fff'; this.style.color='inherit'; this.style.outline='none'"
+          onfocus="this.style.background='#3498db'; this.style.color='white'; this.style.outline='3px solid rgba(52, 152, 219, 0.5)'; this.style.outlineOffset='2px'"
+          tabindex="0"
+        >
+          <p>Tombol Interaktif</p>
+        </div>
+      </div>
+
+      <div class="box">
+        <h4>Membuat Custom Checkbox dengan Outline</h4>
+        <p>Berikut contoh membuat custom checkbox yang aksesibel:</p>
+
+        <div class="code-block">
+          <div class="code-header">
+            <span>HTML</span>
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+          </div>
+          <pre><code>&lt;label class="custom-checkbox"&gt;
+  &lt;input type="checkbox" class="sr-only"&gt;
+  &lt;span class="checkmark"&gt;&lt;/span&gt;
+  Setuju dengan syarat dan ketentuan
+&lt;/label&gt;</code></pre>
+        </div>
+
+        <div class="code-block">
+          <div class="code-header">
+            <span>CSS</span>
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+          </div>
+          <pre><code>.custom-checkbox {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin: 10px 0;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.checkmark {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  border: 2px solid #3498db;
+  border-radius: 3px;
+  position: relative;
+  transition: all 0.2s;
+}
+
+input:checked + .checkmark {
+  background-color: #3498db;
+}
+
+input:focus + .checkmark {
+  outline: 3px solid rgba(52, 152, 219, 0.5);
+  outline-offset: 2px;
+}
+
+.checkmark:after {
+  content: '';
+  position: absolute;
+  display: none;
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+input:checked + .checkmark:after {
+  display: block;
+}</code></pre>
+        </div>
+
+        <div style="margin: 20px 0; padding: 15px; background: #f8f9fa; border-radius: 5px">
+          <label
+            class="custom-checkbox"
+            style="display: flex; align-items: center; cursor: pointer; margin: 10px 0"
+          >
+            <input type="checkbox" class="sr-only" tabindex="0" />
+            <span
+              class="checkmark"
+              style="
+                display: inline-block;
+                width: 20px;
+                height: 20px;
+                margin-right: 10px;
+                border: 2px solid #3498db;
+                border-radius: 3px;
+                position: relative;
+                transition: all 0.2s;
+              "
+            ></span>
+            Setuju dengan syarat dan ketentuan
+          </label>
+          <p style="font-size: 0.9em; color: #666; margin-top: 10px">
+            Coba klik checkbox di atas dan perhatikan outline yang muncul saat fokus.
+          </p>
+        </div>
+      </div>
+
+      <div class="conclusion">
+        <h3>Kesimpulan</h3>
+        <p>
+          Memahami perbedaan antara border dan outline sangat penting dalam pengembangan web modern.
+          Gunakan border untuk keperluan desain yang mempengaruhi tata letak, dan outline untuk
+          keperluan aksesibilitas dan indikator fokus. Dengan menggunakan keduanya dengan tepat,
+          Anda dapat menciptakan antarmuka yang tidak hanya indah tetapi juga mudah diakses oleh
+          semua pengguna.
+        </p>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='c33.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/css.png"
+          alt="CSS"
+          onclick="window.location.href='c1.html'"
+          title="CSS"
+        />
+        <button class="btn" onclick="window.location.href='c35.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+
+    <script>
+      function copyCode(button) {
+        const codeBlock = button.parentElement.nextElementSibling;
+        const range = document.createRange();
+        range.selectNode(codeBlock);
+        window.getSelection().removeAllRanges();
+        window.getSelection().addRange(range);
+        document.execCommand('copy');
+        window.getSelection().removeAllRanges();
+
+        // Ganti teks tombol sementara
+        const originalText = button.textContent;
+        button.textContent = 'Tersalin!';
+
+        // Kembalikan teks asli setelah 2 detik
+        setTimeout(() => {
+          button.textContent = originalText;
+        }, 2000);
+      }
+
+      // Menambahkan event listener untuk checkbox interaktif
+      document.addEventListener('DOMContentLoaded', function () {
+        const checkboxes = document.querySelectorAll('.custom-checkbox input[type="checkbox"]');
+
+        checkboxes.forEach((checkbox) => {
+          // Tambahkan event listener untuk keyboard navigation
+          checkbox.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              this.checked = !this.checked;
+              // Trigger event change secara manual
+              const event = new Event('change');
+              this.dispatchEvent(event);
+            }
+          });
+
+          // Update tampilan saat status berubah
+          checkbox.addEventListener('change', function () {
+            const checkmark = this.nextElementSibling;
+            if (this.checked) {
+              checkmark.style.backgroundColor = '#3498db';
+              checkmark.innerHTML = '&#10004;';
+              checkmark.style.color = 'white';
+              checkmark.style.display = 'flex';
+              checkmark.style.justifyContent = 'center';
+              checkmark.style.alignItems = 'center';
+            } else {
+              checkmark.style.backgroundColor = '';
+              checkmark.innerHTML = '';
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

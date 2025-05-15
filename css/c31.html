@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Warna di CSS</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <style>
+      .color-box {
+        width: 100px;
+        height: 100px;
+        display: inline-block;
+        margin: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        text-align: center;
+        line-height: 100px;
+        color: white;
+        text-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+      }
+      .color-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 15px;
+        margin: 20px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Mengenal Warna di CSS: color dan background-color</h2>
+
+      <p>
+        Warna adalah elemen penting dalam desain web yang dapat mempengaruhi tampilan dan nuansa
+        situs web Anda. Di CSS, kita dapat mengatur warna teks menggunakan properti
+        <code>color</code> dan warna latar belakang menggunakan properti
+        <code>background-color</code>.
+      </p>
+
+      <h3 class="section-title">1. Format Warna di CSS</h3>
+      <p>
+        CSS menyediakan beberapa cara untuk mendefinisikan warna. Mari kita lihat format-format yang
+        tersedia:
+      </p>
+
+      <h4>a. Nama Warna (Color Keywords)</h4>
+      <p>
+        CSS menyediakan 140+ nama warna yang telah didefinisikan, seperti <code>red</code>,
+        <code>blue</code>, <code>green</code>, <code>tomato</code>, dan <code>rebeccapurple</code>.
+      </p>
+
+      <div class="color-grid">
+        <div class="color-box" style="background-color: tomato">tomato</div>
+        <div class="color-box" style="background-color: rebeccapurple">rebeccapurple</div>
+        <div class="color-box" style="background-color: dodgerblue">dodgerblue</div>
+        <div class="color-box" style="background-color: mediumseagreen">mediumseagreen</div>
+      </div>
+
+      <h4>b. Kode Heksadesimal</h4>
+      <p>
+        Format heksadesimal menggunakan tanda pagar (#) diikuti oleh 6 digit angka heksadesimal
+        (0-9, A-F). Dua digit pertama mewakili merah, dua berikutnya hijau, dan dua terakhir biru.
+      </p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>CSS</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>h1 {
+  color: #ff0000;    /* Merah */
+}
+
+p {
+  color: #00ff00;    /* Hijau */
+}
+
+div {
+  color: #0000ff;    /* Biru */
+}</code></pre>
+      </div>
+
+      <h4>c. RGB dan RGBA</h4>
+      <p>
+        RGB (Red, Green, Blue) memungkinkan Anda menentukan warna dengan mencampur nilai merah,
+        hijau, dan biru (0-255). RGBA menambahkan saluran alpha untuk transparansi (0-1).
+      </p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>CSS</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>/* Warna solid */
+.warna-merah {
+  background-color: rgb(255, 0, 0);
+}
+
+/* Warna dengan transparansi 50% */
+.warna-transparan {
+  background-color: rgba(0, 0, 255, 0.5);
+}</code></pre>
+      </div>
+
+      <h4>d. HSL dan HSLA</h4>
+      <p>
+        HSL (Hue, Saturation, Lightness) adalah cara lain untuk mendefinisikan warna. HSLA
+        menambahkan saluran alpha.
+      </p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>CSS</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>/* Hue: 120 (hijau), Saturation: 100%, Lightness: 50% */
+.warna-hijau {
+  color: hsl(120, 100%, 50%);
+}
+
+/* Dengan transparansi 70% */
+.warna-biru-transparan {
+  background-color: hsla(240, 100%, 50%, 0.7);
+}</code></pre>
+      </div>
+
+      <h3 class="section-title">2. Properti Warna di CSS</h3>
+
+      <h4>a. color</h4>
+      <p>Properti <code>color</code> mengatur warna teks pada elemen HTML.</p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>CSS</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>h1 {
+  color: #2c3e50;  /* Warna teks biru tua */
+}
+
+.peringatan {
+  color: #e74c3c;  /* Warna teks merah */
+}
+
+.teks-besar {
+  color: rgba(0, 0, 0, 0.8);  /* Hitam dengan transparansi */
+}</code></pre>
+      </div>
+
+      <h4>b. background-color</h4>
+      <p>Properti <code>background-color</code> mengatur warna latar belakang elemen.</p>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>CSS</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>body {
+  background-color: #f8f9fa;  /* Abu-abu muda */
+}
+
+.header {
+  background-color: #3498db;  /* Biru cerah */
+  color: white;
+}
+
+.tombol {
+  background-color: #2ecc71;  /* Hijau */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.tombol:hover {
+  background-color: #27ae60;  /* Hijau lebih tua saat hover */
+}</code></pre>
+      </div>
+
+      <h3 class="section-title">3. Gradien Warna</h3>
+      <p>CSS memungkinkan Anda membuat gradien warna yang mulus antara dua warna atau lebih.</p>
+
+      <h4>a. Linear Gradient</h4>
+      <div class="code-block">
+        <div class="code-header">
+          <span>CSS</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>.gradient-vertical {
+  background: linear-gradient(to bottom, #3498db, #2ecc71);
+  height: 100px;
+  width: 100%;
+}
+
+.gradient-diagonal {
+  background: linear-gradient(45deg, #e74c3c, #f39c12, #2ecc71, #3498db);
+  height: 100px;
+  width: 100%;
+  margin: 10px 0;
+}</code></pre>
+      </div>
+
+      <h4>b. Radial Gradient</h4>
+      <div class="code-block">
+        <div class="code-header">
+          <span>CSS</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>.gradient-radial {
+  background: radial-gradient(circle, #3498db, #2c3e50);
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  margin: 20px auto;
+}</code></pre>
+      </div>
+
+      <div class="info-box">
+        <h4>Tips Menggunakan Warna:</h4>
+        <ul>
+          <li>Gunakan skema warna yang konsisten di seluruh situs web</li>
+          <li>Pastikan kontras yang cukup antara teks dan latar belakang untuk keterbacaan</li>
+          <li>Pertimbangkan aksesibilitas dengan memeriksa rasio kontras</li>
+          <li>Gunakan variabel CSS untuk warna yang sering digunakan</li>
+        </ul>
+      </div>
+
+      <div class="info-box">
+        <h4>Alat Bantu Warna:</h4>
+        <ul>
+          <li><a href="https://coolors.co/" target="_blank">Coolors</a> - Generator skema warna</li>
+          <li>
+            <a href="https://colorhunt.co/" target="_blank">ColorHunt</a> - Palet warna yang populer
+          </li>
+          <li>
+            <a href="https://webaim.org/resources/contrastchecker/" target="_blank"
+              >WebAIM Contrast Checker</a
+            >
+            - Memeriksa rasio kontras
+          </li>
+          <li>
+            <a href="https://cssgradient.io/" target="_blank">CSS Gradient Generator</a> - Membuat
+            kode gradien CSS
+          </li>
+        </ul>
+      </div>
+
+      <p>
+        Dengan memahami cara menggunakan warna di CSS, Anda dapat membuat desain web yang lebih
+        menarik dan profesional. Ingatlah untuk selalu mempertimbangkan pengalaman pengguna dan
+        aksesibilitas saat memilih skema warna untuk proyek Anda.
+      </p>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='c25.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/css.png"
+          alt="CSS"
+          onclick="window.location.href='c1.html'"
+          title="CSS"
+        />
+        <button class="btn" onclick="window.location.href='c32.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+
+    <script>
+      function copyCode(button) {
+        const codeBlock = button.parentElement.nextElementSibling.querySelector('code');
+        const textArea = document.createElement('textarea');
+        textArea.value = codeBlock.textContent;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+
+        // Ubah teks tombol sementara
+        const originalText = button.textContent;
+        button.textContent = 'Tersalin!';
+
+        // Kembalikan teks asli setelah 2 detik
+        setTimeout(() => {
+          button.textContent = originalText;
+        }, 2000);
+      }
+    </script>
+  </body>
+</html>

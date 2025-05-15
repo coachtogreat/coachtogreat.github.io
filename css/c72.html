@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menghindari Spesifisitas Tinggi di CSS</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <style>
+      .box {
+        border: 2px solid #3498db;
+        background-color: #f0f8ff;
+        margin: 10px;
+        padding: 15px;
+        border-radius: 5px;
+      }
+      .example-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        margin: 20px 0;
+      }
+      .example-box {
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        padding: 15px;
+        background-color: #fff;
+      }
+      .bad-practice {
+        background-color: #ffebee;
+        border-left: 4px solid #f44336;
+        padding: 15px;
+        margin: 15px 0;
+      }
+      .bad-practice h4 {
+        margin-top: 0;
+        color: #c62828;
+      }
+      .good-practice {
+        background-color: #e8f5e9;
+        border-left: 4px solid #4caf50;
+        padding: 15px;
+        margin: 15px 0;
+      }
+      .good-practice h4 {
+        margin-top: 0;
+        color: #2e7d32;
+      }
+      .specificity-demo {
+        background-color: #fff3e0;
+        border-left: 4px solid #ff9800;
+        padding: 15px;
+        margin: 15px 0;
+      }
+      .specificity-demo h4 {
+        margin-top: 0;
+        color: #e65100;
+      }
+      .specificity-levels {
+        margin: 20px 0;
+      }
+      .specificity-level {
+        display: flex;
+        align-items: center;
+        margin: 10px 0;
+        padding: 10px;
+        border-radius: 4px;
+        background-color: #f5f5f5;
+      }
+      .specificity-level span {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        border-radius: 50%;
+        background-color: #2196f3;
+        color: white;
+        margin-right: 15px;
+        font-weight: bold;
+      }
+      .specificity-level.high {
+        background-color: #ffebee;
+      }
+      .specificity-level.medium {
+        background-color: #fff8e1;
+      }
+      .specificity-level.low {
+        background-color: #e8f5e9;
+      }
+      .specificity-calculator {
+        background-color: #f5f5f5;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 20px;
+        margin: 20px 0;
+      }
+      .specificity-calculator h4 {
+        margin-top: 0;
+      }
+      .specificity-input {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+      }
+      .specificity-result {
+        font-family: monospace;
+        font-size: 1.2em;
+        margin: 10px 0;
+        padding: 10px;
+        background-color: white;
+        border-radius: 4px;
+        border: 1px solid #ddd;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Menghindari Spesifisitas Tinggi di CSS</h2>
+
+      <p>
+        Spesifisitas adalah cara browser menentukan deklarasi CSS mana yang paling spesifik dan
+        oleh karena itu akan diterapkan ke elemen. Memahami dan mengelola spesifisitas adalah kunci
+        untuk menulis CSS yang dapat dipelihara dan dapat diprediksi.
+      </p>
+
+      <div class="info-box">
+        <h4>Mengapa Menghindari Spesifisitas Tinggi?</h4>
+        <ul>
+          <li>Sulit untuk menimpa gaya yang ada</li>
+          <li>Meningkatkan kompleksitas kode</n>
+          <li>Menyebabkan penggunaan <code>!important</code> yang berlebihan</li>
+          <li>Menyulitkan pemeliharaan jangka panjang</li>
+          <li>Mengurangi reusability komponen</li>
+        </ul>
+      </div>
+
+      <h3 class="section-title">1. Memahami Tingkat Spesifisitas</h3>
+      <p>
+        Spesifisitas dihitung berdasarkan jenis selector yang digunakan. Berikut urutan dari yang
+        paling tidak spesifik hingga paling spesifik:
+      </p>
+
+      <div class="specificity-levels">
+        <div class="specificity-level high">
+          <span>1</span>
+          <div>
+            <strong>Inline styles</strong> - Contoh: <code>style="color: red;"</code>
+            <div class="specificity-result">1,0,0,0</div>
+          </div>
+        </div>
+        
+        <div class="specificity-level high">
+          <span>2</span>
+          <div>
+            <strong>ID selectors</strong> - Contoh: <code>#header</code>
+            <div class="specificity-result">0,1,0,0</div>
+          </div>
+        </div>
+        
+        <div class="specificity-level medium">
+          <span>3</span>
+          <div>
+            <strong>Class/Attribute/Pseudo-class selectors</strong> - Contoh: <code>.button</code>, <code>[type="text"]</code>, <code>:hover</code>
+            <div class="specificity-result">0,0,1,0</div>
+          </div>
+        </div>
+        
+        <div class="specificity-level low">
+          <span>4</span>
+          <div>
+            <strong>Element/Pseudo-element selectors</strong> - Contoh: <code>div</code>, <code>p::before</code>
+            <div class="specificity-result">0,0,0,1</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="specificity-demo">
+        <h4>Kalkulator Spesifisitas</h4>
+        <p>Masukkan selector CSS untuk menghitung spesifisitasnya:</p>
+        <div class="specificity-calculator">
+          <input 
+            type="text" 
+            class="specificity-input" 
+            id="specificityInput" 
+            placeholder="Masukkan selector CSS (contoh: #header .nav > a.active)"
+          >
+          <button class="btn" onclick="calculateSpecificity()">Hitung Spesifisitas</button>
+          <div id="specificityResult" class="specificity-result">Hasil akan muncul di sini</div>
+        </div>
+      </div>
+
+      <h3 class="section-title">2. Contoh Masalah Spesifisitas Tinggi</h3>
+      
+      <div class="bad-practice">
+        <h4>❌ Praktik Buruk: Spesifisitas Tinggi</h4>
+        <div class="code-block">
+          <div class="code-header">
+            <span>CSS</span>
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+          </div>
+          <pre><code>/* Spesifisitas: 0,2,1,1 */
+body #main-content .article p.highlight {
+  color: blue;
+  font-weight: bold;
+}
+
+/* Spesifisitas: 0,1,0,0 */
+#important-text {
+  color: red !important; /* !important mengabaikan spesifisitas */
+}
+
+/* Spesifisitas: 0,0,3,1 */
+.nav > ul > li > a.active {
+  background-color: yellow;
+}</code></pre>
+        </div>
+      </div>
+
+      <div class="good-practice">
+        <h4>✅ Praktik Baik: Spesifisitas Rendah</h4>
+        <div class="code-block">
+          <div class="code-header">
+            <span>CSS</span>
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+          </div>
+          <pre><code>/* Spesifisitas: 0,0,1,0 */
+.article-highlight {
+  color: blue;
+  font-weight: bold;
+}
+
+/* Spesifisitas: 0,0,1,0 */
+.important-text {
+  color: red;
+}
+
+/* Spesifisitas: 0,0,2,0 */
+.nav-link.active {
+  background-color: yellow;
+}</code></pre>
+        </div>
+      </div>
+
+      <h3 class="section-title">3. Strategi Menghindari Spesifisitas Tinggi</h3>
+      
+      <div class="example-container">
+        <div class="example-box">
+          <h4>1. Gunakan Kelas Tunggal</h4>
+          <p>Daripada:</p>
+          <div class="code-block">
+            <pre><code>/* Spesifisitas: 0,0,1,2 */
+ul.nav li a {}
+
+/* Lebih baik: */
+.nav-link {}</code></pre>
+          </div>
+        </div>
+        
+        <div class="example-box">
+          <h4>2. Hindari ID Selector</h4>
+          <p>Daripada:</p>
+          <div class="code-block">
+            <pre><code>/* Spesifisitas: 0,1,0,0 */
+#submit-button {}
+
+/* Lebih baik: */
+.button-submit {}</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="example-container">
+        <div class="example-box">
+          <h4>3. Hindari !important</h4>
+          <p>Daripada:</p>
+          <div class="code-block">
+            <pre><code>.error-text {
+  color: red !important; /* Hindari ini */
+}
+
+/* Lebih baik: */
+.error-text {
+  color: red;
+}
+
+/* Atau gunakan kelas yang lebih spesifik */
+.form .error-text {
+  color: red;
+}</code></pre>
+          </div>
+        </div>
+        
+        <div class="example-box">
+          <h4>4. Gunakan BEM untuk Spesifisitas Rendah</h4>
+          <div class="code-block">
+            <pre><code>/* Daripada: */
+.header .nav .list .item a {}
+
+/* Gunakan BEM: */
+.menu__item-link {}</code></pre>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="section-title">4. Tools untuk Menganalisis Spesifisitas</h3>
+      
+      <div class="info-box">
+        <h4>Alat Bantu:</h4>
+        <ul>
+          <li>
+            <strong>Browser DevTools:</strong> Periksa gaya yang diterapkan dan lihat mengapa suatu gaya tidak berfungsi
+          </li>
+          <li>
+            <strong>CSS Linters:</strong> Seperti Stylelint dengan aturan <code>declaration-no-important</code>
+          </li>
+          <li>
+            <strong>Online Tools:</strong> Seperti
+            <a href="https://specificity.keegan.st/" target="_blank">Specificity Calculator</a> atau
+            <a href="https://polypane.app/css-specificity-calculator/" target="_blank">Polypane CSS Specificity Calculator</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="visual-guide">
+        <h4>Best Practices untuk Spesifisitas yang Sehat:</h4>
+        <ol>
+          <li>Gunakan kelas untuk styling daripada elemen atau ID</li>
+          <li>Jaga selector tetap sederhana dan deskriptif</li>
+          <li>Hindari nesting yang tidak perlu di preprocessor</li>
+          <li>Gunakan variabel CSS untuk nilai yang digunakan berulang</li>
+          <li>Pertimbangkan menggunakan metodologi seperti BEM untuk menjaga konsistensi</li>
+          <li>Lakukan refaktor secara berkala untuk mengurangi kompleksitas</li>
+        </ol>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='c71.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/css.png"
+          alt="CSS"
+          onclick="window.location.href='c1.html'"
+          title="CSS"
+        />
+        <button class="btn" onclick="window.location.href='c73.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+
+    <script>
+      // Fungsi untuk menghitung spesifisitas
+      function calculateSpecificity() {
+        const input = document.getElementById('specificityInput').value.trim();
+        if (!input) return;
+        
+        try {
+          const result = calculateSpecificityValue(input);
+          document.getElementById('specificityResult').textContent = 
+            `Spesifisitas: ${result[0]},${result[1]},${result[2]},${result[3]}`;
+        } catch (e) {
+          document.getElementById('specificityResult').textContent = 
+            'Error: Gagal menghitung spesifisitas. Pastikan selector valid.';
+        }
+      }
+
+      // Fungsi pembantu untuk menghitung nilai spesifisitas
+      function calculateSpecificityValue(selector) {
+        // Inisialisasi nilai spesifisitas [inline, id, class, element]
+        const specificity = [0, 0, 0, 0];
+        
+        // Hapus kombinasi selector (>, +, ~, dll) dan pseudo-element
+        const cleanSelector = selector
+          .split(/[>+~\s]/)
+          .map(s => s.split('::')[0])
+          .join(' ');
+        
+        // Hitung inline styles (biasanya tidak dihitung dari selector)
+        
+        // Hitung ID selectors
+        const idMatches = cleanSelector.match(/#[a-zA-Z0-9_-]+/g) || [];
+        specificity[1] = idMatches.length;
+        
+        // Hitung class, attribute, dan pseudo-class selectors
+        const classMatches = cleanSelector.match(/\.[a-zA-Z0-9_-]+/g) || [];
+        const attrMatches = cleanSelector.match(/\[[^\]]+\]/g) || [];
+        const pseudoClassMatches = cleanSelector.match(/:+[a-zA-Z-]+/g) || [];
+        // Hapus pseudo-elements yang terdeteksi sebagai pseudo-class
+        const filteredPseudoClasses = pseudoClassMatches.filter(p => !p.startsWith('::'));
+        specificity[2] = classMatches.length + attrMatches.length + filteredPseudoClasses.length;
+        
+        // Hitung element selectors
+        const elementMatches = cleanSelector.match(/(^|[\s>+~])([a-zA-Z]+)(?![a-zA-Z0-9_-])/g) || [];
+        specificity[3] = elementMatches.length;
+        
+        return specificity;
+      }
+
+      // Fungsi untuk menyalin kode
+      function copyCode(button) {
+        const codeBlock = button.parentElement.nextElementSibling;
+        const code = codeBlock.textContent;
+
+        navigator.clipboard
+          .writeText(code)
+          .then(() => {
+            // Ubah teks tombol sementara
+            const originalText = button.textContent;
+            button.textContent = 'Tersalin!';
+            button.style.backgroundColor = '#4CAF50';
+
+            // Kembalikan ke teks asli setelah 2 detik
+            setTimeout(() => {
+              button.textContent = originalText;
+              button.style.backgroundColor = '';
+            }, 2000);
+          })
+          .catch((err) => {
+            console.error('Gagal menyalin teks: ', err);
+          });
+      }
+    </script>
+  </body>
+</html>

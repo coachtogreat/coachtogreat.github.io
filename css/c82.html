@@ -1,0 +1,468 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Custom Properties Lanjutan</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <style>
+      .box {
+        border: 2px solid var(--primary-color, #3498db);
+        background-color: var(--bg-color, #f8f9fa);
+        margin: 10px;
+        padding: 15px;
+        border-radius: 5px;
+      }
+      .section {
+        margin: 30px 0;
+        border-left: 4px solid var(--primary-color, #3498db);
+        padding: 0 0 0 15px;
+      }
+      .section h3 {
+        margin-top: 0;
+        color: var(--heading-color, #2c3e50);
+      }
+      .code-block {
+        background-color: var(--code-bg, #f5f5f5);
+        border-radius: 8px;
+        padding: 15px;
+        margin: 15px 0;
+        overflow-x: auto;
+        border: 1px solid var(--border-color, #e1e4e8);
+      }
+      .code-header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+        font-weight: bold;
+        color: var(--text-color, #333);
+      }
+      pre, code {
+        margin: 0;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+        font-family: 'Courier New', Courier, monospace;
+      }
+      .example-box {
+        padding: 20px;
+        margin: 20px 0;
+        border: 1px solid var(--border-color, #ddd);
+        border-radius: 5px;
+        background-color: var(--example-bg, #fff);
+      }
+      .info-box {
+        background-color: var(--info-bg, #e8f4fd);
+        border-left: 4px solid var(--info-border, #3498db);
+        padding: 15px;
+        margin: 20px 0;
+        border-radius: 0 4px 4px 0;
+      }
+      .demo-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        margin: 20px 0;
+      }
+      .demo-item {
+        padding: 15px;
+        border: 1px solid var(--border-color, #ddd);
+        border-radius: 5px;
+        background-color: var(--card-bg, #fff);
+      }
+      .btn {
+        --btn-bg: var(--primary-color, #3498db);
+        --btn-text: #fff;
+        
+        display: inline-block;
+        padding: 8px 16px;
+        background-color: var(--btn-bg);
+        color: var(--btn-text);
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin: 5px;
+        transition: all 0.3s ease;
+      }
+      .btn:hover {
+        opacity: 0.9;
+        transform: translateY(-1px);
+      }
+      .theme-preview {
+        width: 100%;
+        height: 100px;
+        border-radius: 4px;
+        margin: 10px 0;
+        border: 1px solid var(--border-color, #ddd);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">CSS Custom Properties Lanjutan</h2>
+
+      <p>
+        CSS Custom Properties (juga dikenal sebagai CSS Variables) adalah fitur CSS yang memungkinkan kita
+        untuk mendefinisikan nilai yang dapat digunakan kembali di seluruh stylesheet. Berbeda dengan
+        variabel CSS biasa, Custom Properties memiliki kemampuan yang lebih canggih dan fleksibel.
+      </p>
+
+      <div class="info-box">
+        <h4>Mengapa Menggunakan CSS Custom Properties?</h4>
+        <ul>
+          <li><strong>Dinamis</strong> - Nilai dapat diubah saat runtime dengan JavaScript</li>
+          <li><strong>Scoping</strong> - Dapat didefinisikan dalam berbagai scope (global atau komponen)</li>
+          <li><strong>Dapat Diwariskan</strong> - Nilai diwariskan ke elemen turunan</li>
+          <li><strong>Dapat Dimanipulasi</strong> - Mendukung operasi matematika dan fungsi CSS</li>
+          <li><strong>Kompatibilitas</strong> - Didukung oleh semua browser modern</li>
+        </ul>
+      </div>
+
+      <!-- Dasar Custom Properties -->
+      <div class="section">
+        <h3>1. Dasar-dasar Custom Properties</h3>
+        
+        <p>
+          Custom Properties dideklarasikan dengan awalan <code>--</code> dan diakses menggunakan fungsi <code>var()</code>.
+          Mereka biasanya didefinisikan dalam selector <code>:root</code> untuk akses global.
+        </p>
+
+        <div class="code-block">
+          <div class="code-header">
+            <span>CSS</span>
+            <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+          </div>
+          <pre><code>/* Mendeklarasikan Custom Properties */
+:root {
+  --primary-color: #3498db;
+  --secondary-color: #2ecc71;
+  --spacing-unit: 1rem;
+  --border-radius: 4px;
+  --transition: all 0.3s ease;
+}
+
+/* Menggunakan Custom Properties */
+.button {
+  background-color: var(--primary-color);
+  padding: calc(var(--spacing-unit) * 0.5) var(--spacing-unit);
+  border-radius: var(--border-radius);
+  transition: var(--transition);
+}
+
+/* Fallback value */
+.element {
+  color: var(--text-color, #333); /* Jika --text-color tidak ada, gunakan #333 */
+}</code></pre>
+        </div>
+      </div>
+
+      <!-- Scoping dan Inheritance -->
+      <div class="section">
+        <h3>2. Scoping dan Inheritance</h3>
+        
+        <p>
+          Custom Properties mengikuti aturan cascade dan inheritance CSS, yang berarti mereka dapat di-scope
+          ke elemen tertentu dan diwariskan ke elemen turunannya.
+        </p>
+
+        <div class="code-block">
+          <div class="code-header">
+            <span>HTML</span>
+            <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+          </div>
+          <pre><code>&lt;div class="theme-light"&gt;
+  &lt;button class="btn"&gt;Tombol Light&lt;/button&gt;
+  
+  &lt;div class="theme-dark"&gt;
+    &lt;button class="btn"&gt;Tombol Dark&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+
+        <div class="code-block">
+          <div class="code-header">
+            <span>CSS</span>
+            <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+          </div>
+          <pre><code>/* Variabel global */
+:root {
+  --spacing: 1rem;
+  --border-radius: 4px;
+}
+
+/* Theme Light */
+.theme-light {
+  --bg-color: #ffffff;
+  --text-color: #333333;
+  --primary-color: #3498db;
+  --border-color: #dddddd;
+}
+
+/* Theme Dark */
+.theme-dark {
+  --bg-color: #1a1a1a;
+  --text-color: #f0f0f0;
+  --primary-color: #5dade2;
+  --border-color: #444444;
+}
+
+/* Tombol menggunakan variabel yang di-scope */
+.btn {
+  padding: calc(var(--spacing) * 0.5) var(--spacing);
+  border-radius: var(--border-radius);
+  background-color: var(--primary-color);
+  color: white;
+  border: 1px solid var(--border-color);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Container untuk preview tema */
+.theme-preview {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  padding: var(--spacing);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  margin: 1rem 0;
+}</code></pre>
+        </div>
+
+        <div class="example-box">
+          <h4>Preview Tema</h4>
+          <div class="demo-container">
+            <div style="--bg-color: #ffffff; --text-color: #333333; --primary-color: #3498db; --border-color: #dddddd; padding: 1rem; border-radius: 4px;">
+              <h4 style="margin-top: 0;">Tema Terang</h4>
+              <button style="--primary-color: #3498db; --border-color: #3498db; background-color: var(--primary-color); color: white; border: 1px solid var(--border-color); padding: 0.5rem 1rem; border-radius: 4px; cursor: pointer;">
+                Tombol Contoh
+              </button>
+              <p>Ini adalah contoh teks dengan tema terang.</p>
+            </div>
+            
+            <div style="--bg-color: #1a1a1a; --text-color: #f0f0f0; --primary-color: #5dade2; --border-color: #444444; padding: 1rem; border-radius: 4px;">
+              <h4 style="margin-top: 0;">Tema Gelap</h4>
+              <button style="--primary-color: #5dade2; --border-color: #5dade2; background-color: var(--primary-color); color: white; border: 1px solid var(--border-color); padding: 0.5rem 1rem; border-radius: 4px; cursor: pointer;">
+                Tombol Contoh
+              </button>
+              <p>Ini adalah contoh teks dengan tema gelap.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Manipulasi dengan JavaScript -->
+      <div class="section">
+        <h3>3. Manipulasi dengan JavaScript</h3>
+        
+        <p>
+          Salah satu keunggulan utama Custom Properties adalah kemampuannya untuk dimodifikasi
+          secara dinamis menggunakan JavaScript.
+        </p>
+
+        <div class="code-block">
+          <div class="code-header">
+            <span>JavaScript</span>
+            <button class="copy-btn" onclick="copyCode(this)">Salin</button>
+          </div>
+          <pre><code>// Mendapatkan nilai Custom Property
+const rootStyles = getComputedStyle(document.documentElement);
+const primaryColor = rootStyles.getPropertyValue('--primary-color').trim();
+console.log('Warna utama:', primaryColor);
+
+// Mengubah nilai Custom Property
+document.documentElement.style.setProperty('--primary-color', '#e74c3c');
+
+// Fungsi untuk mengubah tema
+function setTheme(theme) {
+  const root = document.documentElement;
+  
+  if (theme === 'dark') {
+    root.style.setProperty('--bg-color', '#1a1a1a');
+    root.style.setProperty('--text-color', '#f0f0f0');
+    root.style.setProperty('--primary-color', '#5dade2');
+    root.style.setProperty('--border-color', '#444444');
+  } else {
+    root.style.setProperty('--bg-color', '#ffffff');
+    root.style.setProperty('--text-color', '#333333');
+    root.style.setProperty('--primary-color', '#3498db');
+    root.style.setProperty('--border-color', '#dddddd');
+  }
+  
+  // Simpan preferensi tema
+  localStorage.setItem('theme', theme);
+}
+
+// Muat tema yang disimpan
+const savedTheme = localStorage.getItem('theme') || 'light';
+setTheme(savedTheme);</code></pre>
+        </div>
+
+        <div class="example-box">
+          <h4>Contoh Interaktif</h4>
+          <p>Ubah tema halaman:</p>
+          <button class="btn" onclick="setTheme('light')">Tema Terang</button>
+          <button class="btn" onclick="setTheme('dark')">Tema Gelap</button>
+          
+          <div class="theme-preview" style="margin-top: 20px; padding: 15px;">
+            <h4 style="margin-top: 0;">Preview Tema</h4>
+            <p>Ini adalah contoh teks yang akan berubah sesuai tema yang dipilih.</p>
+            <button class="btn">Tombol Contoh</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Advanced Usage -->
+      <div class="section">
+        <h3>4. Penggunaan Lanjutan</h3>
+        
+        <div class="info-box">
+          <h4>1. Fallback Values</h4>
+          <p>
+            Gunakan nilai fallback untuk kompatibilitas yang lebih baik:
+          </p>
+          <pre><code>.element {
+  color: var(--text-color, #333);
+  font-size: var(--font-size, 16px);
+  margin: var(--spacing, 10px 15px);
+}</code></pre>
+        </div>
+
+        <div class="info-box">
+          <h4>2. Perhitungan dengan calc()</h4>
+          <p>
+            Custom Properties dapat digunakan dalam fungsi calc():
+          </p>
+          <pre><code>:root {
+  --base-spacing: 10px;
+  --header-height: 60px;
+}
+
+.header {
+  height: var(--header-height);
+  padding: calc(var(--base-spacing) * 2);
+}
+
+.content {
+  margin-top: calc(var(--header-height) + var(--base-spacing));
+}</code></pre>
+        </div>
+
+        <div class="info-box">
+          <h4>3. Manipulasi Warna</h4>
+          <p>
+            Gunakan Custom Properties untuk manipulasi warna:
+          </p>
+          <pre><code>:root {
+  --primary-hue: 210;
+  --primary-saturation: 70%;
+  --primary-lightness: 50%;
+  
+  --primary-color: hsl(
+    var(--primary-hue),
+    var(--primary-saturation),
+    var(--primary-lightness)
+  );
+  
+  --primary-dark: hsl(
+    var(--primary-hue),
+    var(--primary-saturation),
+    calc(var(--primary-lightness) - 10%)
+  );
+  
+  --primary-light: hsl(
+    var(--primary-hue),
+    var(--primary-saturation),
+    calc(var(--primary-lightness) + 10%)
+  );
+}
+
+.button {
+  background-color: var(--primary-color);
+  border: 1px solid var(--primary-dark);
+}
+
+.button:hover {
+  background-color: var(--primary-light);
+}</code></pre>
+        </div>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='c81.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/css.png"
+          alt="CSS"
+          onclick="window.location.href='c1.html'"
+          title="CSS"
+        />
+        <button class="btn" onclick="window.location.href='c83.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+
+    <script>
+      // Fungsi untuk menyalin kode
+      function copyCode(button) {
+        const codeBlock = button.parentElement.nextElementSibling;
+        const range = document.createRange();
+        range.selectNode(codeBlock);
+        window.getSelection().removeAllRanges();
+        window.getSelection().addRange(range);
+        document.execCommand('copy');
+        window.getSelection().removeAllRanges();
+        
+        // Ubah teks tombol sementara
+        const originalText = button.textContent;
+        button.textContent = 'Tersalin!';
+        button.style.backgroundColor = '#2ecc71';
+        
+        // Kembalikan teks asli setelah 2 detik
+        setTimeout(() => {
+          button.textContent = originalText;
+          button.style.backgroundColor = '';
+        }, 2000);
+      }
+      
+      // Fungsi untuk mengubah tema
+      function setTheme(theme) {
+        const root = document.documentElement;
+        
+        if (theme === 'dark') {
+          root.style.setProperty('--bg-color', '#1a1a1a');
+          root.style.setProperty('--text-color', '#f0f0f0');
+          root.style.setProperty('--primary-color', '#5dade2');
+          root.style.setProperty('--border-color', '#444444');
+          root.style.setProperty('--code-bg', '#2d2d2d');
+          root.style.setProperty('--example-bg', '#2d2d2d');
+          root.style.setProperty('--card-bg', '#2d2d2d');
+          root.style.setProperty('--heading-color', '#f0f0f0');
+        } else {
+          root.style.setProperty('--bg-color', '#ffffff');
+          root.style.setProperty('--text-color', '#333333');
+          root.style.setProperty('--primary-color', '#3498db');
+          root.style.setProperty('--border-color', '#dddddd');
+          root.style.setProperty('--code-bg', '#f5f5f5');
+          root.style.setProperty('--example-bg', '#ffffff');
+          root.style.setProperty('--card-bg', '#ffffff');
+          root.style.setProperty('--heading-color', '#2c3e50');
+        }
+        
+        // Simpan preferensi tema
+        localStorage.setItem('theme', theme);
+      }
+      
+      // Muat tema yang disimpan
+      const savedTheme = localStorage.getItem('theme') || 'light';
+      setTheme(savedTheme);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>c11.html</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Pengenalan CSS dan Sejarah Singkat</h2>
+
+      <h3 class="section-title">Apa itu CSS?</h3>
+      <p>
+        CSS (Cascading Style Sheets) adalah bahasa stylesheet yang digunakan untuk mengatur tampilan
+        dan format dokumen HTML. Dengan CSS, Anda dapat mengontrol warna, font, spasi, tata letak,
+        dan banyak aspek lain dari presentasi halaman web.
+      </p>
+
+      <h3 class="section-title">Sejarah Singkat CSS</h3>
+      <ul>
+        <li>
+          <strong>1994</strong>: Diusulkan pertama kali oleh Håkon Wium Lie saat bekerja di CERN
+        </li>
+        <li><strong>1996</strong>: CSS Level 1 (CSS1) dirilis oleh W3C</li>
+        <li><strong>1998</strong>: CSS Level 2 (CSS2) dirilis</li>
+        <li><strong>1999-2011</strong>: Pengembangan CSS3 secara modular</li>
+        <li><strong>2011-2012</strong>: CSS2.1 menjadi rekomendasi W3C</li>
+        <li><strong>Sekarang</strong>: CSS3 terus dikembangkan dengan modul-modul baru</li>
+      </ul>
+
+      <h3 class="section-title">Keuntungan Menggunakan CSS</h3>
+      <ul>
+        <li>
+          <strong>Pemisahan konten dan presentasi</strong>: Memisahkan struktur HTML dari gaya
+        </li>
+        <li><strong>Efisiensi</strong>: Satu file CSS dapat digunakan untuk banyak halaman</li>
+        <li><strong>Kemudahan perawatan</strong>: Perubahan gaya dapat dilakukan di satu tempat</li>
+        <li>
+          <strong>Fleksibilitas</strong>: Dapat menyesuaikan tampilan untuk berbagai perangkat
+        </li>
+        <li><strong>Kecepatan loading</strong>: File CSS di-cache oleh browser</li>
+      </ul>
+
+      <h3 class="section-title">Cara Menambahkan CSS ke HTML</h3>
+
+      <h4>1. Inline CSS</h4>
+      <div class="code-block">
+        <div class="code-header">
+          <span>HTML</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>&lt;p style="color: blue; font-size: 16px;"&gt;Teks berwarna biru dengan ukuran 16px&lt;/p&gt;</code></pre>
+      </div>
+
+      <h4>2. Internal CSS</h4>
+      <div class="code-block">
+        <div class="code-header">
+          <span>HTML</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>&lt;head&gt;
+  &lt;style&gt;
+    p {
+      color: blue;
+      font-size: 16px;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;</code></pre>
+      </div>
+
+      <h4>3. Eksternal CSS (Direkomendasikan)</h4>
+      <div class="code-block">
+        <div class="code-header">
+          <span>HTML</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>&lt;head&gt;
+  &lt;link rel="stylesheet" href="styles.css"&gt;
+&lt;/head&gt;</code></pre>
+      </div>
+
+      <div class="code-block">
+        <div class="code-header">
+          <span>CSS (styles.css)</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>p {
+  color: blue;
+  font-size: 16px;
+}</code></pre>
+      </div>
+
+      <h3 class="section-title">Syntax Dasar CSS</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>CSS</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>selector {
+  property: value;
+  /* Komentar CSS */
+}</code></pre>
+      </div>
+
+      <ul>
+        <li><strong>Selector</strong>: Elemen HTML yang ingin di-styling</li>
+        <li><strong>Property</strong>: Aspek yang ingin diubah (warna, ukuran, dll)</li>
+        <li><strong>Value</strong>: Nilai dari property yang dipilih</li>
+      </ul>
+
+      <h3 class="section-title">Contoh CSS Sederhana</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>CSS</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  color: #2c3e50;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 10px;
+}
+
+.tombol {
+  background-color: #3498db;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.tombol:hover {
+  background-color: #2980b9;
+}</code></pre>
+      </div>
+
+      <p>
+        Dengan memahami dasar-dasar CSS ini, Anda sudah siap untuk mulai mempercantik halaman web
+        Anda. Di bab selanjutnya, kita akan mempelajari lebih dalam tentang selector, properti, dan
+        nilai-nilai CSS.
+      </p>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='c1.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/css.png"
+          alt="CSS"
+          onclick="window.location.href='c1.html'"
+          title="CSS Lanjutan"
+        />
+        <button class="btn" onclick="window.location.href='c12.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+
+    <script src="../script/copyCode.js"></script>
+    <script src="../script/script.js"></script>
+  </body>
+</html>

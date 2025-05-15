@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Variables (Custom Properties)</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <style>
+      .box {
+        border: 2px solid #3498db;
+        background-color: #f0f8ff;
+        margin: 10px;
+        padding: 15px;
+        border-radius: 5px;
+      }
+      .section {
+        margin: 30px 0;
+        border-left: 4px solid #3498db;
+        padding: 0 0 0 15px;
+      }
+      .section h3 {
+        margin-top: 0;
+        color: #2c3e50;
+      }
+      .code-block {
+        background-color: #f8f9fa;
+        border-radius: 8px;
+        padding: 15px;
+        margin: 15px 0;
+        overflow-x: auto;
+      }
+      .code-header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+        font-weight: bold;
+      }
+      pre, code {
+        margin: 0;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+      }
+      .example-box {
+        padding: 20px;
+        margin: 20px 0;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+      }
+      .color-swatch {
+        display: inline-block;
+        width: 50px;
+        height: 50px;
+        margin: 10px;
+        border: 1px solid #ddd;
+        vertical-align: middle;
+      }
+      .info-box {
+        background-color: #e8f4fd;
+        border-left: 4px solid #3498db;
+        padding: 15px;
+        margin: 20px 0;
+        border-radius: 0 4px 4px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">CSS Variables (Custom Properties)</h2>
+
+      <p>
+        CSS Variables, juga dikenal sebagai Custom Properties, adalah fitur CSS yang memungkinkan kita
+        untuk menyimpan nilai yang dapat digunakan kembali di seluruh stylesheet. Fitur ini sangat
+        berguna untuk membuat tema yang konsisten dan memudahkan pemeliharaan kode.
+      </p>
+
+      <div class="info-box">
+        <h4>Keuntungan Menggunakan CSS Variables:</h4>
+        <ul>
+          <li>Nilai yang konsisten di seluruh stylesheet</li>
+          <li>Mudah melakukan perubahan tema</li>
+          <li>Dapat diubah menggunakan JavaScript</li>
+          <li>Mendukung cascade dan inheritance</li>
+          <li>Kompatibel dengan semua browser modern</li>
+        </ul>
+      </div>
+
+      <!-- Dasar CSS Variables -->
+      <div class="section">
+        <h3>1. Mendeklarasikan dan Menggunakan Variabel CSS</h3>
+        
+        <p>
+          Variabel CSS dideklarasikan dengan awalan <code>--</code> dan digunakan dengan fungsi <code>var()</code>.
+          Biasanya dideklarasikan di dalam selector <code>:root</code> untuk akses global.
+        </p>
+
+        <div class="code-block">
+          <div class="code-header">
+            <span>CSS</span>
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+          </div>
+          <pre><code>/* Mendeklarasikan variabel di root */
+:root {
+  --primary-color: #3498db;
+  --secondary-color: #2ecc71;
+  --spacing: 1rem;
+  --border-radius: 4px;
+  --box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Menggunakan variabel */
+.button {
+  background-color: var(--primary-color);
+  padding: calc(var(--spacing) / 2) var(--spacing);
+  border-radius: var(--border-radius);
+  color: white;
+  border: none;
+  box-shadow: var(--box-shadow);
+}
+
+/* Override variabel untuk elemen tertentu */
+.danger-button {
+  --primary-color: #e74c3c;
+}</code></pre>
+        </div>
+      </div>
+
+      <!-- Contoh Praktis -->
+      <div class="section">
+        <h3>2. Contoh Praktis Penggunaan CSS Variables</h3>
+        
+        <p>Berikut contoh penggunaan CSS Variables untuk membuat tema yang konsisten:</p>
+        
+        <div class="code-block">
+          <div class="code-header">
+            <span>HTML</span>
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+          </div>
+          <pre><code>&lt;div class="theme-example">
+  &lt;button class="btn primary">Primary Button&lt;/button>
+  &lt;button class="btn secondary">Secondary Button&lt;/button>
+  &lt;button class="btn accent">Accent Button&lt;/button>
+&lt;/div></code></pre>
+        </div>
+
+        <div class="code-block">
+          <div class="code-header">
+            <span>CSS</span>
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+          </div>
+          <pre><code>.theme-example {
+  --primary: #3498db;
+  --primary-dark: #2980b9;
+  --secondary: #2ecc71;
+  --secondary-dark: #27ae60;
+  --accent: #9b59b6;
+  --accent-dark: #8e44ad;
+  --text: #2c3e50;
+  --light: #ecf0f1;
+  --spacing: 1rem;
+  
+  padding: var(--spacing);
+  background-color: var(--light);
+  border-radius: 8px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.btn {
+  --btn-bg: var(--primary);
+  --btn-hover: var(--primary-dark);
+  
+  padding: calc(var(--spacing) / 2) var(--spacing);
+  margin: calc(var(--spacing) / 2);
+  border: none;
+  border-radius: 4px;
+  background-color: var(--btn-bg);
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: var(--btn-hover);
+}
+
+.btn.secondary {
+  --btn-bg: var(--secondary);
+  --btn-hover: var(--secondary-dark);
+}
+
+.btn.accent {
+  --btn-bg: var(--accent);
+  --btn-hover: var(--accent-dark);
+}</code></pre>
+        </div>
+      </div>
+
+
+      <!-- Mengubah Variabel dengan JavaScript -->
+      <div class="section">
+        <h3>3. Mengubah Variabel CSS dengan JavaScript</h3>
+        
+        <p>Kita dapat mengubah nilai variabel CSS secara dinamis menggunakan JavaScript:</p>
+        
+        <div class="example-box">
+          <label for="primaryColor">Pilih Warna Utama: </label>
+          <input type="color" id="primaryColor" value="#3498db" onchange="updateColor()">
+          
+          <div style="margin-top: 20px;">
+            <button class="btn" style="--btn-bg: var(--primary); --btn-hover: var(--primary-dark);">
+              Tombol Contoh
+            </button>
+          </div>
+        </div>
+        
+        <div class="code-block">
+          <div class="code-header">
+            <span>JavaScript</span>
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+          </div>
+          <pre><code>function updateColor() {
+  // Mendapatkan nilai warna dari input
+  const newColor = document.getElementById('primaryColor').value;
+  
+  // Mengubah nilai variabel CSS
+  document.documentElement.style.setProperty('--primary', newColor);
+  
+  // Menghitung warna yang lebih gelap untuk hover
+  const darkerColor = adjustColor(newColor, -20);
+  document.documentElement.style.setProperty('--primary-dark', darkerColor);
+}
+
+// Fungsi untuk menyesuaikan kecerahan warna
+function adjustColor(color, amount) {
+  return '#' + color.replace(/^#/, '').replace(/../g, color => 
+    ('0' + Math.min(255, Math.max(0, parseInt(color, 16) + amount)).toString(16)).substr(-2)
+  );
+}</code></pre>
+        </div>
+      </div>
+
+      <!-- Best Practices -->
+      <div class="section">
+        <h3>4. Best Practices Menggunakan CSS Variables</h3>
+        
+        <div class="info-box">
+          <h4>Tips Penggunaan CSS Variables:</h4>
+          <ol>
+            <li>Gunakan nama yang deskriptif dan konsisten (misal: <code>--primary-color</code>, <code>--spacing-large</code>)</li>
+            <li>Deklarasikan variabel global di <code>:root</code> untuk akses di mana saja</li>
+            <li>Manfaatkan cascade dengan mendeklarasikan ulang variabel untuk konteks tertentu</li>
+            <li>Gunakan fallback value untuk kompatibilitas: <code>var(--warna, #default)</code></li>
+            <li>Kelompokkan variabel yang terkait untuk organisasi yang lebih baik</li>
+          </ol>
+        </div>
+        
+        <div class="code-block">
+          <div class="code-header">
+            <span>CSS - Contoh Organisasi Variabel</span>
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+          </div>
+          <pre><code>/* Warna */
+:root {
+  /* Warna Utama */
+  --color-primary: #3498db;
+  --color-primary-dark: #2980b9;
+  --color-primary-light: #5dade2;
+  
+  /* Warna Sekunder */
+  --color-secondary: #2ecc71;
+  --color-secondary-dark: #27ae60;
+  
+  /* Netral */
+  --color-text: #2c3e50;
+  --color-text-light: #7f8c8d;
+  --color-bg: #ffffff;
+  --color-border: #ecf0f1;
+  
+  /* Spacing */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  
+  /* Border Radius */
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 8px;
+  
+  /* Box Shadow */
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.12);
+  --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+  --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+  
+  /* Transisi */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
+}</code></pre>
+        </div>
+      </div>
+
+      <div class="section">
+        <h3>5. Contoh Interaktif</h3>
+        
+        <p>Ubah tema halaman dengan memilih skema warna:</p>
+        
+        <div class="example-box">
+          <button onclick="setTheme('light')" class="btn" style="margin-right: 10px;">Tema Terang</button>
+          <button onclick="setTheme('dark')" class="btn" style="margin-right: 10px;">Tema Gelap</button>
+          <button onclick="setTheme('high-contrast')" class="btn">Kontras Tinggi</button>
+          
+          <div style="margin-top: 20px; padding: 15px; border: 1px solid var(--border-color, #ddd); border-radius: 4px;">
+            <h4 style="margin-top: 0;">Contoh Konten</h4>
+            <p>Ini adalah contoh teks yang akan berubah sesuai tema yang dipilih.</p>
+            <button class="btn">Tombol Contoh</button>
+          </div>
+        </div>
+        
+        <div class="code-block">
+          <div class="code-header">
+            <span>JavaScript - Mengubah Tema</span>
+            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+          </div>
+          <pre><code>// Mendefinisikan tema
+themes = {
+  light: {
+    '--bg-color': '#ffffff',
+    '--text-color': '#2c3e50',
+    '--primary-color': '#3498db',
+    '--secondary-color': '#2ecc71',
+    '--border-color': '#ecf0f1'
+  },
+  dark: {
+    '--bg-color': '#1a1a1a',
+    '--text-color': '#ecf0f1',
+    '--primary-color': '#5dade2',
+    '--secondary-color': '#2ecc71',
+    '--border-color': '#34495e'
+  },
+  'high-contrast': {
+    '--bg-color': '#000000',
+    '--text-color': '#ffffff',
+    '--primary-color': '#ffff00',
+    '--secondary-color': '#00ffff',
+    '--border-color': '#ffffff'
+  }
+};
+
+function setTheme(themeName) {
+  const theme = themes[themeName];
+  const root = document.documentElement;
+  
+  // Terapkan semua variabel dari tema yang dipilih
+  Object.keys(theme).forEach(property => {
+    root.style.setProperty(property, theme[property]);
+  });
+  
+  // Simpan preferensi tema
+  localStorage.setItem('theme', themeName);
+}
+
+// Muat tema yang disimpan
+const savedTheme = localStorage.getItem('theme') || 'light';
+setTheme(savedTheme);</code></pre>
+        </div>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='c74.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/css.png"
+          alt="CSS"
+          onclick="window.location.href='c1.html'"
+          title="CSS"
+        />
+        <button class="btn" onclick="window.location.href='c82.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+    </div>
+
+    <script>
+      // Fungsi untuk menyalin kode
+      function copyCode(button) {
+        const codeBlock = button.parentElement.nextElementSibling;
+        const range = document.createRange();
+        range.selectNode(codeBlock);
+        window.getSelection().removeAllRanges();
+        window.getSelection().addRange(range);
+        document.execCommand('copy');
+        window.getSelection().removeAllRanges();
+        
+        // Ubah teks tombol sementara
+        const originalText = button.textContent;
+        button.textContent = 'Tersalin!';
+        button.style.backgroundColor = '#2ecc71';
+        
+        // Kembalikan teks asli setelah 2 detik
+        setTimeout(() => {
+          button.textContent = originalText;
+          button.style.backgroundColor = '';
+        }, 2000);
+      }
+      
+      // Fungsi untuk tema interaktif
+      const themes = {
+        light: {
+          '--bg-color': '#ffffff',
+          '--text-color': '#2c3e50',
+          '--primary-color': '#3498db',
+          '--secondary-color': '#2ecc71',
+          '--border-color': '#ecf0f1'
+        },
+        dark: {
+          '--bg-color': '#1a1a1a',
+          '--text-color': '#ecf0f1',
+          '--primary-color': '#5dade2',
+          '--secondary-color': '#2ecc71',
+          '--border-color': '#34495e'
+        },
+        'high-contrast': {
+          '--bg-color': '#000000',
+          '--text-color': '#ffffff',
+          '--primary-color': '#ffff00',
+          '--secondary-color': '#00ffff',
+          '--border-color': '#ffffff'
+        }
+      };
+
+      function setTheme(themeName) {
+        const theme = themes[themeName];
+        const root = document.documentElement;
+        
+        // Terapkan semua variabel dari tema yang dipilih
+        Object.keys(theme).forEach(property => {
+          root.style.setProperty(property, theme[property]);
+        });
+        
+        // Simpan preferensi tema
+        localStorage.setItem('theme', themeName);
+      }
+      
+      // Muat tema yang disimpan
+      const savedTheme = localStorage.getItem('theme') || 'light';
+      setTheme(savedTheme);
+      
+      // Fungsi untuk contoh warna
+      function updateColor() {
+        const newColor = document.getElementById('primaryColor').value;
+        document.documentElement.style.setProperty('--primary', newColor);
+        
+        // Hitung warna yang lebih gelap untuk hover
+        const darkerColor = adjustColor(newColor, -20);
+        document.documentElement.style.setProperty('--primary-dark', darkerColor);
+      }
+      
+      // Fungsi untuk menyesuaikan kecerahan warna
+      function adjustColor(color, amount) {
+        return '#' + color.replace(/^#/, '').replace(/../g, color => 
+          ('0' + Math.min(255, Math.max(0, parseInt(color, 16) + amount)).toString(16)).substr(-2)
+        );
+      }
+    </script>
+  </body>
+</html>

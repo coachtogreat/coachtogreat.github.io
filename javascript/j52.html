@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>While dan do...while Loop dalam JavaScript</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">While dan do...while Loop dalam JavaScript</h2>
+
+      <h3 class="section-title">1. Pengenalan While Loop</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Syntax While Loop</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>while (kondisi) {
+    // kode yang dijalankan
+}</code></pre>
+      </div>
+
+      <h3 class="section-title">2. Contoh While Loop</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh While</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Contoh hitung mundur
+let i = 5;
+while (i > 0) {
+    console.log(i);
+    i--;
+}
+
+// Contoh array
+let buah = ["apel", "mangga", "jeruk"];
+let index = 0;
+while (index < buah.length) {
+    console.log(buah[index]);
+    index++;
+}
+
+// Contoh dengan kondisi kompleks
+let nilai = 1;
+while (nilai <= 100 && nilai % 2 === 0) {
+    console.log(nilai);
+    nilai += 2;
+}</code></pre>
+      </div>
+
+      <h3 class="section-title">3. Pengenalan do...while Loop</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Syntax do...while</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>do {
+    // kode yang dijalankan
+} while (kondisi);</code></pre>
+      </div>
+
+      <h3 class="section-title">4. Contoh do...while Loop</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh do...while</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Contoh sederhana
+do {
+    console.log("Hello");
+} while (false);
+
+// Contoh game tebak angka
+let jawaban = Math.floor(Math.random() * 10) + 1;
+let tebakan;
+
+console.log("Tebak angka antara 1-10!");
+
+// Menggunakan do...while untuk memastikan minimal satu kali
+// tebakan dilakukan
+do {
+    tebakan = prompt("Masukkan tebakan Anda:");
+    if (tebakan == jawaban) {
+        console.log("Benar!");
+    } else {
+        console.log("Salah, coba lagi!");
+    }
+} while (tebakan != jawaban);
+
+// Contoh validasi input
+do {
+    let nama = prompt("Masukkan nama:");
+    if (nama.length > 0) {
+        console.log("Nama valid: " + nama);
+        break;
+    }
+    console.log("Nama tidak boleh kosong!");
+} while (true);</code></pre>
+      </div>
+
+      <h3 class="section-title">5. Perbandingan While dan do...while</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Perbandingan</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// While: memeriksa kondisi sebelum menjalankan kode
+let i = 0;
+while (i < 5) {
+    console.log(i);
+    i++;
+}
+
+// do...while: menjalankan kode minimal satu kali
+let i = 5;
+do {
+    console.log(i);
+    i++;
+} while (i < 5); // kode tetap dijalankan satu kali</code></pre>
+      </div>
+
+      <h3 class="section-title">6. Best Practices</h3>
+      <ul>
+        <li>Gunakan while untuk kondisi yang tidak pasti</li>
+        <li>Gunakan do...while untuk kode yang harus dijalankan minimal satu kali</li>
+        <li>Tambahkan kondisi break untuk menghindari infinite loop</li>
+        <li>Pisahkan kondisi kompleks ke dalam fungsi</li>
+        <li>Gunakan variabel yang deskriptif</li>
+        <li>Tambahkan komentar untuk menjelaskan kondisi</li>
+      </ul>
+
+      <h3 class="section-title">7. Contoh Praktis</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Kalkulator</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Fungsi hitung faktorial dengan while
+function faktorial(n) {
+    let hasil = 1;
+    let i = 1;
+    while (i <= n) {
+        hasil *= i;
+        i++;
+    }
+    return hasil;
+}
+
+// Fungsi validasi input dengan do...while
+function validasiInput() {
+    let input;
+    do {
+        input = prompt("Masukkan angka antara 1-100:");
+        if (input >= 1 && input <= 100) {
+            return input;
+        }
+        console.log("Input tidak valid!");
+    } while (true);
+}
+
+// Contoh game tebak angka dengan while
+do {
+    let jawaban = Math.floor(Math.random() * 10) + 1;
+    let tebakan;
+    let skor = 100;
+
+    console.log("Tebak angka antara 1-10!");
+
+    while (skor > 0) {
+        tebakan = prompt("Masukkan tebakan Anda:");
+        if (tebakan == jawaban) {
+            console.log("Benar! Skor Anda: " + skor);
+            break;
+        }
+        skor -= 10;
+        console.log("Salah, coba lagi! Skor: " + skor);
+    }
+
+    if (confirm("Main lagi?") === false) {
+        break;
+    }
+} while (true);
+
+// Contoh validasi password dengan do...while
+function validasiPassword() {
+    let password;
+    do {
+        password = prompt("Masukkan password (minimal 8 karakter):");
+        if (password.length >= 8) {
+            return password;
+        }
+        console.log("Password minimal 8 karakter!");
+    } while (true);
+}</code></pre>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='j51.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/javascript.png"
+          alt="javascript"
+          onclick="window.location.href='j1.html'"
+          title="javascript"
+        />
+        <button class="btn" onclick="window.location.href='j53.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+  </body>
+</html>

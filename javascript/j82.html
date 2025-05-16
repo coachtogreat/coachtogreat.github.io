@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Properti dan Metode dalam JavaScript</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Properti dan Metode dalam JavaScript</h2>
+
+      <h3 class="section-title">1. Properti dalam Objek</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Properti</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Properti sederhana
+let orang = {
+    nama: "John",
+    umur: 25,
+    alamat: "Jakarta"
+};
+
+// Properti dengan nilai berbagai tipe
+let siswa = {
+    nama: "John",
+    umur: 25,
+    aktif: true,
+    nilai: [80, 85, 90],
+    info: {
+        kelas: "10",
+        jurusan: "IPA"
+    }
+};
+
+// Properti dengan simbol
+let simbol = Symbol("id");
+let objek = {
+    [simbol]: "nilai simbol"
+};
+
+// Properti dengan computed property
+let namaProp = "warna";
+let mobil = {
+    [namaProp]: "merah",
+    ["merek_" + "mobil"]: "Toyota"
+};</code></pre>
+      </div>
+
+      <h3 class="section-title">2. Metode dalam Objek</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Metode</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Metode sederhana
+let kalkulator = {
+    tambah: function(a, b) {
+        return a + b;
+    },
+    kurang: function(a, b) {
+        return a - b;
+    }
+};
+
+// Metode dengan arrow function
+let siswa = {
+    nama: "John",
+    nilai: [80, 85, 90],
+    hitungRataRata: () => {
+        return this.nilai.reduce((a, b) => a + b) / this.nilai.length;
+    }
+};
+
+// Metode dengan computed property
+let namaMetode = "hitung";
+let objek = {
+    [namaMetode]: function() {
+        return "hasil hitung";
+    }
+};
+
+// Metode statis
+function Orang() {}
+Orang.cetak = function() {
+    console.log("Ini metode statis");
+};</code></pre>
+      </div>
+
+      <h3 class="section-title">3. Properti dan Metode dalam Constructor</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Constructor</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Constructor dengan properti dan metode
+function Orang(nama, umur) {
+    this.nama = nama;
+    this.umur = umur;
+    
+    // Properti
+    this.info = {
+        alamat: "Jakarta",
+        hobi: ["membaca", "menulis"]
+    };
+    
+    // Metode
+    this.sapa = function() {
+        console.log("Halo, nama saya " + this.nama);
+    };
+}
+
+// Constructor dengan prototype
+function Produk(nama, harga) {
+    this.nama = nama;
+    this.harga = harga;
+}
+
+Produk.prototype.diskon = function(persen) {
+    return this.harga * (1 - persen);
+};
+
+// Constructor dengan class
+class Mobil {
+    constructor(merek, tahun) {
+        this.merek = merek;
+        this.tahun = tahun;
+    }
+    
+    info() {
+        return `${this.merek} ${this.tahun}`;
+    }
+    
+    static hitungHarga(harga, diskon) {
+        return harga * (1 - diskon);
+    }
+}</code></pre>
+      </div>
+
+      <h3 class="section-title">4. Best Practices</h3>
+      <ul>
+        <li>Gunakan arrow function untuk metode yang tidak menggunakan this</li>
+        <li>Gunakan prototype untuk metode yang digunakan bersama</li>
+        <li>Beri nama properti dan metode yang deskriptif</li>
+        <li>Tambahkan komentar untuk menjelaskan fungsi</li>
+        <li>Pisahkan logika yang rumit ke dalam fungsi</li>
+        <li>Hindari properti dengan nama yang sama</li>
+      </ul>
+
+      <h3 class="section-title">5. Contoh Praktis</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Penggunaan</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Contoh kalkulator
+let kalkulator = {
+    nilai1: 0,
+    nilai2: 0,
+    
+    setNilai: function(a, b) {
+        this.nilai1 = a;
+        this.nilai2 = b;
+    },
+    
+    tambah: function() {
+        return this.nilai1 + this.nilai2;
+    },
+    
+    kurang: function() {
+        return this.nilai1 - this.nilai2;
+    }
+};
+
+// Contoh data siswa
+let siswa = {
+    nama: "John",
+    nilai: [80, 85, 90],
+    
+    hitungRataRata: function() {
+        return this.nilai.reduce((a, b) => a + b) / this.nilai.length;
+    },
+    
+    cetak: function() {
+        return `Nama: ${this.nama}, Rata-rata: ${this.hitungRataRata()}`;
+    }
+};
+
+// Contoh data produk
+let produk = {
+    id: 1,
+    nama: "Laptop",
+    harga: 10000000,
+    stok: 10,
+    
+    hitungHargaAkhir: function(diskon) {
+        return this.harga * (1 - diskon);
+    },
+    
+    updateStok: function(jumlah) {
+        this.stok += jumlah;
+        return this.stok;
+    }
+};
+
+// Contoh data menu
+let menu = {
+    makanan: {
+        "Nasi Goreng": {
+            harga: 20000,
+            stok: 50,
+            pesan: function(jumlah) {
+                this.stok -= jumlah;
+                return jumlah * this.harga;
+            }
+        },
+        "Mie Goreng": {
+            harga: 25000,
+            stok: 40,
+            pesan: function(jumlah) {
+                this.stok -= jumlah;
+                return jumlah * this.harga;
+            }
+        }
+    },
+    
+    hitungTotal: function(makanan, jumlah) {
+        return this.makanan[makanan].pesan(jumlah);
+    }
+};</code></pre>
+      </div>
+
+      <h3 class="section-title">6. Tips Penggunaan</h3>
+      <ul>
+        <li>Gunakan arrow function untuk metode yang tidak menggunakan this</li>
+        <li>Gunakan prototype untuk metode yang digunakan bersama</li>
+        <li>Beri nama properti dan metode yang deskriptif</li>
+        <li>Tambahkan komentar untuk menjelaskan fungsi</li>
+        <li>Pisahkan logika yang rumit ke dalam fungsi</li>
+        <li>Hindari properti dengan nama yang sama</li>
+      </ul>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='j81.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/javascript.png"
+          alt="javascript"
+          onclick="window.location.href='j1.html'"
+          title="javascript"
+        />
+        <button class="btn" onclick="window.location.href='j83.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+  </body>
+</html>

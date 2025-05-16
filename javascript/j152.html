@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Export dan Import dalam JavaScript</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Export dan Import dalam JavaScript</h2>
+
+      <h3 class="section-title">1. Pengenalan Export dan Import</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Dasar</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// File: todo.js
+export const todos = [];
+
+export function tambahTodo(teks) {
+    todos.push(teks);
+}
+
+export function hapusTodo(id) {
+    todos.splice(id, 1);
+}
+
+// File: index.js
+import { todos, tambahTodo, hapusTodo } from './todo.js';
+
+// Atau menggunakan default export
+export default {
+    todos,
+    tambahTodo,
+    hapusTodo
+};
+
+// File: index.js
+import todo from './todo.js';
+
+// Named export
+export const nama = "John";
+export const umur = 30;
+
+// Default export
+export default function() {
+    console.log("Halo!");
+}
+
+// Multiple export
+export const nama = "John";
+export const umur = 30;
+export function sapa() {
+    console.log("Halo!");
+}</code></pre>
+      </div>
+
+      <h3 class="section-title">2. Jenis Export</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Jenis Export</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// 1. Named Export
+export const nama = "John";
+export const umur = 30;
+
+// 2. Default Export
+export default function() {
+    console.log("Halo!");
+}
+
+// 3. Multiple Export
+export const nama = "John";
+export const umur = 30;
+export function sapa() {
+    console.log("Halo!");
+}
+
+// 4. Export dari file lain
+export { nama, umur } from './data.js';
+
+// 5. Export dengan rename
+export { nama as namaUser, umur as usia } from './data.js';
+
+// 6. Export default dan named
+export const nama = "John";
+export default function() {
+    console.log("Halo!");
+}</code></pre>
+      </div>
+
+      <h3 class="section-title">3. Jenis Import</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Jenis Import</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// 1. Named Import
+import { nama, umur } from './data.js';
+
+// 2. Import dengan rename
+import { nama as namaUser, umur as usia } from './data.js';
+
+// 3. Default Import
+import sapa from './fungsi.js';
+
+// 4. Import semua
+import * as data from './data.js';
+
+// 5. Import default dan named
+import sapa, { nama, umur } from './fungsi.js';
+
+// 6. Import file CSS
+import './style.css';
+
+// 7. Import dynamic
+const module = await import('./data.js');
+
+// 8. Import kondisional
+if (condition) {
+    const module = await import('./data.js');
+}</code></pre>
+      </div>
+
+      <h3 class="section-title">4. Best Practices</h3>
+      <ul>
+        <li>Gunakan default export untuk satu fungsi utama</li>
+        <li>Gunakan named export untuk fungsi pendukung</li>
+        <li>Beri nama yang deskriptif untuk export</li>
+        <li>Tambahkan komentar untuk menjelaskan export</li>
+        <li>Hindari circular dependencies</li>
+        <li>Gunakan import dynamic untuk lazy loading</li>
+        <li>Tambahkan error handling untuk import dynamic</li>
+      </ul>
+
+      <h3 class="section-title">5. Contoh Praktis</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Penggunaan</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// 1. Todo List
+// File: todo.js
+export const todos = [];
+
+export function tambahTodo(teks) {
+    todos.push(teks);
+}
+
+export function hapusTodo(id) {
+    todos.splice(id, 1);
+}
+
+// File: index.js
+import { todos, tambahTodo, hapusTodo } from './todo.js';
+
+// 2. Galeri Foto
+// File: galeri.js
+export const gambar = [];
+
+export function tambahGambar(url) {
+    gambar.push(url);
+}
+
+export function hapusGambar(id) {
+    gambar.splice(id, 1);
+}
+
+// File: index.js
+import { gambar, tambahGambar, hapusGambar } from './galeri.js';
+
+// 3. Form Validation
+// File: validator.js
+export function validateEmail(email) {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
+}
+
+export function validatePassword(password) {
+    return password.length >= 8;
+}
+
+// File: index.js
+import { validateEmail, validatePassword } from './validator.js';
+
+// 4. Animasi
+// File: animasi.js
+export function gerakKiri(element, jarak) {
+    element.style.left = jarak + "px";
+}
+
+export function gerakKanan(element, jarak) {
+    element.style.right = jarak + "px";
+}
+
+// File: index.js
+import { gerakKiri, gerakKanan } from './animasi.js';
+
+// 5. Data Storage
+// File: storage.js
+export function simpan(key, value) {
+    localStorage.setItem(key, JSON.stringify(value));
+}
+
+export function ambil(key) {
+    const data = localStorage.getItem(key);
+    return data ? JSON.parse(data) : null;
+}
+
+// File: index.js
+import { simpan, ambil } from './storage.js';
+
+// 6. Dynamic Import
+// File: komponen.js
+export default function Komponen() {
+    return (
+        <div>
+            <h1>Komponen</h1>
+        </div>
+    );
+}
+
+// File: index.js
+const komponen = await import('./komponen.js');</code></pre>
+      </div>
+
+      <h3 class="section-title">6. Tips Penggunaan</h3>
+      <ul>
+        <li>Gunakan default export untuk satu fungsi utama</li>
+        <li>Gunakan named export untuk fungsi pendukung</li>
+        <li>Beri nama yang deskriptif untuk export</li>
+        <li>Tambahkan komentar untuk menjelaskan export</li>
+        <li>Hindari circular dependencies</li>
+        <li>Gunakan import dynamic untuk lazy loading</li>
+        <li>Tambahkan error handling untuk import dynamic</li>
+      </ul>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='j151.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/javascript.png"
+          alt="javascript"
+          onclick="window.location.href='j1.html'"
+          title="javascript"
+        />
+        <button class="btn" onclick="window.location.href='j161.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+  </body>
+</html>

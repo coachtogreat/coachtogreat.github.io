@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Console Debugging</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Console Debugging</h2>
+
+      <h3 class="section-title">1. Pengenalan Console</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Cara Mengakses Console</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// 1. Mengakses Console
+// - Tekan F12 atau Ctrl+Shift+I
+// - Pilih tab "Console"
+// - Atau klik kanan di halaman web dan pilih "Inspect"
+
+// 2. Menulis ke Console
+console.log('Halo, ini pesan log');
+console.error('Ini pesan error');
+console.warn('Ini pesan warning');
+console.info('Ini pesan info');</code></pre>
+      </div>
+
+      <h3 class="section-title">2. Metode Console</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Metode Utama Console</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// 1. console.log()
+console.log('Pesan', 'dengan', 'beberapa', 'argumen');
+console.log({ nama: 'John', umur: 30 });
+
+// 2. console.error()
+console.error('Terjadi kesalahan');
+
+// 3. console.warn()
+console.warn('Peringatan!');
+
+// 4. console.info()
+console.info('Informasi penting');
+
+// 5. console.debug()
+console.debug('Pesan debug');
+
+// 6. console.table()
+const data = [
+    { nama: 'John', umur: 30 },
+    { nama: 'Jane', umur: 25 }
+];
+console.table(data);</code></pre>
+      </div>
+
+      <h3 class="section-title">3. Debugging dengan Breakpoints</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Penggunaan Breakpoints</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// 1. Menggunakan debugger;
+function hitung(a, b) {
+    debugger;
+    return a + b;
+}
+
+// 2. Menggunakan console.trace()
+function fungsi1() {
+    fungsi2();
+}
+
+function fungsi2() {
+    console.trace();
+}
+
+// 3. Menggunakan console.time() dan console.timeEnd()
+console.time('Waktu Eksekusi');
+for (let i = 0; i < 1000000; i++) {
+    // Operasi
+}
+console.timeEnd('Waktu Eksekusi');
+
+// 4. Menggunakan console.assert()
+const nilai = 10;
+console.assert(nilai > 5, 'Nilai harus lebih besar dari 5');</code></pre>
+      </div>
+
+      <h3 class="section-title">4. Tips Debugging Efektif</h3>
+      <ul>
+        <li>Gunakan console.log() dengan bijak</li>
+        <li>Gunakan debugger; untuk men-debug kode</li>
+        <li>Gunakan console.trace() untuk melihat stack trace</li>
+        <li>Gunakan console.time() untuk mengukur performa</li>
+        <li>Gunakan console.assert() untuk validasi</li>
+        <li>Gunakan console.table() untuk menampilkan data tabel</li>
+        <li>Gunakan console.group() untuk mengelompokkan log</li>
+        <li>Gunakan console.error() untuk pesan error</li>
+      </ul>
+
+      <h3 class="section-title">5. Contoh Praktis</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Debugging Aplikasi</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// 1. Debugging API Call
+async function fetchData() {
+    console.time('API Call');
+    try {
+        const response = await fetch('https://api.example.com/data');
+        console.log('Response status:', response.status);
+        const data = await response.json();
+        console.log('Data received:', data);
+        return data;
+    } catch (error) {
+        console.error('Error:', error);
+        throw error;
+    } finally {
+        console.timeEnd('API Call');
+    }
+}
+
+// 2. Debugging Loop
+function prosesData(data) {
+    console.group('Proses Data');
+    console.log('Data masuk:', data);
+    
+    for (let i = 0; i < data.length; i++) {
+        console.log(`Mengolah item ${i}:`, data[i]);
+        // Operasi
+    }
+    
+    console.groupEnd();
+}
+
+// 3. Debugging Event
+function handleClick(event) {
+    console.log('Event:', event);
+    console.log('Target:', event.target);
+    console.log('Type:', event.type);
+}</code></pre>
+      </div>
+
+      <h3 class="section-title">6. Best Practices</h3>
+      <ul>
+        <li>Gunakan console.group() untuk mengorganisir log</li>
+        <li>Tambahkan timestamp ke log penting</li>
+        <li>Gunakan console.trace() untuk melacak stack</li>
+        <li>Gunakan console.time() untuk mengukur performa</li>
+        <li>Gunakan console.assert() untuk validasi</li>
+        <li>Hapus console.log() sebelum deployment</li>
+        <li>Gunakan console.error() untuk error handling</li>
+        <li>Gunakan console.warn() untuk peringatan</li>
+      </ul>
+
+      <h3 class="section-title">7. Tips Penggunaan</h3>
+      <ul>
+        <li>Gunakan console.group() untuk mengelompokkan log</li>
+        <li>Tambahkan timestamp ke log penting</li>
+        <li>Gunakan console.trace() untuk melacak stack</li>
+        <li>Gunakan console.time() untuk mengukur performa</li>
+        <li>Gunakan console.assert() untuk validasi</li>
+        <li>Hapus console.log() sebelum deployment</li>
+        <li>Gunakan console.error() untuk error handling</li>
+        <li>Gunakan console.warn() untuk peringatan</li>
+      </ul>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='j203.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/javascript.png"
+          alt="javascript"
+          onclick="window.location.href='j1.html'"
+          title="javascript"
+        />
+        <button class="btn" onclick="window.location.href='j212.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+
+    <script>
+      function copyCode(button) {
+        const codeBlock = button.parentElement.nextElementSibling;
+        const code = codeBlock.textContent;
+        navigator.clipboard.writeText(code);
+        button.textContent = 'Copied!';
+        setTimeout(() => {
+          button.textContent = 'Copy';
+        }, 2000);
+      }
+    </script>
+  </body>
+</html>

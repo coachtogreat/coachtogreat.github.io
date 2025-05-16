@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Async/Await dalam JavaScript</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Async/Await dalam JavaScript</h2>
+
+      <h3 class="section-title">1. Pengenalan Async/Await</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Dasar</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Contoh dasar async/await
+async function proses() {
+    try {
+        const hasil = await new Promise((resolve) => {
+            setTimeout(() => resolve("Berhasil!"), 2000);
+        });
+        console.log(hasil); // "Berhasil!"
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+// Contoh dengan Promise
+async function prosesData() {
+    try {
+        const hasil1 = await proses1();
+        const hasil2 = await proses2(hasil1);
+        const hasil3 = await proses3(hasil2);
+        console.log(`Hasil: ${hasil3}`);
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+// Contoh dengan Promise.all
+async function prosesSemua() {
+    try {
+        const [hasil1, hasil2] = await Promise.all([
+            proses1(),
+            proses2()
+        ]);
+        console.log(`Hasil 1: ${hasil1}, Hasil 2: ${hasil2}`);
+    } catch (error) {
+        console.error(error);
+    }
+}</code></pre>
+      </div>
+
+      <h3 class="section-title">2. Keuntungan Async/Await</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Keuntungan</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// 1. Lebih mudah dibaca
+// Callback style
+proses1().then(hasil1 => {
+    proses2(hasil1).then(hasil2 => {
+        proses3(hasil2).then(hasil3 => {
+            console.log(hasil3);
+        });
+    });
+});
+
+// Async/await style
+async function proses() {
+    const hasil1 = await proses1();
+    const hasil2 = await proses2(hasil1);
+    const hasil3 = await proses3(hasil2);
+    console.log(hasil3);
+}
+
+// 2. Lebih mudah ditangani error
+// Callback style
+proses1()
+    .then(hasil1 => proses2(hasil1))
+    .then(hasil2 => proses3(hasil2))
+    .catch(error => {
+        console.error(error);
+    });
+
+// Async/await style
+async function proses() {
+    try {
+        const hasil1 = await proses1();
+        const hasil2 = await proses2(hasil1);
+        const hasil3 = await proses3(hasil2);
+        console.log(hasil3);
+    } catch (error) {
+        console.error(error);
+    }
+}</code></pre>
+      </div>
+
+      <h3 class="section-title">3. Best Practices</h3>
+      <ul>
+        <li>Gunakan async/await untuk operasi async</li>
+        <li>Tambahkan try/catch untuk error handling</li>
+        <li>Gunakan await untuk operasi yang memerlukan hasil sebelumnya</li>
+        <li>Hindari penggunaan async/await yang berlebihan</li>
+        <li>Beri nama fungsi yang deskriptif</li>
+        <li>Tambahkan komentar untuk menjelaskan async/await</li>
+        <li>Pisahkan logika ke dalam fungsi terpisah</li>
+      </ul>
+
+      <h3 class="section-title">4. Contoh Praktis</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Penggunaan</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Contoh todo list
+async function tambahTodo(teks) {
+    try {
+        const li = document.createElement("li");
+        li.textContent = teks;
+        document.getElementById("todo-list").appendChild(li);
+        
+        await new Promise(resolve => setTimeout(resolve, 500));
+        li.style.color = "blue";
+        
+        return li;
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+// Contoh galeri foto
+async function tampilkanGambar(url) {
+    try {
+        const response = await fetch(url);
+        const blob = await response.blob();
+        const img = new Image();
+        img.src = URL.createObjectURL(blob);
+        
+        await new Promise(resolve => setTimeout(resolve, 500));
+        document.body.appendChild(img);
+        
+        return img;
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+// Contoh form validation
+async function validateForm() {
+    try {
+        const nama = document.getElementById("nama");
+        const email = document.getElementById("email");
+        
+        if (nama.value.trim().length === 0) {
+            throw new Error("Nama tidak boleh kosong");
+        }
+        
+        if (!email.value.includes("@")) {
+            throw new Error("Email tidak valid");
+        }
+        
+        return "Form valid";
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+// Contoh animasi
+async function animasi(element) {
+    try {
+        let posisi = 0;
+        
+        while (posisi < 400) {
+            element.style.left = posisi + "px";
+            posisi++;
+            await new Promise(resolve => setTimeout(resolve, 10));
+        }
+        
+        return "Animasi selesai!";
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+// Contoh fetch data
+async function fetchData(url) {
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+// Contoh dengan Promise.all
+async function prosesSemua() {
+    try {
+        const [hasil1, hasil2] = await Promise.all([
+            proses1(),
+            proses2()
+        ]);
+        console.log(`Hasil 1: ${hasil1}, Hasil 2: ${hasil2}`);
+    } catch (error) {
+        console.error(error);
+    }
+}</code></pre>
+      </div>
+
+      <h3 class="section-title">5. Tips Penggunaan</h3>
+      <ul>
+        <li>Gunakan async/await untuk operasi async</li>
+        <li>Tambahkan try/catch untuk error handling</li>
+        <li>Gunakan await untuk operasi yang memerlukan hasil sebelumnya</li>
+        <li>Hindari penggunaan async/await yang berlebihan</li>
+        <li>Beri nama fungsi yang deskriptif</li>
+        <li>Tambahkan komentar untuk menjelaskan async/await</li>
+        <li>Pisahkan logika ke dalam fungsi terpisah</li>
+      </ul>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='j123.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/javascript.png"
+          alt="javascript"
+          onclick="window.location.href='j1.html'"
+          title="javascript"
+        />
+        <button class="btn" onclick="window.location.href='j131.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+  </body>
+</html>

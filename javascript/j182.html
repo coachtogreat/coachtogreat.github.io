@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pencarian dan Penggantian dalam JavaScript</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Pencarian dan Penggantian dalam JavaScript</h2>
+
+      <h3 class="section-title">1. Pencarian</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Pencarian</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// 1. search
+const teks = "Hello World";
+const hasil = teks.search(/World/);
+console.log(hasil); // 6
+
+// 2. match
+const teks = "Hello World";
+const hasil = teks.match(/World/);
+console.log(hasil); // ["World", index: 6, input: "Hello World", groups: undefined]
+
+// 3. matchAll
+const teks = "Hello World Hello Again";
+const hasil = [...teks.matchAll(/Hello/g)];
+console.log(hasil);
+// [
+//   ["Hello", index: 0, input: "Hello World Hello Again", groups: undefined],
+//   ["Hello", index: 12, input: "Hello World Hello Again", groups: undefined]
+// ]
+
+// 4. test
+const regex = /World/;
+const hasil = regex.test("Hello World");
+console.log(hasil); // true
+
+// 5. exec
+const regex = /World/;
+const hasil = regex.exec("Hello World");
+console.log(hasil); // ["World", index: 6, input: "Hello World", groups: undefined]</code></pre>
+      </div>
+
+      <h3 class="section-title">2. Penggantian</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Penggantian</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// 1. replace
+const teks = "Hello World";
+const hasil = teks.replace(/World/, "JavaScript");
+console.log(hasil); // "Hello JavaScript"
+
+// 2. replaceAll
+const teks = "Hello World Hello Again";
+const hasil = teks.replaceAll(/Hello/g, "Hi");
+console.log(hasil); // "Hi World Hi Again"
+
+// 3. replace dengan function
+const teks = "Hello World";
+const hasil = teks.replace(/World/, function(match) {
+    return match.toUpperCase();
+});
+console.log(hasil); // "Hello WORLD"
+
+// 4. replace dengan template literal
+const teks = "Hello World";
+const hasil = teks.replace(/World/, (match) => `JavaScript ${match}`);
+console.log(hasil); // "Hello JavaScript World"
+
+// 5. replace dengan callback
+const teks = "Hello World";
+const hasil = teks.replace(/(Hello) (World)/, (match, p1, p2) => {
+    return `${p2} ${p1}`;
+});
+console.log(hasil); // "World Hello"</code></pre>
+      </div>
+
+      <h3 class="section-title">3. Best Practices</h3>
+      <ul>
+        <li>Gunakan search untuk mencari pertama kali</li>
+        <li>Gunakan match untuk mendapatkan semua hasil</li>
+        <li>Gunakan replace untuk penggantian sederhana</li>
+        <li>Gunakan replaceAll untuk penggantian global</li>
+        <li>Gunakan callback untuk penggantian kompleks</li>
+        <li>Beri nama yang deskriptif</li>
+        <li>Tambahkan error handling</li>
+      </ul>
+
+      <h3 class="section-title">4. Contoh Praktis</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Penggunaan</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// 1. Pencarian Kata Kunci
+const teks = "Belajar JavaScript adalah menyenangkan";
+const keyword = "JavaScript";
+
+function cariKata(teks, keyword) {
+    const regex = new RegExp(keyword, "i");
+    return regex.test(teks);
+}
+
+console.log(cariKata(teks, "javascript")); // true
+
+// 2. Penggantian Format
+const teks = "Halo, nama saya John Doe";
+
+function formatNama(teks) {
+    return teks.replace(/(Halo, nama saya )(.+)/, (match, p1, p2) => {
+        return `${p1}${p2.split(" ").map(n => n[0].toUpperCase() + n.slice(1)).join(" ")}`;
+    });
+}
+
+console.log(formatNama(teks)); // "Halo, nama saya John Doe"
+
+// 3. Pencarian Email
+const teks = "Hubungi saya di test@example.com";
+
+function cariEmail(teks) {
+    const regex = /[^\s@]+@[^\s@]+\.[^\s@]+/;
+    const hasil = teks.match(regex);
+    return hasil ? hasil[0] : null;
+}
+
+console.log(cariEmail(teks)); // "test@example.com"
+
+// 4. Penggantian URL
+const teks = "Kunjungi http://example.com";
+
+function formatURL(teks) {
+    return teks.replace(/https?:\/\/(\S+)/g, (match, url) => {
+        return `<a href="${match}">${url}</a>`;
+    });
+}
+
+console.log(formatURL(teks)); // "Kunjungi <a href="http://example.com">example.com</a>"
+
+// 5. Pencarian dan Penggantian Tanggal
+const teks = "Tanggal: 12/05/2025";
+
+function formatTanggal(teks) {
+    return teks.replace(/(\d{1,2})\/(\d{1,2})\/(\d{4})/, (match, hari, bulan, tahun) => {
+        return `${bulan}/${hari}/${tahun}`;
+    });
+}
+
+console.log(formatTanggal(teks)); // "Tanggal: 05/12/2025"
+
+// 6. Pencarian dan Penggantian Nomor Telepon
+const teks = "Hubungi di +6281234567890";
+
+function formatTelepon(teks) {
+    return teks.replace(/\+?62(\d{3})(\d{3})(\d{4})/, (match, p1, p2, p3) => {
+        return `+62 ${p1}-${p2}-${p3}`;
+    });
+}
+
+console.log(formatTelepon(teks)); // "Hubungi di +62 812-345-67890"</code></pre>
+      </div>
+
+      <h3 class="section-title">5. Tips Penggunaan</h3>
+      <ul>
+        <li>Gunakan search untuk mencari pertama kali</li>
+        <li>Gunakan match untuk mendapatkan semua hasil</li>
+        <li>Gunakan replace untuk penggantian sederhana</li>
+        <li>Gunakan replaceAll untuk penggantian global</li>
+        <li>Gunakan callback untuk penggantian kompleks</li>
+        <li>Beri nama yang deskriptif</li>
+        <li>Tambahkan error handling</li>
+      </ul>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='j181.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/javascript.png"
+          alt="javascript"
+          onclick="window.location.href='j1.html'"
+          title="javascript"
+        />
+        <button class="btn" onclick="window.location.href='j191.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+  </body>
+</html>

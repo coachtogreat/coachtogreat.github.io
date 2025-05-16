@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Parameter dan Return dalam JavaScript</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Parameter dan Return dalam JavaScript</h2>
+
+      <h3 class="section-title">1. Parameter dalam Fungsi</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Parameter</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Parameter tunggal
+function sapa(nama) {
+    return "Halo, " + nama;
+}
+console.log(sapa("John")); // "Halo, John"
+
+// Parameter multiple
+function tambah(a, b) {
+    return a + b;
+}
+console.log(tambah(5, 3)); // 8
+
+// Parameter default
+function sapa(nama = "Teman") {
+    return "Halo, " + nama;
+}
+console.log(sapa()); // "Halo, Teman"
+console.log(sapa("John")); // "Halo, John"
+
+// Rest parameter
+function jumlah(...angka) {
+    let total = 0;
+    for (let i = 0; i < angka.length; i++) {
+        total += angka[i];
+    }
+    return total;
+}
+console.log(jumlah(1, 2, 3, 4)); // 10
+
+// Parameter objek
+function tampilkanData({ nama, umur }) {
+    return `Nama: ${nama}, Umur: ${umur}`;
+}
+console.log(tampilkanData({ nama: "John", umur: 25 })); // "Nama: John, Umur: 25"</code></pre>
+      </div>
+
+      <h3 class="section-title">2. Return dalam Fungsi</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Return</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Return sederhana
+function tambah(a, b) {
+    return a + b;
+}
+let hasil = tambah(5, 3); // hasil = 8
+
+// Return multiple
+function hitung(a, b) {
+    return {
+        tambah: a + b,
+        kurang: a - b,
+        kali: a * b,
+        bagi: a / b
+    };
+}
+let hasil = hitung(10, 5);
+console.log(hasil.tambah); // 15
+console.log(hasil.kurang); // 5
+
+// Return early
+function validateForm(nama, email) {
+    if (!nama) {
+        return "Nama tidak boleh kosong";
+    }
+    if (!email.includes("@")) {
+        return "Email tidak valid";
+    }
+    return true;
+}
+
+// Return implicit
+const kuadrat = (x) => x * x; // return x * x
+console.log(kuadrat(5)); // 25
+
+// Return dari nested function
+function luar() {
+    function dalam() {
+        return "Hello";
+    }
+    return dalam();
+}
+console.log(luar()); // "Hello"</code></pre>
+      </div>
+
+      <h3 class="section-title">3. Passing by Value vs Passing by Reference</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Passing</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Passing by Value
+function tambahNilai(nilai) {
+    nilai = nilai + 1;
+    return nilai;
+}
+let angka = 5;
+tambahNilai(angka);
+console.log(angka); // 5 (tidak berubah)
+
+// Passing by Reference
+function tambahArray(arr) {
+    arr.push(5);
+    return arr;
+}
+let angka = [1, 2, 3];
+tambahArray(angka);
+console.log(angka); // [1, 2, 3, 5] (berubah)
+
+// Contoh objek
+function tambahUmur(person) {
+    person.umur++;
+    return person;
+}
+let orang = { nama: "John", umur: 25 };
+tambahUmur(orang);
+console.log(orang); // { nama: "John", umur: 26 }</code></pre>
+      </div>
+
+      <h3 class="section-title">4. Best Practices</h3>
+      <ul>
+        <li>Gunakan parameter dengan bijak</li>
+        <li>Hindari terlalu banyak parameter</li>
+        <li>Gunakan parameter default untuk nilai default</li>
+        <li>Gunakan rest parameter untuk jumlah parameter yang tidak tetap</li>
+        <li>Gunakan return untuk mengembalikan nilai</li>
+        <li>Hindari side effects</li>
+        <li>Tambahkan komentar untuk menjelaskan parameter dan return</li>
+      </ul>
+
+      <h3 class="section-title">5. Contoh Praktis</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Kalkulator</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Fungsi kalkulator dengan parameter dan return
+function kalkulator(operasi, a, b) {
+    switch (operasi) {
+        case "tambah":
+            return tambah(a, b);
+        case "kurang":
+            return kurang(a, b);
+        case "kali":
+            return kali(a, b);
+        case "bagi":
+            return bagi(a, b);
+        default:
+            return "Operasi tidak valid";
+    }
+}
+
+function tambah(a, b) {
+    return a + b;
+}
+
+function kurang(a, b) {
+    return a - b;
+}
+
+function kali(a, b) {
+    return a * b;
+}
+
+function bagi(a, b) {
+    if (b === 0) {
+        return "Tidak bisa dibagi nol";
+    }
+    return a / b;
+}
+
+// Penggunaan
+console.log(kalkulator("tambah", 5, 3)); // 8
+console.log(kalkulator("kurang", 10, 5)); // 5
+console.log(kalkulator("kali", 4, 3)); // 12
+console.log(kalkulator("bagi", 10, 2)); // 5
+
+// Fungsi validasi form dengan parameter
+function validateForm({ nama, email, umur }) {
+    if (!nama) {
+        return "Nama tidak boleh kosong";
+    }
+    if (!email.includes("@")) {
+        return "Email tidak valid";
+    }
+    if (umur < 18) {
+        return "Umur minimal 18 tahun";
+    }
+    return true;
+}
+
+// Penggunaan
+console.log(validateForm({
+    nama: "John",
+    email: "john@example.com",
+    umur: 25
+})); // true
+
+// Fungsi pengolahan array dengan parameter
+function filterArray(arr, kondisi) {
+    let hasil = [];
+    for (let i = 0; i < arr.length; i++) {
+        if (kondisi(arr[i])) {
+            hasil.push(arr[i]);
+        }
+    }
+    return hasil;
+}
+
+// Penggunaan
+let angka = [1, 2, 3, 4, 5];
+let genap = filterArray(angka, (x) => x % 2 === 0);
+console.log(genap); // [2, 4]</code></pre>
+      </div>
+
+      <h3 class="section-title">6. Tips Penggunaan</h3>
+      <ul>
+        <li>Gunakan parameter dengan bijak</li>
+        <li>Pisahkan logika yang kompleks ke dalam fungsi</li>
+        <li>Gunakan parameter default untuk nilai default</li>
+        <li>Tambahkan komentar untuk menjelaskan parameter dan return</li>
+        <li>Hindari side effects</li>
+        <li>Gunakan return untuk mengembalikan nilai</li>
+      </ul>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='j61.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/javascript.png"
+          alt="javascript"
+          onclick="window.location.href='j1.html'"
+          title="javascript"
+        />
+        <button class="btn" onclick="window.location.href='j63.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+  </body>
+</html>

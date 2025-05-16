@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pengantar JavaScript Modern (ES6+)</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Pengantar JavaScript Modern (ES6+)</h2>
+
+      <h3 class="section-title">1. Pengenalan ES6+</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Fitur-fitur ES6+</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// 1. Arrow Function
+const tambah = (a, b) => a + b;
+
+// 2. Template Literals
+const nama = "John";
+const pesan = `Halo, ${nama}!`;
+
+// 3. Destructuring
+const user = {
+    nama: "John",
+    umur: 30
+};
+
+const { nama, umur } = user;
+
+// 4. Default Parameters
+function sayHello(nama = "Guest") {
+    return `Halo, ${nama}!`;
+}
+
+// 5. Rest Parameters
+function sum(...numbers) {
+    return numbers.reduce((a, b) => a + b, 0);
+}
+
+// 6. Spread Operator
+const arr1 = [1, 2, 3];
+const arr2 = [4, 5, 6];
+const arr3 = [...arr1, ...arr2];
+
+// 7. Classes
+class User {
+    constructor(nama, umur) {
+        this.nama = nama;
+        this.umur = umur;
+    }
+    
+    sapa() {
+        return `Halo, nama saya ${this.nama}`;
+    }
+}
+
+// 8. Modules
+// file: user.js
+export class User {
+    constructor(nama) {
+        this.nama = nama;
+    }
+}
+
+// file: main.js
+import { User } from './user.js';
+
+// 9. Async/Await
+async function fetchData() {
+    try {
+        const response = await fetch('https://api.example.com/data');
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        throw error;
+    }
+}</code></pre>
+      </div>
+
+      <h3 class="section-title">2. Fitur Baru ES6+</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Fitur Baru</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// 1. Optional Chaining
+const user = {
+    profile: {
+        settings: {
+            theme: "dark"
+        }
+    }
+};
+
+const theme = user?.profile?.settings?.theme; // "dark"
+
+// 2. Nullish Coalescing
+const nama = user?.nama ?? "Guest";
+
+// 3. Private Class Fields
+class User {
+    #nama;
+    
+    constructor(nama) {
+        this.#nama = nama;
+    }
+    
+    getNama() {
+        return this.#nama;
+    }
+}
+
+// 4. Promise.allSettled
+const promises = [
+    fetch('https://api.example.com/data1'),
+    fetch('https://api.example.com/data2')
+];
+
+Promise.allSettled(promises)
+    .then(results => {
+        results.forEach(result => {
+            if (result.status === 'fulfilled') {
+                console.log(result.value);
+            } else {
+                console.error(result.reason);
+            }
+        });
+    });
+
+// 5. BigInt
+const bigNumber = 1234567890123456789012345678901234567890n;
+
+// 6. Dynamic Import
+const module = await import('./module.js');
+
+// 7. Top-Level Await
+const data = await fetch('https://api.example.com/data');
+const json = await data.json();
+
+// 8. Logical Assignment Operators
+let a = 0;
+a ||= 1; // a = 1
+a &&= 2; // a = 1
+a ??= 3; // a = 1</code></pre>
+      </div>
+
+      <h3 class="section-title">3. Best Practices</h3>
+      <ul>
+        <li>Gunakan const dan let untuk variabel</li>
+        <li>Gunakan arrow function untuk callback</li>
+        <li>Gunakan template literals untuk string</li>
+        <li>Gunakan destructuring untuk objek</li>
+        <li>Gunakan async/await untuk async code</li>
+        <li>Gunakan modules untuk organisasi kode</li>
+        <li>Gunakan class untuk objek yang berhubungan</li>
+        <li>Gunakan private fields untuk encapsulation</li>
+      </ul>
+
+      <h3 class="section-title">4. Contoh Praktis</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Penggunaan</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// 1. Aplikasi Todo dengan ES6+
+// file: todo.js
+export class Todo {
+    constructor() {
+        this.todos = [];
+    }
+    
+    tambah(tugas) {
+        this.todos.push({
+            id: Date.now(),
+            tugas: tugas,
+            selesai: false
+        });
+    }
+    
+    hapus(id) {
+        this.todos = this.todos.filter(todo => todo.id !== id);
+    }
+    
+    selesai(id) {
+        const todo = this.todos.find(todo => todo.id === id);
+        if (todo) {
+            todo.selesai = true;
+        }
+    }
+}
+
+// file: main.js
+import { Todo } from './todo.js';
+
+const todoApp = new Todo();
+
+function tambahTodo() {
+    const input = document.querySelector('#todo-input');
+    const tugas = input.value;
+    
+    if (tugas) {
+        todoApp.tambah(tugas);
+        input.value = '';
+        renderTodo();
+    }
+}
+
+function renderTodo() {
+    const todoList = document.querySelector('#todo-list');
+    todoList.innerHTML = todoApp.todos
+        .map(todo => `
+            <li>
+                <input type="checkbox" ${todo.selesai ? 'checked' : ''}>
+                <span>${todo.tugas}</span>
+                <button onclick="hapusTodo(${todo.id})">hapus</button>
+            </li>
+        `)
+        .join('');
+}
+
+// 2. Aplikasi Weather dengan ES6+
+// file: weather.js
+export class Weather {
+    static async getWeather(kota) {
+        try {
+            const response = await fetch(
+                `https://api.weatherapi.com/v1/current.json?key=YOUR_API_KEY&q=${kota}`
+            );
+            const data = await response.json();
+            return data;
+        } catch (error) {
+            throw error;
+        }
+    }
+}
+
+// file: main.js
+import { Weather } from './weather.js';
+
+async function tampilkanCuaca(kota) {
+    try {
+        const data = await Weather.getWeather(kota);
+        const { temp_c, condition } = data.current;
+        
+        document.querySelector('#cuaca').innerHTML = `
+            <h2>${kota}</h2>
+            <p>Temperatur: ${temp_c}°C</p>
+            <p>Kondisi: ${condition.text}</p>
+        `;
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+
+// 3. Aplikasi User dengan ES6+
+// file: user.js
+export class User {
+    #nama;
+    #email;
+    
+    constructor(nama, email) {
+        this.#nama = nama;
+        this.#email = email;
+    }
+    
+    get nama() {
+        return this.#nama;
+    }
+    
+    get email() {
+        return this.#email;
+    }
+    
+    static validateEmail(email) {
+        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return regex.test(email);
+    }
+}
+
+// file: main.js
+import { User } from './user.js';
+
+function buatUser(nama, email) {
+    if (!User.validateEmail(email)) {
+        throw new Error('Email tidak valid');
+    }
+    return new User(nama, email);
+}
+
+// 4. Aplikasi Calculator dengan ES6+
+// file: calculator.js
+export class Calculator {
+    static tambah(a, b) {
+        return a + b;
+    }
+    
+    static kurang(a, b) {
+        return a - b;
+    }
+    
+    static kali(a, b) {
+        return a * b;
+    }
+    
+    static bagi(a, b) {
+        if (b === 0) {
+            throw new Error('Tidak bisa membagi dengan nol');
+        }
+        return a / b;
+    }
+}
+
+// file: main.js
+import { Calculator } from './calculator.js';
+
+function hitung(operasi, a, b) {
+    switch (operasi) {
+        case 'tambah':
+            return Calculator.tambah(a, b);
+        case 'kurang':
+            return Calculator.kurang(a, b);
+        case 'kali':
+            return Calculator.kali(a, b);
+        case 'bagi':
+            return Calculator.bagi(a, b);
+        default:
+            throw new Error('Operasi tidak dikenal');
+    }
+}
+
+// 5. Aplikasi Form dengan ES6+
+// file: form.js
+export class Form {
+    constructor(formElement) {
+        this.form = formElement;
+        this.setupEventListeners();
+    }
+    
+    setupEventListeners() {
+        this.form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            this.handleSubmit();
+        });
+    }
+    
+    handleSubmit() {
+        const data = {};
+        const inputs = this.form.querySelectorAll('input');
+        
+        inputs.forEach(input => {
+            data[input.name] = input.value;
+        });
+        
+        this.onSubmit(data);
+    }
+    
+    onSubmit(data) {
+        console.log('Data:', data);
+    }
+}
+
+// file: main.js
+import { Form } from './form.js';
+
+const form = new Form(document.querySelector('#my-form'));</code></pre>
+      </div>
+
+      <h3 class="section-title">5. Tips Penggunaan</h3>
+      <ul>
+        <li>Gunakan const dan let untuk variabel</li>
+        <li>Gunakan arrow function untuk callback</li>
+        <li>Gunakan template literals untuk string</li>
+        <li>Gunakan destructuring untuk objek</li>
+        <li>Gunakan async/await untuk async code</li>
+        <li>Gunakan modules untuk organisasi kode</li>
+        <li>Gunakan class untuk objek yang berhubungan</li>
+        <li>Gunakan private fields untuk encapsulation</li>
+      </ul>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='j193.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/javascript.png"
+          alt="javascript"
+          onclick="window.location.href='j1.html'"
+          title="javascript"
+        />
+        <button class="btn" onclick="window.location.href='j202.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+  </body>
+</html>

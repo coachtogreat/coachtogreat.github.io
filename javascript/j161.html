@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Constructor Function dalam JavaScript</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Constructor Function dalam JavaScript</h2>
+
+      <h3 class="section-title">1. Pengenalan Constructor Function</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Dasar</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Contoh dasar constructor
+function User(nama, umur) {
+    this.nama = nama;
+    this.umur = umur;
+}
+
+// Membuat instance
+const user1 = new User("John", 30);
+console.log(user1.nama); // "John"
+console.log(user1.umur); // 30
+
+// Constructor dengan method
+function User(nama, umur) {
+    this.nama = nama;
+    this.umur = umur;
+    
+    this.sapa = function() {
+        console.log(`Halo, nama saya ${this.nama}`);
+    };
+}
+
+const user1 = new User("John", 30);
+user1.sapa(); // "Halo, nama saya John"
+
+// Constructor dengan prototype
+function User(nama, umur) {
+    this.nama = nama;
+    this.umur = umur;
+}
+
+User.prototype.sapa = function() {
+    console.log(`Halo, nama saya ${this.nama}`);
+};
+
+const user1 = new User("John", 30);
+user1.sapa(); // "Halo, nama saya John"
+
+// Constructor dengan validasi
+function User(nama, umur) {
+    if (typeof nama !== "string") {
+        throw new Error("Nama harus berupa string");
+    }
+    
+    if (typeof umur !== "number") {
+        throw new Error("Umur harus berupa number");
+    }
+    
+    this.nama = nama;
+    this.umur = umur;
+}
+
+const user1 = new User("John", 30);
+</code></pre>
+      </div>
+
+      <h3 class="section-title">2. Keuntungan Constructor Function</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Keuntungan</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// 1. Reusable code
+function Todo(nama) {
+    this.nama = nama;
+    this.selesai = false;
+    
+    this.selesaikan = function() {
+        this.selesai = true;
+    };
+}
+
+const todo1 = new Todo("Belajar JavaScript");
+const todo2 = new Todo("Membuat proyek");
+
+// 2. Inheritance
+function Todo(nama) {
+    this.nama = nama;
+    this.selesai = false;
+}
+
+function TodoPenting(nama, prioritas) {
+    Todo.call(this, nama);
+    this.prioritas = prioritas;
+}
+
+TodoPenting.prototype = Object.create(Todo.prototype);
+TodoPenting.prototype.constructor = TodoPenting;
+
+const todo = new TodoPenting("Urgent Task", "High");
+
+// 3. Polymorphism
+function Todo(nama) {
+    this.nama = nama;
+}
+
+Todo.prototype.selesaikan = function() {
+    console.log(`${this.nama} selesai`);
+};
+
+function TodoPenting(nama) {
+    Todo.call(this, nama);
+}
+
+TodoPenting.prototype = Object.create(Todo.prototype);
+TodoPenting.prototype.constructor = TodoPenting;
+
+TodoPenting.prototype.selesaikan = function() {
+    console.log(`${this.nama} selesai (Penting!)`);
+};
+
+const todo = new TodoPenting("Urgent Task");
+todo.selesaikan(); // "Urgent Task selesai (Penting!)"</code></pre>
+      </div>
+
+      <h3 class="section-title">3. Best Practices</h3>
+      <ul>
+        <li>Gunakan `new` untuk membuat instance</li>
+        <li>Tambahkan validasi input</li>
+        <li>Gunakan prototype untuk method</li>
+        <li>Beri nama constructor dengan huruf besar</li>
+        <li>Tambahkan error handling</li>
+        <li>Buat method yang mudah dipahami</li>
+        <li>Tambahkan komentar untuk menjelaskan constructor</li>
+      </ul>
+
+      <h3 class="section-title">4. Contoh Praktis</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Penggunaan</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// 1. Todo List
+function Todo(nama) {
+    this.nama = nama;
+    this.selesai = false;
+    
+    this.selesaikan = function() {
+        this.selesai = true;
+    };
+}
+
+const todo1 = new Todo("Belajar JavaScript");
+todo1.selesaikan();
+
+// 2. Galeri Foto
+function Gambar(url, judul) {
+    this.url = url;
+    this.judul = judul;
+    
+    this.tampilkan = function() {
+        const img = document.createElement("img");
+        img.src = this.url;
+        img.alt = this.judul;
+        document.body.appendChild(img);
+    };
+}
+
+const gambar1 = new Gambar("gambar.jpg", "Landscape");
+gambar1.tampilkan();
+
+// 3. Form Validation
+function Validator() {
+    this.validateEmail = function(email) {
+        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return regex.test(email);
+    };
+    
+    this.validatePassword = function(password) {
+        return password.length >= 8;
+    };
+}
+
+const validator = new Validator();
+const isValid = validator.validateEmail("test@example.com");
+
+// 4. Animasi
+function Animasi(element) {
+    this.element = element;
+    
+    this.gerakKiri = function(jarak) {
+        this.element.style.left = jarak + "px";
+    };
+    
+    this.gerakKanan = function(jarak) {
+        this.element.style.right = jarak + "px";
+    };
+}
+
+const animasi = new Animasi(document.getElementById("kotak"));
+animasi.gerakKiri(100);
+
+// 5. Data Storage
+function Storage() {
+    this.simpan = function(key, value) {
+        localStorage.setItem(key, JSON.stringify(value));
+    };
+    
+    this.ambil = function(key) {
+        const data = localStorage.getItem(key);
+        return data ? JSON.parse(data) : null;
+    };
+}
+
+const storage = new Storage();
+storage.simpan("user", { nama: "John", umur: 30 });
+
+// 6. Event Handler
+function EventListener(element) {
+    this.element = element;
+    
+    this.tambah = function(event, handler) {
+        this.element.addEventListener(event, handler);
+    };
+    
+    this.hapus = function(event, handler) {
+        this.element.removeEventListener(event, handler);
+    };
+}
+
+const listener = new EventListener(document.getElementById("tombol"));
+listener.tambah("click", function() {
+    console.log("Tombol diklik");
+});</code></pre>
+      </div>
+
+      <h3 class="section-title">5. Tips Penggunaan</h3>
+      <ul>
+        <li>Gunakan `new` untuk membuat instance</li>
+        <li>Tambahkan validasi input</li>
+        <li>Gunakan prototype untuk method</li>
+        <li>Beri nama constructor dengan huruf besar</li>
+        <li>Tambahkan error handling</li>
+        <li>Buat method yang mudah dipahami</li>
+        <li>Tambahkan komentar untuk menjelaskan constructor</li>
+      </ul>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='j152.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/javascript.png"
+          alt="javascript"
+          onclick="window.location.href='j1.html'"
+          title="javascript"
+        />
+        <button class="btn" onclick="window.location.href='j162.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,500 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Encapsulation, Polymorphism, dan Abstraction dalam JavaScript</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Encapsulation, Polymorphism, dan Abstraction dalam JavaScript</h2>
+
+      <h3 class="section-title">1. Encapsulation</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Encapsulation</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// 1. Encapsulation dengan closure
+function Todo() {
+    let todos = [];
+    
+    return {
+        tambah: function(teks) {
+            todos.push(teks);
+        },
+        tampilkan: function() {
+            return todos;
+        }
+    };
+}
+
+const todo = Todo();
+todo.tambah("Belajar JavaScript");
+console.log(todo.tampilkan()); // ["Belajar JavaScript"]
+
+// 2. Encapsulation dengan private field
+class Todo {
+    #todos = [];
+    
+    tambah(teks) {
+        this.#todos.push(teks);
+    }
+    
+    tampilkan() {
+        return this.#todos;
+    }
+}
+
+const todo = new Todo();
+todo.tambah("Belajar JavaScript");
+console.log(todo.tampilkan()); // ["Belajar JavaScript"]
+
+// 3. Encapsulation dengan getter dan setter
+class User {
+    #nama;
+    #umur;
+    
+    constructor(nama, umur) {
+        this.#nama = nama;
+        this.#umur = umur;
+    }
+    
+    get nama() {
+        return this.#nama;
+    }
+    
+    set nama(nama) {
+        if (typeof nama !== "string") {
+            throw new Error("Nama harus berupa string");
+        }
+        this.#nama = nama;
+    }
+    
+    get umur() {
+        return this.#umur;
+    }
+    
+    set umur(umur) {
+        if (typeof umur !== "number") {
+            throw new Error("Umur harus berupa number");
+        }
+        this.#umur = umur;
+    }
+}
+
+const user = new User("John", 30);
+console.log(user.nama); // "John"
+user.nama = "Jane";
+</code></pre>
+      </div>
+
+      <h3 class="section-title">2. Polymorphism</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Polymorphism</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// 1. Polymorphism dengan inheritance
+class Todo {
+    constructor(nama) {
+        this.nama = nama;
+    }
+    
+    selesaikan() {
+        console.log(`${this.nama} selesai`);
+    }
+}
+
+class TodoPenting extends Todo {
+    constructor(nama) {
+        super(nama);
+    }
+    
+    selesaikan() {
+        console.log(`${this.nama} selesai (Penting!)`);
+    }
+}
+
+function prosesTodo(todo) {
+    todo.selesaikan();
+}
+
+const todo = new Todo("Task Biasa");
+const todoPenting = new TodoPenting("Urgent Task");
+
+prosesTodo(todo); // "Task Biasa selesai"
+prosesTodo(todoPenting); // "Urgent Task selesai (Penting!)"
+
+// 2. Polymorphism dengan interface
+class Todo {
+    constructor(nama) {
+        this.nama = nama;
+    }
+    
+    selesaikan() {
+        console.log(`${this.nama} selesai`);
+    }
+}
+
+class Event {
+    constructor(nama) {
+        this.nama = nama;
+    }
+    
+    selesaikan() {
+        console.log(`${this.nama} selesai (Event)`);
+    }
+}
+
+function prosesItem(item) {
+    item.selesaikan();
+}
+
+const todo = new Todo("Task");
+const event = new Event("Meeting");
+
+prosesItem(todo); // "Task selesai"
+prosesItem(event); // "Meeting selesai (Event)"
+
+// 3. Polymorphism dengan duck typing
+class Todo {
+    constructor(nama) {
+        this.nama = nama;
+    }
+    
+    selesaikan() {
+        console.log(`${this.nama} selesai`);
+    }
+}
+
+function prosesTodo(todo) {
+    if (typeof todo.selesaikan === "function") {
+        todo.selesaikan();
+    }
+}
+
+const todo = new Todo("Task");
+prosesTodo(todo); // "Task selesai"</code></pre>
+      </div>
+
+      <h3 class="section-title">3. Abstraction</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Abstraction</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// 1. Abstraction dengan class abstract
+class Todo {
+    constructor(nama) {
+        this.nama = nama;
+    }
+    
+    selesaikan() {
+        throw new Error("Method harus diimplementasikan");
+    }
+}
+
+class TodoBiasa extends Todo {
+    constructor(nama) {
+        super(nama);
+    }
+    
+    selesaikan() {
+        console.log(`${this.nama} selesai`);
+    }
+}
+
+class TodoPenting extends Todo {
+    constructor(nama) {
+        super(nama);
+    }
+    
+    selesaikan() {
+        console.log(`${this.nama} selesai (Penting!)`);
+    }
+}
+
+// 2. Abstraction dengan interface
+interface Todo {
+    nama: string;
+    selesaikan(): void;
+}
+
+class TodoBiasa implements Todo {
+    nama: string;
+    
+    constructor(nama: string) {
+        this.nama = nama;
+    }
+    
+    selesaikan() {
+        console.log(`${this.nama} selesai`);
+    }
+}
+
+class TodoPenting implements Todo {
+    nama: string;
+    
+    constructor(nama: string) {
+        this.nama = nama;
+    }
+    
+    selesaikan() {
+        console.log(`${this.nama} selesai (Penting!)`);
+    }
+}
+
+// 3. Abstraction dengan factory function
+function createTodo(tipe: string, nama: string) {
+    if (tipe === "biasa") {
+        return new TodoBiasa(nama);
+    } else if (tipe === "penting") {
+        return new TodoPenting(nama);
+    }
+    throw new Error("Tipe todo tidak valid");
+}
+
+const todo = createTodo("biasa", "Task");
+todo.selesaikan(); // "Task selesai"</code></pre>
+      </div>
+
+      <h3 class="section-title">4. Best Practices</h3>
+      <ul>
+        <li>Gunakan encapsulation untuk menyembunyikan data</li>
+        <li>Gunakan polymorphism untuk kode yang fleksibel</li>
+        <li>Gunakan abstraction untuk kode yang mudah dipahami</li>
+        <li>Tambahkan validasi dalam setter</li>
+        <li>Beri nama yang deskriptif</li>
+        <li>Tambahkan error handling</li>
+        <li>Tambahkan komentar untuk menjelaskan konsep</li>
+      </ul>
+
+      <h3 class="section-title">5. Contoh Praktis</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Penggunaan</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// 1. Todo List dengan encapsulation
+class Todo {
+    #todos = [];
+    
+    tambah(teks) {
+        this.#todos.push(teks);
+    }
+    
+    tampilkan() {
+        return this.#todos;
+    }
+}
+
+const todo = new Todo();
+todo.tambah("Belajar JavaScript");
+console.log(todo.tampilkan()); // ["Belajar JavaScript"]
+
+// 2. Galeri Foto dengan polymorphism
+class Gambar {
+    constructor(url, judul) {
+        this.url = url;
+        this.judul = judul;
+    }
+    
+    tampilkan() {
+        const img = document.createElement("img");
+        img.src = this.url;
+        img.alt = this.judul;
+        document.body.appendChild(img);
+    }
+}
+
+class GambarPenuh extends Gambar {
+    constructor(url, judul, ukuran) {
+        super(url, judul);
+        this.ukuran = ukuran;
+    }
+    
+    tampilkan() {
+        const img = document.createElement("img");
+        img.src = this.url;
+        img.alt = this.judul;
+        img.style.width = this.ukuran;
+        document.body.appendChild(img);
+    }
+}
+
+function tampilkanGambar(gambar) {
+    gambar.tampilkan();
+}
+
+const gambar = new GambarPenuh("gambar.jpg", "Landscape", "100%");
+tampilkanGambar(gambar);
+
+// 3. Form Validation dengan abstraction
+interface Validator {
+    validate(): boolean;
+}
+
+class EmailValidator implements Validator {
+    value: string;
+    
+    constructor(value: string) {
+        this.value = value;
+    }
+    
+    validate() {
+        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return regex.test(this.value);
+    }
+}
+
+class PasswordValidator implements Validator {
+    value: string;
+    
+    constructor(value: string) {
+        this.value = value;
+    }
+    
+    validate() {
+        return this.value.length >= 8;
+    }
+}
+
+function validateForm(validators: Validator[]) {
+    for (const validator of validators) {
+        if (!validator.validate()) {
+            return false;
+        }
+    }
+    return true;
+}
+
+const validators = [
+    new EmailValidator("test@example.com"),
+    new PasswordValidator("password123")
+];
+
+const isValid = validateForm(validators);
+
+// 4. Animasi dengan encapsulation
+class Animasi {
+    #element;
+    
+    constructor(element) {
+        this.#element = element;
+    }
+    
+    gerakKiri(jarak) {
+        this.#element.style.left = jarak + "px";
+    }
+    
+    gerakKanan(jarak) {
+        this.#element.style.right = jarak + "px";
+    }
+}
+
+const animasi = new Animasi(document.getElementById("kotak"));
+animasi.gerakKiri(100);
+
+// 5. Data Storage dengan abstraction
+class Storage {
+    #prefix = "app_";
+    
+    simpan(key, value) {
+        localStorage.setItem(this.#prefix + key, JSON.stringify(value));
+    }
+    
+    ambil(key) {
+        const data = localStorage.getItem(this.#prefix + key);
+        return data ? JSON.parse(data) : null;
+    }
+}
+
+class SessionStorage extends Storage {
+    simpan(key, value) {
+        sessionStorage.setItem(this.#prefix + key, JSON.stringify(value));
+    }
+    
+    ambil(key) {
+        const data = sessionStorage.getItem(this.#prefix + key);
+        return data ? JSON.parse(data) : null;
+    }
+}
+
+const storage = new SessionStorage();
+storage.simpan("user", { nama: "John", umur: 30 });
+
+// 6. Event Handler dengan polymorphism
+class EventListener {
+    #element;
+    
+    constructor(element) {
+        this.#element = element;
+    }
+    
+    tambah(event, handler) {
+        this.#element.addEventListener(event, handler);
+    }
+    
+    hapus(event, handler) {
+        this.#element.removeEventListener(event, handler);
+    }
+}
+
+class EventThrottled extends EventListener {
+    #lastTime = 0;
+    
+    tambah(event, handler, delay = 1000) {
+        const wrapper = (...args) => {
+            const now = Date.now();
+            if (now - this.#lastTime >= delay) {
+                handler(...args);
+                this.#lastTime = now;
+            }
+        };
+        super.tambah(event, wrapper);
+    }
+}
+
+const listener = new EventThrottled(document.getElementById("tombol"));
+listener.tambah("click", function() {
+    console.log("Tombol diklik");
+}, 500);</code></pre>
+      </div>
+
+      <h3 class="section-title">6. Tips Penggunaan</h3>
+      <ul>
+        <li>Gunakan encapsulation untuk menyembunyikan data</li>
+        <li>Gunakan polymorphism untuk kode yang fleksibel</li>
+        <li>Gunakan abstraction untuk kode yang mudah dipahami</li>
+        <li>Tambahkan validasi dalam setter</li>
+        <li>Beri nama yang deskriptif</li>
+        <li>Tambahkan error handling</li>
+        <li>Tambahkan komentar untuk menjelaskan konsep</li>
+      </ul>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='j162.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/javascript.png"
+          alt="javascript"
+          onclick="window.location.href='j1.html'"
+          title="javascript"
+        />
+        <button class="btn" onclick="window.location.href='j171.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+  </body>
+</html>

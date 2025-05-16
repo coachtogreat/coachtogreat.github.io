@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cara Menjalankan JavaScript</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Cara Menjalankan JavaScript</h2>
+
+      <h3 class="section-title">1. Menggunakan Browser Console</h3>
+      <p>
+        Browser console adalah cara termudah untuk menjalankan JavaScript. Berikut langkah-langkahnya:
+      </p>
+      <ol>
+        <li>Tekan F12 atau klik kanan &gt; Inspect</li>
+        <li>Pilih tab "Console"</li>
+        <li>Tulis kode JavaScript dan tekan Enter</li>
+      </ol>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh di Console</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Menampilkan teks
+console.log("Halo, Dunia!");
+
+// Operasi matematika
+let hasil = 5 + 3;
+console.log(hasil);</code></pre>
+      </div>
+
+      <h3 class="section-title">2. Menggunakan File HTML</h3>
+      <p>
+        Cara ini lebih umum digunakan untuk proyek yang lebih besar. Anda bisa menulis JavaScript:
+      </p>
+      <ul>
+        <li>Di dalam tag &lt;script&gt; di HTML</li>
+        <li>Di file JavaScript terpisah yang di-import</li>
+      </ul>
+
+      <h3 class="section-title">3. Inline Script</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>HTML dengan Script Inline</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;Contoh JavaScript&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;script&gt;
+    document.write("Halo, Dunia!");
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+      </div>
+
+      <h3 class="section-title">4. External Script</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>HTML dengan Script Eksternal</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>&lt;!-- index.html --&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;Contoh JavaScript&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;script src="script.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+&lt;!-- script.js --&gt;
+console.log("Script berjalan!");</code></pre>
+      </div>
+
+      <h3 class="section-title">5. Menggunakan Event Handler</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>HTML dengan Event Handler</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>&lt;button onclick="tampilkanAlert()"&gt;Klik Saya&lt;/button&gt;
+
+&lt;script&gt;
+function tampilkanAlert() {
+  alert("Tombol diklik!");
+}
+&lt;/script&gt;</code></pre>
+      </div>
+
+      <h3 class="section-title">6. Best Practices</h3>
+      <ul>
+        <li>Gunakan external script untuk kode yang lebih besar</li>
+        <li>Pisahkan JavaScript dari HTML untuk kode yang lebih bersih</li>
+        <li>Gunakan console.log() untuk debugging</li>
+        <li>Test kode di console sebelum mengintegrasikannya ke halaman</li>
+        <li>Gunakan komentar untuk menjelaskan kode yang kompleks</li>
+      </ul>
+
+      <h3 class="section-title">7. Tips Penggunaan Console</h3>
+      <ul>
+        <li>console.log() untuk menampilkan teks</li>
+        <li>console.warn() untuk peringatan</li>
+        <li>console.error() untuk error</li>
+        <li>console.table() untuk menampilkan data dalam tabel</li>
+        <li>console.time() dan console.timeEnd() untuk mengukur waktu</li>
+      </ul>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='j13.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/javascript.png"
+          alt="javascript"
+          onclick="window.location.href='j1.html'"
+          title="javascript"
+        />
+        <button class="btn" onclick="window.location.href='j21.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+  </body>
+</html>

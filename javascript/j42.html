@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Switch Statement dalam JavaScript</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Switch Statement dalam JavaScript</h2>
+
+      <h3 class="section-title">1. Pengenalan Switch</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Struktur Switch</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>switch (expression) {
+    case value1:
+        // kode yang dijalankan jika expression === value1
+        break;
+    case value2:
+        // kode yang dijalankan jika expression === value2
+        break;
+    default:
+        // kode yang dijalankan jika tidak ada case yang cocok
+}</code></pre>
+      </div>
+
+      <h3 class="section-title">2. Contoh Switch Sederhana</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Switch</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Contoh hari
+let hari = "Minggu";
+switch (hari) {
+    case "Senin":
+        console.log("Hari pertama kerja");
+        break;
+    case "Sabtu":
+        console.log("Akhir pekan");
+        break;
+    case "Minggu":
+        console.log("Hari libur");
+        break;
+    default:
+        console.log("Hari kerja");
+}
+
+// Contoh angka
+let nilai = 3;
+switch (nilai) {
+    case 1:
+        console.log("Satu");
+        break;
+    case 2:
+        console.log("Dua");
+        break;
+    case 3:
+        console.log("Tiga");
+        break;
+    default:
+        console.log("Lainnya");
+}</code></pre>
+      </div>
+
+      <h3 class="section-title">3. Multiple Case</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Multiple Case</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Contoh bulan
+let bulan = "April";
+switch (bulan) {
+    case "Januari":
+    case "Maret":
+    case "Mei":
+    case "Juli":
+    case "Agustus":
+    case "Oktober":
+    case "Desember":
+        console.log("Bulan ini memiliki 31 hari");
+        break;
+    case "April":
+    case "Juni":
+    case "September":
+    case "November":
+        console.log("Bulan ini memiliki 30 hari");
+        break;
+    case "Februari":
+        console.log("Bulan ini memiliki 28 atau 29 hari");
+        break;
+    default:
+        console.log("Bulan tidak valid");
+}</code></pre>
+      </div>
+
+      <h3 class="section-title">4. Fallthrough</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Fallthrough</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Contoh level user
+let level = "gold";
+switch (level) {
+    case "bronze":
+        console.log("Diskon 5%" + "\n");
+    case "silver":
+        console.log("Diskon 10%" + "\n");
+    case "gold":
+        console.log("Diskon 15%" + "\n");
+    case "platinum":
+        console.log("Diskon 20%" + "\n");
+        break;
+    default:
+        console.log("Tidak ada diskon");
+}
+
+// Output untuk level "gold":
+// Diskon 15%
+// Diskon 20%</code></pre>
+      </div>
+
+      <h3 class="section-title">5. Switch dengan Expression</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Expression</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Contoh kalkulator
+let operator = "+";
+let a = 5;
+let b = 3;
+
+switch (operator) {
+    case "+":
+        console.log(a + b);
+        break;
+    case "-":
+        console.log(a - b);
+        break;
+    case "*":
+        console.log(a * b);
+        break;
+    case "/":
+        console.log(a / b);
+        break;
+    default:
+        console.log("Operator tidak valid");
+}
+
+// Contoh pengkondisian
+let nilai = 85;
+switch (true) {
+    case nilai >= 90:
+        console.log("Grade A");
+        break;
+    case nilai >= 80:
+        console.log("Grade B");
+        break;
+    case nilai >= 70:
+        console.log("Grade C");
+        break;
+    default:
+        console.log("Grade D");
+}</code></pre>
+      </div>
+
+      <h3 class="section-title">6. Best Practices</h3>
+      <ul>
+        <li>Gunakan break untuk setiap case kecuali ada alasan spesifik</li>
+        <li>Gunakan default untuk menangani kasus tidak terduga</li>
+        <li>Hindari terlalu banyak case dalam satu switch</li>
+        <li>Pisahkan kode yang kompleks ke dalam fungsi</li>
+        <li>Gunakan switch untuk kondisi yang memiliki banyak pilihan</li>
+        <li>Hati-hati dengan fallthrough</li>
+      </ul>
+
+      <h3 class="section-title">7. Contoh Praktis</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Menu Program</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Fungsi menu program
+function prosesMenu(pilihan) {
+    switch (pilihan) {
+        case "1":
+            console.log("Menampilkan data");
+            break;
+        case "2":
+            console.log("Menambah data");
+            break;
+        case "3":
+            console.log("Menghapus data");
+            break;
+        case "4":
+            console.log("Keluar program");
+            return;
+        default:
+            console.log("Pilihan tidak valid");
+    }
+}
+
+// Fungsi validasi input
+function validateInput(input) {
+    switch (typeof input) {
+        case "string":
+            return input.length > 0;
+        case "number":
+            return !isNaN(input);
+        case "boolean":
+            return true;
+        default:
+            return false;
+    }
+}
+
+// Contoh penggunaan
+prosesMenu("2"); // Menambah data
+console.log(validateInput("Hello")); // true</code></pre>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='j41.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/javascript.png"
+          alt="javascript"
+          onclick="window.location.href='j1.html'"
+          title="javascript"
+        />
+        <button class="btn" onclick="window.location.href='j43.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+  </body>
+</html>

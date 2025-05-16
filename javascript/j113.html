@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prevent Default & Stop Propagation dalam JavaScript</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Prevent Default & Stop Propagation dalam JavaScript</h2>
+
+      <h3 class="section-title">1. Pengenalan Prevent Default</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Prevent Default</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// HTML
+&lt;form id="form"&gt;
+    &lt;input type="text" id="nama"&gt;
+    &lt;button type="submit"&gt;Kirim&lt;/button&gt;
+&lt;/form&gt;
+
+// JavaScript
+const form = document.getElementById("form");
+form.addEventListener("submit", function(e) {
+    e.preventDefault(); // Mencegah form submit
+    
+    // Validasi form
+    const nama = document.getElementById("nama");
+    if (nama.value.trim().length === 0) {
+        nama.style.borderColor = "red";
+    } else {
+        // Proses form
+        console.log("Form dikirim");
+    }
+});</code></pre>
+      </div>
+
+      <h3 class="section-title">2. Pengenalan Stop Propagation</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Stop Propagation</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// HTML
+&lt;div id="konten"&gt;
+    &lt;div class="item"&gt;
+        &lt;span&gt;Text&lt;/span&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+// JavaScript
+// Event pada span
+const span = document.querySelector("span");
+span.addEventListener("click", function(e) {
+    console.log("Span diklik");
+    e.stopPropagation(); // Menghentikan event bubbling
+});
+
+// Event pada item
+const item = document.querySelector(".item");
+item.addEventListener("click", function(e) {
+    console.log("Item diklik");
+});
+
+// Event pada konten
+const konten = document.getElementById("konten");
+konten.addEventListener("click", function(e) {
+    console.log("Konten diklik");
+});
+
+// Output saat klik span:
+// Span diklik
+// (tidak ada output lain karena event diblokir)</code></pre>
+      </div>
+
+      <h3 class="section-title">3. Penggunaan Prevent Default</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Penggunaan</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// 1. Form submission
+const form = document.getElementById("form");
+form.addEventListener("submit", function(e) {
+    e.preventDefault();
+    // Validasi dan proses form
+});
+
+// 2. Link navigation
+const link = document.querySelector("a");
+link.addEventListener("click", function(e) {
+    e.preventDefault();
+    // Proses link
+});
+
+// 3. File upload
+const upload = document.querySelector("input[type='file']");
+upload.addEventListener("change", function(e) {
+    e.preventDefault();
+    // Validasi file
+});
+
+// 4. Keyboard events
+const input = document.querySelector("input");
+input.addEventListener("keydown", function(e) {
+    if (e.key === "Enter") {
+        e.preventDefault();
+        // Proses enter
+    }
+});</code></pre>
+      </div>
+
+      <h3 class="section-title">4. Penggunaan Stop Propagation</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Penggunaan</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// 1. Menu dropdown
+const menu = document.querySelector(".menu");
+menu.addEventListener("click", function(e) {
+    e.stopPropagation();
+    // Toggle menu
+});
+
+// 2. Modal dialog
+const modal = document.querySelector(".modal");
+modal.addEventListener("click", function(e) {
+    e.stopPropagation();
+    // Handle modal
+});
+
+// 3. Drag and drop
+const dropZone = document.querySelector(".drop-zone");
+dropZone.addEventListener("dragover", function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    // Handle drag
+});
+
+// 4. Event delegation dengan stop
+const list = document.querySelector(".list");
+list.addEventListener("click", function(e) {
+    if (e.target.tagName === "LI") {
+        e.stopPropagation();
+        // Handle item
+    }
+});</code></pre>
+      </div>
+
+      <h3 class="section-title">5. Best Practices</h3>
+      <ul>
+        <li>Gunakan preventDefault untuk form submission</li>
+        <li>Gunakan stopPropagation untuk event yang tidak perlu dibubbling</li>
+        <li>Tambahkan komentar untuk menjelaskan penggunaan</li>
+        <li>Pisahkan logika event ke dalam fungsi</li>
+        <li>Gunakan return false sebagai alternatif</li>
+        <li>Beri nama variabel yang deskriptif</li>
+        <li>Tambahkan error handling</li>
+      </ul>
+
+      <h3 class="section-title">6. Contoh Praktis</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Penggunaan</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Contoh todo list
+function buatTodoList() {
+    const form = document.getElementById("form-todo");
+    const input = document.getElementById("todo-input");
+    const list = document.getElementById("todo-list");
+    
+    // Handle form submission
+    form.addEventListener("submit", function(e) {
+        e.preventDefault();
+        
+        // Validasi input
+        if (input.value.trim().length === 0) {
+            input.style.borderColor = "red";
+            return;
+        }
+        
+        // Tambah todo
+        const li = document.createElement("li");
+        li.textContent = input.value;
+        list.appendChild(li);
+        input.value = "";
+    });
+    
+    // Handle klik todo
+    list.addEventListener("click", function(e) {
+        if (e.target.tagName === "LI") {
+            e.stopPropagation();
+            e.target.remove();
+        }
+    });
+}
+
+// Contoh galeri foto
+function buatGaleri() {
+    const konten = document.querySelector(".galeri");
+    
+    // Handle klik gambar
+    konten.addEventListener("click", function(e) {
+        if (e.target.tagName === "IMG") {
+            e.stopPropagation();
+            console.log("Gambar diklik: " + e.target.src);
+        }
+    });
+    
+    // Handle hover gambar
+    konten.addEventListener("mouseover", function(e) {
+        if (e.target.tagName === "IMG") {
+            e.target.style.opacity = "0.8";
+        }
+    });
+    
+    konten.addEventListener("mouseout", function(e) {
+        if (e.target.tagName === "IMG") {
+            e.target.style.opacity = "1";
+        }
+    });
+}
+
+// Contoh form validation
+function validateForm() {
+    const form = document.getElementById("form");
+    const nama = form.querySelector("#nama");
+    
+    // Handle submit
+    form.addEventListener("submit", function(e) {
+        e.preventDefault();
+        
+        // Validasi
+        if (nama.value.trim().length === 0) {
+            nama.style.borderColor = "red";
+            return;
+        }
+        
+        // Proses form
+        nama.style.borderColor = "";
+    });
+}
+
+// Contoh drag and drop
+function buatDropZone() {
+    const dropZone = document.querySelector(".drop-zone");
+    
+    // Handle drag over
+    dropZone.addEventListener("dragover", function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        dropZone.style.backgroundColor = "#e0e0e0";
+    });
+    
+    // Handle drag leave
+    dropZone.addEventListener("dragleave", function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        dropZone.style.backgroundColor = "";
+    });
+    
+    // Handle drop
+    dropZone.addEventListener("drop", function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        // Proses file
+    });
+}</code></pre>
+      </div>
+
+      <h3 class="section-title">7. Tips Penggunaan</h3>
+      <ul>
+        <li>Gunakan preventDefault untuk form submission</li>
+        <li>Gunakan stopPropagation untuk event yang tidak perlu dibubbling</li>
+        <li>Tambahkan komentar untuk menjelaskan penggunaan</li>
+        <li>Pisahkan logika event ke dalam fungsi</li>
+        <li>Gunakan return false sebagai alternatif</li>
+        <li>Beri nama variabel yang deskriptif</li>
+        <li>Tambahkan error handling</li>
+      </ul>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='j112.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/javascript.png"
+          alt="javascript"
+          onclick="window.location.href='j1.html'"
+          title="javascript"
+        />
+        <button class="btn" onclick="window.location.href='j121.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+  </body>
+</html>

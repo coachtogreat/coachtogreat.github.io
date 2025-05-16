@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Membuat Array dalam JavaScript</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Membuat Array dalam JavaScript</h2>
+
+      <h3 class="section-title">1. Pengenalan Array</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Definisi Array</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Array adalah struktur data yang menyimpan kumpulan nilai
+// Nilai dalam array bisa berupa tipe data apa saja
+
+// Contoh array sederhana
+let angka = [1, 2, 3, 4, 5];
+let nama = ["John", "Jane", "Mike"];
+let campuran = [1, "Hello", true, {nama: "John"}, [1, 2, 3]];</code></pre>
+      </div>
+
+      <h3 class="section-title">2. Cara Membuat Array</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Cara Membuat Array</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Menggunakan array literal
+let buah = ["apel", "mangga", "jeruk"];
+
+// Menggunakan constructor Array
+let angka = new Array(1, 2, 3, 4, 5);
+
+// Menggunakan Array.of()
+let nilai = Array.of(1, 2, 3, 4, 5);
+
+// Menggunakan Array.from()
+let huruf = Array.from("abc"); // ["a", "b", "c"]
+
+// Menggunakan spread operator
+let satu = [1, 2, 3];
+let dua = [4, 5, 6];
+let gabungan = [...satu, ...dua]; // [1, 2, 3, 4, 5, 6]</code></pre>
+      </div>
+
+      <h3 class="section-title">3. Mengakses Nilai Array</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Mengakses Nilai</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Mengakses nilai dengan index
+let buah = ["apel", "mangga", "jeruk"];
+console.log(buah[0]); // "apel"
+console.log(buah[1]); // "mangga"
+
+// Mengubah nilai dengan index
+buah[1] = "pisang";
+console.log(buah); // ["apel", "pisang", "jeruk"]
+
+// Mengetahui panjang array
+console.log(buah.length); // 3
+
+// Mengakses nilai terakhir
+console.log(buah[buah.length - 1]); // "jeruk"
+
+// Menggunakan bracket notation
+let objek = {
+    nama: "John",
+    nilai: [80, 85, 90]
+};
+console.log(objek["nilai"][0]); // 80</code></pre>
+      </div>
+
+      <h3 class="section-title">4. Array Multidimensi</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Array Multidimensi</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Array 2 dimensi
+let matriks = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+];
+
+console.log(matriks[0][0]); // 1
+console.log(matriks[1][1]); // 5
+console.log(matriks[2][2]); // 9
+
+// Array 3 dimensi
+let kubus = [
+    [
+        [1, 2, 3],
+        [4, 5, 6]
+    ],
+    [
+        [7, 8, 9],
+        [10, 11, 12]
+    ]
+];
+
+console.log(kubus[0][0][0]); // 1
+console.log(kubus[1][1][2]); // 12</code></pre>
+      </div>
+
+      <h3 class="section-title">5. Best Practices</h3>
+      <ul>
+        <li>Gunakan array literal untuk membuat array</li>
+        <li>Hindari constructor Array() jika tidak diperlukan</li>
+        <li>Gunakan Array.from() untuk konversi</li>
+        <li>Gunakan spread operator untuk gabungan array</li>
+        <li>Berikan nama variabel yang deskriptif</li>
+        <li>Tambahkan komentar untuk array yang kompleks</li>
+      </ul>
+
+      <h3 class="section-title">6. Contoh Praktis</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Penggunaan</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Contoh data siswa
+let siswa = [
+    { nama: "John", nilai: 85 },
+    { nama: "Jane", nilai: 90 },
+    { nama: "Mike", nilai: 80 }
+];
+
+// Contoh data produk
+let produk = [
+    { id: 1, nama: "Laptop", harga: 10000000 },
+    { id: 2, nama: "Smartphone", harga: 5000000 },
+    { id: 3, nama: "Headset", harga: 500000 }
+];
+
+// Contoh data transaksi
+let transaksi = [
+    { tanggal: "2023-05-01", produk: "Laptop", jumlah: 1 },
+    { tanggal: "2023-05-02", produk: "Smartphone", jumlah: 2 },
+    { tanggal: "2023-05-03", produk: "Headset", jumlah: 3 }
+];
+
+// Contoh data menu
+let menu = [
+    { kategori: "Makanan", item: [
+        { nama: "Nasi Goreng", harga: 20000 },
+        { nama: "Mie Goreng", harga: 25000 }
+    ]},
+    { kategori: "Minuman", item: [
+        { nama: "Teh", harga: 5000 },
+        { nama: "Kopi", harga: 10000 }
+    ]}
+];
+
+// Contoh penggunaan array dalam game
+let papan = [
+    ["", "", ""],
+    ["", "", ""],
+    ["", "", ""]
+];
+
+// Contoh penggunaan array dalam form
+let form = {
+    nama: "",
+    email: "",
+    hobi: [
+        { nama: "Membaca", selected: false },
+        { nama: "Menulis", selected: false },
+        { nama: "Menggambar", selected: false }
+    ]
+};</code></pre>
+      </div>
+
+      <h3 class="section-title">7. Tips Penggunaan</h3>
+      <ul>
+        <li>Gunakan array untuk menyimpan kumpulan nilai</li>
+        <li>Hindari array yang terlalu dalam</li>
+        <li>Gunakan object untuk data yang lebih kompleks</li>
+        <li>Tambahkan komentar untuk menjelaskan array</li>
+        <li>Pisahkan logika yang rumit ke dalam fungsi</li>
+        <li>Gunakan array method untuk manipulasi</li>
+      </ul>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='j64.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/javascript.png"
+          alt="javascript"
+          onclick="window.location.href='j1.html'"
+          title="javascript"
+        />
+        <button class="btn" onclick="window.location.href='j72.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Operator Penugasan dalam JavaScript</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Operator Penugasan dalam JavaScript</h2>
+
+      <h3 class="section-title">1. Operator Penugasan Dasar (=)</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Penugasan Dasar</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Penugasan sederhana
+let x = 5;
+let y = "Hello";
+let z = true;
+
+// Penugasan multiple
+let a = b = c = 10;
+console.log(a, b, c); // 10 10 10
+
+// Penugasan dengan tipe data berbeda
+let angka = 42;
+let teks = "" + angka; // "42"
+let boolean = !!angka; // true</code></pre>
+      </div>
+
+      <h3 class="section-title">2. Operator Penugasan Aritmatika</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Operator Aritmatika</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Penjumlahan
+let a = 5;
+a += 3; // sama dengan a = a + 3
+console.log(a); // 8
+
+// Pengurangan
+let b = 10;
+b -= 4; // sama dengan b = b - 4
+console.log(b); // 6
+
+// Perkalian
+let c = 2;
+c *= 3; // sama dengan c = c * 3
+console.log(c); // 6
+
+// Pembagian
+let d = 10;
+d /= 2; // sama dengan d = d / 2
+console.log(d); // 5
+
+// Sisa bagi
+let e = 10;
+e %= 3; // sama dengan e = e % 3
+console.log(e); // 1</code></pre>
+      </div>
+
+      <h3 class="section-title">3. Operator Penugasan Bitwise</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Operator Bitwise</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// AND bitwise
+let a = 5; // 0101
+a &= 3;    // 0011
+console.log(a); // 1 (0001)
+
+// OR bitwise
+let b = 5; // 0101
+b |= 3;    // 0011
+console.log(b); // 7 (0111)
+
+// XOR bitwise
+let c = 5; // 0101
+let d = 3; // 0011
+c ^= d;    // 0110
+console.log(c); // 6
+
+// Shift left
+let e = 5; // 0101
+let f = e << 1; // 1010
+console.log(f); // 10</code></pre>
+      </div>
+
+      <h3 class="section-title">4. Operator Penugasan Ternary</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Operator Ternary</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Contoh sederhana
+let umur = 25;
+let status = umur >= 18 ? "Dewasa" : "Anak-anak";
+
+// Dengan assignment
+let nilai = 75;
+let grade = nilai >= 70 ? "A" : nilai >= 60 ? "B" : "C";
+
+// Dengan kondisi kompleks
+let jumlah = 10;
+let hasil = jumlah > 0 ? jumlah : 0;</code></pre>
+      </div>
+
+      <h3 class="section-title">5. Operator Penugasan Nullish Coalescing</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Nullish Coalescing</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Contoh OR biasa
+let nama = "";
+let defaultName = nama || "User";
+console.log(defaultName); // "User" (karena string kosong dianggap false)
+
+// Contoh Nullish Coalescing
+let nama = "";
+let defaultName = nama ?? "User";
+console.log(defaultName); // "" (karena string kosong bukan null/undefined)
+
+// Contoh dengan object
+let data = null;
+let nilai = data ?? "Default";
+console.log(nilai); // "Default"</code></pre>
+      </div>
+
+      <h3 class="section-title">6. Best Practices</h3>
+      <ul>
+        <li>Gunakan operator penugasan yang sesuai dengan kebutuhan</li>
+        <li>Hindari penggunaan terlalu banyak operator dalam satu baris</li>
+        <li>Gunakan tanda kurung untuk mengklarifikasi prioritas</li>
+        <li>Gunakan operator penugasan bitwise dengan hati-hati</li>
+        <li>Gunakan operator ternary untuk kondisi yang sederhana</li>
+        <li>Gunakan nullish coalescing untuk default value yang lebih aman</li>
+      </ul>
+
+      <h3 class="section-title">7. Contoh Praktis</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Kalkulator Sederhana</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Fungsi penjumlahan
+function tambah(a, b) {
+    return a + b;
+}
+
+// Fungsi pengurangan
+function kurang(a, b) {
+    return a - b;
+}
+
+// Fungsi perkalian
+function kali(a, b) {
+    return a * b;
+}
+
+// Fungsi pembagian
+function bagi(a, b) {
+    if (b === 0) return "Tidak bisa membagi dengan nol";
+    return a / b;
+}
+
+// Contoh penggunaan
+let hasil = 0;
+hasil += tambah(5, 3); // 8
+hasil -= kurang(10, 4); // -2
+hasil *= kali(2, 3); // -6
+hasil /= bagi(10, 2); // -0.6</code></pre>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='j33.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/javascript.png"
+          alt="javascript"
+          onclick="window.location.href='j1.html'"
+          title="javascript"
+        />
+        <button class="btn" onclick="window.location.href='j41.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+  </body>
+</html>

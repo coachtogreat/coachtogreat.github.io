@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Unit Testing dengan Jest / Mocha</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Unit Testing dengan Jest / Mocha</h2>
+
+      <h3 class="section-title">1. Pengenalan Jest</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Instalasi dan Penggunaan Jest</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// 1. Instalasi Jest
+npm install --save-dev jest
+
+// 2. Contoh Test Sederhana
+// file: calculator.test.js
+describe('Calculator', () => {
+    test('should add two numbers', () => {
+        expect(add(1, 2)).toBe(3);
+    });
+
+    test('should subtract two numbers', () => {
+        expect(subtract(3, 1)).toBe(2);
+    });
+});
+
+// 3. Running Test
+npm test
+
+// 4. Assertions Jest
+expect(result).toBe(expected);
+expect(result).toEqual(expected);
+expect(result).toBeGreaterThan(10);
+expect(result).toBeNull();
+expect(result).toBeTruthy();
+expect(result).toBeFalsy();</code></pre>
+      </div>
+
+      <h3 class="section-title">2. Pengenalan Mocha</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Instalasi dan Penggunaan Mocha</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// 1. Instalasi Mocha
+cnpm install --save-dev mocha chai
+
+// 2. Contoh Test Sederhana
+// file: calculator.test.js
+describe('Calculator', function() {
+    it('should add two numbers', function() {
+        const result = add(1, 2);
+        expect(result).to.equal(3);
+    });
+
+    it('should subtract two numbers', function() {
+        const result = subtract(3, 1);
+        expect(result).to.equal(2);
+    });
+});
+
+// 3. Running Test
+npx mocha
+
+// 4. Assertions Chai
+expect(result).to.equal(expected);
+expect(result).to.be.above(10);
+expect(result).to.be.null;
+expect(result).to.be.true;
+expect(result).to.be.false;
+expect(result).to.deep.equal({ name: 'John' });</code></pre>
+      </div>
+
+      <h3 class="section-title">3. Perbandingan Jest vs Mocha</h3>
+      <table class="comparison-table">
+        <tr>
+          <th>Fitur</th>
+          <th>Jest</th>
+          <th>Mocha</th>
+        </tr>
+        <tr>
+          <td>Setup</td>
+          <td>Lebih mudah (zero config)</td>
+          <td>Perlu konfigurasi</td>
+        </tr>
+        <tr>
+          <td>Assertions</td>
+          <td>Build-in</td>
+          <td>Perlu Chai</td>
+        </tr>
+        <tr>
+          <td>Mocking</td>
+          <td>Lebih baik</td>
+          <td>Dasar</td>
+        </tr>
+        <tr>
+          <td>Snapshot Testing</td>
+          <td>Ada</td>
+          <td>Tidak ada</td>
+        </tr>
+        <tr>
+          <td>Performance</td>
+          <td>Sangat baik</td>
+          <td>Baik</td>
+        </tr>
+        <tr>
+          <td>Community</td>
+          <td>Sangat besar</td>
+          <td>Besar</td>
+        </tr>
+      </table>
+
+      <h3 class="section-title">4. Best Practices Testing</h3>
+      <ul>
+        <li>Test satu hal pada satu test case</li>
+        <li>Gunakan describe untuk mengelompokkan test</li>
+        <li>Gunakan beforeEach dan afterEach untuk setup</li>
+        <li>Gunakan mock untuk dependency eksternal</li>
+        <li>Test input dan output</li>
+        <li>Test edge cases</li>
+        <li>Gunakan snapshot testing untuk UI</li>
+        <li>Maintain 100% test coverage</li>
+      </ul>
+
+      <h3 class="section-title">5. Contoh Praktis</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Testing dengan Jest</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// 1. Testing API
+// file: api.test.js
+const mockData = [
+    { id: 1, name: 'John' },
+    { id: 2, name: 'Jane' }
+];
+
+jest.mock('./api');
+
+beforeEach(() => {
+    api.get.mockResolvedValue(mockData);
+});
+
+describe('API Tests', () => {
+    test('should fetch data', async () => {
+        const data = await fetchData();
+        expect(data).toEqual(mockData);
+    });
+
+    test('should handle errors', async () => {
+        api.get.mockRejectedValue(new Error('Failed'));
+        await expect(fetchData()).rejects.toThrow('Failed');
+    });
+});
+
+// 2. Testing Component
+// file: user.test.js
+import React from 'react';
+import { render, screen } from '@testing-library/react';
+import User from './User';
+
+describe('User Component', () => {
+    test('renders user name', () => {
+        render(<User name="John" />);
+        expect(screen.getByText('John')).toBeInTheDocument();
+    });
+
+    test('handles click', () => {
+        const handleClick = jest.fn();
+        render(<User name="John" onClick={handleClick} />);
+        
+        const button = screen.getByRole('button');
+        fireEvent.click(button);
+        expect(handleClick).toHaveBeenCalled();
+    });
+});
+
+// 3. Testing State
+// file: counter.test.js
+import React from 'react';
+import { render, screen, fireEvent } from '@testing-library/react';
+import Counter from './Counter';
+
+describe('Counter Component', () => {
+    test('increments count', () => {
+        render(<Counter />);
+        
+        const button = screen.getByRole('button');
+        fireEvent.click(button);
+        
+        expect(screen.getByText('Count: 1')).toBeInTheDocument();
+    });
+
+    test('resets count', () => {
+        render(<Counter />);
+        
+        const button = screen.getByRole('button');
+        fireEvent.click(button);
+        fireEvent.click(button);
+        
+        const resetButton = screen.getByText('Reset');
+        fireEvent.click(resetButton);
+        
+        expect(screen.getByText('Count: 0')).toBeInTheDocument();
+    });
+});</code></pre>
+      </div>
+
+      <h3 class="section-title">6. Tips Penggunaan</h3>
+      <ul>
+        <li>Mulai dengan test sederhana</li>
+        <li>Gunakan describe untuk mengelompokkan test</li>
+        <li>Gunakan beforeEach dan afterEach untuk setup</li>
+        <li>Gunakan mock untuk dependency eksternal</li>
+        <li>Test input dan output</li>
+        <li>Test edge cases</li>
+        <li>Gunakan snapshot testing untuk UI</li>
+        <li>Maintain 100% test coverage</li>
+      </ul>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='j211.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/javascript.png"
+          alt="javascript"
+          onclick="window.location.href='j1.html'"
+          title="javascript"
+        />
+        <button class="btn" onclick="window.location.href='j221.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+
+    <script>
+      function copyCode(button) {
+        const codeBlock = button.parentElement.nextElementSibling;
+        const code = codeBlock.textContent;
+        navigator.clipboard.writeText(code);
+        button.textContent = 'Copied!';
+        setTimeout(() => {
+          button.textContent = 'Copy';
+        }, 2000);
+      }
+    </script>
+  </body>
+</html>

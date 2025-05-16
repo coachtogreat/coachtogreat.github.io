@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Geolocation, Notifications, Web Storage, dll dalam JavaScript</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Geolocation, Notifications, Web Storage, dll dalam JavaScript</h2>
+
+      <h3 class="section-title">1. Geolocation API</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Geolocation</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// 1. Mendapatkan posisi
+if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+        (position) => {
+            console.log(position.coords.latitude);
+            console.log(position.coords.longitude);
+        },
+        (error) => {
+            console.error(error);
+        }
+    );
+}
+
+// 2. Mengawasi posisi
+let watchId = null;
+
+if (navigator.geolocation) {
+    watchId = navigator.geolocation.watchPosition(
+        (position) => {
+            console.log(position.coords.latitude);
+            console.log(position.coords.longitude);
+        },
+        (error) => {
+            console.error(error);
+        }
+    );
+}
+
+// 3. Berhenti mengawasi
+if (watchId) {
+    navigator.geolocation.clearWatch(watchId);
+}
+
+// 4. Mendapatkan alamat dari koordinat
+async function getAlamat(lat, lon) {
+    const response = await fetch(
+        `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`
+    );
+    const data = await response.json();
+    return data.display_name;
+}</code></pre>
+      </div>
+
+      <h3 class="section-title">2. Notifications API</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Notifications</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// 1. Meminta izin
+if (Notification.permission === "granted") {
+    // Izin sudah diberikan
+} else if (Notification.permission !== "denied") {
+    Notification.requestPermission().then(permission => {
+        if (permission === "granted") {
+            // Izin diberikan
+        }
+    });
+}
+
+// 2. Membuat notifikasi
+if (Notification.permission === "granted") {
+    new Notification('Judul', {
+        body: 'Isi notifikasi',
+        icon: '/icon.png'
+    });
+}
+
+// 3. Menangani klik notifikasi
+if (Notification.permission === "granted") {
+    const notif = new Notification('Judul', {
+        body: 'Isi notifikasi',
+        icon: '/icon.png'
+    });
+
+    notif.onclick = () => {
+        window.open('https://example.com');
+    };
+}
+
+// 4. Menangani close notifikasi
+if (Notification.permission === "granted") {
+    const notif = new Notification('Judul', {
+        body: 'Isi notifikasi',
+        icon: '/icon.png'
+    });
+
+    notif.onclose = () => {
+        console.log('Notifikasi ditutup');
+    };
+}</code></pre>
+      </div>
+
+      <h3 class="section-title">3. Web Storage</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Web Storage</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// 1. localStorage
+// Menyimpan data
+localStorage.setItem('nama', 'John');
+
+// Mengambil data
+const nama = localStorage.getItem('nama');
+
+// Menghapus data
+localStorage.removeItem('nama');
+
+// Menghapus semua data
+localStorage.clear();
+
+// 2. sessionStorage
+// Menyimpan data
+sessionStorage.setItem('nama', 'John');
+
+// Mengambil data
+const nama = sessionStorage.getItem('nama');
+
+// Menghapus data
+sessionStorage.removeItem('nama');
+
+// Menghapus semua data
+sessionStorage.clear();
+
+// 3. Mendeteksi perubahan storage
+window.addEventListener('storage', (event) => {
+    console.log('Storage berubah:', event.key, event.newValue);
+});
+
+// 4. Menyimpan objek
+const user = {
+    nama: 'John',
+    umur: 30
+};
+
+localStorage.setItem('user', JSON.stringify(user));
+
+const userObj = JSON.parse(localStorage.getItem('user'));</code></pre>
+      </div>
+
+      <h3 class="section-title">4. Lainnya</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Lainnya</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// 1. Clipboard API
+// Menyalin teks
+async function copyText(text) {
+    try {
+        await navigator.clipboard.writeText(text);
+        console.log('Teks berhasil disalin');
+    } catch (err) {
+        console.error('Gagal menyalin:', err);
+    }
+}
+
+// 2. Battery API
+if ('getBattery' in navigator) {
+    navigator.getBattery().then(battery => {
+        console.log('Level baterai:', battery.level);
+        console.log('Status:', battery.charging);
+    });
+}
+
+// 3. Fullscreen API
+function toggleFullscreen() {
+    if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen();
+    } else {
+        document.exitFullscreen();
+    }
+}
+
+// 4. Vibration API
+if ('vibrate' in navigator) {
+    navigator.vibrate(200); // Getar 200ms
+    navigator.vibrate([200, 100, 200]); // Pola getar
+}
+
+// 5. Speech Recognition API
+if ('SpeechRecognition' in window) {
+    const recognition = new SpeechRecognition();
+    recognition.onresult = (event) => {
+        const text = event.results[0][0].transcript;
+        console.log('Teks:', text);
+    };
+    recognition.start();
+}
+
+// 6. Speech Synthesis API
+if ('speechSynthesis' in window) {
+    const utterance = new SpeechSynthesisUtterance('Halo, selamat pagi');
+    window.speechSynthesis.speak(utterance);
+}</code></pre>
+      </div>
+
+      <h3 class="section-title">5. Best Practices</h3>
+      <ul>
+        <li>Gunakan fitur dengan izin pengguna</li>
+        <li>Tambahkan error handling</li>
+        <li>Gunakan fallback untuk browser lama</li>
+        <li>Beri nama yang deskriptif</li>
+        <li>Tambahkan komentar untuk menjelaskan fungsi</li>
+        <li>Gunakan proper error handling</li>
+        <li>Gunakan feature detection</li>
+      </ul>
+
+      <h3 class="section-title">6. Contoh Praktis</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Penggunaan</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// 1. Aplikasi Todo dengan Geolocation
+if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+        (position) => {
+            const lat = position.coords.latitude;
+            const lon = position.coords.longitude;
+            
+            // Simpan lokasi ke localStorage
+            localStorage.setItem('lokasi', JSON.stringify({
+                lat: lat,
+                lon: lon
+            }));
+            
+            // Buat notifikasi
+            if (Notification.permission === "granted") {
+                new Notification('Lokasi Tersimpan', {
+                    body: `Lokasi Anda telah disimpan di ${lat}, ${lon}`
+                });
+            }
+        },
+        (error) => {
+            console.error('Error:', error);
+        }
+    );
+}
+
+// 2. Aplikasi Chat dengan Web Storage
+// Simpan pesan
+localStorage.setItem('pesan', JSON.stringify({
+    nama: 'John',
+    pesan: 'Halo semua'
+}));
+
+// Mendeteksi perubahan pesan
+window.addEventListener('storage', (event) => {
+    if (event.key === 'pesan') {
+        const pesan = JSON.parse(event.newValue);
+        console.log(`${pesan.nama}: ${pesan.pesan}`);
+    }
+});
+
+// 3. Aplikasi Reminder dengan Notifications
+if (Notification.permission === "granted") {
+    const reminder = new Notification('Reminder', {
+        body: 'Jangan lupa belajar JavaScript!',
+        icon: '/icon.png'
+    });
+    
+    reminder.onclick = () => {
+        window.open('https://example.com/javascript');
+    };
+}
+
+// 4. Aplikasi Sharing dengan Clipboard
+async function shareText(text) {
+    try {
+        await navigator.clipboard.writeText(text);
+        if (Notification.permission === "granted") {
+            new Notification('Berhasil', {
+                body: 'Teks berhasil disalin ke clipboard'
+            });
+        }
+    } catch (err) {
+        console.error('Gagal:', err);
+    }
+}
+
+// 5. Aplikasi Battery Monitor
+if ('getBattery' in navigator) {
+    navigator.getBattery().then(battery => {
+        const status = document.querySelector('#status');
+        
+        function updateStatus() {
+            status.textContent = `Level: ${battery.level * 100}%`;
+            if (battery.charging) {
+                status.textContent += ' (Charging)';
+            }
+        }
+        
+        updateStatus();
+        battery.addEventListener('levelchange', updateStatus);
+        battery.addEventListener('chargingchange', updateStatus);
+    });
+}
+
+// 6. Aplikasi Voice Assistant
+if ('SpeechRecognition' in window) {
+    const recognition = new SpeechRecognition();
+    recognition.onresult = (event) => {
+        const text = event.results[0][0].transcript;
+        
+        // Proses perintah
+        if (text.toLowerCase().includes('halo')) {
+            if (Notification.permission === "granted") {
+                new Notification('Halo!', {
+                    body: 'Apa yang bisa saya bantu?'
+                });
+            }
+        }
+    };
+    recognition.start();
+}</code></pre>
+      </div>
+
+      <h3 class="section-title">7. Tips Penggunaan</h3>
+      <ul>
+        <li>Gunakan fitur dengan izin pengguna</li>
+        <li>Tambahkan error handling</li>
+        <li>Gunakan fallback untuk browser lama</li>
+        <li>Beri nama yang deskriptif</li>
+        <li>Tambahkan komentar untuk menjelaskan fungsi</li>
+        <li>Gunakan proper error handling</li>
+        <li>Gunakan feature detection</li>
+      </ul>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='j192.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/javascript.png"
+          alt="javascript"
+          onclick="window.location.href='j1.html'"
+          title="javascript"
+        />
+        <button class="btn" onclick="window.location.href='j201.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+  </body>
+</html>

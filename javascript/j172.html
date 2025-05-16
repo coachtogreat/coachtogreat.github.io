@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pure Function dan Immutability dalam JavaScript</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Pure Function dan Immutability dalam JavaScript</h2>
+
+      <h3 class="section-title">1. Pure Function</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Pure Function</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// 1. Contoh pure function
+function tambah(a, b) {
+    return a + b;
+}
+
+console.log(tambah(2, 3)); // 5
+console.log(tambah(2, 3)); // 5 (selalu sama)
+
+// 2. Contoh impure function
+let counter = 0;
+
+function tambahCounter() {
+    counter++;
+    return counter;
+}
+
+console.log(tambahCounter()); // 1
+console.log(tambahCounter()); // 2 (hasil berbeda)
+
+// 3. Contoh pure function dengan array
+function jumlahArray(arr) {
+    return arr.reduce((acc, curr) => acc + curr, 0);
+}
+
+const angka = [1, 2, 3, 4];
+console.log(jumlahArray(angka)); // 10
+console.log(jumlahArray(angka)); // 10 (selalu sama)
+
+// 4. Contoh impure function dengan array
+function tambahKeArray(arr, nilai) {
+    arr.push(nilai);
+    return arr;
+}
+
+const angka = [1, 2, 3];
+tambahKeArray(angka, 4); // [1, 2, 3, 4]
+tambahKeArray(angka, 5); // [1, 2, 3, 4, 5] (mengubah state)</code></pre>
+      </div>
+
+      <h3 class="section-title">2. Immutability</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Immutability</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// 1. Immutability dengan array
+const angka = [1, 2, 3];
+
+// Cara yang tidak immutable
+angka.push(4); // mengubah array asli
+
+// Cara yang immutable
+const baru = [...angka, 4]; // membuat array baru
+
+// 2. Immutability dengan object
+const user = {
+    nama: "John",
+    umur: 30
+};
+
+// Cara yang tidak immutable
+user.nama = "Jane"; // mengubah object asli
+
+// Cara yang immutable
+const userBaru = {
+    ...user,
+    nama: "Jane"
+}; // membuat object baru
+
+// 3. Immutability dengan state
+const state = {
+    todos: [
+        { id: 1, teks: "Belajar JavaScript" }
+    ]
+};
+
+// Cara yang tidak immutable
+state.todos.push({ id: 2, teks: "Membuat proyek" }); // mengubah state asli
+
+// Cara yang immutable
+const stateBaru = {
+    ...state,
+    todos: [
+        ...state.todos,
+        { id: 2, teks: "Membuat proyek" }
+    ]
+}; // membuat state baru
+
+// 4. Immutability dengan function
+function tambahTodo(state, todo) {
+    return {
+        ...state,
+        todos: [
+            ...state.todos,
+            todo
+        ]
+    };
+}
+
+const state = {
+    todos: [
+        { id: 1, teks: "Belajar JavaScript" }
+    ]
+};
+
+const stateBaru = tambahTodo(state, { id: 2, teks: "Membuat proyek" });</code></pre>
+      </div>
+
+      <h3 class="section-title">3. Best Practices</h3>
+      <ul>
+        <li>Buat pure function sebanyak mungkin</li>
+        <li>Gunakan immutable data structure</li>
+        <li>Hindari side effects</li>
+        <li>Gunakan spread operator untuk immutable</li>
+        <li>Beri nama yang deskriptif</li>
+        <li>Tambahkan error handling</li>
+        <li>Tambahkan komentar untuk menjelaskan function</li>
+      </ul>
+
+      <h3 class="section-title">4. Contoh Praktis</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Penggunaan</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// 1. Todo List (Pure Function dan Immutability)
+const initialState = {
+    todos: []
+};
+
+function tambahTodo(state, todo) {
+    return {
+        ...state,
+        todos: [
+            ...state.todos,
+            todo
+        ]
+    };
+}
+
+function hapusTodo(state, id) {
+    return {
+        ...state,
+        todos: state.todos.filter(todo => todo.id !== id)
+    };
+}
+
+const state = {
+    todos: [
+        { id: 1, teks: "Belajar JavaScript" }
+    ]
+};
+
+const stateBaru = tambahTodo(state, { id: 2, teks: "Membuat proyek" });
+const stateAkhir = hapusTodo(stateBaru, 1);
+
+// 2. Galeri Foto (Pure Function dan Immutability)
+const initialState = {
+    gambar: []
+};
+
+function tambahGambar(state, url) {
+    return {
+        ...state,
+        gambar: [
+            ...state.gambar,
+            url
+        ]
+    };
+}
+
+function hapusGambar(state, index) {
+    return {
+        ...state,
+        gambar: state.gambar.filter((_, i) => i !== index)
+    };
+}
+
+const state = {
+    gambar: ["gambar1.jpg"]
+};
+
+const stateBaru = tambahGambar(state, "gambar2.jpg");
+const stateAkhir = hapusGambar(stateBaru, 0);
+
+// 3. Form Validation (Pure Function)
+function validateEmail(email) {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
+}
+
+function validatePassword(password) {
+    return password.length >= 8;
+}
+
+function validateForm(form) {
+    return {
+        email: validateEmail(form.email),
+        password: validatePassword(form.password)
+    };
+}
+
+const form = {
+    email: "test@example.com",
+    password: "12345678"
+};
+
+const hasil = validateForm(form);
+
+// 4. Animasi (Immutability)
+const initialState = {
+    posisi: 0
+};
+
+function gerakKiri(state, jarak) {
+    return {
+        ...state,
+        posisi: state.posisi - jarak
+    };
+}
+
+function gerakKanan(state, jarak) {
+    return {
+        ...state,
+        posisi: state.posisi + jarak
+    };
+}
+
+const state = {
+    posisi: 0
+};
+
+const stateBaru = gerakKanan(state, 10);
+const stateAkhir = gerakKiri(stateBaru, 5);
+
+// 5. Data Processing (Pure Function)
+function filterData(data, predicate) {
+    return data.filter(predicate);
+}
+
+function mapData(data, mapper) {
+    return data.map(mapper);
+}
+
+const angka = [1, 2, 3, 4, 5];
+const genap = filterData(angka, x => x % 2 === 0);
+const kuadrat = mapData(genap, x => x * x);
+
+// 6. Event Handler (Pure Function)
+function prosesKlik(state) {
+    return {
+        ...state,
+        klik: state.klik + 1
+    };
+}
+
+const state = {
+    klik: 0
+};
+
+const stateBaru = prosesKlik(state);</code></pre>
+      </div>
+
+      <h3 class="section-title">5. Tips Penggunaan</h3>
+      <ul>
+        <li>Buat pure function sebanyak mungkin</li>
+        <li>Gunakan immutable data structure</li>
+        <li>Hindari side effects</li>
+        <li>Gunakan spread operator untuk immutable</li>
+        <li>Beri nama yang deskriptif</li>
+        <li>Tambahkan error handling</li>
+        <li>Tambahkan komentar untuk menjelaskan function</li>
+      </ul>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='j171.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/javascript.png"
+          alt="javascript"
+          onclick="window.location.href='j1.html'"
+          title="javascript"
+        />
+        <button class="btn" onclick="window.location.href='j173.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+  </body>
+</html>

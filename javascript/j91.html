@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scope Global vs Lokal dalam JavaScript</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Scope Global vs Lokal dalam JavaScript</h2>
+
+      <h3 class="section-title">1. Scope Global</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Scope Global</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Variabel global
+let nama = "John";
+
+function sapa() {
+    console.log(nama); // "John"
+}
+
+// Fungsi global
+function tambah(a, b) {
+    return a + b;
+}
+
+// Objek global
+let orang = {
+    nama: "John",
+    umur: 25
+};
+
+// Scope global dalam browser
+console.log(window.nama); // "John"
+console.log(window.tambah(5, 3)); // 8
+console.log(window.orang); // {nama: "John", umur: 25}</code></pre>
+      </div>
+
+      <h3 class="section-title">2. Scope Lokal</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Scope Lokal</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Scope lokal dalam fungsi
+function hitung() {
+    let nilai = 10;
+    const nama = "John";
+    
+    console.log(nilai); // 10
+    console.log(nama); // "John"
+}
+
+hitung();
+// console.log(nilai); // Error: nilai is not defined
+// console.log(nama); // Error: nama is not defined
+
+// Scope lokal dalam blok if
+if (true) {
+    let kondisi = "benar";
+    const nilai = 100;
+    
+    console.log(kondisi); // "benar"
+    console.log(nilai); // 100
+}
+
+// console.log(kondisi); // Error: kondisi is not defined
+// console.log(nilai); // Error: nilai is not defined
+
+// Scope lokal dalam loop
+for (let i = 0; i < 5; i++) {
+    console.log(i); // 0, 1, 2, 3, 4
+}
+
+// console.log(i); // Error: i is not defined</code></pre>
+      </div>
+
+      <h3 class="section-title">3. Perbedaan Scope</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Perbedaan Scope</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Contoh perbedaan scope
+let namaGlobal = "John";
+
+function fungsi() {
+    let namaLokal = "Jane";
+    
+    console.log(namaGlobal); // "John"
+    console.log(namaLokal); // "Jane"
+}
+
+fungsi();
+
+console.log(namaGlobal); // "John"
+// console.log(namaLokal); // Error: namaLokal is not defined
+
+// Contoh shadowing
+let nilai = 10;
+
+function hitung() {
+    let nilai = 20;
+    console.log(nilai); // 20
+}
+
+hitung();
+console.log(nilai); // 10
+
+// Contoh hoisting
+function contoh() {
+    console.log(teks); // undefined
+    var teks = "Hello";
+}
+
+contoh();</code></pre>
+      </div>
+
+      <h3 class="section-title">4. Best Practices</h3>
+      <ul>
+        <li>Hindari penggunaan variabel global yang berlebihan</li>
+        <li>Gunakan scope lokal untuk variabel sementara</li>
+        <li>Gunakan const untuk nilai yang tidak berubah</li>
+        <li>Beri nama variabel yang deskriptif</li>
+        <li>Tambahkan komentar untuk menjelaskan scope</li>
+        <li>Hindari shadowing variabel</li>
+      </ul>
+
+      <h3 class="section-title">5. Contoh Praktis</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Penggunaan</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Contoh kalkulator
+function kalkulator() {
+    let hasil = 0;
+    
+    function tambah(a, b) {
+        hasil = a + b;
+        return hasil;
+    }
+    
+    function kurang(a, b) {
+        hasil = a - b;
+        return hasil;
+    }
+    
+    return {
+        tambah: tambah,
+        kurang: kurang,
+        getHasil: function() {
+            return hasil;
+        }
+    };
+}
+
+const calc = kalkulator();
+console.log(calc.tambah(5, 3)); // 8
+console.log(calc.kurang(10, 4)); // 6
+
+// Contoh form validation
+function validateForm() {
+    const form = document.getElementById("form");
+    const nama = form.querySelector("#nama");
+    const email = form.querySelector("#email");
+    
+    function validateEmail() {
+        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return regex.test(email.value);
+    }
+    
+    function validateNama() {
+        return nama.value.trim().length > 0;
+    }
+    
+    return validateNama() && validateEmail();
+}
+
+// Contoh game
+function game() {
+    let skor = 0;
+    let nyawa = 3;
+    
+    function tambahSkor() {
+        skor += 10;
+        return skor;
+    }
+    
+    function kurangNyawa() {
+        nyawa--;
+        return nyawa;
+    }
+    
+    return {
+        tambahSkor: tambahSkor,
+        kurangNyawa: kurangNyawa,
+        getSkor: function() {
+            return skor;
+        },
+        getNyawa: function() {
+            return nyawa;
+        }
+    };
+}
+
+const gameInstance = game();
+console.log(gameInstance.tambahSkor()); // 10
+console.log(gameInstance.kurangNyawa()); // 2</code></pre>
+      </div>
+
+      <h3 class="section-title">6. Tips Penggunaan</h3>
+      <ul>
+        <li>Hindari penggunaan variabel global yang berlebihan</li>
+        <li>Gunakan scope lokal untuk variabel sementara</li>
+        <li>Gunakan const untuk nilai yang tidak berubah</li>
+        <li>Beri nama variabel yang deskriptif</li>
+        <li>Tambahkan komentar untuk menjelaskan scope</li>
+        <li>Hindari shadowing variabel</li>
+      </ul>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='j83.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/javascript.png"
+          alt="javascript"
+          onclick="window.location.href='j1.html'"
+          title="javascript"
+        />
+        <button class="btn" onclick="window.location.href='j92.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+  </body>
+</html>

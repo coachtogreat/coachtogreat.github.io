@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menyimpan dan Mengambil Data di localStorage/sessionStorage</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Menyimpan dan Mengambil Data di localStorage/sessionStorage</h2>
+
+      <h3 class="section-title">1. Pengenalan localStorage dan sessionStorage</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Dasar</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// localStorage
+localStorage.setItem("nama", "John");
+const nama = localStorage.getItem("nama");
+localStorage.removeItem("nama");
+localStorage.clear();
+
+// sessionStorage
+sessionStorage.setItem("nama", "John");
+const nama = sessionStorage.getItem("nama");
+sessionStorage.removeItem("nama");
+sessionStorage.clear();
+
+// Memeriksa dukungan
+if (typeof(Storage) !== "undefined") {
+    console.log("localStorage/sessionStorage didukung");
+} else {
+    console.log("localStorage/sessionStorage tidak didukung");
+}
+
+// Menyimpan objek
+const user = { nama: "John", umur: 30 };
+localStorage.setItem("user", JSON.stringify(user));
+const userObj = JSON.parse(localStorage.getItem("user"));
+
+// Menyimpan array
+const daftar = ["John", "Jane", "Bob"];
+localStorage.setItem("daftar", JSON.stringify(daftar));
+const daftarArr = JSON.parse(localStorage.getItem("daftar"));</code></pre>
+      </div>
+
+      <h3 class="section-title">2. Perbedaan localStorage dan sessionStorage</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Perbedaan</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// localStorage (persistent)
+localStorage.setItem("nama", "John");
+// Data akan tetap ada meskipun browser ditutup
+
+// sessionStorage (sesi)
+sessionStorage.setItem("nama", "John");
+// Data akan hilang ketika browser ditutup
+
+// Contoh penggunaan
+// localStorage untuk data yang perlu dipertahankan
+localStorage.setItem("pengaturan", "terang");
+
+// sessionStorage untuk data sementara
+sessionStorage.setItem("keranjang", JSON.stringify(["produk1", "produk2"]));</code></pre>
+      </div>
+
+      <h3 class="section-title">3. Event Storage</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Event</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Mendengarkan perubahan storage
+window.addEventListener('storage', function(e) {
+    console.log('Storage berubah:', e.key, e.newValue);
+});
+
+// Contoh penggunaan
+// Tab A
+localStorage.setItem("counter", "1");
+
+// Tab B
+window.addEventListener('storage', function(e) {
+    if (e.key === "counter") {
+        console.log("Counter berubah menjadi:", e.newValue);
+    }
+});
+
+// Menyimpan data dengan timestamp
+function simpanData(key, data) {
+    const obj = {
+        data: data,
+        timestamp: Date.now()
+    };
+    localStorage.setItem(key, JSON.stringify(obj));
+}
+
+// Mengambil data dengan cek kadaluarsa
+function ambilData(key, maksKadaluarsa) {
+    const data = localStorage.getItem(key);
+    if (!data) return null;
+    
+    const obj = JSON.parse(data);
+    const selisih = Date.now() - obj.timestamp;
+    
+    if (selisih > maksKadaluarsa) {
+        localStorage.removeItem(key);
+        return null;
+    }
+    
+    return obj.data;
+}</code></pre>
+      </div>
+
+      <h3 class="section-title">4. Best Practices</h3>
+      <ul>
+        <li>Gunakan JSON untuk menyimpan objek/array</li>
+        <li>Tambahkan validasi data sebelum menyimpan</li>
+        <li>Batasi ukuran data yang disimpan</li>
+        <li>Pilih antara localStorage atau sessionStorage sesuai kebutuhan</li>
+        <li>Tambahkan error handling</li>
+        <li>Beri nama key yang deskriptif</li>
+        <li>Tambahkan komentar untuk menjelaskan penggunaan</li>
+      </ul>
+
+      <h3 class="section-title">5. Contoh Praktis</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Penggunaan</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Contoh todo list
+function tambahTodo(teks) {
+    const todos = JSON.parse(localStorage.getItem("todos") || "[]");
+    todos.push(teks);
+    localStorage.setItem("todos", JSON.stringify(todos));
+}
+
+function ambilTodos() {
+    return JSON.parse(localStorage.getItem("todos") || "[]");
+}
+
+// Contoh galeri foto
+function simpanGambar(url) {
+    const galeri = JSON.parse(localStorage.getItem("galeri") || "[]");
+    galeri.push(url);
+    localStorage.setItem("galeri", JSON.stringify(galeri));
+}
+
+function ambilGaleri() {
+    return JSON.parse(localStorage.getItem("galeri") || "[]");
+}
+
+// Contoh form
+function simpanForm() {
+    const nama = document.getElementById("nama").value;
+    const email = document.getElementById("email").value;
+    
+    localStorage.setItem("form", JSON.stringify({
+        nama: nama,
+        email: email,
+        timestamp: Date.now()
+    }));
+}
+
+function ambilForm() {
+    const data = localStorage.getItem("form");
+    if (!data) return null;
+    
+    const obj = JSON.parse(data);
+    if (Date.now() - obj.timestamp > 24 * 60 * 60 * 1000) {
+        localStorage.removeItem("form");
+        return null;
+    }
+    
+    return obj;
+}
+
+// Contoh keranjang belanja
+function tambahKeranjang(item) {
+    const keranjang = JSON.parse(sessionStorage.getItem("keranjang") || "[]");
+    keranjang.push(item);
+    sessionStorage.setItem("keranjang", JSON.stringify(keranjang));
+}
+
+function ambilKeranjang() {
+    return JSON.parse(sessionStorage.getItem("keranjang") || "[]");
+}
+
+// Contoh pengaturan aplikasi
+function simpanPengaturan(pengaturan) {
+    localStorage.setItem("pengaturan", JSON.stringify(pengaturan));
+}
+
+function ambilPengaturan() {
+    return JSON.parse(localStorage.getItem("pengaturan") || "{}");
+}</code></pre>
+      </div>
+
+      <h3 class="section-title">6. Tips Penggunaan</h3>
+      <ul>
+        <li>Gunakan JSON untuk menyimpan objek/array</li>
+        <li>Tambahkan validasi data sebelum menyimpan</li>
+        <li>Batasi ukuran data yang disimpan</li>
+        <li>Pilih antara localStorage atau sessionStorage sesuai kebutuhan</li>
+        <li>Tambahkan error handling</li>
+        <li>Beri nama key yang deskriptif</li>
+        <li>Tambahkan komentar untuk menjelaskan penggunaan</li>
+      </ul>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='j141.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/javascript.png"
+          alt="javascript"
+          onclick="window.location.href='j1.html'"
+          title="javascript"
+        />
+        <button class="btn" onclick="window.location.href='j151.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+  </body>
+</html>

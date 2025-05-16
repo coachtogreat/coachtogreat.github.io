@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Membuat Objek dalam JavaScript</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Membuat Objek dalam JavaScript</h2>
+
+      <h3 class="section-title">1. Pengenalan Objek</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Definisi Objek</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Objek adalah struktur data yang menyimpan kumpulan properti
+// Properti bisa berupa nilai atau fungsi
+
+// Contoh objek sederhana
+let orang = {
+    nama: "John",
+    umur: 25,
+    alamat: "Jakarta"
+};
+
+// Objek dengan fungsi
+let kalkulator = {
+    tambah: function(a, b) {
+        return a + b;
+    },
+    kurang: function(a, b) {
+        return a - b;
+    }
+};</code></pre>
+      </div>
+
+      <h3 class="section-title">2. Cara Membuat Objek</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Cara Membuat Objek</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Menggunakan object literal
+let orang = {
+    nama: "John",
+    umur: 25,
+    alamat: "Jakarta"
+};
+
+// Menggunakan constructor Object
+let orang = new Object();
+orang.nama = "John";
+orang.umur = 25;
+orang.alamat = "Jakarta";
+
+// Menggunakan function constructor
+function Orang(nama, umur, alamat) {
+    this.nama = nama;
+    this.umur = umur;
+    this.alamat = alamat;
+}
+let john = new Orang("John", 25, "Jakarta");
+
+// Menggunakan class (ES6+)
+class Orang {
+    constructor(nama, umur, alamat) {
+        this.nama = nama;
+        this.umur = umur;
+        this.alamat = alamat;
+    }
+}
+let john = new Orang("John", 25, "Jakarta");</code></pre>
+      </div>
+
+      <h3 class="section-title">3. Mengakses Nilai Objek</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Mengakses Nilai</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Menggunakan dot notation
+let orang = {
+    nama: "John",
+    umur: 25
+};
+console.log(orang.nama); // "John"
+console.log(orang.umur); // 25
+
+// Menggunakan bracket notation
+console.log(orang["nama"]); // "John"
+console.log(orang["umur"]); // 25
+
+// Mengubah nilai
+orang.nama = "Jane";
+console.log(orang.nama); // "Jane"
+
+// Menambah properti baru
+orang.alamat = "Jakarta";
+console.log(orang.alamat); // "Jakarta"</code></pre>
+      </div>
+
+      <h3 class="section-title">4. Objek dalam Objek</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Objek dalam Objek</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Objek sederhana
+let siswa = {
+    nama: "John",
+    nilai: {
+        matematika: 85,
+        bahasa: 90,
+        ipa: 88
+    },
+    alamat: {
+        jalan: "Jl. Raya",
+        kota: "Jakarta",
+        kodePos: 12345
+    }
+};
+
+// Mengakses nilai
+console.log(siswa.nilai.matematika); // 85
+console.log(siswa.alamat.kota); // "Jakarta"
+
+// Mengubah nilai
+siswa.nilai.bahasa = 95;
+console.log(siswa.nilai.bahasa); // 95
+
+// Menambah properti
+siswa.nilai.ips = 80;
+console.log(siswa.nilai.ips); // 80</code></pre>
+      </div>
+
+      <h3 class="section-title">5. Best Practices</h3>
+      <ul>
+        <li>Gunakan object literal untuk objek sederhana</li>
+        <li>Gunakan constructor untuk objek yang sering dibuat</li>
+        <li>Gunakan class untuk objek yang kompleks</li>
+        <li>Beri nama properti yang deskriptif</li>
+        <li>Tambahkan komentar untuk menjelaskan objek</li>
+        <li>Pisahkan objek yang kompleks ke dalam fungsi</li>
+      </ul>
+
+      <h3 class="section-title">6. Contoh Praktis</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Penggunaan</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Contoh data siswa
+let siswa = {
+    nama: "John",
+    nilai: {
+        matematika: 85,
+        bahasa: 90,
+        ipa: 88
+    },
+    alamat: {
+        jalan: "Jl. Raya",
+        kota: "Jakarta",
+        kodePos: 12345
+    },
+    hitungRataRata: function() {
+        let total = 0;
+        let jumlah = 0;
+        for (let nilai in this.nilai) {
+            total += this.nilai[nilai];
+            jumlah++;
+        }
+        return total / jumlah;
+    }
+};
+
+// Contoh data produk
+let produk = {
+    id: 1,
+    nama: "Laptop",
+    harga: 10000000,
+    stok: 10,
+    diskon: 0.1,
+    hitungHargaAkhir: function() {
+        return this.harga * (1 - this.diskon);
+    }
+};
+
+// Contoh data menu
+let menu = {
+    makanan: {
+        "Nasi Goreng": {
+            harga: 20000,
+            stok: 50
+        },
+        "Mie Goreng": {
+            harga: 25000,
+            stok: 40
+        }
+    },
+    minuman: {
+        "Teh": {
+            harga: 5000,
+            stok: 100
+        },
+        "Kopi": {
+            harga: 10000,
+            stok: 80
+        }
+    }
+};
+
+// Contoh data transaksi
+let transaksi = {
+    tanggal: "2023-05-01",
+    produk: [
+        { nama: "Laptop", jumlah: 1 },
+        { nama: "Smartphone", jumlah: 2 }
+    ],
+    hitungTotal: function() {
+        let total = 0;
+        for (let item of this.produk) {
+            total += item.jumlah * this.harga(item.nama);
+        }
+        return total;
+    }
+};</code></pre>
+      </div>
+
+      <h3 class="section-title">7. Tips Penggunaan</h3>
+      <ul>
+        <li>Gunakan objek untuk menyimpan data terkait</li>
+        <li>Hindari objek yang terlalu dalam</li>
+        <li>Gunakan fungsi untuk operasi kompleks</li>
+        <li>Tambahkan komentar untuk menjelaskan objek</li>
+        <li>Pisahkan logika yang rumit ke dalam fungsi</li>
+        <li>Gunakan constructor atau class untuk objek yang sering dibuat</li>
+      </ul>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='j73.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/javascript.png"
+          alt="javascript"
+          onclick="window.location.href='j1.html'"
+          title="javascript"
+        />
+        <button class="btn" onclick="window.location.href='j82.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+  </body>
+</html>

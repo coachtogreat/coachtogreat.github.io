@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menulis Kode JavaScript Pertama</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Menulis Kode JavaScript Pertama</h2>
+
+      <h3 class="section-title">1. Hallo Dunia dengan JavaScript</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Pertama: Hello World</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Cara 1: Menggunakan console.log
+console.log("Halo, Dunia!");
+
+// Cara 2: Menggunakan alert
+alert("Halo, Dunia!");
+
+// Cara 3: Mengubah isi halaman
+let paragraf = document.createElement("p");
+paragraf.textContent = "Halo, Dunia!";
+document.body.appendChild(paragraf);</code></pre>
+      </div>
+
+      <h3 class="section-title">2. Variabel dan Tipe Data Dasar</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh: Menggunakan Variabel</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Deklarasi variabel
+let nama = "John";
+let umur = 25;
+let isStudent = true;
+
+// Menampilkan variabel
+console.log("Nama: " + nama);
+console.log("Umur: " + umur);
+console.log("Status: " + isStudent);</code></pre>
+      </div>
+
+      <h3 class="section-title">3. Operasi Matematika Sederhana</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh: Operasi Matematika</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Operasi penjumlahan
+let a = 5;
+let b = 3;
+let hasil = a + b;
+console.log("Hasil: " + hasil);
+
+// Operasi pengurangan
+let c = 10;
+let d = 4;
+let hasilKurang = c - d;
+console.log("Hasil: " + hasilKurang);</code></pre>
+      </div>
+
+      <h3 class="section-title">4. Menggunakan Event</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh: Menggunakan Event</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>&lt;!-- HTML --&gt;
+&lt;button id="tombol"&gt;Klik Saya&lt;/button&gt;
+
+&lt;!-- JavaScript --&gt;
+&lt;script&gt;
+document.getElementById("tombol").addEventListener("click", function() {
+  alert("Tombol diklik!");
+});
+&lt;/script&gt;</code></pre>
+      </div>
+
+      <h3 class="section-title">5. Mengubah Konten Halaman</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh: Mengubah Konten</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>&lt;!-- HTML --&gt;
+&lt;p id="teks"&gt;Ini adalah teks asli.&lt;/p&gt;
+
+&lt;!-- JavaScript --&gt;
+&lt;script&gt;
+// Mengubah teks
+let paragraf = document.getElementById("teks");
+paragraf.textContent = "Teks ini telah berubah!";
+
+// Mengubah warna
+paragraf.style.color = "blue";
+&lt;/script&gt;</code></pre>
+      </div>
+
+      <h3 class="section-title">6. Tips untuk Pemula</h3>
+      <ul>
+        <li>Mulai dengan contoh sederhana</li>
+        <li>Gunakan console.log untuk debugging</li>
+        <li>Praktekkan kode di browser console</li>
+        <li>Baca pesan error dengan seksama</li>
+        <li>Gunakan komentar untuk menjelaskan kode</li>
+      </ul>
+
+      <h3 class="section-title">7. Latihan Praktis</h3>
+      <ol>
+        <li>Buat program yang menampilkan nama Anda</li>
+        <li>Buat kalkulator sederhana</li>
+        <li>Buat tombol yang mengubah warna halaman</li>
+        <li>Buat program yang menghitung umur dari tahun lahir</li>
+        <li>Buat form sederhana dengan validasi</li>
+      </ol>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='j14.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/javascript.png"
+          alt="javascript"
+          onclick="window.location.href='j1.html'"
+          title="javascript"
+        />
+        <button class="btn" onclick="window.location.href='j22.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+  </body>
+</html>

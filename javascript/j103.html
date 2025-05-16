@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manipulasi Teks, Atribut, dan Style dalam JavaScript</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Manipulasi Teks, Atribut, dan Style dalam JavaScript</h2>
+
+      <h3 class="section-title">1. Manipulasi Teks</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Manipulasi Teks</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// HTML
+&lt;p id="paragraf"&gt;Konten awal&lt;/p&gt;
+
+// JavaScript
+// Mengubah teks
+const paragraf = document.getElementById("paragraf");
+paragraf.textContent = "Konten baru";
+
+// Menambah teks
+paragraf.textContent += " tambahan";
+
+// Mengambil teks
+const teks = paragraf.textContent;
+console.log(teks); // "Konten baru tambahan"
+
+// Mengganti teks dengan HTML
+paragraf.innerHTML = "&lt;strong&gt;Konten&lt;/strong&gt; baru";
+
+// Menambah HTML
+paragraf.innerHTML += "&lt;em&gt;tambahan&lt;/em&gt;";</code></pre>
+      </div>
+
+      <h3 class="section-title">2. Manipulasi Atribut</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Manipulasi Atribut</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// HTML
+&lt;img id="gambar" src="gambar.jpg" alt="Gambar"&gt;
+
+// JavaScript
+// Mengambil atribut
+const gambar = document.getElementById("gambar");
+console.log(gambar.src); // "gambar.jpg"
+console.log(gambar.getAttribute("alt")); // "Gambar"
+
+// Mengubah atribut
+gambar.src = "baru.jpg";
+gambar.setAttribute("alt", "Gambar baru");
+
+// Menghapus atribut
+gambar.removeAttribute("alt");
+
+// Mengganti atribut dengan dataset
+const tombol = document.getElementById("tombol");
+tombol.dataset.status = "aktif";
+console.log(tombol.dataset.status); // "aktif"</code></pre>
+      </div>
+
+      <h3 class="section-title">3. Manipulasi Style</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Manipulasi Style</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// HTML
+&lt;div id="konten"&gt;Konten&lt;/div&gt;
+
+// JavaScript
+// Mengubah style
+const konten = document.getElementById("konten");
+konten.style.color = "red";
+konten.style.backgroundColor = "white";
+konten.style.padding = "10px";
+
+// Mengambil style
+console.log(konten.style.color); // "red"
+
+// Menggunakan class
+konten.className = "aktif";
+
+// Mengganti multiple style
+Object.assign(konten.style, {
+    color: "blue",
+    backgroundColor: "yellow",
+    padding: "15px"
+});
+
+// Menggunakan CSS-in-JS
+const style = {
+    color: "green",
+    backgroundColor: "pink",
+    padding: "20px"
+};
+Object.assign(konten.style, style);</code></pre>
+      </div>
+
+      <h3 class="section-title">4. Best Practices</h3>
+      <ul>
+        <li>Gunakan className untuk mengubah style</li>
+        <li>Hindari penggunaan inline style jika tidak diperlukan</li>
+        <li>Gunakan dataset untuk menyimpan data</li>
+        <li>Tambahkan komentar untuk menjelaskan manipulasi</li>
+        <li>Pisahkan logika yang rumit ke dalam fungsi</li>
+        <li>Gunakan CSS-in-JS untuk style kompleks</li>
+      </ul>
+
+      <h3 class="section-title">5. Contoh Praktis</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Penggunaan</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Contoh form validation
+function validateForm() {
+    const form = document.getElementById("form");
+    const nama = form.querySelector("#nama");
+    
+    if (nama.value.trim().length === 0) {
+        nama.style.borderColor = "red";
+        nama.style.backgroundColor = "pink";
+        nama.style.padding = "5px";
+    }
+}
+
+// Contoh galeri foto
+function buatGaleri() {
+    const konten = document.querySelector(".galeri");
+    const gambar = [
+        { src: "gambar1.jpg", alt: "Gambar 1" },
+        { src: "gambar2.jpg", alt: "Gambar 2" }
+    ];
+    
+    gambar.forEach(img => {
+        const element = document.createElement("img");
+        element.src = img.src;
+        element.alt = img.alt;
+        element.style.width = "200px";
+        element.style.height = "200px";
+        konten.appendChild(element);
+    });
+}
+
+// Contoh todo list
+function tambahTodo() {
+    const input = document.querySelector("#todo-input");
+    const list = document.querySelector("#todo-list");
+    
+    if (input.value.trim()) {
+        const li = document.createElement("li");
+        li.textContent = input.value;
+        li.className = "todo-item";
+        li.dataset.status = "belum";
+        list.appendChild(li);
+        input.value = "";
+    }
+}
+
+// Contoh animasi
+function animasi() {
+    const kotak = document.querySelector(".kotak");
+    
+    let posisi = 0;
+    const animasi = setInterval(() => {
+        posisi++;
+        kotak.style.left = posisi + "px";
+        
+        if (posisi >= 400) {
+            clearInterval(animasi);
+        }
+    }, 10);
+}</code></pre>
+      </div>
+
+      <h3 class="section-title">6. Tips Penggunaan</h3>
+      <ul>
+        <li>Gunakan className untuk mengubah style</li>
+        <li>Hindari penggunaan inline style jika tidak diperlukan</li>
+        <li>Gunakan dataset untuk menyimpan data</li>
+        <li>Tambahkan komentar untuk menjelaskan manipulasi</li>
+        <li>Pisahkan logika yang rumit ke dalam fungsi</li>
+        <li>Gunakan CSS-in-JS untuk style kompleks</li>
+      </ul>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='j102.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/javascript.png"
+          alt="javascript"
+          onclick="window.location.href='j1.html'"
+          title="javascript"
+        />
+        <button class="btn" onclick="window.location.href='j104.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+  </body>
+</html>

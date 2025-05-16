@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Arrow Function dalam JavaScript</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Arrow Function dalam JavaScript</h2>
+
+      <h3 class="section-title">1. Pengenalan Arrow Function</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Syntax Arrow Function</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Arrow Function sederhana
+const namaFungsi = () => {
+    // kode yang dijalankan
+};
+
+// Arrow Function dengan parameter
+const namaFungsi = (param1, param2) => {
+    // kode yang dijalankan
+};
+
+// Arrow Function dengan return implicit
+const namaFungsi = param => nilai;</code></pre>
+      </div>
+
+      <h3 class="section-title">2. Contoh Arrow Function</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Sederhana</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Arrow Function sederhana
+const sapa = () => {
+    console.log("Halo!");
+};
+
+// Arrow Function dengan parameter
+const tambah = (a, b) => {
+    return a + b;
+};
+
+// Arrow Function dengan satu parameter
+const kuadrat = x => x * x;
+
+// Arrow Function dengan return implicit
+const kali = (a, b) => a * b;
+
+// Arrow Function dengan multiple statement
+const hitung = (a, b) => {
+    const total = a + b;
+    return total;
+};
+
+// Arrow Function sebagai parameter
+const angka = [1, 2, 3, 4, 5];
+angka.map(x => x * 2); // [2, 4, 6, 8, 10]</code></pre>
+      </div>
+
+      <h3 class="section-title">3. Keunggulan Arrow Function</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Keunggulan</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Lebih singkat dari Function Expression
+const kali = (a, b) => a * b;
+// vs
+const kali = function(a, b) {
+    return a * b;
+};
+
+// Lebih ringkas untuk operasi sederhana
+const kuadrat = x => x * x;
+// vs
+const kuadrat = function(x) {
+    return x * x;
+};
+
+// Lebih mudah dibaca dalam array methods
+const angka = [1, 2, 3, 4, 5];
+angka.map(x => x * 2);
+// vs
+angka.map(function(x) {
+    return x * 2;
+});</code></pre>
+      </div>
+
+      <h3 class="section-title">4. Perbedaan dengan Function Regular</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Perbedaan</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// this dalam Function Regular
+function sapa() {
+    console.log(this);
+}
+sapa(); // Window object
+
+// this dalam Arrow Function
+const sapa = () => {
+    console.log(this);
+};
+sapa(); // undefined
+
+// arguments dalam Function Regular
+function jumlah() {
+    console.log(arguments);
+}
+jumlah(1, 2, 3); // Arguments object
+
+// arguments dalam Arrow Function
+const jumlah = () => {
+    console.log(arguments);
+};
+jumlah(1, 2, 3); // ReferenceError: arguments is not defined
+
+// new dengan Function Regular
+function Person(nama) {
+    this.nama = nama;
+}
+const john = new Person("John"); // Berhasil
+
+// new dengan Arrow Function
+const Person = (nama) => {
+    this.nama = nama;
+};
+const john = new Person("John"); // Error</code></pre>
+      </div>
+
+      <h3 class="section-title">5. Best Practices</h3>
+      <ul>
+        <li>Gunakan Arrow Function untuk operasi sederhana</li>
+        <li>Hindari Arrow Function untuk metode objek</li>
+        <li>Jangan gunakan Arrow Function dengan new</li>
+        <li>Gunakan Function Regular untuk metode konstruktor</li>
+        <li>Tambahkan komentar untuk menjelaskan fungsi</li>
+        <li>Pisahkan logika yang rumit ke dalam fungsi</li>
+      </ul>
+
+      <h3 class="section-title">6. Contoh Praktis</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Penggunaan</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Contoh penggunaan dalam array methods
+const angka = [1, 2, 3, 4, 5];
+
+// Menggunakan Arrow Function
+angka.map(x => x * 2); // [2, 4, 6, 8, 10]
+angka.filter(x => x % 2 === 0); // [2, 4]
+angka.reduce((total, x) => total + x, 0); // 15
+
+// Contoh penggunaan dalam event handler
+// Menggunakan Function Regular
+button.addEventListener('click', function() {
+    console.log(this); // Button element
+});
+
+// Menggunakan Arrow Function
+button.addEventListener('click', () => {
+    console.log(this); // Window object
+});
+
+// Contoh penggunaan dengan this
+const objek = {
+    nilai: 10,
+    tambah: function() {
+        return () => {
+            return this.nilai + 5;
+        };
+    }
+};
+
+const hasil = objek.tambah();
+console.log(hasil()); // 15
+
+// Contoh penggunaan dengan closure
+const luar = () => {
+    const x = 5;
+    return () => {
+        return x;
+    };
+};
+
+const dalam = luar();
+console.log(dalam()); // 5</code></pre>
+      </div>
+
+      <h3 class="section-title">7. Tips Penggunaan</h3>
+      <ul>
+        <li>Gunakan Arrow Function untuk operasi sederhana</li>
+        <li>Hindari Arrow Function untuk metode objek</li>
+        <li>Jangan gunakan Arrow Function dengan new</li>
+        <li>Gunakan Function Regular untuk metode konstruktor</li>
+        <li>Tambahkan komentar untuk menjelaskan fungsi</li>
+        <li>Pisahkan logika yang rumit ke dalam fungsi</li>
+      </ul>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='j63.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/javascript.png"
+          alt="javascript"
+          onclick="window.location.href='j1.html'"
+          title="javascript"
+        />
+        <button class="btn" onclick="window.location.href='j71.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clean Code & Coding Style</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Clean Code & Coding Style</h2>
+
+      <h3 class="section-title">1. Prinsip Clean Code</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Prinsip Dasar Clean Code</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// 1. Single Responsibility Principle
+// Fungsi hanya melakukan satu hal
+function calculateTotal(items) {
+    return items.reduce((sum, item) => sum + item.price, 0);
+}
+
+// 2. DRY (Don't Repeat Yourself)
+// Hindari kode duplikat
+const constants = {
+    API_URL: 'https://api.example.com',
+    TIMEOUT: 5000
+};
+
+// 3. KISS (Keep It Simple, Stupid)
+// Buat kode sederhana
+function isEven(number) {
+    return number % 2 === 0;
+}
+
+// 4. SOLID Principles
+// Single Responsibility
+// Open/Closed
+// Liskov Substitution
+// Interface Segregation
+// Dependency Inversion
+</code></pre>
+      </div>
+
+      <h3 class="section-title">2. Nama Variabel dan Fungsi</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Best Practices Nama Variabel</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// 1. Nama Variabel yang Deskriptif
+// Baik:
+const userCount = 10;
+// Kurang Baik:
+const x = 10;
+
+// 2. Nama Fungsi yang Jelas
+class User {
+    // Baik:
+    calculateTotalPrice(items) {
+        return items.reduce((sum, item) => sum + item.price, 0);
+    }
+    
+    // Kurang Baik:
+    calc(items) {
+        return items.reduce((sum, item) => sum + item.price, 0);
+    }
+}
+
+// 3. Nama Konstanta
+const MAX_USERS = 100;
+const API_URL = 'https://api.example.com';
+
+// 4. Nama Class
+// Baik:
+class UserProfile {
+    constructor(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+}
+
+// Kurang Baik:
+class U {
+    constructor(n, a) {
+        this.n = n;
+        this.a = a;
+    }
+}</code></pre>
+      </div>
+
+      <h3 class="section-title">3. Struktur Kode</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Best Practices Struktur Kode</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// 1. Indentasi dan Spasi
+function calculateTotal(items) {
+    return items.reduce((sum, item) => sum + item.price, 0);
+}
+
+// 2. Panjang Fungsi
+// Baik:
+function calculateTotal(items) {
+    return items.reduce((sum, item) => sum + item.price, 0);
+}
+
+// Kurang Baik:
+function calculateTotal(items) {
+    let total = 0;
+    for (let i = 0; i < items.length; i++) {
+        total += items[i].price;
+    }
+    return total;
+}
+
+// 3. Error Handling
+try {
+    // Operasi
+} catch (error) {
+    console.error('Error:', error);
+    throw error;
+}
+
+// 4. Comments
+// Baik:
+// Menghitung total harga item
+function calculateTotal(items) {
+    return items.reduce((sum, item) => sum + item.price, 0);
+}
+
+// Kurang Baik:
+// Fungsi calculateTotal
+function calculateTotal(items) {
+    return items.reduce((sum, item) => sum + item.price, 0);
+}</code></pre>
+      </div>
+
+      <h3 class="section-title">4. Best Practices Coding Style</h3>
+      <ul>
+        <li>Gunakan nama variabel yang deskriptif</li>
+        <li>Ikuti konvensi penamaan</li>
+        <li>Gunakan comments yang bermakna</li>
+        <li>Ikuti standar indentasi</li>
+        <li>Gunakan error handling yang baik</li>
+        <li>Ikuti SOLID principles</li>
+        <li>Gunakan DRY (Don't Repeat Yourself)</li>
+        <li>Ikuti KISS (Keep It Simple, Stupid)</li>
+      </ul>
+
+      <h3 class="section-title">5. Tools untuk Clean Code</h3>
+      <ul>
+        <li>ESLint</li>
+        <li>Prettier</li>
+        <li>ESLint + Prettier</li>
+        <li>EditorConfig</li>
+        <li>Stylelint</li>
+        <li>Husky</li>
+        <li>Lint-Staged</li>
+      </ul>
+
+      <h3 class="section-title">6. Contoh Praktis</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Clean Code</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// 1. Clean Code dengan ESLint
+// .eslintrc.js
+module.exports = {
+    env: {
+        browser: true,
+        es2021: true
+    },
+    extends: [
+        'eslint:recommended',
+        'plugin:react/recommended'
+    ],
+    parserOptions: {
+        ecmaFeatures: {
+            jsx: true
+        },
+        ecmaVersion: 12,
+        sourceType: 'module'
+    }
+};
+
+// 2. Clean Code dengan Prettier
+// .prettierrc
+{
+    "semi": true,
+    "trailingComma": "es5",
+    "singleQuote": true,
+    "printWidth": 80,
+    "tabWidth": 2
+}
+
+// 3. Clean Code dengan EditorConfig
+// .editorconfig
+root = true
+
+[*]
+charset = utf-8
+indent_style = space
+indent_size = 2
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+// 4. Clean Code dengan Husky
+// package.json
+{
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    },
+    "lint-staged": {
+        "*.js": [
+            "eslint --fix",
+            "prettier --write"
+        ]
+    }
+}
+
+// 5. Clean Code dalam Praktek
+// Baik:
+function calculateUserAge(birthDate) {
+    const today = new Date();
+    const birth = new Date(birthDate);
+    
+    let age = today.getFullYear() - birth.getFullYear();
+    const m = today.getMonth() - birth.getMonth();
+    
+    if (m < 0 || (m === 0 && today.getDate() < birth.getDate())) {
+        age--;
+    }
+    
+    return age;
+}
+
+// Kurang Baik:
+function age(b) {
+    const t = new Date();
+    const b = new Date(b);
+    let a = t.getFullYear() - b.getFullYear();
+    const m = t.getMonth() - b.getMonth();
+    
+    if (m < 0 || (m === 0 && t.getDate() < b.getDate())) {
+        a--;
+    }
+    
+    return a;
+}</code></pre>
+      </div>
+
+      <h3 class="section-title">7. Tips Clean Code</h3>
+      <ul>
+        <li>Mulai dengan nama variabel yang deskriptif</li>
+        <li>Ikuti konvensi penamaan</li>
+        <li>Gunakan comments yang bermakna</li>
+        <li>Ikuti standar indentasi</li>
+        <li>Gunakan error handling yang baik</li>
+        <li>Ikuti SOLID principles</li>
+        <li>Gunakan DRY (Don't Repeat Yourself)</li>
+        <li>Ikuti KISS (Keep It Simple, Stupid)</li>
+      </ul>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='j222.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/javascript.png"
+          alt="javascript"
+          onclick="window.location.href='j1.html'"
+          title="javascript"
+        />
+        <button class="btn" onclick="window.location.href='j1.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+
+    <script>
+      function copyCode(button) {
+        const codeBlock = button.parentElement.nextElementSibling;
+        const code = codeBlock.textContent;
+        navigator.clipboard.writeText(code);
+        button.textContent = 'Copied!';
+        setTimeout(() => {
+          button.textContent = 'Copy';
+        }, 2000);
+      }
+    </script>
+  </body>
+</html>

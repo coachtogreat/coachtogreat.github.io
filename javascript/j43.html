@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ternary Operator dalam JavaScript</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Ternary Operator dalam JavaScript</h2>
+
+      <h3 class="section-title">1. Pengenalan Ternary Operator</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Syntax Ternary Operator</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Sintaks dasar
+kondisi ? nilai_jika_benar : nilai_jika_salah;
+
+// Contoh sederhana
+let umur = 25;
+let status = umur >= 18 ? "Dewasa" : "Anak-anak";
+console.log(status); // "Dewasa"</code></pre>
+      </div>
+
+      <h3 class="section-title">2. Perbandingan dengan If-Else</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Perbandingan</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Menggunakan if-else
+let nilai = 85;
+let grade;
+if (nilai >= 70) {
+    grade = "A";
+} else {
+    grade = "B";
+}
+
+// Menggunakan ternary
+let nilai = 85;
+let grade = nilai >= 70 ? "A" : "B";
+
+// Menggunakan if-else dengan assignment
+let nilai = 85;
+let grade = nilai >= 70 ? "A" : nilai >= 60 ? "B" : "C";</code></pre>
+      </div>
+
+      <h3 class="section-title">3. Ternary dengan Multiple Conditions</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Multiple Conditions</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Contoh grade
+let nilai = 85;
+let grade = nilai >= 90 ? "A" :
+            nilai >= 80 ? "B" :
+            nilai >= 70 ? "C" :
+            nilai >= 60 ? "D" : "E";
+
+// Contoh umur
+let umur = 25;
+let kategori = umur < 18 ? "Anak-anak" :
+               umur < 30 ? "Dewasa muda" :
+               umur < 60 ? "Dewasa" : "Lansia";</code></pre>
+      </div>
+
+      <h3 class="section-title">4. Ternary dengan Expression</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Expression</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Contoh dengan function
+let nilai = 85;
+let grade = nilai >= 70 ? hitungNilai(nilai) : "Gagal";
+
+function hitungNilai(nilai) {
+    return nilai + 5;
+}
+
+// Contoh dengan array
+let angka = 5;
+let hasil = angka > 0 ? [angka, angka * 2] : [0, 0];
+console.log(hasil); // [5, 10]
+
+// Contoh dengan object
+let login = true;
+let user = login ? { nama: "John", role: "admin" } : { nama: "Guest" };</code></pre>
+      </div>
+
+      <h3 class="section-title">5. Best Practices</h3>
+      <ul>
+        <li>Gunakan ternary untuk kondisi sederhana</li>
+        <li>Hindari nested ternary yang terlalu kompleks</li>
+        <li>Gunakan tanda kurung untuk mengklarifikasi prioritas</li>
+        <li>Pisahkan kondisi kompleks ke dalam fungsi</li>
+        <li>Gunakan if-else untuk kondisi yang lebih dari dua pilihan</li>
+        <li>Tambahkan komentar untuk kondisi yang rumit</li>
+      </ul>
+
+      <h3 class="section-title">6. Contoh Praktis</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Validasi Form</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Validasi email
+function validateEmail(email) {
+    return email.includes("@") ? "Email valid" : "Email tidak valid";
+}
+
+// Validasi umur
+function validateAge(age) {
+    return age >= 18 ? "Dewasa" : "Anak-anak";
+}
+
+// Contoh penggunaan
+let email = "user@example.com";
+let age = 25;
+
+console.log(validateEmail(email)); // "Email valid"
+console.log(validateAge(age)); // "Dewasa"
+
+// Contoh dengan array
+let angka = 5;
+let hasil = angka > 0 ? [angka, angka * 2] : [0, 0];
+console.log(hasil); // [5, 10]</code></pre>
+      </div>
+
+      <h3 class="section-title">7. Tips Penggunaan</h3>
+      <ul>
+        <li>Gunakan ternary untuk assignment yang sederhana</li>
+        <li>Gunakan if-else untuk logika yang kompleks</li>
+        <li>Gunakan tanda kurung untuk kondisi yang rumit</li>
+        <li>Tambahkan komentar untuk menjelaskan kondisi</li>
+        <li>Hindari nested ternary yang terlalu dalam</li>
+        <li>Pisahkan kode yang kompleks ke dalam fungsi</li>
+      </ul>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='j42.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/javascript.png"
+          alt="javascript"
+          onclick="window.location.href='j1.html'"
+          title="javascript"
+        />
+        <button class="btn" onclick="window.location.href='j51.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+  </body>
+</html>

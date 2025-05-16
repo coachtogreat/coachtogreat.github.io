@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hoisting dalam JavaScript</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Hoisting dalam JavaScript</h2>
+
+      <h3 class="section-title">1. Pengenalan Hoisting</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Hoisting</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Contoh hoisting variabel
+console.log(halo); // undefined
+var halo = "Halo!";
+
+// Contoh hoisting fungsi
+sapa(); // "Halo!"
+function sapa() {
+    console.log("Halo!");
+}
+
+// Contoh hoisting fungsi expression
+// Error: sapa is not a function
+terima();
+const terima = function() {
+    console.log("Terima kasih!");
+};</code></pre>
+      </div>
+
+      <h3 class="section-title">2. Hoisting Variabel</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Hoisting Variabel</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Hoisting dengan var
+console.log(nilai); // undefined
+var nilai = 10;
+
+// Hoisting dengan let/const
+// Error: Cannot access 'nilai' before initialization
+console.log(nilai);
+let nilai = 10;
+
+// Contoh lebih lengkap
+function contoh() {
+    console.log(x); // undefined
+    console.log(y); // ReferenceError
+    console.log(z); // ReferenceError
+    
+    var x = 10;
+    let y = 20;
+    const z = 30;
+}
+
+contoh();</code></pre>
+      </div>
+
+      <h3 class="section-title">3. Hoisting Fungsi</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Hoisting Fungsi</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Hoisting function declaration
+sapa(); // "Halo!"
+function sapa() {
+    console.log("Halo!");
+}
+
+// Tidak hoisted: function expression
+// Error: sapa is not a function
+sapa();
+const sapa = function() {
+    console.log("Halo!");
+};
+
+// Contoh lebih kompleks
+function contoh() {
+    sapa(); // "Halo!"
+    
+    function sapa() {
+        console.log("Halo!");
+    }
+    
+    // Error: sapa is not a function
+    terima();
+    
+    const terima = function() {
+        console.log("Terima kasih!");
+    };
+}
+
+contoh();</code></pre>
+      </div>
+
+      <h3 class="section-title">4. Best Practices</h3>
+      <ul>
+        <li>Definisikan variabel dan fungsi di awal kode</li>
+        <li>Gunakan let/const untuk variabel baru</li>
+        <li>Hindari penggunaan var jika tidak diperlukan</li>
+        <li>Gunakan function declaration untuk fungsi yang penting</li>
+        <li>Tambahkan komentar untuk menjelaskan hoisting</li>
+        <li>Pisahkan logika yang rumit ke dalam fungsi</li>
+      </ul>
+
+      <h3 class="section-title">5. Contoh Praktis</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Penggunaan</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Contoh kalkulator dengan hoisting
+function tambah(a, b) {
+    return a + b;
+}
+
+function kurang(a, b) {
+    return a - b;
+}
+
+// Tidak perlu khawatir karena function declaration hoisted
+console.log(tambah(5, 3)); // 8
+console.log(kurang(10, 4)); // 6
+
+// Contoh form validation
+function validateForm() {
+    const form = document.getElementById("form");
+    
+    function validateEmail() {
+        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return regex.test(email.value);
+    }
+    
+    function validateNama() {
+        return nama.value.trim().length > 0;
+    }
+    
+    return validateNama() && validateEmail();
+}
+
+// Contoh game dengan hoisting
+function game() {
+    let skor = 0;
+    let nyawa = 3;
+    
+    function tambahSkor() {
+        skor += 10;
+        return skor;
+    }
+    
+    function kurangNyawa() {
+        nyawa--;
+        return nyawa;
+    }
+    
+    return {
+        tambahSkor: tambahSkor,
+        kurangNyawa: kurangNyawa,
+        getSkor: function() {
+            return skor;
+        },
+        getNyawa: function() {
+            return nyawa;
+        }
+    };
+}
+
+// Contoh event handler
+function tambah() {
+    let jumlah = parseInt(tombol.dataset.jumlah) || 0;
+    tombol.dataset.jumlah = jumlah + 1;
+    tombol.textContent = "Klik: " + jumlah;
+}
+
+// Tidak perlu khawatir karena function declaration hoisted
+tombol.addEventListener("click", tambah);</code></pre>
+      </div>
+
+      <h3 class="section-title">6. Tips Penggunaan</h3>
+      <ul>
+        <li>Definisikan variabel dan fungsi di awal kode</li>
+        <li>Gunakan let/const untuk variabel baru</li>
+        <li>Hindari penggunaan var jika tidak diperlukan</li>
+        <li>Gunakan function declaration untuk fungsi yang penting</li>
+        <li>Tambahkan komentar untuk menjelaskan hoisting</li>
+        <li>Pisahkan logika yang rumit ke dalam fungsi</li>
+      </ul>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='j91.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/javascript.png"
+          alt="javascript"
+          onclick="window.location.href='j1.html'"
+          title="javascript"
+        />
+        <button class="btn" onclick="window.location.href='j93.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+  </body>
+</html>

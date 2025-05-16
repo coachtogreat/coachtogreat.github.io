@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Closure dan Penggunaannya dalam JavaScript</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Closure dan Penggunaannya dalam JavaScript</h2>
+
+      <h3 class="section-title">1. Pengenalan Closure</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Closure</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Contoh sederhana closure
+function luar() {
+    let nilai = 10;
+    
+    function dalam() {
+        console.log(nilai);
+    }
+    
+    return dalam;
+}
+
+const fungsi = luar();
+fungsi(); // 10
+
+// Contoh dengan parameter
+function pembuatKali(angka) {
+    return function(nilai) {
+        return angka * nilai;
+    };
+}
+
+const kaliDua = pembuatKali(2);
+console.log(kaliDua(5)); // 10
+
+const kaliTiga = pembuatKali(3);
+console.log(kaliTiga(5)); // 15</code></pre>
+      </div>
+
+      <h3 class="section-title">2. Karakteristik Closure</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Karakteristik Closure</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Closure memiliki akses ke variabel luar
+function luar() {
+    let nilai = 10;
+    
+    function dalam() {
+        nilai++;
+        return nilai;
+    }
+    
+    return dalam;
+}
+
+const fungsi = luar();
+console.log(fungsi()); // 11
+console.log(fungsi()); // 12
+console.log(fungsi()); // 13
+
+// Closure memiliki akses ke scope global
+function dalam() {
+    console.log(window.location.href);
+}
+
+// Closure memiliki akses ke parameter
+function pembuatPenjumlah(angka) {
+    return function(nilai) {
+        return angka + nilai;
+    };
+}
+
+const tambahDua = pembuatPenjumlah(2);
+console.log(tambahDua(5)); // 7</code></pre>
+      </div>
+
+      <h3 class="section-title">3. Penggunaan Closure</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Penggunaan Closure</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// 1. Membuat fungsi penghitung
+function pembuatPenghitung() {
+    let hitungan = 0;
+    
+    return {
+        tambah: function() {
+            hitungan++;
+            return hitungan;
+        },
+        kurang: function() {
+            hitungan--;
+            return hitungan;
+        },
+        reset: function() {
+            hitungan = 0;
+            return hitungan;
+        }
+    };
+}
+
+const penghitung = pembuatPenghitung();
+console.log(penghitung.tambah()); // 1
+console.log(penghitung.tambah()); // 2
+console.log(penghitung.kurang()); // 1
+console.log(penghitung.reset()); // 0
+
+// 2. Membuat fungsi pengaturan
+function pembuatPengaturan(nilaiAwal) {
+    let nilai = nilaiAwal;
+    
+    return {
+        get: function() {
+            return nilai;
+        },
+        set: function(nilaiBaru) {
+            nilai = nilaiBaru;
+        },
+        tambah: function(jumlah) {
+            nilai += jumlah;
+            return nilai;
+        }
+    };
+}
+
+const pengaturan = pembuatPengaturan(10);
+console.log(pengaturan.get()); // 10
+pengaturan.set(20);
+console.log(pengaturan.get()); // 20
+console.log(pengaturan.tambah(5)); // 25</code></pre>
+      </div>
+
+      <h3 class="section-title">4. Best Practices</h3>
+      <ul>
+        <li>Gunakan closure untuk menyimpan data private</li>
+        <li>Hindari closure yang terlalu kompleks</li>
+        <li>Gunakan arrow function untuk closure sederhana</li>
+        <li>Tambahkan komentar untuk menjelaskan closure</li>
+        <li>Pisahkan logika yang rumit ke dalam fungsi</li>
+        <li>Hindari penggunaan closure untuk data global</li>
+      </ul>
+
+      <h3 class="section-title">5. Contoh Praktis</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Penggunaan</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Contoh kalkulator dengan closure
+function pembuatKalkulator() {
+    let hasil = 0;
+    
+    return {
+        tambah: function(a) {
+            hasil += a;
+            return hasil;
+        },
+        kurang: function(a) {
+            hasil -= a;
+            return hasil;
+        },
+        kali: function(a) {
+            hasil *= a;
+            return hasil;
+        },
+        bagi: function(a) {
+            hasil /= a;
+            return hasil;
+        },
+        reset: function() {
+            hasil = 0;
+            return hasil;
+        }
+    };
+}
+
+const kalkulator = pembuatKalkulator();
+console.log(kalkulator.tambah(5)); // 5
+console.log(kalkulator.kali(3)); // 15
+console.log(kalkulator.kurang(2)); // 13
+console.log(kalkulator.bagi(4)); // 3.25
+console.log(kalkulator.reset()); // 0
+
+// Contoh timer dengan closure
+function pembuatTimer() {
+    let waktu = 0;
+    
+    return {
+        mulai: function() {
+            waktu = Date.now();
+        },
+        berhenti: function() {
+            const sekarang = Date.now();
+            const selisih = sekarang - waktu;
+            waktu = 0;
+            return selisih;
+        }
+    };
+}
+
+const timer = pembuatTimer();
+timer.mulai();
+// Lakukan sesuatu...
+const hasil = timer.berhenti();
+console.log(`Waktu yang dibutuhkan: ${hasil} ms`);
+
+// Contoh counter dengan closure
+function pembuatCounter() {
+    let hitungan = 0;
+    
+    return {
+        tambah: function() {
+            hitungan++;
+            return hitungan;
+        },
+        kurang: function() {
+            hitungan--;
+            return hitungan;
+        },
+        reset: function() {
+            hitungan = 0;
+            return hitungan;
+        }
+    };
+}
+
+const counter = pembuatCounter();
+console.log(counter.tambah()); // 1
+console.log(counter.tambah()); // 2
+console.log(counter.kurang()); // 1
+console.log(counter.reset()); // 0</code></pre>
+      </div>
+
+      <h3 class="section-title">6. Tips Penggunaan</h3>
+      <ul>
+        <li>Gunakan closure untuk menyimpan data private</li>
+        <li>Hindari closure yang terlalu kompleks</li>
+        <li>Gunakan arrow function untuk closure sederhana</li>
+        <li>Tambahkan komentar untuk menjelaskan closure</li>
+        <li>Pisahkan logika yang rumit ke dalam fungsi</li>
+        <li>Hindari penggunaan closure untuk data global</li>
+      </ul>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='j92.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/javascript.png"
+          alt="javascript"
+          onclick="window.location.href='j1.html'"
+          title="javascript"
+        />
+        <button class="btn" onclick="window.location.href='j101.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+  </body>
+</html>

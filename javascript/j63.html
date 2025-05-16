@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Function Expression vs Declaration dalam JavaScript</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Function Expression vs Declaration dalam JavaScript</h2>
+
+      <h3 class="section-title">1. Function Declaration</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Function Declaration</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Sintaks Function Declaration
+function namaFungsi() {
+    // kode yang dijalankan
+}
+
+// Contoh sederhana
+function sapa() {
+    console.log("Halo!");
+}
+
+// Contoh dengan parameter
+function tambah(a, b) {
+    return a + b;
+}
+
+// Contoh dengan nilai default
+function sapaNama(nama = "Teman") {
+    return "Halo, " + nama;
+}
+
+// Hoisting pada Function Declaration
+sapa(); // Berhasil: "Halo!"
+function sapa() {
+    console.log("Halo!");
+}</code></pre>
+      </div>
+
+      <h3 class="section-title">2. Function Expression</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Function Expression</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Sintaks Function Expression
+const namaFungsi = function() {
+    // kode yang dijalankan
+};
+
+// Contoh sederhana
+const sapa = function() {
+    console.log("Halo!");
+};
+
+// Contoh dengan parameter
+const tambah = function(a, b) {
+    return a + b;
+};
+
+// Contoh dengan nilai default
+const sapaNama = function(nama = "Teman") {
+    return "Halo, " + nama;
+};
+
+// IIFE (Immediately Invoked Function Expression)
+(function() {
+    console.log("Ini adalah IIFE!");
+})();
+
+// Hoisting pada Function Expression
+sapa(); // Error: sapa is not a function
+const sapa = function() {
+    console.log("Halo!");
+};</code></pre>
+      </div>
+
+      <h3 class="section-title">3. Perbandingan Function Declaration vs Expression</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Perbandingan</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Function Declaration - bisa dipanggil sebelum didefinisikan
+sapa(); // Berhasil: "Halo!"
+function sapa() {
+    console.log("Halo!");
+}
+
+// Function Expression - tidak bisa dipanggil sebelum didefinisikan
+sapa(); // Error: sapa is not a function
+const sapa = function() {
+    console.log("Halo!");
+};
+
+// Function Expression sebagai parameter
+function eksekusi(fungsi) {
+    fungsi();
+}
+
+// Menggunakan Function Declaration
+function sapa() {
+    console.log("Halo!");
+}
+eksekusi(sapa);
+
+// Menggunakan Function Expression
+eksekusi(function() {
+    console.log("Halo!");
+});</code></pre>
+      </div>
+
+      <h3 class="section-title">4. Arrow Function</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Arrow Function</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Arrow Function sederhana
+const sapa = () => {
+    console.log("Halo!");
+};
+
+// Arrow Function dengan parameter
+const tambah = (a, b) => {
+    return a + b;
+};
+
+// Arrow Function dengan satu parameter
+const kuadrat = x => x * x;
+
+// Arrow Function dengan return implicit
+const kali = (a, b) => a * b;
+
+// Arrow Function dengan multiple statement
+const hitung = (a, b) => {
+    const total = a + b;
+    return total;
+};
+
+// Arrow Function sebagai parameter
+const angka = [1, 2, 3, 4, 5];
+angka.map(x => x * 2); // [2, 4, 6, 8, 10]</code></pre>
+      </div>
+
+      <h3 class="section-title">5. Best Practices</h3>
+      <ul>
+        <li>Gunakan Function Declaration untuk fungsi yang sering dipanggil</li>
+        <li>Gunakan Function Expression untuk fungsi yang lebih kompleks</li>
+        <li>Gunakan Arrow Function untuk fungsi pendek dan sederhana</li>
+        <li>Hindari penggunaan yang terlalu kompleks</li>
+        <li>Tambahkan komentar untuk menjelaskan fungsi</li>
+        <li>Pisahkan logika yang rumit ke dalam fungsi</li>
+      </ul>
+
+      <h3 class="section-title">6. Contoh Praktis</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Penggunaan</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Contoh kalkulator dengan Function Declaration
+function tambah(a, b) {
+    return a + b;
+}
+
+function kurang(a, b) {
+    return a - b;
+}
+
+function kali(a, b) {
+    return a * b;
+}
+
+function bagi(a, b) {
+    if (b === 0) {
+        return "Tidak bisa dibagi nol";
+    }
+    return a / b;
+}
+
+// Contoh penggunaan Function Expression dalam objek
+const kalkulator = {
+    tambah: function(a, b) {
+        return a + b;
+    },
+    kurang: function(a, b) {
+        return a - b;
+    },
+    kali: function(a, b) {
+        return a * b;
+    },
+    bagi: function(a, b) {
+        if (b === 0) {
+            return "Tidak bisa dibagi nol";
+        }
+        return a / b;
+    }
+};
+
+// Contoh penggunaan Arrow Function dalam array
+const angka = [1, 2, 3, 4, 5];
+
+// Menggunakan Function Expression
+angka.map(function(x) {
+    return x * 2;
+});
+
+// Menggunakan Arrow Function
+angka.map(x => x * 2);
+
+// Contoh penggunaan dalam event handler
+// Menggunakan Function Expression
+button.addEventListener('click', function() {
+    console.log("Button diklik!");
+});
+
+// Menggunakan Arrow Function
+button.addEventListener('click', () => {
+    console.log("Button diklik!");
+});
+
+// Contoh penggunaan dalam closure
+function luar() {
+    const x = 5;
+    return function() {
+        return x;
+    };
+}
+
+const dalam = luar();
+console.log(dalam()); // 5</code></pre>
+      </div>
+
+      <h3 class="section-title">7. Tips Penggunaan</h3>
+      <ul>
+        <li>Gunakan Function Declaration untuk fungsi yang sering dipanggil</li>
+        <li>Gunakan Function Expression untuk fungsi yang lebih kompleks</li>
+        <li>Gunakan Arrow Function untuk fungsi pendek dan sederhana</li>
+        <li>Hindari penggunaan yang terlalu kompleks</li>
+        <li>Tambahkan komentar untuk menjelaskan fungsi</li>
+        <li>Pisahkan logika yang rumit ke dalam fungsi</li>
+      </ul>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='j62.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/javascript.png"
+          alt="javascript"
+          onclick="window.location.href='j1.html'"
+          title="javascript"
+        />
+        <button class="btn" onclick="window.location.href='j64.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+  </body>
+</html>

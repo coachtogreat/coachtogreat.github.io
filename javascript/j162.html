@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Class dan Inheritance dalam JavaScript</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Class dan Inheritance dalam JavaScript</h2>
+
+      <h3 class="section-title">1. Pengenalan Class</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Dasar</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Contoh dasar class
+class User {
+    constructor(nama, umur) {
+        this.nama = nama;
+        this.umur = umur;
+    }
+    
+    sapa() {
+        console.log(`Halo, nama saya ${this.nama}`);
+    }
+}
+
+const user1 = new User("John", 30);
+user1.sapa(); // "Halo, nama saya John"
+
+// Class dengan static method
+class User {
+    constructor(nama, umur) {
+        this.nama = nama;
+        this.umur = umur;
+    }
+    
+    static jenis() {
+        return "User";
+    }
+    
+    sapa() {
+        console.log(`Halo, nama saya ${this.nama}`);
+    }
+}
+
+console.log(User.jenis()); // "User"
+
+// Class dengan getter dan setter
+class User {
+    constructor(nama, umur) {
+        this._nama = nama;
+        this._umur = umur;
+    }
+    
+    get nama() {
+        return this._nama;
+    }
+    
+    set nama(nama) {
+        if (typeof nama !== "string") {
+            throw new Error("Nama harus berupa string");
+        }
+        this._nama = nama;
+    }
+    
+    get umur() {
+        return this._umur;
+    }
+    
+    set umur(umur) {
+        if (typeof umur !== "number") {
+            throw new Error("Umur harus berupa number");
+        }
+        this._umur = umur;
+    }
+}
+
+const user1 = new User("John", 30);
+console.log(user1.nama); // "John"
+user1.nama = "Jane";
+</code></pre>
+      </div>
+
+      <h3 class="section-title">2. Inheritance</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Inheritance</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// 1. Inheritance sederhana
+class Todo {
+    constructor(nama) {
+        this.nama = nama;
+        this.selesai = false;
+    }
+    
+    selesaikan() {
+        this.selesai = true;
+    }
+}
+
+class TodoPenting extends Todo {
+    constructor(nama, prioritas) {
+        super(nama);
+        this.prioritas = prioritas;
+    }
+}
+
+const todo = new TodoPenting("Urgent Task", "High");
+todo.selesaikan();
+
+// 2. Override method
+class Todo {
+    constructor(nama) {
+        this.nama = nama;
+    }
+    
+    selesaikan() {
+        console.log(`${this.nama} selesai`);
+    }
+}
+
+class TodoPenting extends Todo {
+    constructor(nama) {
+        super(nama);
+    }
+    
+    selesaikan() {
+        console.log(`${this.nama} selesai (Penting!)`);
+    }
+}
+
+const todo = new TodoPenting("Urgent Task");
+todo.selesaikan(); // "Urgent Task selesai (Penting!)"
+
+// 3. Multiple inheritance (menggunakan mixins)
+class Todo {
+    constructor(nama) {
+        this.nama = nama;
+    }
+}
+
+class Prioritas {
+    constructor() {
+        this.prioritas = "Normal";
+    }
+}
+
+class TodoPenting extends Todo {
+    constructor(nama) {
+        super(nama);
+        Prioritas.call(this);
+    }
+}
+
+const todo = new TodoPenting("Urgent Task");
+</code></pre>
+      </div>
+
+      <h3 class="section-title">3. Best Practices</h3>
+      <ul>
+        <li>Gunakan constructor untuk inisialisasi</li>
+        <li>Tambahkan validasi dalam setter</li>
+        <li>Gunakan super() untuk constructor parent</li>
+        <li>Beri nama class dengan huruf besar</li>
+        <li>Tambahkan error handling</li>
+        <li>Buat method yang mudah dipahami</li>
+        <li>Tambahkan komentar untuk menjelaskan class</li>
+      </ul>
+
+      <h3 class="section-title">4. Contoh Praktis</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Penggunaan</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// 1. Todo List
+class Todo {
+    constructor(nama) {
+        this.nama = nama;
+        this.selesai = false;
+    }
+    
+    selesaikan() {
+        this.selesai = true;
+    }
+}
+
+class TodoPenting extends Todo {
+    constructor(nama, prioritas) {
+        super(nama);
+        this.prioritas = prioritas;
+    }
+}
+
+const todo1 = new Todo("Belajar JavaScript");
+const todo2 = new TodoPenting("Urgent Task", "High");
+
+todo1.selesaikan();
+
+// 2. Galeri Foto
+class Gambar {
+    constructor(url, judul) {
+        this.url = url;
+        this.judul = judul;
+    }
+    
+    tampilkan() {
+        const img = document.createElement("img");
+        img.src = this.url;
+        img.alt = this.judul;
+        document.body.appendChild(img);
+    }
+}
+
+class GambarPenuh extends Gambar {
+    constructor(url, judul, ukuran) {
+        super(url, judul);
+        this.ukuran = ukuran;
+    }
+    
+    tampilkan() {
+        const img = document.createElement("img");
+        img.src = this.url;
+        img.alt = this.judul;
+        img.style.width = this.ukuran;
+        document.body.appendChild(img);
+    }
+}
+
+const gambar = new GambarPenuh("gambar.jpg", "Landscape", "100%");
+gambar.tampilkan();
+
+// 3. Form Validation
+class Validator {
+    constructor() {
+        this.errors = [];
+    }
+    
+    validateEmail(email) {
+        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return regex.test(email);
+    }
+    
+    validatePassword(password) {
+        return password.length >= 8;
+    }
+}
+
+class AdvancedValidator extends Validator {
+    constructor() {
+        super();
+    }
+    
+    validateUsername(username) {
+        return username.length >= 3;
+    }
+}
+
+const validator = new AdvancedValidator();
+const isValid = validator.validateEmail("test@example.com");
+
+// 4. Animasi
+class Animasi {
+    constructor(element) {
+        this.element = element;
+    }
+    
+    gerakKiri(jarak) {
+        this.element.style.left = jarak + "px";
+    }
+    
+    gerakKanan(jarak) {
+        this.element.style.right = jarak + "px";
+    }
+}
+
+class AnimasiLambat extends Animasi {
+    constructor(element) {
+        super(element);
+    }
+    
+    gerakKiri(jarak) {
+        const animasi = setInterval(() => {
+            this.element.style.left = jarak + "px";
+            jarak--;
+            if (jarak <= 0) {
+                clearInterval(animasi);
+            }
+        }, 100);
+    }
+}
+
+const animasi = new AnimasiLambat(document.getElementById("kotak"));
+animasi.gerakKiri(100);
+
+// 5. Data Storage
+class Storage {
+    constructor() {
+        this.prefix = "app_";
+    }
+    
+    simpan(key, value) {
+        localStorage.setItem(this.prefix + key, JSON.stringify(value));
+    }
+    
+    ambil(key) {
+        const data = localStorage.getItem(this.prefix + key);
+        return data ? JSON.parse(data) : null;
+    }
+}
+
+class SessionStorage extends Storage {
+    constructor() {
+        super();
+    }
+    
+    simpan(key, value) {
+        sessionStorage.setItem(this.prefix + key, JSON.stringify(value));
+    }
+    
+    ambil(key) {
+        const data = sessionStorage.getItem(this.prefix + key);
+        return data ? JSON.parse(data) : null;
+    }
+}
+
+const storage = new SessionStorage();
+storage.simpan("user", { nama: "John", umur: 30 });
+
+// 6. Event Handler
+class EventListener {
+    constructor(element) {
+        this.element = element;
+    }
+    
+    tambah(event, handler) {
+        this.element.addEventListener(event, handler);
+    }
+    
+    hapus(event, handler) {
+        this.element.removeEventListener(event, handler);
+    }
+}
+
+class EventThrottled extends EventListener {
+    constructor(element) {
+        super(element);
+        this.lastTime = 0;
+    }
+    
+    tambah(event, handler, delay = 1000) {
+        const wrapper = (...args) => {
+            const now = Date.now();
+            if (now - this.lastTime >= delay) {
+                handler(...args);
+                this.lastTime = now;
+            }
+        };
+        super.tambah(event, wrapper);
+    }
+}
+
+const listener = new EventThrottled(document.getElementById("tombol"));
+listener.tambah("click", function() {
+    console.log("Tombol diklik");
+}, 500);</code></pre>
+      </div>
+
+      <h3 class="section-title">5. Tips Penggunaan</h3>
+      <ul>
+        <li>Gunakan constructor untuk inisialisasi</li>
+        <li>Tambahkan validasi dalam setter</li>
+        <li>Gunakan super() untuk constructor parent</li>
+        <li>Beri nama class dengan huruf besar</li>
+        <li>Tambahkan error handling</li>
+        <li>Buat method yang mudah dipahami</li>
+        <li>Tambahkan komentar untuk menjelaskan class</li>
+      </ul>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='j161.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/javascript.png"
+          alt="javascript"
+          onclick="window.location.href='j1.html'"
+          title="javascript"
+        />
+        <button class="btn" onclick="window.location.href='j163.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Listener dalam JavaScript</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Event Listener dalam JavaScript</h2>
+
+      <h3 class="section-title">1. Pengenalan Event Listener</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Event Listener</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// HTML
+&lt;button id="tombol"&gt;Klik Saya&lt;/button&gt;
+
+// JavaScript
+// Menggunakan addEventListener
+const tombol = document.getElementById("tombol");
+tombol.addEventListener("click", function() {
+    console.log("Tombol diklik!");
+});
+
+// Menggunakan method langsung
+tombol.onclick = function() {
+    console.log("Tombol diklik!");
+};
+
+// Menghapus event listener
+tombol.removeEventListener("click", fungsiHandler);
+
+// Menggunakan arrow function
+tombol.addEventListener("click", () => {
+    console.log("Tombol diklik!");
+});</code></pre>
+      </div>
+
+      <h3 class="section-title">2. Cara Menggunakan Event Listener</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Cara Penggunaan</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// 1. Menggunakan fungsi terpisah
+function fungsiClick() {
+    console.log("Diklik!");
+}
+
+tombol.addEventListener("click", fungsiClick);
+
+// 2. Menggunakan anonymous function
+tombol.addEventListener("click", function() {
+    console.log("Diklik!");
+});
+
+// 3. Menggunakan arrow function
+tombol.addEventListener("click", () => {
+    console.log("Diklik!");
+});
+
+// 4. Menggunakan method langsung
+tombol.onclick = function() {
+    console.log("Diklik!");
+};</code></pre>
+      </div>
+
+      <h3 class="section-title">3. Event Listener pada Multiple Element</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Multiple Element</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// HTML
+&lt;div class="item"&gt;Item 1&lt;/div&gt;
+&lt;div class="item"&gt;Item 2&lt;/div&gt;
+
+// JavaScript
+// Menggunakan forEach
+const items = document.querySelectorAll(".item");
+items.forEach(item => {
+    item.addEventListener("click", function() {
+        console.log(this.textContent);
+    });
+});
+
+// Menggunakan event delegation
+const konten = document.querySelector(".konten");
+konten.addEventListener("click", function(event) {
+    if (event.target.classList.contains("item")) {
+        console.log(event.target.textContent);
+    }
+});
+
+// Menggunakan NodeList
+const items = document.getElementsByClassName("item");
+for (let i = 0; i < items.length; i++) {
+    items[i].addEventListener("click", function() {
+        console.log(this.textContent);
+    });
+}</code></pre>
+      </div>
+
+      <h3 class="section-title">4. Event Listener pada Form</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Form</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// HTML
+&lt;form id="form"&gt;
+    &lt;input type="text" id="nama"&gt;
+    &lt;button type="submit"&gt;Kirim&lt;/button&gt;
+&lt;/form&gt;
+
+// JavaScript
+// Validasi input
+const input = document.getElementById("nama");
+input.addEventListener("input", function() {
+    if (this.value.trim().length === 0) {
+        this.style.borderColor = "red";
+    } else {
+        this.style.borderColor = "";
+    }
+});
+
+// Validasi form
+const form = document.getElementById("form");
+form.addEventListener("submit", function(event) {
+    const nama = document.getElementById("nama");
+    if (nama.value.trim().length === 0) {
+        event.preventDefault();
+        nama.style.borderColor = "red";
+    }
+});
+
+// Reset form
+form.addEventListener("reset", function() {
+    input.style.borderColor = "";
+});</code></pre>
+      </div>
+
+      <h3 class="section-title">5. Best Practices</h3>
+      <ul>
+        <li>Gunakan addEventListener untuk menangani event</li>
+        <li>Tambahkan komentar untuk menjelaskan event handler</li>
+        <li>Pisahkan logika event ke dalam fungsi</li>
+        <li>Gunakan preventDefault jika diperlukan</li>
+        <li>Hindari event handler inline di HTML</li>
+        <li>Gunakan event delegation untuk event yang banyak</li>
+        <li>Beri nama fungsi yang deskriptif</li>
+        <li>Tambahkan error handling</li>
+      </ul>
+
+      <h3 class="section-title">6. Contoh Praktis</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Penggunaan</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Contoh todo list
+function buatTodoList() {
+    const form = document.getElementById("form-todo");
+    const input = document.getElementById("todo-input");
+    const list = document.getElementById("todo-list");
+    
+    // Menambah todo
+    form.addEventListener("submit", function(event) {
+        event.preventDefault();
+        
+        const li = document.createElement("li");
+        li.textContent = input.value;
+        list.appendChild(li);
+        input.value = "";
+    });
+    
+    // Menghapus todo
+    list.addEventListener("click", function(event) {
+        if (event.target.tagName === "LI") {
+            event.target.remove();
+        }
+    });
+}
+
+// Contoh galeri foto
+function buatGaleri() {
+    const konten = document.querySelector(".galeri");
+    const gambar = [
+        { src: "gambar1.jpg", alt: "Gambar 1" },
+        { src: "gambar2.jpg", alt: "Gambar 2" }
+    ];
+    
+    gambar.forEach(img => {
+        const element = document.createElement("img");
+        element.src = img.src;
+        element.alt = img.alt;
+        
+        // Menambah event click
+        element.addEventListener("click", function() {
+            console.log("Gambar diklik: " + this.src);
+        });
+        
+        konten.appendChild(element);
+    });
+}
+
+// Contoh animasi
+function animasi() {
+    const kotak = document.querySelector(".kotak");
+    
+    // Animasi saat mouse over
+    kotak.addEventListener("mouseover", function() {
+        this.style.backgroundColor = "blue";
+    });
+    
+    // Animasi saat mouse out
+    kotak.addEventListener("mouseout", function() {
+        this.style.backgroundColor = "";
+    });
+}
+
+// Contoh form validation
+function validateForm() {
+    const form = document.getElementById("form");
+    const nama = form.querySelector("#nama");
+    
+    // Validasi saat input
+    nama.addEventListener("input", function() {
+        if (this.value.trim().length === 0) {
+            this.style.borderColor = "red";
+        } else {
+            this.style.borderColor = "";
+        }
+    });
+    
+    // Validasi saat submit
+    form.addEventListener("submit", function(event) {
+        if (nama.value.trim().length === 0) {
+            event.preventDefault();
+            nama.style.borderColor = "red";
+        }
+    });
+}</code></pre>
+      </div>
+
+      <h3 class="section-title">7. Tips Penggunaan</h3>
+      <ul>
+        <li>Gunakan addEventListener untuk menangani event</li>
+        <li>Tambahkan komentar untuk menjelaskan event handler</li>
+        <li>Pisahkan logika event ke dalam fungsi</li>
+        <li>Gunakan preventDefault jika diperlukan</li>
+        <li>Hindari event handler inline di HTML</li>
+        <li>Gunakan event delegation untuk event yang banyak</li>
+        <li>Beri nama fungsi yang deskriptif</li>
+        <li>Tambahkan error handling</li>
+      </ul>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='j104.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/javascript.png"
+          alt="javascript"
+          onclick="window.location.href='j1.html'"
+          title="javascript"
+        />
+        <button class="btn" onclick="window.location.href='j112.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Operator Logika dalam JavaScript</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Operator Logika dalam JavaScript</h2>
+
+      <h3 class="section-title">1. Operator AND (&&)</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Operator AND</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Contoh sederhana
+console.log(true && true); // true
+console.log(true && false); // false
+console.log(false && true); // false
+console.log(false && false); // false
+
+// Dengan kondisi
+let umur = 25;
+let isStudent = true;
+
+if (umur >= 18 && isStudent) {
+    console.log("Anda adalah mahasiswa dewasa");
+}
+
+// Short-circuit evaluation
+console.log("Hello" && "World"); // "World"
+console.log(0 && "Hello"); // 0</code></pre>
+      </div>
+
+      <h3 class="section-title">2. Operator OR (||)</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Operator OR</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Contoh sederhana
+console.log(true || true); // true
+console.log(true || false); // true
+console.log(false || true); // true
+console.log(false || false); // false
+
+// Dengan kondisi
+let hasLogin = false;
+let hasToken = true;
+
+if (hasLogin || hasToken) {
+    console.log("Anda bisa mengakses sistem");
+}
+
+// Default value
+let nama = "";
+let defaultName = nama || "User";
+console.log(defaultName); // "User"</code></pre>
+      </div>
+
+      <h3 class="section-title">3. Operator NOT (!)</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Operator NOT</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Contoh sederhana
+console.log(!true); // false
+console.log(!false); // true
+
+// Dengan kondisi
+let isLoggedIn = false;
+
+if (!isLoggedIn) {
+    console.log("Silakan login terlebih dahulu");
+}
+
+// Membuat nilai menjadi boolean
+console.log(!!"Hello"); // true
+console.log(!!""); // false</code></pre>
+      </div>
+
+      <h3 class="section-title">4. Operator Nullish Coalescing (??)</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Nullish Coalescing</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Contoh OR biasa
+let nama = "";
+let defaultName = nama || "User";
+console.log(defaultName); // "User" (karena string kosong dianggap false)
+
+// Contoh Nullish Coalescing
+let nama = "";
+let defaultName = nama ?? "User";
+console.log(defaultName); // "" (karena string kosong bukan null/undefined)
+
+// Contoh lain
+let data = null;
+let nilai = data ?? "Default";
+console.log(nilai); // "Default"</code></pre>
+      </div>
+
+      <h3 class="section-title">5. Operator Ternary (?:)</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Operator Ternary</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Contoh sederhana
+let umur = 25;
+let status = umur >= 18 ? "Dewasa" : "Anak-anak";
+console.log(status); // "Dewasa"
+
+// Dengan kondisi kompleks
+let jumlah = 10;
+let hasil = jumlah > 0 ? (jumlah < 5 ? "Kecil" : "Besar") : "Nol";
+console.log(hasil); // "Besar"
+
+// Dengan assignment
+let nilai = 75;
+let grade = nilai >= 70 ? "A" : nilai >= 60 ? "B" : "C";
+console.log(grade); // "A"</code></pre>
+      </div>
+
+      <h3 class="section-title">6. Best Practices</h3>
+      <ul>
+        <li>Gunakan && untuk kondisi yang harus semua true</li>
+        <li>Gunakan || untuk kondisi yang cukup satu true</li>
+        <li>Gunakan ! untuk membalik nilai boolean</li>
+        <li>Gunakan ?? untuk default value yang lebih aman</li>
+        <li>Hindari penggunaan terlalu banyak operator logika</li>
+        <li>Gunakan tanda kurung untuk mengklarifikasi prioritas</li>
+      </ul>
+
+      <h3 class="section-title">7. Contoh Praktis</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Validasi Form</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Validasi login
+function validateLogin(username, password) {
+    if (username && password) {
+        return true;
+    }
+    return false;
+}
+
+// Validasi umur
+function validateAge(age) {
+    return age >= 18 && age <= 60;
+}
+
+// Validasi email
+function validateEmail(email) {
+    return email && email.includes('@') && email.includes('.');
+}
+
+// Contoh penggunaan
+console.log(validateLogin("user", "pass")); // true
+console.log(validateAge(25)); // true
+console.log(validateEmail("user@example.com")); // true</code></pre>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='j32.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/javascript.png"
+          alt="javascript"
+          onclick="window.location.href='j1.html'"
+          title="javascript"
+        />
+        <button class="btn" onclick="window.location.href='j34.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+  </body>
+</html>

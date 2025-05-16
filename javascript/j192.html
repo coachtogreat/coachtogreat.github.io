@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FormData dalam JavaScript</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">FormData dalam JavaScript</h2>
+
+      <h3 class="section-title">1. Pengenalan FormData</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Dasar</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// 1. Membuat FormData dari form
+const form = document.querySelector('form');
+const formData = new FormData(form);
+
+// 2. Membuat FormData manual
+const formData = new FormData();
+formData.append('nama', 'John');
+formData.append('umur', '30');
+
+// 3. Membaca FormData
+for (const pair of formData.entries()) {
+    console.log(pair[0] + ': ' + pair[1]);
+}
+
+// 4. Mengirim FormData dengan fetch
+fetch('https://api.example.com/data', {
+    method: 'POST',
+    body: formData
+});
+
+// 5. Menghapus data
+formData.delete('nama');
+
+// 6. Mengubah data
+formData.set('umur', '35');
+
+// 7. Mendapatkan data
+const nama = formData.get('nama');
+const semuaNama = formData.getAll('nama');</code></pre>
+      </div>
+
+      <h3 class="section-title">2. File Upload</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh File Upload</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// 1. Upload file sederhana
+const fileInput = document.querySelector('input[type="file"]');
+const formData = new FormData();
+formData.append('file', fileInput.files[0]);
+
+// 2. Upload multiple file
+const fileInput = document.querySelector('input[type="file"][multiple]');
+const formData = new FormData();
+for (const file of fileInput.files) {
+    formData.append('files', file);
+}
+
+// 3. Upload file dengan metadata
+const fileInput = document.querySelector('input[type="file"]');
+const formData = new FormData();
+formData.append('file', fileInput.files[0], 'nama-file.jpg');
+formData.append('nama', 'John');
+
+// 4. Progress upload
+const formData = new FormData();
+const fileInput = document.querySelector('input[type="file"]');
+formData.append('file', fileInput.files[0]);
+
+fetch('https://api.example.com/upload', {
+    method: 'POST',
+    body: formData
+})
+.then(response => response.json())
+.then(data => console.log(data))
+.catch(error => console.error('Error:', error));
+
+// 5. Upload dengan progress bar
+const formData = new FormData();
+const fileInput = document.querySelector('input[type="file"]');
+formData.append('file', fileInput.files[0]);
+
+const progressElement = document.querySelector('.progress');
+
+fetch('https://api.example.com/upload', {
+    method: 'POST',
+    body: formData,
+    onUploadProgress: progressEvent => {
+        const percent = (progressEvent.loaded / progressEvent.total) * 100;
+        progressElement.style.width = percent + '%';
+    }
+})
+.then(response => response.json())
+.then(data => console.log(data))
+.catch(error => console.error('Error:', error));</code></pre>
+      </div>
+
+      <h3 class="section-title">3. Best Practices</h3>
+      <ul>
+        <li>Gunakan FormData untuk form dengan file upload</li>
+        <li>Tambahkan error handling</li>
+        <li>Gunakan progress bar untuk upload besar</li>
+        <li>Beri nama yang deskriptif</li>
+        <li>Tambahkan komentar untuk menjelaskan fungsi</li>
+        <li>Gunakan FormData untuk data binary</li>
+        <li>Gunakan FormData untuk multipart form data</li>
+      </ul>
+
+      <h3 class="section-title">4. Contoh Praktis</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Penggunaan</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// 1. Form Login
+const form = document.querySelector('#form-login');
+const formData = new FormData(form);
+
+fetch('https://api.example.com/login', {
+    method: 'POST',
+    body: formData
+})
+.then(response => response.json())
+.then(data => console.log(data))
+.catch(error => console.error('Error:', error));
+
+// 2. Form Registrasi dengan File Upload
+const form = document.querySelector('#form-registrasi');
+const formData = new FormData(form);
+
+fetch('https://api.example.com/register', {
+    method: 'POST',
+    body: formData
+})
+.then(response => response.json())
+.then(data => console.log(data))
+.catch(error => console.error('Error:', error));
+
+// 3. Form Edit Profil
+const form = document.querySelector('#form-profil');
+const formData = new FormData(form);
+
+fetch('https://api.example.com/profil', {
+    method: 'PUT',
+    body: formData
+})
+.then(response => response.json())
+.then(data => console.log(data))
+.catch(error => console.error('Error:', error));
+
+// 4. Form Kontak dengan File Attachment
+const form = document.querySelector('#form-kontak');
+const formData = new FormData(form);
+
+fetch('https://api.example.com/kontak', {
+    method: 'POST',
+    body: formData
+})
+.then(response => response.json())
+.then(data => console.log(data))
+.catch(error => console.error('Error:', error));
+
+// 5. Form Upload Gambar
+const form = document.querySelector('#form-gambar');
+const formData = new FormData(form);
+
+const progressElement = document.querySelector('.progress');
+
+fetch('https://api.example.com/upload', {
+    method: 'POST',
+    body: formData,
+    onUploadProgress: progressEvent => {
+        const percent = (progressEvent.loaded / progressEvent.total) * 100;
+        progressElement.style.width = percent + '%';
+    }
+})
+.then(response => response.json())
+.then(data => console.log(data))
+.catch(error => console.error('Error:', error));
+
+// 6. Form Upload Multiple File
+const form = document.querySelector('#form-upload');
+const formData = new FormData(form);
+
+const files = document.querySelector('#files').files;
+for (const file of files) {
+    formData.append('files', file);
+}
+
+fetch('https://api.example.com/upload', {
+    method: 'POST',
+    body: formData
+})
+.then(response => response.json())
+.then(data => console.log(data))
+.catch(error => console.error('Error:', error));</code></pre>
+      </div>
+
+      <h3 class="section-title">5. Tips Penggunaan</h3>
+      <ul>
+        <li>Gunakan FormData untuk form dengan file upload</li>
+        <li>Tambahkan error handling</li>
+        <li>Gunakan progress bar untuk upload besar</li>
+        <li>Beri nama yang deskriptif</li>
+        <li>Tambahkan komentar untuk menjelaskan fungsi</li>
+        <li>Gunakan FormData untuk data binary</li>
+        <li>Gunakan FormData untuk multipart form data</li>
+      </ul>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='j191.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/javascript.png"
+          alt="javascript"
+          onclick="window.location.href='j1.html'"
+          title="javascript"
+        />
+        <button class="btn" onclick="window.location.href='j193.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+  </body>
+</html>

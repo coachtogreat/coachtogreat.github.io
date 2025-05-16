@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Operator Aritmatika dalam JavaScript</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Operator Aritmatika dalam JavaScript</h2>
+
+      <h3 class="section-title">1. Operator Dasar</h3>
+      <table>
+        <tr>
+          <th>Operator</th>
+          <th>Arti</th>
+          <th>Contoh</th>
+          <th>Hasil</th>
+        </tr>
+        <tr>
+          <td>+</td>
+          <td>Penjumlahan</td>
+          <td>5 + 3</td>
+          <td>8</td>
+        </tr>
+        <tr>
+          <td>-</td>
+          <td>Pengurangan</td>
+          <td>10 - 4</td>
+          <td>6</td>
+        </tr>
+        <tr>
+          <td>*</td>
+          <td>Perkalian</td>
+          <td>2 * 3</td>
+          <td>6</td>
+        </tr>
+        <tr>
+          <td>/</td>
+          <td>Pembagian</td>
+          <td>10 / 2</td>
+          <td>5</td>
+        </tr>
+        <tr>
+          <td>%</td>
+          <td>Sisa bagi</td>
+          <td>10 % 3</td>
+          <td>1</td>
+        </tr>
+      </table>
+
+      <h3 class="section-title">2. Operator Increment dan Decrement</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Increment/Decrement</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Increment
+let a = 5;
+a++; // a = 6
+a = a + 1; // a = 7
+
+// Decrement
+let b = 10;
+b--; // b = 9
+b = b - 1; // b = 8
+
+// Pre vs Post increment
+let x = 5;
+console.log(x++); // output: 5 (post increment)
+console.log(x); // output: 6
+
+let y = 5;
+console.log(++y); // output: 6 (pre increment)
+console.log(y); // output: 6</code></pre>
+      </div>
+
+      <h3 class="section-title">3. Operator Pembagian</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Pembagian</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Pembagian biasa
+let hasil = 10 / 3; // hasil: 3.3333333333333335
+
+// Pembagian bulat
+let bulat = Math.floor(10 / 3); // hasil: 3
+
+// Pembagian bulat ke atas
+let atas = Math.ceil(10 / 3); // hasil: 4
+
+// Pembagian bulat ke bawah
+let bawah = Math.trunc(10 / 3); // hasil: 3</code></pre>
+      </div>
+
+      <h3 class="section-title">4. Operator Sisa Bagi (%)</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Sisa Bagi</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Mengecek bilangan genap
+function isEven(number) {
+    return number % 2 === 0;
+}
+
+// Mengecek bilangan ganjil
+function isOdd(number) {
+    return number % 2 !== 0;
+}
+
+// Contoh penggunaan
+console.log(isEven(4)); // true
+console.log(isOdd(5)); // true</code></pre>
+      </div>
+
+      <h3 class="section-title">5. Operator Matematika Lanjutan</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Operator Lanjutan</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Pangkat (ES6+)
+let kuadrat = 2 ** 3; // hasil: 8
+
+// Akar kuadrat
+let akar = Math.sqrt(16); // hasil: 4
+
+// Nilai absolut
+let abs = Math.abs(-5); // hasil: 5
+
+// Pembulatan
+let pembulatan = Math.round(3.7); // hasil: 4
+</code></pre>
+      </div>
+
+      <h3 class="section-title">6. Best Practices</h3>
+      <ul>
+        <li>Gunakan operator yang sesuai untuk situasi</li>
+        <li>Hati-hati dengan pembagian oleh nol</li>
+        <li>Gunakan Math.floor() untuk pembulatan ke bawah</li>
+        <li>Gunakan Math.ceil() untuk pembulatan ke atas</li>
+        <li>Gunakan operator % untuk menghitung sisa bagi</li>
+        <li>Gunakan operator ** untuk perpangkatan</li>
+      </ul>
+
+      <h3 class="section-title">7. Contoh Praktis</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Kalkulator Sederhana</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Fungsi penjumlahan
+function tambah(a, b) {
+    return a + b;
+}
+
+// Fungsi pengurangan
+function kurang(a, b) {
+    return a - b;
+}
+
+// Fungsi perkalian
+function kali(a, b) {
+    return a * b;
+}
+
+// Fungsi pembagian
+function bagi(a, b) {
+    if (b === 0) {
+        return "Tidak bisa membagi dengan nol";
+    }
+    return a / b;
+}
+
+// Contoh penggunaan
+console.log(tambah(5, 3)); // 8
+console.log(kurang(10, 4)); // 6
+console.log(kali(2, 3)); // 6
+console.log(bagi(10, 2)); // 5</code></pre>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='j24.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/javascript.png"
+          alt="javascript"
+          onclick="window.location.href='j1.html'"
+          title="javascript"
+        />
+        <button class="btn" onclick="window.location.href='j32.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+  </body>
+</html>

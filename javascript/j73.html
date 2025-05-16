@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Iterasi Array dalam JavaScript</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Iterasi Array dalam JavaScript</h2>
+
+      <h3 class="section-title">1. Iterasi dengan For Loop</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh For Loop</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Iterasi dengan for
+let buah = ["apel", "mangga", "jeruk"];
+for (let i = 0; i < buah.length; i++) {
+    console.log(buah[i]);
+}
+
+// Iterasi dengan for...of
+let angka = [1, 2, 3, 4, 5];
+for (let nilai of angka) {
+    console.log(nilai);
+}
+
+// Iterasi dengan for...in
+let objek = { nama: "John", umur: 25 };
+for (let prop in objek) {
+    console.log(prop + ": " + objek[prop]);
+}</code></pre>
+      </div>
+
+      <h3 class="section-title">2. Iterasi dengan forEach</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh forEach</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// forEach sederhana
+let buah = ["apel", "mangga", "jeruk"];
+buah.forEach(function(item) {
+    console.log(item);
+});
+
+// forEach dengan index
+buah.forEach(function(item, index) {
+    console.log(index + ": " + item);
+});
+
+// forEach dengan array
+let nilai = [80, 75, 90, 85];
+nilai.forEach(function(nilai, index, array) {
+    console.log("Nilai ke-" + index + ": " + nilai);
+});
+
+// forEach dengan arrow function
+nilai.forEach((nilai, index) => {
+    console.log("Nilai ke-" + index + ": " + nilai);
+});</code></pre>
+      </div>
+
+      <h3 class="section-title">3. Perbandingan For vs forEach</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Perbandingan</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// For lebih fleksibel
+let buah = ["apel", "mangga", "jeruk"];
+for (let i = 0; i < buah.length; i++) {
+    if (buah[i] === "mangga") {
+        break; // bisa menggunakan break
+    }
+    console.log(buah[i]);
+}
+
+// forEach lebih ringkas
+buah.forEach(function(item) {
+    console.log(item);
+});
+
+// For bisa mengubah array
+for (let i = 0; i < buah.length; i++) {
+    buah[i] = buah[i].toUpperCase();
+}
+
+// forEach tidak bisa mengubah array langsung
+buah.forEach(function(item, index, array) {
+    array[index] = item.toUpperCase();
+});</code></pre>
+      </div>
+
+      <h3 class="section-title">4. Contoh Praktis</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Penggunaan</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Contoh kalkulator
+let angka = [1, 2, 3, 4, 5];
+let hasil = 0;
+
+// Menggunakan for
+for (let i = 0; i < angka.length; i++) {
+    hasil += angka[i];
+}
+console.log(hasil); // 15
+
+// Menggunakan forEach
+hasil = 0;
+angka.forEach(function(nilai) {
+    hasil += nilai;
+});
+console.log(hasil); // 15
+
+// Contoh validasi form
+let input = ["John", "john@example.com", "25"];
+let valid = true;
+
+// Menggunakan for
+for (let i = 0; i < input.length; i++) {
+    if (input[i] === "") {
+        valid = false;
+        break;
+    }
+}
+
+// Menggunakan forEach
+valid = true;
+input.forEach(function(item) {
+    if (item === "") {
+        valid = false;
+    }
+});
+
+// Contoh pengolahan data
+let siswa = [
+    { nama: "John", nilai: 85 },
+    { nama: "Jane", nilai: 90 },
+    { nama: "Mike", nilai: 80 }
+];
+
+// Menggunakan for
+let total = 0;
+for (let i = 0; i < siswa.length; i++) {
+    total += siswa[i].nilai;
+}
+console.log("Rata-rata: " + (total / siswa.length));
+
+// Menggunakan forEach
+let total2 = 0;
+siswa.forEach(function(s) {
+    total2 += s.nilai;
+});
+console.log("Rata-rata: " + (total2 / siswa.length));
+
+// Contoh filter data
+let angka = [1, 2, 3, 4, 5];
+let genap = [];
+
+// Menggunakan for
+for (let i = 0; i < angka.length; i++) {
+    if (angka[i] % 2 === 0) {
+        genap.push(angka[i]);
+    }
+}
+
+// Menggunakan forEach
+let genap2 = [];
+angka.forEach(function(n) {
+    if (n % 2 === 0) {
+        genap2.push(n);
+    }
+});</code></pre>
+      </div>
+
+      <h3 class="section-title">5. Best Practices</h3>
+      <ul>
+        <li>Gunakan forEach untuk operasi sederhana</li>
+        <li>Gunakan for untuk operasi yang lebih kompleks</li>
+        <li>Gunakan arrow function untuk forEach</li>
+        <li>Tambahkan komentar untuk menjelaskan operasi</li>
+        <li>Hindari side effects dalam forEach</li>
+        <li>Pisahkan logika yang rumit ke dalam fungsi</li>
+      </ul>
+
+      <h3 class="section-title">6. Tips Penggunaan</h3>
+      <ul>
+        <li>Gunakan forEach untuk operasi sederhana</li>
+        <li>Gunakan for untuk operasi yang lebih kompleks</li>
+        <li>Gunakan arrow function untuk forEach</li>
+        <li>Tambahkan komentar untuk menjelaskan operasi</li>
+        <li>Hindari side effects dalam forEach</li>
+        <li>Pisahkan logika yang rumit ke dalam fungsi</li>
+      </ul>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='j72.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/javascript.png"
+          alt="javascript"
+          onclick="window.location.href='j1.html'"
+          title="javascript"
+        />
+        <button class="btn" onclick="window.location.href='j81.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+  </body>
+</html>

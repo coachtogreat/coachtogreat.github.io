@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Higher-order Function dalam JavaScript</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Higher-order Function dalam JavaScript</h2>
+
+      <h3 class="section-title">1. Pengenalan Higher-order Function</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Dasar</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// 1. Function sebagai parameter
+function prosesData(data, callback) {
+    const hasil = callback(data);
+    console.log(hasil);
+}
+
+function tambahSatu(nilai) {
+    return nilai + 1;
+}
+
+prosesData(5, tambahSatu); // 6
+
+// 2. Function sebagai return
+function pembuatPengali(nilai) {
+    return function(x) {
+        return x * nilai;
+    };
+}
+
+const kaliDua = pembuatPengali(2);
+console.log(kaliDua(5)); // 10
+
+// 3. Function sebagai parameter dan return
+function pembuatPengolah(nilai) {
+    return function(proses) {
+        return proses(nilai);
+    };
+}
+
+function kuadrat(x) {
+    return x * x;
+}
+
+const pengolah = pembuatPengolah(5);
+console.log(pengolah(kuadrat)); // 25</code></pre>
+      </div>
+
+      <h3 class="section-title">2. Contoh Higher-order Function Bawaan</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Bawaan</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// 1. Array.map
+const angka = [1, 2, 3, 4];
+const kuadrat = angka.map(function(x) {
+    return x * x;
+});
+console.log(kuadrat); // [1, 4, 9, 16]
+
+// 2. Array.filter
+const angka = [1, 2, 3, 4, 5];
+const genap = angka.filter(function(x) {
+    return x % 2 === 0;
+});
+console.log(genap); // [2, 4]
+
+// 3. Array.reduce
+const angka = [1, 2, 3, 4];
+const total = angka.reduce(function(acc, curr) {
+    return acc + curr;
+}, 0);
+console.log(total); // 10
+
+// 4. setTimeout
+timeout(1000, function() {
+    console.log("Halo setelah 1 detik");
+});
+
+// 5. setInterval
+const interval = setInterval(function() {
+    console.log("Halo setiap 1 detik");
+}, 1000);
+
+// 6. Event Listener
+element.addEventListener("click", function() {
+    console.log("Tombol diklik");
+});</code></pre>
+      </div>
+
+      <h3 class="section-title">3. Best Practices</h3>
+      <ul>
+        <li>Gunakan arrow function untuk callback yang sederhana</li>
+        <li>Beri nama yang deskriptif untuk function</li>
+        <li>Gunakan parameter default untuk flexibilitas</li>
+        <li>Tambahkan error handling</li>
+        <li>Buat function yang mudah dipahami</li>
+        <li>Tambahkan komentar untuk menjelaskan function</li>
+        <li>Gunakan closure dengan hati-hati</li>
+      </ul>
+
+      <h3 class="section-title">4. Contoh Praktis</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Penggunaan</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// 1. Todo List
+function prosesTodo(todo, callback) {
+    callback(todo);
+}
+
+function tampilkanTodo(todo) {
+    console.log(`Todo: ${todo}`);
+}
+
+prosesTodo("Belajar JavaScript", tampilkanTodo);
+
+// 2. Galeri Foto
+function prosesGambar(url, callback) {
+    const img = new Image();
+    img.onload = callback;
+    img.src = url;
+}
+
+function tampilkanGambar() {
+    document.body.appendChild(this);
+}
+
+prosesGambar("gambar.jpg", tampilkanGambar);
+
+// 3. Form Validation
+function validasiForm(form, callback) {
+    if (form.email && form.password) {
+        callback(true);
+    } else {
+        callback(false);
+    }
+}
+
+function prosesForm(isValid) {
+    if (isValid) {
+        console.log("Form valid");
+    } else {
+        console.log("Form tidak valid");
+    }
+}
+
+validasiForm({ email: "test@example.com", password: "123456" }, prosesForm);
+
+// 4. Animasi
+function animasi(element, callback) {
+    let pos = 0;
+    const anim = setInterval(() => {
+        if (pos >= 100) {
+            clearInterval(anim);
+            callback();
+        } else {
+            pos++;
+            element.style.left = pos + "px";
+        }
+    }, 10);
+}
+
+function selesaiAnimasi() {
+    console.log("Animasi selesai");
+}
+
+animasi(document.getElementById("kotak"), selesaiAnimasi);
+
+// 5. Data Processing
+function prosesData(data, callback) {
+    const hasil = callback(data);
+    return hasil;
+}
+
+function filterData(data) {
+    return data.filter(item => item > 5);
+}
+
+const angka = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const hasil = prosesData(angka, filterData);
+console.log(hasil); // [6, 7, 8, 9, 10]
+
+// 6. Event Handler
+function tambahkanListener(element, event, callback) {
+    element.addEventListener(event, callback);
+}
+
+function klikTombol() {
+    console.log("Tombol diklik");
+}
+
+tambahkanListener(document.getElementById("tombol"), "click", klikTombol);</code></pre>
+      </div>
+
+      <h3 class="section-title">5. Tips Penggunaan</h3>
+      <ul>
+        <li>Gunakan arrow function untuk callback yang sederhana</li>
+        <li>Beri nama yang deskriptif untuk function</li>
+        <li>Gunakan parameter default untuk flexibilitas</li>
+        <li>Tambahkan error handling</li>
+        <li>Buat function yang mudah dipahami</li>
+        <li>Tambahkan komentar untuk menjelaskan function</li>
+        <li>Gunakan closure dengan hati-hati</li>
+      </ul>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='j163.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/javascript.png"
+          alt="javascript"
+          onclick="window.location.href='j1.html'"
+          title="javascript"
+        />
+        <button class="btn" onclick="window.location.href='j172.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+  </body>
+</html>

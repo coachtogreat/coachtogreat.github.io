@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Memory Leaks</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Memory Leaks</h2>
+
+      <h3 class="section-title">1. Pengenalan Memory Leaks</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Memory Leaks</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// 1. Memory Leak karena Event Listener
+const element = document.createElement('div');
+
+element.addEventListener('click', function() {
+    // Do something
+});
+
+// Memory leak karena tidak remove event listener
+
+// 2. Memory Leak karena Closure
+function createModule() {
+    const data = new Array(1000000).fill('data');
+    
+    return {
+        getData: () => data
+    };
+}
+
+// Memory leak karena data besar tidak di-release
+
+// 3. Memory Leak karena Timer
+setInterval(function() {
+    // Do something
+}, 1000);
+
+// Memory leak karena tidak clear interval
+
+// 4. Memory Leak karena DOM Reference
+const element = document.querySelector('#element');
+
+// Memory leak karena element tidak di-remove
+</code></pre>
+      </div>
+
+      <h3 class="section-title">2. Jenis-jenis Memory Leaks</h3>
+      <ul>
+        <li>Event Listener Leak</li>
+        <li>Closure Leak</li>
+        <li>Timer Leak</li>
+        <li>DOM Reference Leak</li>
+        <li>Cache Leak</li>
+        <li>Module Leak</li>
+        <li>Memory Fragmentation</li>
+      </ul>
+
+      <h3 class="section-title">3. Deteksi Memory Leaks</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Tools untuk Deteksi Memory Leaks</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// 1. Chrome DevTools
+// - Performance tab
+// - Memory tab
+// - Heap snapshot
+// - Allocation timeline
+
+// 2. Memory Profiling
+function profileMemory() {
+    const snapshot = new window.performance.memory;
+    console.log('Memory usage:', snapshot);
+}
+
+// 3. Leak Detection
+function detectLeak() {
+    const before = process.memoryUsage();
+    
+    // Test code
+    
+    const after = process.memoryUsage();
+    console.log('Memory usage:', after.heapUsed - before.heapUsed);
+}
+</code></pre>
+      </div>
+
+      <h3 class="section-title">4. Cara Menghindari Memory Leaks</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Best Practices</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// 1. Clean Event Listeners
+function setupListeners() {
+    const element = document.querySelector('#element');
+    
+    const handler = function() {
+        // Do something
+    };
+    
+    element.addEventListener('click', handler);
+    
+    return function cleanup() {
+        element.removeEventListener('click', handler);
+    };
+}
+
+// 2. Clean Timers
+class Timer {
+    constructor() {
+        this.interval = null;
+    }
+    
+    start() {
+        this.interval = setInterval(() => {
+            // Do something
+        }, 1000);
+    }
+    
+    stop() {
+        if (this.interval) {
+            clearInterval(this.interval);
+        }
+    }
+}
+
+// 3. Clean DOM References
+function createComponent() {
+    const element = document.createElement('div');
+    
+    return {
+        element,
+        destroy() {
+            element.remove();
+            element = null;
+        }
+    };
+}
+
+// 4. Clean Closures
+function createModule() {
+    const data = new Array(1000000).fill('data');
+    
+    return {
+        getData() {
+            return data;
+        },
+        cleanup() {
+            data = null;
+        }
+    };
+}
+</code></pre>
+      </div>
+
+      <h3 class="section-title">5. Best Practices</h3>
+      <ul>
+        <li>Always clean up event listeners</li>
+        <li>Always clean up timers</li>
+        <li>Always clean up DOM references</li>
+        <li>Use weak references when possible</li>
+        <li>Implement proper cleanup in modules</li>
+        <li>Use memory profiling tools</li>
+        <li>Monitor memory usage</li>
+        <li>Implement memory leak detection</li>
+      </ul>
+
+      <h3 class="section-title">6. Tips Penggunaan</h3>
+      <ul>
+        <li>Use Chrome DevTools regularly</li>
+        <li>Implement cleanup functions</li>
+        <li>Use weak references</li>
+        <li>Monitor memory usage</li>
+        <li>Implement memory leak detection</li>
+        <li>Use memory profiling tools</li>
+        <li>Implement proper cleanup in modules</li>
+        <li>Use memory monitoring tools</li>
+      </ul>
+
+      <h3 class="section-title">7. Contoh Praktis</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Memory Leak dan Solusinya</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// 1. Memory Leak pada Event Listener
+// Memory leak
+const element = document.querySelector('#element');
+element.addEventListener('click', function() {
+    // Do something
+});
+
+// Solusi
+function setupListeners() {
+    const element = document.querySelector('#element');
+    const handler = function() {
+        // Do something
+    };
+    
+    element.addEventListener('click', handler);
+    
+    return function cleanup() {
+        element.removeEventListener('click', handler);
+    };
+}
+
+// 2. Memory Leak pada DOM References
+// Memory leak
+const element = document.querySelector('#element');
+
+// Solusi
+function createComponent() {
+    const element = document.createElement('div');
+    
+    return {
+        element,
+        destroy() {
+            element.remove();
+            element = null;
+        }
+    };
+}
+
+// 3. Memory Leak pada Timers
+// Memory leak
+setInterval(function() {
+    // Do something
+}, 1000);
+
+// Solusi
+class Timer {
+    constructor() {
+        this.interval = null;
+    }
+    
+    start() {
+        this.interval = setInterval(() => {
+            // Do something
+        }, 1000);
+    }
+    
+    stop() {
+        if (this.interval) {
+            clearInterval(this.interval);
+        }
+    }
+}
+
+// 4. Memory Leak pada Closures
+// Memory leak
+function createModule() {
+    const data = new Array(1000000).fill('data');
+    
+    return {
+        getData: () => data
+    };
+}
+
+// Solusi
+function createModule() {
+    let data = new Array(1000000).fill('data');
+    
+    return {
+        getData() {
+            return data;
+        },
+        cleanup() {
+            data = null;
+        }
+    };
+}</code></pre>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='j221.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/javascript.png"
+          alt="javascript"
+          onclick="window.location.href='j1.html'"
+          title="javascript"
+        />
+        <button class="btn" onclick="window.location.href='j223.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+
+    <script>
+      function copyCode(button) {
+        const codeBlock = button.parentElement.nextElementSibling;
+        const code = codeBlock.textContent;
+        navigator.clipboard.writeText(code);
+        button.textContent = 'Copied!';
+        setTimeout(() => {
+          button.textContent = 'Copy';
+        }, 2000);
+      }
+    </script>
+  </body>
+</html>

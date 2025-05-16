@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tipe Data Dasar dalam JavaScript</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Tipe Data Dasar dalam JavaScript</h2>
+
+      <h3 class="section-title">1. String</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh String</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Membuat string
+let nama = "John";
+let pesan = 'Halo, Dunia!';
+let teks = `Saya sedang belajar ${nama}`;
+
+// Manipulasi string
+console.log(nama.length); // 4
+console.log(nama.toUpperCase()); // JOHN
+console.log(teks.includes("belajar")); // true</code></pre>
+      </div>
+
+      <h3 class="section-title">2. Number</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Number</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Angka biasa
+let umur = 25;
+
+// Angka desimal
+let harga = 19.99;
+
+// Operasi matematika
+let total = umur + harga;
+console.log(total); // 44.99
+
+// Konversi string ke number
+let angka = Number("42");
+console.log(angka); // 42</code></pre>
+      </div>
+
+      <h3 class="section-title">3. Boolean</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Boolean</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Nilai boolean
+let isStudent = true;
+let isWorking = false;
+
+// Operasi boolean
+console.log(isStudent && isWorking); // false
+console.log(isStudent || isWorking); // true
+console.log(!isStudent); // false</code></pre>
+      </div>
+
+      <h3 class="section-title">4. Null</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Null</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Nilai null
+let data = null;
+console.log(typeof data); // "object" (catatan: ini adalah bug di JavaScript)
+
+// Memeriksa null
+if (data === null) {
+    console.log("Data kosong");
+}</code></pre>
+      </div>
+
+      <h3 class="section-title">5. Undefined</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Undefined</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Variabel yang belum diberi nilai
+let nama;
+console.log(nama); // undefined
+
+// Properti yang tidak ada
+const orang = {
+    nama: "John"
+};
+console.log(orang.umur); // undefined
+
+// Fungsi yang tidak mengembalikan nilai
+function halo() {
+    console.log("Halo!");
+}
+console.log(halo()); // undefined</code></pre>
+      </div>
+
+      <h3 class="section-title">6. Perbedaan Null dan Undefined</h3>
+      <table>
+        <tr>
+          <th>Perbedaan</th>
+          <th>Null</th>
+          <th>Undefined</th>
+        </tr>
+        <tr>
+          <td>Arti</td>
+          <td>Nilai yang kosong secara sengaja</td>
+          <td>Nilai yang belum didefinisikan</td>
+        </tr>
+        <tr>
+          <td>Penulisan</td>
+          <td>let x = null;</td>
+          <td>let x;</td>
+        </tr>
+        <tr>
+          <td>typeof</td>
+          <td>"object"</td>
+          <td>"undefined"</td>
+        </tr>
+        <tr>
+          <td>Penggunaan</td>
+          <td>Reset nilai</td>
+          <td>Nilai default</td>
+        </tr>
+      </table>
+
+      <h3 class="section-title">7. Best Practices</h3>
+      <ul>
+        <li>Gunakan tipe data yang sesuai</li>
+        <li>Hindari penggunaan null kecuali diperlukan</li>
+        <li>Gunakan isNaN() untuk memeriksa NaN</li>
+        <li>Gunakan typeof untuk memeriksa tipe data</li>
+        <li>Gunakan == untuk perbandingan nilai</li>
+        <li>Gunakan === untuk perbandingan nilai dan tipe</li>
+      </ul>
+
+      <h3 class="section-title">8. Contoh Praktis</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Praktis</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Fungsi untuk menghitung diskon
+function hitungDiskon(harga, persen = 10) {
+    if (harga === null || harga === undefined) {
+        return "Harga tidak valid";
+    }
+    
+    let diskon = harga * (persen / 100);
+    return harga - diskon;
+}
+
+// Contoh penggunaan
+console.log(hitungDiskon(100000)); // 90000
+console.log(hitungDiskon(100000, 20)); // 80000
+console.log(hitungDiskon(null)); // "Harga tidak valid"</code></pre>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='j23.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/javascript.png"
+          alt="javascript"
+          onclick="window.location.href='j1.html'"
+          title="javascript"
+        />
+        <button class="btn" onclick="window.location.href='j31.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+  </body>
+</html>

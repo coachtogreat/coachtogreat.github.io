@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menangani Event dalam JavaScript</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Menangani Event dalam JavaScript</h2>
+
+      <h3 class="section-title">1. Event Listener</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Event Listener</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// HTML
+&lt;button id="tombol"&gt;Klik Saya&lt;/button&gt;
+
+// JavaScript
+// Menggunakan addEventListener
+const tombol = document.getElementById("tombol");
+tombol.addEventListener("click", function() {
+    console.log("Tombol diklik!");
+});
+
+// Menggunakan method langsung
+tombol.onclick = function() {
+    console.log("Tombol diklik!");
+};
+
+// Menghapus event listener
+tombol.removeEventListener("click", fungsiHandler);
+
+// Menggunakan arrow function
+tombol.addEventListener("click", () => {
+    console.log("Tombol diklik!");
+});</code></pre>
+      </div>
+
+      <h3 class="section-title">2. Jenis Event</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Jenis Event</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Mouse Events
+const tombol = document.getElementById("tombol");
+tombol.addEventListener("click", fungsiClick);
+tombol.addEventListener("dblclick", fungsiDblClick);
+tombol.addEventListener("mouseover", fungsiOver);
+tombol.addEventListener("mouseout", fungsiOut);
+
+// Keyboard Events
+const input = document.getElementById("teks");
+input.addEventListener("keydown", fungsiKeyDown);
+input.addEventListener("keyup", fungsiKeyUp);
+input.addEventListener("keypress", fungsiKeyPress);
+
+// Form Events
+const form = document.getElementById("form");
+form.addEventListener("submit", fungsiSubmit);
+form.addEventListener("reset", fungsiReset);
+
+// Window Events
+window.addEventListener("load", fungsiLoad);
+window.addEventListener("resize", fungsiResize);
+window.addEventListener("scroll", fungsiScroll);
+
+// Focus Events
+const input = document.getElementById("input");
+input.addEventListener("focus", fungsiFocus);
+input.addEventListener("blur", fungsiBlur);</code></pre>
+      </div>
+
+      <h3 class="section-title">3. Event Object</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Event Object</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Mengambil informasi event
+function fungsiClick(event) {
+    console.log(event.type); // "click"
+    console.log(event.target); // element yang diklik
+    console.log(event.currentTarget); // element yang menangani event
+    console.log(event.clientX); // posisi mouse X
+    console.log(event.clientY); // posisi mouse Y
+    console.log(event.button); // tombol mouse yang diklik
+    
+    // Mencegah perilaku default
+    event.preventDefault();
+    
+    // Mencegah event bubbling
+    event.stopPropagation();
+}
+
+// Keyboard event
+function fungsiKeyPress(event) {
+    console.log(event.key); // karakter yang ditekan
+    console.log(event.keyCode); // kode tombol
+    console.log(event.ctrlKey); // true jika Ctrl ditekan
+    console.log(event.shiftKey); // true jika Shift ditekan
+    console.log(event.altKey); // true jika Alt ditekan
+}
+
+// Form event
+function fungsiSubmit(event) {
+    const form = event.target;
+    console.log(form.elements); // NodeList semua element form
+    console.log(form.elements[0].value); // nilai element pertama
+    
+    // Mencegah submit form
+    event.preventDefault();
+}</code></pre>
+      </div>
+
+      <h3 class="section-title">4. Best Practices</h3>
+      <ul>
+        <li>Gunakan addEventListener untuk menangani event</li>
+        <li>Tambahkan komentar untuk menjelaskan event handler</li>
+        <li>Pisahkan logika event ke dalam fungsi</li>
+        <li>Gunakan preventDefault jika diperlukan</li>
+        <li>Hindari event handler inline di HTML</li>
+        <li>Gunakan event delegation untuk event yang banyak</li>
+      </ul>
+
+      <h3 class="section-title">5. Contoh Praktis</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Penggunaan</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Contoh todo list
+function buatTodoList() {
+    const form = document.getElementById("form-todo");
+    const input = document.getElementById("todo-input");
+    const list = document.getElementById("todo-list");
+    
+    // Menambah todo
+    form.addEventListener("submit", function(event) {
+        event.preventDefault();
+        
+        const li = document.createElement("li");
+        li.textContent = input.value;
+        list.appendChild(li);
+        input.value = "";
+    });
+    
+    // Menghapus todo
+    list.addEventListener("click", function(event) {
+        if (event.target.tagName === "LI") {
+            event.target.remove();
+        }
+    });
+}
+
+// Contoh galeri foto
+function buatGaleri() {
+    const konten = document.querySelector(".galeri");
+    const gambar = [
+        { src: "gambar1.jpg", alt: "Gambar 1" },
+        { src: "gambar2.jpg", alt: "Gambar 2" }
+    ];
+    
+    gambar.forEach(img => {
+        const element = document.createElement("img");
+        element.src = img.src;
+        element.alt = img.alt;
+        
+        // Menambah event click
+        element.addEventListener("click", function() {
+            console.log("Gambar diklik: " + this.src);
+        });
+        
+        konten.appendChild(element);
+    });
+}
+
+// Contoh form validation
+function validateForm() {
+    const form = document.getElementById("form");
+    const nama = form.querySelector("#nama");
+    
+    // Validasi saat input
+    nama.addEventListener("input", function() {
+        if (this.value.trim().length === 0) {
+            this.style.borderColor = "red";
+        } else {
+            this.style.borderColor = "";
+        }
+    });
+    
+    // Validasi saat submit
+    form.addEventListener("submit", function(event) {
+        if (nama.value.trim().length === 0) {
+            event.preventDefault();
+            nama.style.borderColor = "red";
+        }
+    });
+}
+
+// Contoh animasi
+function animasi() {
+    const kotak = document.querySelector(".kotak");
+    
+    // Animasi saat mouse over
+    kotak.addEventListener("mouseover", function() {
+        this.style.backgroundColor = "blue";
+    });
+    
+    // Animasi saat mouse out
+    kotak.addEventListener("mouseout", function() {
+        this.style.backgroundColor = "";
+    });
+}</code></pre>
+      </div>
+
+      <h3 class="section-title">6. Tips Penggunaan</h3>
+      <ul>
+        <li>Gunakan addEventListener untuk menangani event</li>
+        <li>Tambahkan komentar untuk menjelaskan event handler</li>
+        <li>Pisahkan logika event ke dalam fungsi</li>
+        <li>Gunakan preventDefault jika diperlukan</li>
+        <li>Hindari event handler inline di HTML</li>
+        <li>Gunakan event delegation untuk event yang banyak</li>
+      </ul>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='j103.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/javascript.png"
+          alt="javascript"
+          onclick="window.location.href='j1.html'"
+          title="javascript"
+        />
+        <button class="btn" onclick="window.location.href='j111.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+  </body>
+</html>

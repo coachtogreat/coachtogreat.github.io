@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>setTimeout dan setInterval dalam JavaScript</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">setTimeout dan setInterval dalam JavaScript</h2>
+
+      <h3 class="section-title">1. Pengenalan setTimeout</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh setTimeout</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Contoh dasar
+setTimeout(function() {
+    console.log("Ini akan muncul setelah 2 detik");
+}, 2000);
+
+// Menggunakan arrow function
+setTimeout(() => {
+    console.log("Ini juga akan muncul setelah 2 detik");
+}, 2000);
+
+// Menggunakan fungsi terpisah
+function fungsiTimeout() {
+    console.log("Ini dari fungsi terpisah");
+}
+setTimeout(fungsiTimeout, 2000);
+
+// Menghentikan timeout
+const timeout = setTimeout(() => {
+    console.log("Ini tidak akan muncul");
+}, 2000);
+
+clearTimeout(timeout); // Membatalkan timeout</code></pre>
+      </div>
+
+      <h3 class="section-title">2. Pengenalan setInterval</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh setInterval</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Contoh dasar
+setInterval(function() {
+    console.log("Ini akan muncul setiap 2 detik");
+}, 2000);
+
+// Menggunakan arrow function
+setInterval(() => {
+    console.log("Ini juga akan muncul setiap 2 detik");
+}, 2000);
+
+// Menggunakan fungsi terpisah
+function fungsiInterval() {
+    console.log("Ini dari fungsi terpisah");
+}
+setInterval(fungsiInterval, 2000);
+
+// Menghentikan interval
+const interval = setInterval(() => {
+    console.log("Ini akan muncul setiap 2 detik");
+}, 2000);
+
+setTimeout(() => {
+    clearInterval(interval); // Membatalkan interval
+}, 10000); // Setelah 10 detik</code></pre>
+      </div>
+
+      <h3 class="section-title">3. Penggunaan setTimeout</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Penggunaan</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// 1. Animasi
+const kotak = document.querySelector(".kotak");
+let posisi = 0;
+
+function animasi() {
+    posisi++;
+    kotak.style.left = posisi + "px";
+    
+    if (posisi < 400) {
+        setTimeout(animasi, 10);
+    }
+}
+
+// 2. Loading
+const loading = document.querySelector(".loading");
+setTimeout(() => {
+    loading.style.display = "none";
+    document.querySelector(".konten").style.display = "block";
+}, 2000);
+
+// 3. Timer
+let detik = 0;
+const timer = setInterval(() => {
+    detik++;
+    console.log(`Sudah berjalan ${detik} detik`);
+}, 1000);
+
+// 4. Polling
+function cekData() {
+    fetch("/api/data")
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            setTimeout(cekData, 5000);
+        });
+}
+cekData();</code></pre>
+      </div>
+
+      <h3 class="section-title">4. Penggunaan setInterval</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Penggunaan</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// 1. Clock
+function updateJam() {
+    const waktu = new Date();
+    const jam = waktu.getHours();
+    const menit = waktu.getMinutes();
+    const detik = waktu.getSeconds();
+    
+    document.querySelector(".jam").textContent = 
+        `${jam}:${menit}:${detik}`;
+}
+
+setInterval(updateJam, 1000);
+
+// 2. Auto-refresh
+function refreshData() {
+    fetch("/api/data")
+        .then(response => response.json())
+        .then(data => {
+            // Proses data
+        });
+}
+
+setInterval(refreshData, 30000); // Refresh setiap 30 detik
+
+// 3. Animasi
+const kotak = document.querySelector(".kotak");
+let posisi = 0;
+
+function animasi() {
+    posisi++;
+    kotak.style.left = posisi + "px";
+    
+    if (posisi >= 400) {
+        posisi = 0;
+    }
+}
+
+setInterval(animasi, 10);
+
+// 4. Countdown
+let detik = 10;
+const countdown = setInterval(() => {
+    console.log(`${detik} detik tersisa`);
+    detik--;
+    
+    if (detik < 0) {
+        clearInterval(countdown);
+        console.log("Selesai!");
+    }
+}, 1000);</code></pre>
+      </div>
+
+      <h3 class="section-title">5. Best Practices</h3>
+      <ul>
+        <li>Gunakan setTimeout untuk tugas sekali jalan</li>
+        <li>Gunakan setInterval untuk tugas berulang</li>
+        <li>Tambahkan komentar untuk menjelaskan penggunaan</li>
+        <li>Pisahkan logika ke dalam fungsi</li>
+        <li>Gunakan clearInterval untuk menghentikan interval</li>
+        <li>Beri nama variabel yang deskriptif</li>
+        <li>Tambahkan error handling</li>
+      </ul>
+
+      <h3 class="section-title">6. Contoh Praktis</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Penggunaan</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Contoh todo list dengan timeout
+function buatTodoList() {
+    const list = document.getElementById("todo-list");
+    
+    // Animasi penambahan todo
+    function tambahTodo(teks) {
+        const li = document.createElement("li");
+        li.textContent = teks;
+        li.style.opacity = "0";
+        list.appendChild(li);
+        
+        setTimeout(() => {
+            li.style.opacity = "1";
+        }, 100);
+    }
+    
+    // Animasi penghapusan todo
+    list.addEventListener("click", function(e) {
+        if (e.target.tagName === "LI") {
+            e.target.style.opacity = "0";
+            setTimeout(() => {
+                e.target.remove();
+            }, 500);
+        }
+    });
+}
+
+// Contoh galeri foto dengan interval
+function buatGaleri() {
+    const gambar = [
+        "gambar1.jpg",
+        "gambar2.jpg",
+        "gambar3.jpg"
+    ];
+    let index = 0;
+    
+    // Fungsi untuk menampilkan gambar
+    function tampilkanGambar() {
+        const element = document.querySelector(".gambar-aktif");
+        if (element) {
+            element.classList.remove("gambar-aktif");
+        }
+        
+        index = (index + 1) % gambar.length;
+        const baru = document.querySelector(`img[src="${gambar[index]}"]`);
+        baru.classList.add("gambar-aktif");
+    }
+    
+    // Mulai slideshow
+    setInterval(tampilkanGambar, 3000);
+}
+
+// Contoh form validation dengan delay
+function validateForm() {
+    const input = document.getElementById("email");
+    let timeout;
+    
+    input.addEventListener("input", function() {
+        clearTimeout(timeout);
+        
+        timeout = setTimeout(() => {
+            // Validasi email
+            if (!input.value.includes("@")) {
+                input.style.borderColor = "red";
+            } else {
+                input.style.borderColor = "";
+            }
+        }, 500);
+    });
+}
+
+// Contoh polling data
+function pollingData() {
+    let interval;
+    
+    function mulaiPolling() {
+        interval = setInterval(() => {
+            fetch("/api/data")
+                .then(response => response.json())
+                .then(data => {
+                    // Proses data
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+        }, 5000);
+    }
+    
+    function berhentiPolling() {
+        clearInterval(interval);
+    }
+    
+    return {
+        mulai: mulaiPolling,
+        berhenti: berhentiPolling
+    };
+}</code></pre>
+      </div>
+
+      <h3 class="section-title">7. Tips Penggunaan</h3>
+      <ul>
+        <li>Gunakan setTimeout untuk tugas sekali jalan</li>
+        <li>Gunakan setInterval untuk tugas berulang</li>
+        <li>Tambahkan komentar untuk menjelaskan penggunaan</li>
+        <li>Pisahkan logika ke dalam fungsi</li>
+        <li>Gunakan clearInterval untuk menghentikan interval</li>
+        <li>Beri nama variabel yang deskriptif</li>
+        <li>Tambahkan error handling</li>
+      </ul>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='j113.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/javascript.png"
+          alt="javascript"
+          onclick="window.location.href='j1.html'"
+          title="javascript"
+        />
+        <button class="btn" onclick="window.location.href='j122.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+  </body>
+</html>

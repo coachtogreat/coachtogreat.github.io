@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Map, Filter, dan Reduce dalam JavaScript</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Map, Filter, dan Reduce dalam JavaScript</h2>
+
+      <h3 class="section-title">1. Map</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Map</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// 1. Map dengan array
+const angka = [1, 2, 3, 4];
+
+// Mengubah setiap nilai
+const kuadrat = angka.map(x => x * x);
+console.log(kuadrat); // [1, 4, 9, 16]
+
+// Mengubah format data
+const data = [
+    { id: 1, nama: "John", umur: 30 },
+    { id: 2, nama: "Jane", umur: 25 }
+];
+
+const nama = data.map(user => user.nama);
+console.log(nama); // ["John", "Jane"]
+
+// Menggunakan index
+const angka = [1, 2, 3, 4];
+const hasil = angka.map((nilai, index) => nilai * index);
+console.log(hasil); // [0, 2, 6, 12]
+
+// Menggunakan object
+const data = [
+    { id: 1, nama: "John", umur: 30 },
+    { id: 2, nama: "Jane", umur: 25 }
+];
+
+const baru = data.map(user => ({
+    ...user,
+    status: user.umur >= 30 ? "Dewasa" : "Muda"
+}));
+
+// Menggunakan this
+const data = [
+    { id: 1, nama: "John", umur: 30 },
+    { id: 2, nama: "Jane", umur: 25 }
+];
+
+const context = {
+    prefix: "User: "
+};
+
+const nama = data.map(function(user) {
+    return this.prefix + user.nama;
+}, context);
+console.log(nama); // ["User: John", "User: Jane"]</code></pre>
+      </div>
+
+      <h3 class="section-title">2. Filter</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Filter</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// 1. Filter dengan array
+const angka = [1, 2, 3, 4, 5];
+
+// Mengambil nilai genap
+const genap = angka.filter(x => x % 2 === 0);
+console.log(genap); // [2, 4]
+
+// Mengambil nilai di atas 3
+const besar = angka.filter(x => x > 3);
+console.log(besar); // [4, 5]
+
+// Menggunakan index
+const angka = [1, 2, 3, 4, 5];
+const hasil = angka.filter((nilai, index) => index % 2 === 0);
+console.log(hasil); // [1, 3, 5]
+
+// Menggunakan object
+const data = [
+    { id: 1, nama: "John", umur: 30 },
+    { id: 2, nama: "Jane", umur: 25 }
+];
+
+const dewasa = data.filter(user => user.umur >= 30);
+console.log(dewasa); // [{ id: 1, nama: "John", umur: 30 }]
+
+// Menggunakan this
+const data = [
+    { id: 1, nama: "John", umur: 30 },
+    { id: 2, nama: "Jane", umur: 25 }
+];
+
+const context = {
+    minUmur: 30
+};
+
+const dewasa = data.filter(function(user) {
+    return user.umur >= this.minUmur;
+}, context);
+console.log(dewasa); // [{ id: 1, nama: "John", umur: 30 }]</code></pre>
+      </div>
+
+      <h3 class="section-title">3. Reduce</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Reduce</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// 1. Reduce dengan array
+const angka = [1, 2, 3, 4];
+
+// Menghitung total
+const total = angka.reduce((acc, curr) => acc + curr, 0);
+console.log(total); // 10
+
+// Menghitung rata-rata
+const rata2 = angka.reduce((acc, curr) => acc + curr, 0) / angka.length;
+console.log(rata2); // 2.5
+
+// Mengubah format data
+const data = [
+    { id: 1, nama: "John", umur: 30 },
+    { id: 2, nama: "Jane", umur: 25 }
+];
+
+const hasil = data.reduce((acc, curr) => {
+    acc[curr.id] = curr;
+    return acc;
+}, {});
+
+// Menghitung jumlah
+const data = [
+    { id: 1, nama: "John", kategori: "A" },
+    { id: 2, nama: "Jane", kategori: "B" },
+    { id: 3, nama: "Bob", kategori: "A" }
+];
+
+const jumlah = data.reduce((acc, curr) => {
+    if (!acc[curr.kategori]) {
+        acc[curr.kategori] = 0;
+    }
+    acc[curr.kategori]++;
+    return acc;
+}, {});
+
+// Menggunakan this
+const data = [
+    { id: 1, nama: "John", umur: 30 },
+    { id: 2, nama: "Jane", umur: 25 }
+];
+
+const context = {
+    minUmur: 30
+};
+
+const dewasa = data.reduce(function(acc, curr) {
+    if (curr.umur >= this.minUmur) {
+        acc.push(curr);
+    }
+    return acc;
+}, [], context);</code></pre>
+      </div>
+
+      <h3 class="section-title">4. Best Practices</h3>
+      <ul>
+        <li>Gunakan map untuk transformasi data</li>
+        <li>Gunakan filter untuk seleksi data</li>
+        <li>Gunakan reduce untuk agregasi data</li>
+        <li>Beri nama yang deskriptif</li>
+        <li>Tambahkan error handling</li>
+        <li>Tambahkan komentar untuk menjelaskan fungsi</li>
+        <li>Gunakan arrow function untuk callback yang sederhana</li>
+      </ul>
+
+      <h3 class="section-title">5. Contoh Praktis</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Penggunaan</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// 1. Todo List
+const todos = [
+    { id: 1, teks: "Belajar JavaScript", selesai: false },
+    { id: 2, teks: "Membuat proyek", selesai: true }
+];
+
+// Mengambil todo yang belum selesai
+const belumSelesai = todos.filter(todo => !todo.selesai);
+
+// Mengubah format todo
+const formatTodo = todos.map(todo => ({
+    ...todo,
+    status: todo.selesai ? "Selesai" : "Belum Selesai"
+}));
+
+// Menghitung jumlah todo
+const jumlah = todos.reduce((acc, curr) => {
+    if (curr.selesai) {
+        acc.selesai++;
+    } else {
+        acc.belumSelesai++;
+    }
+    return acc;
+}, { selesai: 0, belumSelesai: 0 });
+
+// 2. Galeri Foto
+const gambar = [
+    { url: "gambar1.jpg", ukuran: "100x100" },
+    { url: "gambar2.jpg", ukuran: "200x200" }
+];
+
+// Mengambil gambar dengan ukuran tertentu
+const besar = gambar.filter(g => g.ukuran === "200x200");
+
+// Mengubah format gambar
+const formatGambar = gambar.map(g => ({
+    ...g,
+    tipe: g.ukuran === "200x200" ? "Besar" : "Kecil"
+}));
+
+// Menghitung jumlah gambar
+const jumlahGambar = gambar.reduce((acc, curr) => {
+    if (curr.ukuran === "200x200") {
+        acc.besar++;
+    } else {
+        acc.kecil++;
+    }
+    return acc;
+}, { besar: 0, kecil: 0 });
+
+// 3. Form Validation
+const form = [
+    { field: "email", value: "test@example.com" },
+    { field: "password", value: "12345678" }
+];
+
+// Memvalidasi form
+const valid = form.filter(f => {
+    if (f.field === "email") {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.value);
+    }
+    return f.value.length >= 8;
+});
+
+// Mengubah format validasi
+const formatValid = form.map(f => ({
+    ...f,
+    valid: f.field === "email" 
+        ? /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.value)
+        : f.value.length >= 8
+}));
+
+// Menghitung jumlah validasi
+const hasilValidasi = form.reduce((acc, curr) => {
+    if (curr.field === "email") {
+        acc.email = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(curr.value);
+    } else {
+        acc.password = curr.value.length >= 8;
+    }
+    return acc;
+}, { email: false, password: false });
+
+// 4. Animasi
+const animasi = [
+    { jenis: "gerak", durasi: 1000 },
+    { jenis: "rotasi", durasi: 2000 }
+];
+
+// Mengambil animasi dengan durasi tertentu
+const cepat = animasi.filter(a => a.durasi <= 1000);
+
+// Mengubah format animasi
+const formatAnimasi = animasi.map(a => ({
+    ...a,
+    cepat: a.durasi <= 1000
+}));
+
+// Menghitung total durasi
+const totalDurasi = animasi.reduce((acc, curr) => {
+    return acc + curr.durasi;
+}, 0);
+
+// 5. Data Processing
+const data = [
+    { id: 1, nilai: 10 },
+    { id: 2, nilai: 20 },
+    { id: 3, nilai: 30 }
+];
+
+// Mengambil data dengan nilai tertentu
+const besar = data.filter(d => d.nilai > 20);
+
+// Mengubah format data
+const formatData = data.map(d => ({
+    ...d,
+    kategori: d.nilai > 20 ? "Besar" : "Kecil"
+}));
+
+// Menghitung total nilai
+const total = data.reduce((acc, curr) => {
+    return acc + curr.nilai;
+}, 0);
+
+// 6. Event Handler
+const events = [
+    { jenis: "click", waktu: 1000 },
+    { jenis: "hover", waktu: 2000 }
+];
+
+// Mengambil event click
+const click = events.filter(e => e.jenis === "click");
+
+// Mengubah format event
+const formatEvent = events.map(e => ({
+    ...e,
+    cepat: e.waktu <= 1000
+}));
+
+// Menghitung total waktu
+const totalWaktu = events.reduce((acc, curr) => {
+    return acc + curr.waktu;
+}, 0);</code></pre>
+      </div>
+
+      <h3 class="section-title">6. Tips Penggunaan</h3>
+      <ul>
+        <li>Gunakan map untuk transformasi data</li>
+        <li>Gunakan filter untuk seleksi data</li>
+        <li>Gunakan reduce untuk agregasi data</li>
+        <li>Beri nama yang deskriptif</li>
+        <li>Tambahkan error handling</li>
+        <li>Tambahkan komentar untuk menjelaskan fungsi</li>
+        <li>Gunakan arrow function untuk callback yang sederhana</li>
+      </ul>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='j172.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/javascript.png"
+          alt="javascript"
+          onclick="window.location.href='j1.html'"
+          title="javascript"
+        />
+        <button class="btn" onclick="window.location.href='j181.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+  </body>
+</html>

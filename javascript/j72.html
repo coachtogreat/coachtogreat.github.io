@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Metode Array Dasar dalam JavaScript</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Metode Array Dasar dalam JavaScript</h2>
+
+      <h3 class="section-title">1. Metode push()</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh push()</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Menambahkan elemen ke akhir array
+let buah = ["apel", "mangga"];
+
+// Menambah satu elemen
+buah.push("jeruk");
+console.log(buah); // ["apel", "mangga", "jeruk"]
+
+// Menambah multiple elemen
+buah.push("pisang", "semangka");
+console.log(buah); // ["apel", "mangga", "jeruk", "pisang", "semangka"]
+
+// Mengembalikan panjang array baru
+let jumlah = buah.push("melon");
+console.log(jumlah); // 6</code></pre>
+      </div>
+
+      <h3 class="section-title">2. Metode pop()</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh pop()</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Menghapus elemen dari akhir array
+let buah = ["apel", "mangga", "jeruk"];
+
+// Menghapus satu elemen
+let terakhir = buah.pop();
+console.log(terakhir); // "jeruk"
+console.log(buah); // ["apel", "mangga"]
+
+// Menghapus lagi
+let terakhir2 = buah.pop();
+console.log(terakhir2); // "mangga"
+console.log(buah); // ["apel"]
+
+// Pop dari array kosong
+let kosong = [];
+let hasil = kosong.pop();
+console.log(hasil); // undefined</code></pre>
+      </div>
+
+      <h3 class="section-title">3. Metode shift()</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh shift()</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Menghapus elemen dari awal array
+let buah = ["apel", "mangga", "jeruk"];
+
+// Menghapus satu elemen
+let pertama = buah.shift();
+console.log(pertama); // "apel"
+console.log(buah); // ["mangga", "jeruk"]
+
+// Menghapus lagi
+let pertama2 = buah.shift();
+console.log(pertama2); // "mangga"
+console.log(buah); // ["jeruk"]
+
+// Shift dari array kosong
+let kosong = [];
+let hasil = kosong.shift();
+console.log(hasil); // undefined</code></pre>
+      </div>
+
+      <h3 class="section-title">4. Metode unshift()</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh unshift()</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Menambah elemen ke awal array
+let buah = ["mangga", "jeruk"];
+
+// Menambah satu elemen
+buah.unshift("apel");
+console.log(buah); // ["apel", "mangga", "jeruk"]
+
+// Menambah multiple elemen
+buah.unshift("pisang", "semangka");
+console.log(buah); // ["pisang", "semangka", "apel", "mangga", "jeruk"]
+
+// Mengembalikan panjang array baru
+let jumlah = buah.unshift("melon");
+console.log(jumlah); // 6</code></pre>
+      </div>
+
+      <h3 class="section-title">5. Contoh Penggunaan</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Praktis</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Contoh antrian (Queue)
+let antrian = [];
+
+// Menambah orang ke antrian
+antrian.push("John");
+console.log(antrian); // ["John"]
+
+antrian.push("Jane");
+console.log(antrian); // ["John", "Jane"]
+
+// Mengambil orang dari antrian
+let orang = antrian.shift();
+console.log(orang); // "John"
+console.log(antrian); // ["Jane"]
+
+// Contoh tumpukan (Stack)
+let tumpukan = [];
+
+// Menambah ke tumpukan
+console.log(tumpukan.push("apel")); // 1
+console.log(tumpukan.push("mangga")); // 2
+
+// Mengambil dari tumpukan
+let buah = tumpukan.pop();
+console.log(buah); // "mangga"
+console.log(tumpukan); // ["apel"]
+
+// Contoh history browser
+let history = [];
+
+// Menambah halaman
+history.push("/home");
+history.push("/about");
+
+// Kembali ke halaman sebelumnya
+let halaman = history.pop();
+console.log(halaman); // "/about"
+
+// Contoh chat
+let pesan = [];
+
+// Menambah pesan
+pesan.push("Halo!");
+pesan.push("Apa kabar?");
+
+// Menghapus pesan terakhir
+let terakhir = pesan.pop();
+console.log(terakhir); // "Apa kabar?"</code></pre>
+      </div>
+
+      <h3 class="section-title">6. Best Practices</h3>
+      <ul>
+        <li>Gunakan push() untuk menambah elemen ke akhir array</li>
+        <li>Gunakan pop() untuk menghapus elemen dari akhir array</li>
+        <li>Gunakan shift() untuk menghapus elemen dari awal array</li>
+        <li>Gunakan unshift() untuk menambah elemen ke awal array</li>
+        <li>Tambahkan komentar untuk menjelaskan operasi</li>
+        <li>Pisahkan logika yang rumit ke dalam fungsi</li>
+      </ul>
+
+      <h3 class="section-title">7. Tips Penggunaan</h3>
+      <ul>
+        <li>Gunakan push() dan pop() untuk implementasi stack</li>
+        <li>Gunakan shift() dan unshift() untuk implementasi queue</li>
+        <li>Hati-hati dengan performa shift() dan unshift() pada array besar</li>
+        <li>Gunakan array method dengan bijak</li>
+        <li>Tambahkan komentar untuk menjelaskan operasi</li>
+        <li>Pisahkan logika yang rumit ke dalam fungsi</li>
+      </ul>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='j71.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/javascript.png"
+          alt="javascript"
+          onclick="window.location.href='j1.html'"
+          title="javascript"
+        />
+        <button class="btn" onclick="window.location.href='j73.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+  </body>
+</html>

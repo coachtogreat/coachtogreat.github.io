@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JSON parse & stringify dalam JavaScript</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">JSON parse & stringify dalam JavaScript</h2>
+
+      <h3 class="section-title">1. Pengenalan JSON</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Dasar</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// JSON string
+const json = '{"nama": "John", "umur": 30}';
+
+// Parsing JSON ke object
+const obj = JSON.parse(json);
+console.log(obj.nama); // "John"
+
+// Stringify object ke JSON
+const obj = { nama: "John", umur: 30 };
+const json = JSON.stringify(obj);
+console.log(json); // "{"nama":"John","umur":30}"
+
+// Parsing dengan reviver
+const json = '{"nama": "John", "umur": 30}';
+const obj = JSON.parse(json, (key, value) => {
+    if (key === "umur") {
+        return value * 2;
+    }
+    return value;
+});
+console.log(obj.umur); // 60
+
+// Stringify dengan replacer
+const obj = { nama: "John", umur: 30, alamat: null };
+const json = JSON.stringify(obj, (key, value) => {
+    if (value === null) {
+        return undefined;
+    }
+    return value;
+});
+console.log(json); // "{"nama":"John","umur":30}"
+
+// Stringify dengan space
+const obj = { nama: "John", umur: 30 };
+const json = JSON.stringify(obj, null, 2);
+console.log(json);
+/*
+{
+  "nama": "John",
+  "umur": 30
+}
+*/</code></pre>
+      </div>
+
+      <h3 class="section-title">2. Parsing JSON</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Parsing</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Parsing JSON sederhana
+const json = '{"nama": "John", "umur": 30}';
+const obj = JSON.parse(json);
+console.log(obj.nama); // "John"
+
+// Parsing array
+const json = '[{"nama": "John"}, {"nama": "Jane"}]';
+const array = JSON.parse(json);
+console.log(array[0].nama); // "John"
+
+// Parsing dengan reviver
+const json = '{"nama": "John", "tanggal": "2025-01-01"}';
+const obj = JSON.parse(json, (key, value) => {
+    if (key === "tanggal") {
+        return new Date(value);
+    }
+    return value;
+});
+console.log(obj.tanggal instanceof Date); // true
+
+// Parsing dengan error handling
+const json = '{"nama": "John", "umur": 30}';
+try {
+    const obj = JSON.parse(json);
+    console.log(obj);
+} catch (error) {
+    console.error("Error parsing JSON:", error);
+}</code></pre>
+      </div>
+
+      <h3 class="section-title">3. Stringify JSON</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Stringify</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Stringify object
+const obj = { nama: "John", umur: 30 };
+const json = JSON.stringify(obj);
+console.log(json); // "{"nama":"John","umur":30}"
+
+// Stringify dengan replacer
+const obj = { nama: "John", umur: 30, alamat: null };
+const json = JSON.stringify(obj, (key, value) => {
+    if (value === null) {
+        return undefined;
+    }
+    return value;
+});
+console.log(json); // "{"nama":"John","umur":30}"
+
+// Stringify dengan space
+const obj = { nama: "John", umur: 30 };
+const json = JSON.stringify(obj, null, 2);
+console.log(json);
+/*
+{
+  "nama": "John",
+  "umur": 30
+}
+*/
+
+// Stringify dengan fungsi replacer
+const obj = { nama: "John", umur: 30 };
+const json = JSON.stringify(obj, (key, value) => {
+    if (key === "umur") {
+        return value * 2;
+    }
+    return value;
+});
+console.log(json); // "{"nama":"John","umur":60}"
+
+// Stringify dengan array replacer
+const obj = { nama: "John", umur: 30, alamat: "Jl. Contoh" };
+const json = JSON.stringify(obj, ["nama", "umur"]);
+console.log(json); // "{"nama":"John","umur":30}"
+
+// Stringify dengan fungsi replacer dan space
+const obj = { nama: "John", umur: 30 };
+const json = JSON.stringify(obj, (key, value) => {
+    if (key === "umur") {
+        return value * 2;
+    }
+    return value;
+}, 2);
+console.log(json);
+/*
+{
+  "nama": "John",
+  "umur": 60
+}
+*/</code></pre>
+      </div>
+
+      <h3 class="section-title">4. Best Practices</h3>
+      <ul>
+        <li>Tambahkan error handling saat parsing</li>
+        <li>Gunakan replacer untuk mengubah nilai saat stringify</li>
+        <li>Gunakan reviver untuk mengubah nilai saat parsing</li>
+        <li>Tambahkan space untuk JSON yang lebih mudah dibaca</li>
+        <li>Pisahkan logika ke dalam fungsi terpisah</li>
+        <li>Tambahkan validasi data</li>
+        <li>Beri nama variabel yang deskriptif</li>
+      </ul>
+
+      <h3 class="section-title">5. Tips Penggunaan</h3>
+      <ul>
+        <li>Tambahkan error handling saat parsing</li>
+        <li>Gunakan replacer untuk mengubah nilai saat stringify</li>
+        <li>Gunakan reviver untuk mengubah nilai saat parsing</li>
+        <li>Tambahkan space untuk JSON yang lebih mudah dibaca</li>
+        <li>Pisahkan logika ke dalam fungsi terpisah</li>
+        <li>Tambahkan validasi data</li>
+        <li>Beri nama variabel yang deskriptif</li>
+      </ul>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='j132.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/javascript.png"
+          alt="javascript"
+          onclick="window.location.href='j1.html'"
+          title="javascript"
+        />
+        <button class="btn" onclick="window.location.href='j142.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+  </body>
+</html>

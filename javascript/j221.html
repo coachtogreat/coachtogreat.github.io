@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Optimisasi DOM</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Optimisasi DOM</h2>
+
+      <h3 class="section-title">1. Pengenalan DOM</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Dasar-dasar DOM</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// 1. Seleksi Element
+const element = document.querySelector('.class');
+const elements = document.querySelectorAll('.class');
+
+// 2. Manipulasi DOM
+const div = document.createElement('div');
+div.textContent = 'Hello';
+document.body.appendChild(div);
+
+// 3. Event Handling
+element.addEventListener('click', function() {
+    // Handle event
+});
+
+// 4. Styling
+element.style.color = 'red';
+element.classList.add('active');
+</code></pre>
+      </div>
+
+      <h3 class="section-title">2. Teknik Optimisasi DOM</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Metode Optimisasi</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// 1. DocumentFragment
+const fragment = document.createDocumentFragment();
+for (let i = 0; i < 1000; i++) {
+    const div = document.createElement('div');
+    div.textContent = `Item ${i}`;
+    fragment.appendChild(div);
+}
+document.body.appendChild(fragment);
+
+// 2. Batch DOM Updates
+let updates = [];
+function updateDOM() {
+    updates.forEach(update => update());
+    updates = [];
+}
+
+function addUpdate(callback) {
+    updates.push(callback);
+    requestAnimationFrame(updateDOM);
+}
+
+// 3. Event Delegation
+const container = document.querySelector('.container');
+container.addEventListener('click', function(e) {
+    if (e.target.matches('.item')) {
+        // Handle click
+    }
+});
+
+// 4. Virtual DOM
+const vdom = {
+    type: 'div',
+    props: {
+        className: 'container'
+    },
+    children: [
+        { type: 'h1', props: {}, children: ['Hello'] }
+    ]
+};
+</code></pre>
+      </div>
+
+      <h3 class="section-title">3. Best Practices Optimisasi DOM</h3>
+      <ul>
+        <li>Batasi DOM traversal dengan selektor yang spesifik</li>
+        <li>Gunakan DocumentFragment untuk batch updates</li>
+        <li>Implementasi event delegation untuk banyak element</li>
+        <li>Gunakan requestAnimationFrame untuk animasi</li>
+        <li>Optimalkan event listeners dengan passive option</li>
+        <li>Gunakan virtual DOM untuk aplikasi besar</li>
+        <li>Hindari DOM reflow dan repaint yang berlebihan</li>
+        <li>Gunakan CSS transform untuk animasi</li>
+      </ul>
+
+      <h3 class="section-title">4. Contoh Praktis</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Optimisasi List Rendering</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// 1. Optimasi List Rendering
+function renderList(items) {
+    const fragment = document.createDocumentFragment();
+    
+    items.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = item;
+        fragment.appendChild(li);
+    });
+    
+    const list = document.querySelector('#list');
+    list.innerHTML = '';
+    list.appendChild(fragment);
+}
+
+// 2. Optimasi Event Handling
+function setupEventListeners() {
+    const container = document.querySelector('.container');
+    
+    container.addEventListener('click', function(e) {
+        if (e.target.matches('.button')) {
+            const button = e.target;
+            const item = button.closest('.item');
+            handleItemClick(item);
+        }
+    });
+}
+
+// 3. Optimasi Animasi
+function animateElement(element) {
+    element.style.transition = 'transform 0.3s';
+    element.style.transform = 'translateX(100px)';
+}
+
+// 4. Optimasi Scroll
+function setupScroll() {
+    const container = document.querySelector('.scroll-container');
+    
+    container.addEventListener('scroll', function(e) {
+        // Optimasi scroll dengan requestAnimationFrame
+        requestAnimationFrame(() => {
+            handleScroll(e);
+        });
+    });
+}
+
+// 5. Optimasi Resize
+function setupResize() {
+    let resizeTimeout;
+    
+    window.addEventListener('resize', function() {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(handleResize, 250);
+    });
+}
+</code></pre>
+      </div>
+
+      <h3 class="section-title">5. Tips Optimisasi DOM</h3>
+      <ul>
+        <li>Gunakan DocumentFragment untuk batch updates</li>
+        <li>Implementasi event delegation untuk performa</li>
+        <li>Gunakan requestAnimationFrame untuk animasi</li>
+        <li>Optimalkan event listeners dengan passive option</li>
+        <li>Gunakan virtual DOM untuk aplikasi besar</li>
+        <li>Hindari DOM reflow dan repaint yang berlebihan</li>
+        <li>Gunakan CSS transform untuk animasi</li>
+        <li>Optimalkan scroll dengan debounce/throttle</li>
+      </ul>
+
+      <h3 class="section-title">6. Tools untuk Optimisasi DOM</h3>
+      <ul>
+        <li>Chrome DevTools Performance tab</li>
+        <li>React DevTools untuk React</li>
+        <li>Vue DevTools untuk Vue</li>
+        <li>Vue Performance untuk Vue</li>
+        <li>React Profiler untuk React</li>
+        <li>WebPageTest untuk testing performa</li>
+        <li>Lighthouse untuk audit performa</li>
+      </ul>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='j212.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/javascript.png"
+          alt="javascript"
+          onclick="window.location.href='j1.html'"
+          title="javascript"
+        />
+        <button class="btn" onclick="window.location.href='j222.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+
+    <script>
+      function copyCode(button) {
+        const codeBlock = button.parentElement.nextElementSibling;
+        const code = codeBlock.textContent;
+        navigator.clipboard.writeText(code);
+        button.textContent = 'Copied!';
+        setTimeout(() => {
+          button.textContent = 'Copy';
+        }, 2000);
+      }
+    </script>
+  </body>
+</html>

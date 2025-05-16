@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Break dan Continue dalam JavaScript</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Break dan Continue dalam JavaScript</h2>
+
+      <h3 class="section-title">1. Pengenalan Break</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Break</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Break dalam for loop
+for (let i = 0; i < 10; i++) {
+    if (i === 5) {
+        break; // keluar dari loop saat i = 5
+    }
+    console.log(i); // output: 0, 1, 2, 3, 4
+}
+
+// Break dalam while loop
+let i = 0;
+while (true) {
+    if (i === 5) {
+        break; // keluar dari loop saat i = 5
+    }
+    console.log(i);
+    i++;
+}
+
+// Break dalam switch
+let nilai = 85;
+switch (nilai) {
+    case 100:
+        console.log("Sempurna!");
+        break;
+    case 90:
+        console.log("Sangat Baik!");
+        break;
+    case 80:
+        console.log("Baik!");
+        break;
+    default:
+        console.log("Cukup");
+}</code></pre>
+      </div>
+
+      <h3 class="section-title">2. Pengenalan Continue</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Continue</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Continue dalam for loop
+for (let i = 0; i < 10; i++) {
+    if (i % 2 === 0) {
+        continue; // skip angka genap
+    }
+    console.log(i); // output: 1, 3, 5, 7, 9
+}
+
+// Continue dalam while loop
+let i = 0;
+while (i < 10) {
+    i++;
+    if (i % 3 === 0) {
+        continue; // skip kelipatan 3
+    }
+    console.log(i); // output: 1, 2, 4, 5, 7, 8, 10
+}
+
+// Continue dengan label
+outer: for (let i = 0; i < 3; i++) {
+    for (let j = 0; j < 3; j++) {
+        if (i === 1 && j === 1) {
+            continue outer; // skip ke loop outer
+        }
+        console.log(i + ", " + j);
+    }
+}</code></pre>
+      </div>
+
+      <h3 class="section-title">3. Perbandingan Break dan Continue</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Perbandingan</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Break: keluar dari loop
+for (let i = 0; i < 5; i++) {
+    if (i === 3) {
+        break; // keluar saat i = 3
+    }
+    console.log(i); // output: 0, 1, 2
+}
+
+// Continue: skip iterasi
+for (let i = 0; i < 5; i++) {
+    if (i === 3) {
+        continue; // skip saat i = 3
+    }
+    console.log(i); // output: 0, 1, 2, 4</code></pre>
+      </div>
+
+      <h3 class="section-title">4. Best Practices</h3>
+      <ul>
+        <li>Gunakan break untuk keluar dari loop</li>
+        <li>Gunakan continue untuk skip iterasi</li>
+        <li>Gunakan label dengan hati-hati</li>
+        <li>Tambahkan komentar untuk menjelaskan penggunaan</li>
+        <li>Hindari nested break/continue yang terlalu dalam</li>
+        <li>Pisahkan kondisi kompleks ke dalam fungsi</li>
+      </ul>
+
+      <h3 class="section-title">5. Contoh Praktis</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Validasi</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Validasi form dengan break
+function validateForm(nama, email, umur) {
+    if (!nama) {
+        console.log("Nama tidak boleh kosong");
+        return false;
+    }
+    if (!email.includes("@")) {
+        console.log("Email tidak valid");
+        return false;
+    }
+    if (umur < 18) {
+        console.log("Umur minimal 18 tahun");
+        return false;
+    }
+    return true;
+}
+
+// Filter array dengan continue
+function filterAngka(deret) {
+    let hasil = [];
+    for (let i = 0; i < deret.length; i++) {
+        if (deret[i] % 2 === 0) {
+            continue; // skip angka genap
+        }
+        if (deret[i] > 100) {
+            break; // berhenti jika lebih dari 100
+        }
+        hasil.push(deret[i]);
+    }
+    return hasil;
+}
+
+// Contoh game tebak angka dengan break
+let jawaban = Math.floor(Math.random() * 10) + 1;
+let tebakan;
+let skor = 100;
+
+console.log("Tebak angka antara 1-10!");
+
+while (skor > 0) {
+    tebakan = prompt("Masukkan tebakan Anda:");
+    if (tebakan == jawaban) {
+        console.log("Benar! Skor Anda: " + skor);
+        break;
+    }
+    skor -= 10;
+    console.log("Salah, coba lagi! Skor: " + skor);
+}
+
+// Contoh penggunaan label
+outer: for (let i = 0; i < 3; i++) {
+    for (let j = 0; j < 3; j++) {
+        if (i === 1 && j === 1) {
+            continue outer; // skip ke loop outer
+        }
+        console.log(i + ", " + j);
+    }
+}</code></pre>
+      </div>
+
+      <h3 class="section-title">6. Tips Penggunaan</h3>
+      <ul>
+        <li>Gunakan break untuk menghentikan pencarian</li>
+        <li>Gunakan continue untuk skip kondisi tertentu</li>
+        <li>Tambahkan komentar untuk menjelaskan logika</li>
+        <li>Hindari penggunaan yang terlalu kompleks</li>
+        <li>Pisahkan logika yang rumit ke dalam fungsi</li>
+        <li>Gunakan label dengan hati-hati</li>
+      </ul>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='j52.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/javascript.png"
+          alt="javascript"
+          onclick="window.location.href='j1.html'"
+          title="javascript"
+        />
+        <button class="btn" onclick="window.location.href='j61.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+  </body>
+</html>

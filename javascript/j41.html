@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>If, Else, dan Else If dalam JavaScript</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">If, Else, dan Else If dalam JavaScript</h2>
+
+      <h3 class="section-title">1. Statement If</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Statement If</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Contoh sederhana
+let umur = 25;
+if (umur >= 18) {
+    console.log("Anda sudah dewasa");
+}
+
+// Dengan perbandingan
+let nilai = 85;
+if (nilai >= 70) {
+    console.log("Nilai bagus!");
+}
+
+// Dengan operator logika
+let login = true;
+if (login && nilai >= 70) {
+    console.log("Anda bisa mengakses sistem");
+}</code></pre>
+      </div>
+
+      <h3 class="section-title">2. Statement If-Else</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh If-Else</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Contoh sederhana
+let umur = 16;
+if (umur >= 18) {
+    console.log("Anda sudah dewasa");
+} else {
+    console.log("Anda masih anak-anak");
+}
+
+// Dengan nilai boolean
+let isLogin = false;
+if (isLogin) {
+    console.log("Selamat datang!");
+} else {
+    console.log("Silakan login terlebih dahulu");
+}
+
+// Dengan string
+let nama = "";
+if (nama) {
+    console.log("Nama sudah diisi");
+} else {
+    console.log("Nama belum diisi");
+}</code></pre>
+      </div>
+
+      <h3 class="section-title">3. Statement If-Else If-Else</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh If-Else If-Else</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Contoh grade
+let nilai = 85;
+if (nilai >= 90) {
+    console.log("Grade A");
+} else if (nilai >= 80) {
+    console.log("Grade B");
+} else if (nilai >= 70) {
+    console.log("Grade C");
+} else {
+    console.log("Grade D");
+}
+
+// Contoh umur
+let umur = 25;
+if (umur < 18) {
+    console.log("Anak-anak");
+} else if (umur >= 18 && umur < 30) {
+    console.log("Dewasa muda");
+} else if (umur >= 30 && umur < 60) {
+    console.log("Dewasa");
+} else {
+    console.log("Lansia");
+}</code></pre>
+      </div>
+
+      <h3 class="section-title">4. Nested If</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Nested If</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Contoh login dan role
+let isLogin = true;
+let role = "admin";
+
+if (isLogin) {
+    if (role === "admin") {
+        console.log("Selamat datang, Admin!");
+    } else {
+        console.log("Selamat datang, User!");
+    }
+} else {
+    console.log("Silakan login terlebih dahulu");
+}
+
+// Contoh validasi form
+let nama = "John";
+let email = "john@example.com";
+
+if (nama) {
+    if (email.includes("@")) {
+        console.log("Form valid");
+    } else {
+        console.log("Email tidak valid");
+    }
+} else {
+    console.log("Nama tidak boleh kosong");
+}</code></pre>
+      </div>
+
+      <h3 class="section-title">5. Best Practices</h3>
+      <ul>
+        <li>Gunakan if untuk kondisi yang sederhana</li>
+        <li>Gunakan else if untuk kondisi yang lebih dari satu</li>
+        <li>Hindari nested if yang terlalu dalam</li>
+        <li>Gunakan else sebagai kondisi default</li>
+        <li>Gunakan tanda kurung untuk mengklarifikasi kondisi</li>
+        <li>Pisahkan kondisi kompleks ke dalam fungsi</li>
+      </ul>
+
+      <h3 class="section-title">6. Contoh Praktis</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Validasi Form</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Fungsi validasi login
+function validateLogin(username, password) {
+    if (!username) {
+        return "Username tidak boleh kosong";
+    }
+    if (!password) {
+        return "Password tidak boleh kosong";
+    }
+    if (password.length < 6) {
+        return "Password minimal 6 karakter";
+    }
+    return true;
+}
+
+// Fungsi validasi umur
+function validateAge(age) {
+    if (typeof age !== 'number') {
+        return "Umur harus angka";
+    }
+    if (age < 0) {
+        return "Umur tidak boleh negatif";
+    }
+    if (age < 18) {
+        return "Anda belum cukup umur";
+    }
+    return true;
+}
+
+// Contoh penggunaan
+console.log(validateLogin("user", "pass123")); // true
+console.log(validateLogin("", "pass123")); // "Username tidak boleh kosong"
+console.log(validateAge(25)); // true
+console.log(validateAge(-5)); // "Umur tidak boleh negatif"</code></pre>
+      </div>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='j34.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/javascript.png"
+          alt="javascript"
+          onclick="window.location.href='j1.html'"
+          title="javascript"
+        />
+        <button class="btn" onclick="window.location.href='j42.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Konsep Modularisasi dalam JavaScript</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Konsep Modularisasi dalam JavaScript</h2>
+
+      <h3 class="section-title">1. Pengenalan Modularisasi</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Dasar</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// 1. Modularisasi dengan Object Literal
+const todo = {
+    tambah: function(teks) {
+        // Logika tambah todo
+    },
+    hapus: function(id) {
+        // Logika hapus todo
+    },
+    tampilkan: function() {
+        // Logika tampilkan todo
+    }
+};
+
+// 2. Modularisasi dengan Constructor Function
+function Todo() {
+    const todos = [];
+    
+    this.tambah = function(teks) {
+        todos.push(teks);
+    };
+    
+    this.hapus = function(id) {
+        todos.splice(id, 1);
+    };
+    
+    this.tampilkan = function() {
+        return todos;
+    };
+}
+
+// 3. Modularisasi dengan IIFE
+const todo = (function() {
+    const todos = [];
+    
+    return {
+        tambah: function(teks) {
+            todos.push(teks);
+        },
+        hapus: function(id) {
+            todos.splice(id, 1);
+        },
+        tampilkan: function() {
+            return todos;
+        }
+    };
+})();
+
+// 4. Modularisasi dengan Class
+class Todo {
+    constructor() {
+        this.todos = [];
+    }
+    
+    tambah(teks) {
+        this.todos.push(teks);
+    }
+    
+    hapus(id) {
+        this.todos.splice(id, 1);
+    }
+    
+    tampilkan() {
+        return this.todos;
+    }
+}</code></pre>
+      </div>
+
+      <h3 class="section-title">2. Keuntungan Modularisasi</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Keuntungan</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// 1. Kode lebih terorganisir
+const todo = {
+    tambah: function(teks) {
+        // Logika tambah todo
+    },
+    hapus: function(id) {
+        // Logika hapus todo
+    },
+    tampilkan: function() {
+        // Logika tampilkan todo
+    }
+};
+
+// 2. Kode lebih mudah dipelihara
+const todo = {
+    tambah: function(teks) {
+        // Logika tambah todo
+    },
+    hapus: function(id) {
+        // Logika hapus todo
+    },
+    tampilkan: function() {
+        // Logika tampilkan todo
+    }
+};
+
+// 3. Kode lebih mudah diuji
+const todo = {
+    tambah: function(teks) {
+        // Logika tambah todo
+    },
+    hapus: function(id) {
+        // Logika hapus todo
+    },
+    tampilkan: function() {
+        // Logika tampilkan todo
+    }
+};
+
+// 4. Kode lebih mudah direuse
+const todo = {
+    tambah: function(teks) {
+        // Logika tambah todo
+    },
+    hapus: function(id) {
+        // Logika hapus todo
+    },
+    tampilkan: function() {
+        // Logika tampilkan todo
+    }
+};</code></pre>
+      </div>
+
+      <h3 class="section-title">3. Pola Modularisasi</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Pola Modularisasi</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// 1. Module Pattern
+const todo = (function() {
+    const todos = [];
+    
+    function tambahTodo(teks) {
+        todos.push(teks);
+    }
+    
+    function hapusTodo(id) {
+        todos.splice(id, 1);
+    }
+    
+    return {
+        tambah: tambahTodo,
+        hapus: hapusTodo,
+        tampilkan: function() {
+            return todos;
+        }
+    };
+})();
+
+// 2. Revealing Module Pattern
+const todo = (function() {
+    const todos = [];
+    
+    function tambahTodo(teks) {
+        todos.push(teks);
+    }
+    
+    function hapusTodo(id) {
+        todos.splice(id, 1);
+    }
+    
+    function tampilkanTodos() {
+        return todos;
+    }
+    
+    return {
+        tambah: tambahTodo,
+        hapus: hapusTodo,
+        tampilkan: tampilkanTodos
+    };
+})();
+
+// 3. Singleton Pattern
+const todo = new function() {
+    const todos = [];
+    
+    this.tambah = function(teks) {
+        todos.push(teks);
+    };
+    
+    this.hapus = function(id) {
+        todos.splice(id, 1);
+    };
+    
+    this.tampilkan = function() {
+        return todos;
+    };
+};
+
+// 4. Factory Pattern
+function Todo() {
+    const todos = [];
+    
+    return {
+        tambah: function(teks) {
+            todos.push(teks);
+        },
+        hapus: function(id) {
+            todos.splice(id, 1);
+        },
+        tampilkan: function() {
+            return todos;
+        }
+    };
+}
+
+const todo1 = Todo();
+const todo2 = Todo();</code></pre>
+      </div>
+
+      <h3 class="section-title">4. Best Practices</h3>
+      <ul>
+        <li>Pisahkan logika ke dalam module yang terpisah</li>
+        <li>Beri nama module yang deskriptif</li>
+        <li>Tambahkan komentar untuk menjelaskan module</li>
+        <li>Hindari global scope pollution</li>
+        <li>Gunakan pola yang sesuai dengan kebutuhan</li>
+        <li>Tambahkan error handling</li>
+        <li>Buat module yang mudah direuse</li>
+      </ul>
+
+      <h3 class="section-title">5. Contoh Praktis</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Penggunaan</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// 1. Module untuk Todo List
+const todo = (function() {
+    const todos = [];
+    
+    function tambahTodo(teks) {
+        if (typeof teks !== "string") {
+            throw new Error("Todo harus berupa string");
+        }
+        todos.push(teks);
+    }
+    
+    function hapusTodo(id) {
+        if (typeof id !== "number") {
+            throw new Error("ID harus berupa number");
+        }
+        todos.splice(id, 1);
+    }
+    
+    return {
+        tambah: tambahTodo,
+        hapus: hapusTodo,
+        tampilkan: function() {
+            return todos;
+        }
+    };
+})();
+
+// 2. Module untuk Galeri Foto
+const galeri = (function() {
+    const gambar = [];
+    
+    function tambahGambar(url) {
+        if (!url) {
+            throw new Error("URL tidak boleh kosong");
+        }
+        gambar.push(url);
+    }
+    
+    function hapusGambar(id) {
+        if (typeof id !== "number") {
+            throw new Error("ID harus berupa number");
+        }
+        gambar.splice(id, 1);
+    }
+    
+    return {
+        tambah: tambahGambar,
+        hapus: hapusGambar,
+        tampilkan: function() {
+            return gambar;
+        }
+    };
+})();
+
+// 3. Module untuk Form Validation
+const validator = (function() {
+    function validateEmail(email) {
+        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return regex.test(email);
+    }
+    
+    function validatePassword(password) {
+        return password.length >= 8;
+    }
+    
+    return {
+        email: validateEmail,
+        password: validatePassword
+    };
+})();
+
+// 4. Module untuk Animasi
+const animasi = (function() {
+    function gerakKiri(element, jarak) {
+        element.style.left = jarak + "px";
+    }
+    
+    function gerakKanan(element, jarak) {
+        element.style.right = jarak + "px";
+    }
+    
+    return {
+        kiri: gerakKiri,
+        kanan: gerakKanan
+    };
+})();
+
+// 5. Module untuk Data Storage
+const storage = (function() {
+    function simpan(key, value) {
+        localStorage.setItem(key, JSON.stringify(value));
+    }
+    
+    function ambil(key) {
+        const data = localStorage.getItem(key);
+        return data ? JSON.parse(data) : null;
+    }
+    
+    return {
+        simpan: simpan,
+        ambil: ambil
+    };
+})();</code></pre>
+      </div>
+
+      <h3 class="section-title">6. Tips Penggunaan</h3>
+      <ul>
+        <li>Pisahkan logika ke dalam module yang terpisah</li>
+        <li>Beri nama module yang deskriptif</li>
+        <li>Tambahkan komentar untuk menjelaskan module</li>
+        <li>Hindari global scope pollution</li>
+        <li>Gunakan pola yang sesuai dengan kebutuhan</li>
+        <li>Tambahkan error handling</li>
+        <li>Buat module yang mudah direuse</li>
+      </ul>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='j142.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/javascript.png"
+          alt="javascript"
+          onclick="window.location.href='j1.html'"
+          title="javascript"
+        />
+        <button class="btn" onclick="window.location.href='j152.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+  </body>
+</html>

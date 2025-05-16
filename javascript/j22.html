@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Komentar dalam JavaScript</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Komentar dalam JavaScript</h2>
+
+      <h3 class="section-title">1. Komentar Satu Baris</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Komentar Satu Baris</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Ini adalah komentar satu baris
+let nama = "John"; // Variabel untuk menyimpan nama
+
+// Komentar bisa digunakan untuk menjelaskan kode
+// atau menonaktifkan kode sementara
+// console.log(nama);</code></pre>
+      </div>
+
+      <h3 class="section-title">2. Komentar Multi Baris</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Komentar Multi Baris</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>/*
+   Ini adalah komentar multi baris
+   Cocok untuk penjelasan yang lebih panjang
+   atau dokumentasi fungsi
+*/
+
+function hitungLuasPersegi(sisi) {
+    /*
+        Fungsi untuk menghitung luas persegi
+        Parameter:
+        - sisi: panjang sisi persegi
+        
+        Return:
+        - hasil: luas persegi
+    */
+    let hasil = sisi * sisi;
+    return hasil;
+}</code></pre>
+      </div>
+
+      <h3 class="section-title">3. Komentar untuk Debugging</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Komentar untuk Debugging</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Debugging dengan console.log
+let angka = 10;
+console.log("Nilai awal:", angka); // Cek nilai awal
+
+angka = angka + 5;
+console.log("Setelah ditambah:", angka); // Cek nilai setelah operasi</code></pre>
+      </div>
+
+      <h3 class="section-title">4. Komentar untuk Penjelasan Kode</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Komentar Penjelasan Kode</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Fungsi untuk menghitung diskon
+function hitungDiskon(harga, persen) {
+    // Hitung jumlah diskon
+    let diskon = harga * (persen / 100);
+    
+    // Hitung harga setelah diskon
+    let hargaAkhir = harga - diskon;
+    
+    // Kembalikan hasil
+    return hargaAkhir;
+}</code></pre>
+      </div>
+
+      <h3 class="section-title">5. Komentar untuk Dokumentasi</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Komentar Dokumentasi</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>/**
+ * Fungsi untuk menghitung rata-rata array
+ * 
+ * @param {number[]} arr - Array yang berisi angka
+ * @returns {number} - Rata-rata dari array
+ * 
+ * Contoh penggunaan:
+ * ```
+ * let hasil = rataRata([1, 2, 3, 4]);
+ * console.log(hasil); // Output: 2.5
+ * ```
+ */
+function rataRata(arr) {
+    let total = 0;
+    for (let i = 0; i < arr.length; i++) {
+        total += arr[i];
+    }
+    return total / arr.length;
+}</code></pre>
+      </div>
+
+      <h3 class="section-title">6. Best Practices untuk Komentar</h3>
+      <ul>
+        <li>Jelaskan "mengapa" bukan "bagaimana"</li>
+        <li>Komentari kode yang kompleks</li>
+        <li>Gunakan komentar untuk dokumentasi fungsi</li>
+        <li>Jangan over-comment kode sederhana</li>
+        <li>Update komentar saat kode diubah</li>
+        <li>Gunakan komentar untuk menonaktifkan kode sementara</li>
+      </ul>
+
+      <h3 class="section-title">7. Tips Penggunaan Komentar</h3>
+      <ul>
+        <li>Mulai dengan komentar yang menjelaskan tujuan program</li>
+        <li>Tambahkan komentar untuk setiap fungsi yang kompleks</li>
+        <li>Gunakan komentar untuk menjelaskan algoritma yang rumit</li>
+        <li>Komentari kode yang mungkin membingungkan</li>
+        <li>Gunakan komentar untuk menandai bagian kode yang perlu diperbaiki</li>
+      </ul>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='j21.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/javascript.png"
+          alt="javascript"
+          onclick="window.location.href='j1.html'"
+          title="javascript"
+        />
+        <button class="btn" onclick="window.location.href='j23.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+  </body>
+</html>

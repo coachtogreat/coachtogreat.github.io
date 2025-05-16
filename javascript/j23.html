@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Variabel dalam JavaScript</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Variabel dalam JavaScript</h2>
+
+      <h3 class="section-title">1. Pengenalan Variabel</h3>
+      <p>
+        Variabel adalah wadah untuk menyimpan data dalam program JavaScript. JavaScript memiliki 
+        tiga cara untuk mendeklarasikan variabel: <code>var</code>, <code>let</code>, dan <code>const</code>.
+      </p>
+
+      <h3 class="section-title">2. Perbedaan var, let, dan const</h3>
+      <table>
+        <tr>
+          <th>Kata Kunci</th>
+          <th>Scope</th>
+          <th>Reassignment</th>
+          <th>Hoisting</th>
+          <th>Temporal Dead Zone</th>
+        </tr>
+        <tr>
+          <td>var</td>
+          <td>Function Scope</td>
+          <td>Boleh</td>
+          <td>Ya</td>
+          <td>Tidak</td>
+        </tr>
+        <tr>
+          <td>let</td>
+          <td>Block Scope</td>
+          <td>Boleh</td>
+          <td>Ya</td>
+          <td>Ya</td>
+        </tr>
+        <tr>
+          <td>const</td>
+          <td>Block Scope</td>
+          <td>Tidak bisa</td>
+          <td>Ya</td>
+          <td>Ya</td>
+        </tr>
+      </table>
+
+      <h3 class="section-title">3. Contoh Penggunaan var</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh var</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Deklarasi dengan var
+var nama = "John";
+
+// Bisa diubah
+nama = "Jane";
+
+// Scope function
+function test() {
+    var x = 5;
+    if (true) {
+        var x = 10; // masih bisa diakses di luar if
+    }
+    console.log(x); // output: 10
+}</code></pre>
+      </div>
+
+      <h3 class="section-title">4. Contoh Penggunaan let</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh let</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Deklarasi dengan let
+let nama = "John";
+
+// Bisa diubah
+nama = "Jane";
+
+// Scope block
+function test() {
+    let x = 5;
+    if (true) {
+        let x = 10; // hanya bisa diakses di dalam if
+    }
+    console.log(x); // output: 5
+}</code></pre>
+      </div>
+
+      <h3 class="section-title">5. Contoh Penggunaan const</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh const</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Deklarasi dengan const
+const PI = 3.14159;
+// PI = 3.14; // Error: tidak bisa diubah
+
+// Objek dengan const
+const orang = {
+    nama: "John",
+    umur: 25
+};
+
+// Bisa mengubah properti
+orang.nama = "Jane"; // OK
+
+// Tidak bisa mengubah referensi
+orang = { nama: "Mike" }; // Error: tidak bisa diubah</code></pre>
+      </div>
+
+      <h3 class="section-title">6. Best Practices</h3>
+      <ul>
+        <li>Gunakan <code>const</code> sebagai default</li>
+        <li>Gunakan <code>let</code> jika nilai perlu diubah</li>
+        <li>Hindari penggunaan <code>var</code> kecuali diperlukan</li>
+        <li>Deklarasikan variabel sebelum digunakan</li>
+        <li>Beri nama variabel yang deskriptif</li>
+      </ul>
+
+      <h3 class="section-title">7. Contoh Praktis</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Praktis</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Contoh penggunaan variabel dalam fungsi
+function hitungLuasPersegi(sisi) {
+    const PI = 3.14159;
+    let luas = sisi * sisi;
+    return luas;
+}
+
+// Contoh penggunaan variabel dalam loop
+const angka = [1, 2, 3, 4, 5];
+for (let i = 0; i < angka.length; i++) {
+    console.log(angka[i]);
+}</code></pre>
+      </div>
+
+      <h3 class="section-title">8. Kesalahan Umum</h3>
+      <ul>
+        <li>Menggunakan variabel tanpa deklarasi</li>
+        <li>Menggunakan nama variabel yang sama di scope yang sama</li>
+        <li>Mengubah nilai dari const</li>
+        <li>Menggunakan var di ES6+ tanpa alasan khusus</li>
+        <li>Tidak memberi nilai saat deklarasi const</li>
+      </ul>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='j22.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/javascript.png"
+          alt="javascript"
+          onclick="window.location.href='j1.html'"
+          title="javascript"
+        />
+        <button class="btn" onclick="window.location.href='j24.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+  </body>
+</html>

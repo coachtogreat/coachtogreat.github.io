@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event Bubbling & Delegation dalam JavaScript</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Event Bubbling & Delegation dalam JavaScript</h2>
+
+      <h3 class="section-title">1. Pengenalan Event Bubbling</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Event Bubbling</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// HTML
+&lt;div id="konten"&gt;
+    &lt;div class="item"&gt;Item 1&lt;/div&gt;
+    &lt;div class="item"&gt;Item 2&lt;/div&gt;
+&lt;/div&gt;
+
+// JavaScript
+// Event pada item
+const items = document.querySelectorAll(".item");
+items.forEach(item => {
+    item.addEventListener("click", function(e) {
+        console.log("Item diklik: " + this.textContent);
+    });
+});
+
+// Event pada konten
+const konten = document.getElementById("konten");
+konten.addEventListener("click", function(e) {
+    console.log("Konten diklik");
+});
+
+// Output:
+// Item diklik: Item 1
+// Konten diklik</code></pre>
+      </div>
+
+      <h3 class="section-title">2. Cara Kerja Event Bubbling</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Cara Kerja</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// HTML
+&lt;div id="konten"&gt;
+    &lt;div class="item"&gt;
+        &lt;span&gt;Text&lt;/span&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+// JavaScript
+// Event pada span
+const span = document.querySelector("span");
+span.addEventListener("click", function(e) {
+    console.log("Span diklik");
+});
+
+// Event pada item
+const item = document.querySelector(".item");
+item.addEventListener("click", function(e) {
+    console.log("Item diklik");
+});
+
+// Event pada konten
+const konten = document.getElementById("konten");
+konten.addEventListener("click", function(e) {
+    console.log("Konten diklik");
+});
+
+// Output saat klik span:
+// Span diklik
+// Item diklik
+// Konten diklik</code></pre>
+      </div>
+
+      <h3 class="section-title">3. Event Delegation</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Event Delegation</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// HTML
+&lt;div id="konten"&gt;
+    &lt;div class="item"&gt;Item 1&lt;/div&gt;
+    &lt;div class="item"&gt;Item 2&lt;/div&gt;
+&lt;/div&gt;
+
+// JavaScript
+// Event delegation
+const konten = document.getElementById("konten");
+konten.addEventListener("click", function(e) {
+    if (e.target.classList.contains("item")) {
+        console.log("Item diklik: " + e.target.textContent);
+    }
+});
+
+// Tambah item baru
+function tambahItem() {
+    const item = document.createElement("div");
+    item.className = "item";
+    item.textContent = "Item baru";
+    konten.appendChild(item);
+}
+
+// Event delegation bekerja untuk item baru juga</code></pre>
+      </div>
+
+      <h3 class="section-title">4. Menghentikan Event Bubbling</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Menghentikan</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// HTML
+&lt;div id="konten"&gt;
+    &lt;div class="item"&gt;
+        &lt;span&gt;Text&lt;/span&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+// JavaScript
+// Event pada span
+const span = document.querySelector("span");
+span.addEventListener("click", function(e) {
+    console.log("Span diklik");
+    e.stopPropagation(); // Menghentikan event bubbling
+});
+
+// Event pada item
+const item = document.querySelector(".item");
+item.addEventListener("click", function(e) {
+    console.log("Item diklik");
+});
+
+// Event pada konten
+const konten = document.getElementById("konten");
+konten.addEventListener("click", function(e) {
+    console.log("Konten diklik");
+});
+
+// Output saat klik span:
+// Span diklik
+// (tidak ada output lain karena event diblokir)</code></pre>
+      </div>
+
+      <h3 class="section-title">5. Best Practices</h3>
+      <ul>
+        <li>Gunakan event delegation untuk element yang banyak</li>
+        <li>Gunakan stopPropagation jika event tidak perlu dibubbling</li>
+        <li>Tambahkan komentar untuk menjelaskan event handling</li>
+        <li>Pisahkan logika event ke dalam fungsi</li>
+        <li>Gunakan target.classList.contains untuk seleksi element</li>
+        <li>Beri nama variabel yang deskriptif</li>
+        <li>Tambahkan error handling</li>
+      </ul>
+
+      <h3 class="section-title">6. Contoh Praktis</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Penggunaan</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Contoh todo list dengan delegation
+function buatTodoList() {
+    const list = document.getElementById("todo-list");
+    
+    // Event delegation untuk klik
+    list.addEventListener("click", function(e) {
+        if (e.target.tagName === "LI") {
+            e.target.remove();
+        }
+    });
+    
+    // Event delegation untuk checkbox
+    list.addEventListener("change", function(e) {
+        if (e.target.type === "checkbox") {
+            e.target.parentElement.classList.toggle("selesai");
+        }
+    });
+}
+
+// Contoh galeri foto dengan delegation
+function buatGaleri() {
+    const konten = document.querySelector(".galeri");
+    
+    // Event delegation untuk klik gambar
+    konten.addEventListener("click", function(e) {
+        if (e.target.tagName === "IMG") {
+            console.log("Gambar diklik: " + e.target.src);
+        }
+    });
+    
+    // Event delegation untuk hover
+    konten.addEventListener("mouseover", function(e) {
+        if (e.target.tagName === "IMG") {
+            e.target.style.opacity = "0.8";
+        }
+    });
+    
+    konten.addEventListener("mouseout", function(e) {
+        if (e.target.tagName === "IMG") {
+            e.target.style.opacity = "1";
+        }
+    });
+}
+
+// Contoh menu dropdown dengan bubbling
+function buatMenu() {
+    const menu = document.querySelector(".menu");
+    
+    // Event delegation untuk klik item
+    menu.addEventListener("click", function(e) {
+        if (e.target.classList.contains("item")) {
+            console.log("Menu item diklik: " + e.target.textContent);
+        }
+    });
+    
+    // Event delegation untuk hover
+    menu.addEventListener("mouseover", function(e) {
+        if (e.target.classList.contains("submenu")) {
+            e.target.style.display = "block";
+        }
+    });
+    
+    menu.addEventListener("mouseout", function(e) {
+        if (e.target.classList.contains("submenu")) {
+            e.target.style.display = "none";
+        }
+    });
+}</code></pre>
+      </div>
+
+      <h3 class="section-title">7. Tips Penggunaan</h3>
+      <ul>
+        <li>Gunakan event delegation untuk element yang banyak</li>
+        <li>Gunakan stopPropagation jika event tidak perlu dibubbling</li>
+        <li>Tambahkan komentar untuk menjelaskan event handling</li>
+        <li>Pisahkan logika event ke dalam fungsi</li>
+        <li>Gunakan target.classList.contains untuk seleksi element</li>
+        <li>Beri nama variabel yang deskriptif</li>
+        <li>Tambahkan error handling</li>
+      </ul>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='j111.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/javascript.png"
+          alt="javascript"
+          onclick="window.location.href='j1.html'"
+          title="javascript"
+        />
+        <button class="btn" onclick="window.location.href='j113.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM Tree dalam JavaScript</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">DOM Tree dalam JavaScript</h2>
+
+      <h3 class="section-title">1. Pengenalan DOM Tree</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Struktur DOM Tree</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Contoh struktur HTML
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Judul Halaman&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;div class="konten"&gt;
+            &lt;p&gt;Paragraf pertama&lt;/p&gt;
+            &lt;p&gt;Paragraf kedua&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+
+// Struktur DOM Tree
+html
+├── head
+│   └── title
+└── body
+    └── div.konten
+        ├── p
+        └── p</code></pre>
+      </div>
+
+      <h3 class="section-title">2. Jenis Node dalam DOM</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Jenis Node</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Element Node
+&lt;div class="konten"&gt;&lt;/div&gt;
+
+// Text Node
+"Paragraf pertama"
+
+// Attribute Node
+"class="konten""
+
+// Comment Node
+&lt;!-- Ini adalah komentar --&gt;
+
+// Document Node
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;...&lt;/html&gt;</code></pre>
+      </div>
+
+      <h3 class="section-title">3. Properti DOM Tree</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Properti</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Mendapatkan elemen
+const div = document.querySelector("div");
+
+// Properti node
+console.log(div.nodeType); // 1 (element node)
+console.log(div.nodeName); // "DIV"
+console.log(div.nodeValue); // null
+
+// Properti element
+console.log(div.className); // "konten"
+console.log(div.id); // "id"
+console.log(div.textContent); // "Paragraf pertama"
+
+// Properti parent
+console.log(div.parentNode); // element parent
+console.log(div.parentElement); // element parent
+
+// Properti sibling
+console.log(div.previousSibling); // node sebelumnya
+console.log(div.nextSibling); // node selanjutnya
+
+// Properti child
+console.log(div.firstChild); // node pertama
+console.log(div.lastChild); // node terakhir
+console.log(div.childNodes); // NodeList semua child</code></pre>
+      </div>
+
+      <h3 class="section-title">4. Metode DOM Tree</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Metode</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Membuat node baru
+const div = document.createElement("div");
+const text = document.createTextNode("Hello");
+
+// Menambahkan node
+const parent = document.querySelector("#parent");
+parent.appendChild(div);
+parent.insertBefore(div, parent.firstChild);
+
+// Menghapus node
+const child = document.querySelector("#child");
+child.remove();
+parent.removeChild(child);
+
+// Mengganti node
+const baru = document.createElement("p");
+const lama = document.querySelector("#lama");
+parent.replaceChild(baru, lama);
+
+// Menyalin node
+const asli = document.querySelector("#asli");
+const salinan = asli.cloneNode(true);</code></pre>
+      </div>
+
+      <h3 class="section-title">5. Best Practices</h3>
+      <ul>
+        <li>Gunakan querySelector untuk seleksi element</li>
+        <li>Hindari penggunaan innerHTML jika tidak diperlukan</li>
+        <li>Gunakan createElement untuk membuat element baru</li>
+        <li>Tambahkan komentar untuk menjelaskan manipulasi DOM</li>
+        <li>Pisahkan logika yang rumit ke dalam fungsi</li>
+        <li>Gunakan event delegation untuk event handling</li>
+      </ul>
+
+      <h3 class="section-title">6. Contoh Praktis</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Penggunaan</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Contoh membuat list
+function tambahList() {
+    const ul = document.querySelector("#list");
+    const li = document.createElement("li");
+    li.textContent = "Item baru";
+    ul.appendChild(li);
+}
+
+// Contoh menghapus item
+function hapusItem(event) {
+    const li = event.target;
+    li.remove();
+}
+
+// Contoh mengganti konten
+function ubahKonten() {
+    const p = document.querySelector("#paragraf");
+    p.textContent = "Konten baru";
+}
+
+// Contoh menyalin element
+function salinElement() {
+    const asli = document.querySelector("#asli");
+    const salinan = asli.cloneNode(true);
+    document.body.appendChild(salinan);
+}
+
+// Contoh event delegation
+function tambahEvent() {
+    const parent = document.querySelector("#parent");
+    parent.addEventListener("click", function(event) {
+        if (event.target.classList.contains("item")) {
+            event.target.remove();
+        }
+    });
+}</code></pre>
+      </div>
+
+      <h3 class="section-title">7. Tips Penggunaan</h3>
+      <ul>
+        <li>Gunakan querySelector untuk seleksi element</li>
+        <li>Hindari penggunaan innerHTML jika tidak diperlukan</li>
+        <li>Gunakan createElement untuk membuat element baru</li>
+        <li>Tambahkan komentar untuk menjelaskan manipulasi DOM</li>
+        <li>Pisahkan logika yang rumit ke dalam fungsi</li>
+        <li>Gunakan event delegation untuk event handling</li>
+      </ul>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='j93.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/javascript.png"
+          alt="javascript"
+          onclick="window.location.href='j1.html'"
+          title="javascript"
+        />
+        <button class="btn" onclick="window.location.href='j102.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+  </body>
+</html>

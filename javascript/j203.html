@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pengenalan ke React.js, Vue.js, dan Svelte</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Pengenalan ke React.js, Vue.js, dan Svelte</h2>
+
+      <h3 class="section-title">1. React.js</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Penggunaan React</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// 1. Instalasi React
+npx create-react-app my-app
+
+// 2. Komponen React sederhana
+import React from 'react';
+
+function App() {
+  const [count, setCount] = React.useState(0);
+
+  return (
+    <div>
+      <h1>Counter: {count}</h1>
+      <button onClick={() => setCount(count + 1)}>
+        Tambah
+      </button>
+    </div>
+  );
+}
+
+export default App;
+
+// 3. Props dan State
+function User({ nama }) {
+  return <h2>Halo, {nama}</h2>;
+}
+
+// 4. Styling dengan CSS Modules
+import styles from './App.module.css';
+
+function App() {
+  return (
+    <div className={styles.container}>
+      <h1 className={styles.title}>Welcome</h1>
+    </div>
+  );
+}</code></pre>
+      </div>
+
+      <h3 class="section-title">2. Vue.js</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Penggunaan Vue</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// 1. Instalasi Vue
+npm create vue@latest
+
+// 2. Template Vue
+<template>
+  <div>
+    <h1>{{ pesan }}</h1>
+    <button @click="tambah">Tambah</button>
+  </div>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+
+const pesan = ref('Halo Vue!');
+const count = ref(0);
+
+function tambah() {
+  count.value++;
+}
+</script>
+
+// 3. Komponen Vue
+<template>
+  <div class="user">
+    <h2>{{ nama }}</h2>
+    <p>{{ umur }}</p>
+  </div>
+</template>
+
+<script setup>
+defineProps({
+  nama: String,
+  umur: Number
+});
+</script>
+
+// 4. Vue Router
+const routes = [
+  { path: '/', component: Home },
+  { path: '/about', component: About }
+];
+
+const router = createRouter({
+  history: createWebHistory(),
+  routes
+});</code></pre>
+      </div>
+
+      <h3 class="section-title">3. Svelte</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Penggunaan Svelte</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// 1. Instalasi Svelte
+npm create vite@latest my-app -- --template svelte
+
+// 2. Komponen Svelte
+<script>
+  let nama = 'Svelte';
+  let count = 0;
+
+  function tambah() {
+    count += 1;
+  }
+</script>
+
+<h1>Halo, {nama}!</h1>
+<button on:click={tambah}>
+  Tambah ({count})
+</button>
+
+// 3. Store di Svelte
+import { writable } from 'svelte/store';
+
+const count = writable(0);
+
+// 4. Routing di Svelte
+<script>
+  import { onMount } from 'svelte';
+  
+  let halaman = 'home';
+  
+  function handleRoute(e) {
+    halaman = e.target.pathname;
+  }
+  
+  onMount(() => {
+    window.addEventListener('routechange', handleRoute);
+    return () => window.removeEventListener('routechange', handleRoute);
+  });
+</script>
+
+{#if halaman === 'home'}
+  <Home />
+{:else if halaman === 'about'}
+  <About />
+{/if}</code></pre>
+      </div>
+
+      <h3 class="section-title">4. Perbandingan</h3>
+      <table class="comparison-table">
+        <tr>
+          <th>Fitur</th>
+          <th>React.js</th>
+          <th>Vue.js</th>
+          <th>Svelte</th>
+        </tr>
+        <tr>
+          <td>Learning Curve</td>
+          <td>Sedang</td>
+          <td>Mudah</td>
+          <td>Mudah</td>
+        </tr>
+        <tr>
+          <td>Size Bundle</td>
+          <td>40-60 KB</td>
+          <td>20-30 KB</td>
+          <td>~8 KB</td>
+        </tr>
+        <tr>
+          <td>Performance</td>
+          <td>Sangat baik</td>
+          <td>Bagus</td>
+          d>
+          <td>Sangat baik</td>
+        </tr>
+        <tr>
+          <td>Community</td>
+          <td>Sangat besar</td>
+          <td>Besar</td>
+          <td>Menumbuh</td>
+        </tr>
+        <tr>
+          <td>Flexibilitas</td>
+          <td>Sangat tinggi</td>
+          <td>Tinggi</td>
+          <td>Sangat tinggi</td>
+        </tr>
+        <tr>
+          <td>Tooling</td>
+          <td>Mature</td>
+          <td>Mature</td>
+          <td>Menumbuh</td>
+        </tr>
+      </table>
+
+      <h3 class="section-title">5. Best Practices</h3>
+      <ul>
+        <li>Pilih framework yang sesuai dengan kebutuhan proyek</li>
+        <li>Mulai dengan proyek sederhana untuk belajar</li>
+        <li>Gunakan state management yang tepat</li>
+        <li>Optimalkan performa dengan lazy loading</li>
+        <li>Gunakan TypeScript untuk project besar</li>
+        <li>Implementasi testing yang baik</li>
+        <li>Gunakan ESLint dan Prettier untuk konsistensi kode</li>
+        <li>Optimalkan bundle size</li>
+      </ul>
+
+      <h3 class="section-title">6. Contoh Praktis</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>To-Do App dengan React, Vue, dan Svelte</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// React
+function TodoApp() {
+  const [todos, setTodos] = React.useState([]);
+  const [input, setInput] = React.useState('');
+
+  const tambahTodo = () => {
+    setTodos([...todos, { id: Date.now(), text: input }]);
+    setInput('');
+  };
+
+  return (
+    <div>
+      <input 
+        value={input}
+        onChange={(e) => setInput(e.target.value)}
+      />
+      <button onClick={tambahTodo}>Tambah</button>
+      <ul>
+        {todos.map((todo) => (
+          <li key={todo.id}>{todo.text}</li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+// Vue
+<template>
+  <div>
+    <input v-model="input" @keyup.enter="tambahTodo" />
+    <button @click="tambahTodo">Tambah</button>
+    <ul>
+      <li v-for="todo in todos" :key="todo.id">
+        {{ todo.text }}
+      </li>
+    </ul>
+  </div>
+</template>
+
+<script setup>
+import { ref } from 'vue';
+
+const todos = ref([]);
+const input = ref('');
+
+function tambahTodo() {
+  todos.value.push({
+    id: Date.now(),
+    text: input.value
+  });
+  input.value = '';
+}
+</script>
+
+// Svelte
+<script>
+  let todos = [];
+  let input = '';
+
+  function tambahTodo() {
+    todos = [...todos, { id: Date.now(), text: input }];
+    input = '';
+  }
+</script>
+
+<input bind:value={input} on:keyup={tambahTodo} />
+<button on:click={tambahTodo}>Tambah</button>
+<ul>
+  {#each todos as todo}
+    <li>{todo.text}</li>
+  {/each}
+</ul></code></pre>
+      </div>
+
+      <h3 class="section-title">7. Tips Penggunaan</h3>
+      <ul>
+        <li>Mulai dengan dokumentasi resmi masing-masing framework</li>
+        <li>Gunakan template project yang sudah tersedia</li>
+        <li>Implementasi state management yang tepat</li>
+        <li>Gunakan testing framework yang sesuai</li>
+        <li>Optimalkan performa dengan lazy loading</li>
+        <li>Gunakan TypeScript untuk project besar</li>
+        <li>Ikuti best practices framework yang digunakan</li>
+        <li>Gunakan tooling yang tersedia</li>
+      </ul>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='j202.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/javascript.png"
+          alt="javascript"
+          onclick="window.location.href='j1.html'"
+          title="javascript"
+        />
+        <button class="btn" onclick="window.location.href='j211.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+
+    <script>
+      function copyCode(button) {
+        const codeBlock = button.parentElement.nextElementSibling;
+        const code = codeBlock.textContent;
+        navigator.clipboard.writeText(code);
+        button.textContent = 'Copied!';
+        setTimeout(() => {
+          button.textContent = 'Copy';
+        }, 2000);
+      }
+    </script>
+  </body>
+</html>

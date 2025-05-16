@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fungsi Dasar dalam JavaScript</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Fungsi Dasar dalam JavaScript</h2>
+
+      <h3 class="section-title">1. Pengenalan Fungsi</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Syntax Fungsi</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Fungsi declaration
+function namaFungsi() {
+    // kode yang dijalankan
+}
+
+// Fungsi expression
+const namaFungsi = function() {
+    // kode yang dijalankan
+};
+
+// Arrow function
+const namaFungsi = () => {
+    // kode yang dijalankan
+};</code></pre>
+      </div>
+
+      <h3 class="section-title">2. Contoh Fungsi Sederhana</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Sederhana</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Fungsi sederhana
+function sapa() {
+    console.log("Halo!");
+}
+sapa(); // output: "Halo!"
+
+// Fungsi dengan parameter
+function sapaNama(nama) {
+    console.log("Halo, " + nama + "!");
+}
+sapaNama("John"); // output: "Halo, John!"
+
+// Fungsi dengan return
+function tambah(a, b) {
+    return a + b;
+}
+let hasil = tambah(5, 3); // hasil = 8
+
+// Fungsi dengan nilai default
+function sapaNama(nama = "Teman") {
+    return "Halo, " + nama;
+}
+console.log(sapaNama()); // "Halo, Teman"
+console.log(sapaNama("John")); // "Halo, John"</code></pre>
+      </div>
+
+      <h3 class="section-title">3. Scope dalam Fungsi</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Scope</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Scope lokal
+function hitung() {
+    let a = 5;
+    console.log(a); // 5
+}
+
+hitung(); // 5
+console.log(a); // Error: a is not defined
+
+// Scope global
+let x = 10;
+
+function tampilkan() {
+    console.log(x); // 10
+}
+
+tampilkan(); // 10
+
+// Scope nested
+function luar() {
+    let luar = "luar";
+    
+    function dalam() {
+        let dalam = "dalam";
+        console.log(luar); // "luar"
+        console.log(dalam); // "dalam"
+    }
+    
+    dalam();
+}
+
+luar();</code></pre>
+      </div>
+
+      <h3 class="section-title">4. Hoisting dalam Fungsi</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Hoisting</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Hoisting fungsi declaration
+sapa(); // Berhasil: "Halo!"
+function sapa() {
+    console.log("Halo!");
+}
+
+// Tidak hoisting fungsi expression
+sapa(); // Error: sapa is not a function
+let sapa = function() {
+    console.log("Halo!");
+};
+
+// Arrow function tidak hoisting
+sapa(); // Error: sapa is not a function
+const sapa = () => {
+    console.log("Halo!");
+};</code></pre>
+      </div>
+
+      <h3 class="section-title">5. Best Practices</h3>
+      <ul>
+        <li>Beri nama fungsi yang deskriptif</li>
+        <li>Hindari nama fungsi yang terlalu panjang</li>
+        <li>Pisahkan fungsi yang kompleks</li>
+        <li>Gunakan parameter dengan bijak</li>
+        <li>Tambahkan komentar untuk fungsi yang kompleks</li>
+        <li>Hindari side effects</li>
+      </ul>
+
+      <h3 class="section-title">6. Contoh Praktis</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Kalkulator</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Fungsi kalkulator sederhana
+function tambah(a, b) {
+    return a + b;
+}
+
+function kurang(a, b) {
+    return a - b;
+}
+
+function kali(a, b) {
+    return a * b;
+}
+
+function bagi(a, b) {
+    if (b === 0) {
+        return "Tidak bisa dibagi nol";
+    }
+    return a / b;
+}
+
+// Penggunaan
+console.log(tambah(5, 3)); // 8
+console.log(kurang(10, 5)); // 5
+console.log(kali(4, 3)); // 12
+console.log(bagi(10, 2)); // 5
+
+// Fungsi validasi form
+function validateForm(nama, email, umur) {
+    if (!nama) {
+        return "Nama tidak boleh kosong";
+    }
+    if (!email.includes("@")) {
+        return "Email tidak valid";
+    }
+    if (umur < 18) {
+        return "Umur minimal 18 tahun";
+    }
+    return true;
+}
+
+// Penggunaan
+console.log(validateForm("John", "john@example.com", 25)); // true
+console.log(validateForm("", "john@example.com", 25)); // "Nama tidak boleh kosong"
+
+// Fungsi untuk menghitung rata-rata
+function hitungRataRata(nilai) {
+    if (nilai.length === 0) {
+        return 0;
+    }
+    let total = 0;
+    for (let i = 0; i < nilai.length; i++) {
+        total += nilai[i];
+    }
+    return total / nilai.length;
+}
+
+// Penggunaan
+console.log(hitungRataRata([80, 75, 90, 85])); // 82.5</code></pre>
+      </div>
+
+      <h3 class="section-title">7. Tips Penggunaan</h3>
+      <ul>
+        <li>Buat fungsi yang fokus pada satu tugas</li>
+        <li>Pisahkan logika yang kompleks ke dalam fungsi</li>
+        <li>Gunakan parameter dengan bijak</li>
+        <li>Tambahkan komentar untuk menjelaskan fungsi</li>
+        <li>Hindari fungsi yang terlalu panjang</li>
+        <li>Gunakan return untuk mengembalikan nilai</li>
+      </ul>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='j53.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/javascript.png"
+          alt="javascript"
+          onclick="window.location.href='j1.html'"
+          title="javascript"
+        />
+        <button class="btn" onclick="window.location.href='j62.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+  </body>
+</html>

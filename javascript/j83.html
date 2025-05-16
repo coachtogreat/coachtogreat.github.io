@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>this pada Objek dalam JavaScript</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">this pada Objek dalam JavaScript</h2>
+
+      <h3 class="section-title">1. Pengenalan this</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh this</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// this dalam metode objek
+let orang = {
+    nama: "John",
+    sapa: function() {
+        console.log(this); // {nama: "John", sapa: [Function: sapa]}
+        console.log(this.nama); // "John"
+    }
+};
+
+// this dalam constructor
+function Orang(nama) {
+    this.nama = nama;
+    console.log(this); // Instance dari Orang
+}
+
+// this dalam arrow function
+let siswa = {
+    nama: "John",
+    nilai: [80, 85, 90],
+    hitungRataRata: () => {
+        console.log(this); // Window object
+        return this.nilai.reduce((a, b) => a + b) / this.nilai.length;
+    }
+};</code></pre>
+      </div>
+
+      <h3 class="section-title">2. this dalam Berbagai Konteks</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Konteks this</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// this dalam metode objek
+let kalkulator = {
+    nilai1: 0,
+    nilai2: 0,
+    tambah: function() {
+        console.log(this); // {nilai1: 0, nilai2: 0, tambah: [Function: tambah]}
+        return this.nilai1 + this.nilai2;
+    }
+};
+
+// this dalam constructor
+function Produk(nama, harga) {
+    this.nama = nama;
+    this.harga = harga;
+    console.log(this); // Instance dari Produk
+}
+
+// this dalam event handler
+let tombol = document.getElementById("tombol");
+tombol.addEventListener("click", function() {
+    console.log(this); // Element tombol
+});
+
+// this dalam arrow function
+let siswa = {
+    nama: "John",
+    nilai: [80, 85, 90],
+    hitungRataRata: () => {
+        console.log(this); // Window object
+    }
+};</code></pre>
+      </div>
+
+      <h3 class="section-title">3. this dalam Constructor</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Constructor</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Constructor sederhana
+function Orang(nama, umur) {
+    this.nama = nama;
+    this.umur = umur;
+    
+    this.sapa = function() {
+        console.log("Halo, nama saya " + this.nama);
+    };
+}
+
+// Constructor dengan prototype
+function Produk(nama, harga) {
+    this.nama = nama;
+    this.harga = harga;
+}
+
+Produk.prototype.diskon = function(persen) {
+    return this.harga * (1 - persen);
+};
+
+// Constructor dengan class
+class Mobil {
+    constructor(merek, tahun) {
+        this.merek = merek;
+        this.tahun = tahun;
+    }
+    
+    info() {
+        return `${this.merek} ${this.tahun}`;
+    }
+}</code></pre>
+      </div>
+
+      <h3 class="section-title">4. this dalam Event Handler</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Event Handler</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Event handler dengan function
+let tombol = document.getElementById("tombol");
+tombol.addEventListener("click", function() {
+    console.log(this); // Element tombol
+    this.style.backgroundColor = "red";
+});
+
+// Event handler dengan arrow function
+let tombol2 = document.getElementById("tombol2");
+tombol2.addEventListener("click", () => {
+    console.log(this); // Window object
+    // this.style.backgroundColor = "red"; // Error
+});
+
+// Event handler dengan bind
+let tombol3 = document.getElementById("tombol3");
+
+function ubahWarna() {
+    console.log(this); // Element tombol3
+    this.style.backgroundColor = "green";
+}
+
+tombol3.addEventListener("click", ubahWarna.bind(tombol3));</code></pre>
+      </div>
+
+      <h3 class="section-title">5. Best Practices</h3>
+      <ul>
+        <li>Hindari arrow function untuk metode objek</li>
+        <li>Gunakan bind() untuk menjaga konteks this</li>
+        <li>Tambahkan komentar untuk menjelaskan konteks this</li>
+        <li>Pisahkan logika yang rumit ke dalam fungsi</li>
+        <li>Hindari penggunaan this yang berlebihan</li>
+        <li>Gunakan arrow function untuk callback</li>
+      </ul>
+
+      <h3 class="section-title">6. Contoh Praktis</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Penggunaan</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Contoh kalkulator
+let kalkulator = {
+    nilai1: 0,
+    nilai2: 0,
+    
+    setNilai: function(a, b) {
+        this.nilai1 = a;
+        this.nilai2 = b;
+    },
+    
+    tambah: function() {
+        return this.nilai1 + this.nilai2;
+    }
+};
+
+// Contoh data siswa
+let siswa = {
+    nama: "John",
+    nilai: [80, 85, 90],
+    
+    hitungRataRata: function() {
+        let total = 0;
+        for (let nilai of this.nilai) {
+            total += nilai;
+        }
+        return total / this.nilai.length;
+    }
+};
+
+// Contoh data produk
+class Produk {
+    constructor(nama, harga) {
+        this.nama = nama;
+        this.harga = harga;
+    }
+    
+    hitungHargaAkhir: function(diskon) {
+        return this.harga * (1 - diskon);
+    }
+}
+
+// Contoh event handler
+let tombol = document.getElementById("tombol");
+
+function tambahKlik() {
+    console.log(this); // Element tombol
+    let jumlah = parseInt(this.dataset.jumlah) || 0;
+    this.dataset.jumlah = jumlah + 1;
+    this.textContent = "Klik: " + jumlah;
+}
+
+tombol.addEventListener("click", tambahKlik);</code></pre>
+      </div>
+
+      <h3 class="section-title">7. Tips Penggunaan</h3>
+      <ul>
+        <li>Hindari arrow function untuk metode objek</li>
+        <li>Gunakan bind() untuk menjaga konteks this</li>
+        <li>Tambahkan komentar untuk menjelaskan konteks this</li>
+        <li>Pisahkan logika yang rumit ke dalam fungsi</li>
+        <li>Hindari penggunaan this yang berlebihan</li>
+        <li>Gunakan arrow function untuk callback</li>
+      </ul>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='j82.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/javascript.png"
+          alt="javascript"
+          onclick="window.location.href='j1.html'"
+          title="javascript"
+        />
+        <button class="btn" onclick="window.location.href='j91.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+  </body>
+</html>

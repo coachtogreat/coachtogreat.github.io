@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Seleksi Elemen dalam JavaScript</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Seleksi Elemen dalam JavaScript</h2>
+
+      <h3 class="section-title">1. getElementById</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh getElementById</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// HTML
+&lt;div id="konten"&gt;Konten&lt;/div&gt;
+
+// JavaScript
+const div = document.getElementById("konten");
+console.log(div); // Element div
+
+// Mengubah konten
+div.textContent = "Konten baru";
+
+// Mengubah style
+div.style.color = "red";
+
+// Mengubah class
+div.className = "baru";
+
+// Menghapus element
+div.remove();</code></pre>
+      </div>
+
+      <h3 class="section-title">2. getElementsByClassName</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh getElementsByClassName</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// HTML
+&lt;div class="item"&gt;Item 1&lt;/div&gt;
+&lt;div class="item"&gt;Item 2&lt;/div&gt;
+
+// JavaScript
+const items = document.getElementsByClassName("item");
+console.log(items); // HTMLCollection
+
+// Mengubah semua item
+for (let i = 0; i < items.length; i++) {
+    items[i].style.color = "blue";
+}
+
+// Mengubah item pertama
+items[0].style.color = "red";
+
+// Mengubah item terakhir
+items[items.length - 1].style.color = "green";</code></pre>
+      </div>
+
+      <h3 class="section-title">3. querySelector</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh querySelector</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// HTML
+&lt;div class="konten"&gt;
+    &lt;p class="paragraf"&gt;Paragraf 1&lt;/p&gt;
+    &lt;p class="paragraf"&gt;Paragraf 2&lt;/p&gt;
+&lt;/div&gt;
+
+// JavaScript
+// Seleksi satu element
+const paragraf1 = document.querySelector(".paragraf");
+console.log(paragraf1); // Element paragraf pertama
+
+// Seleksi dengan kombinasi
+const paragrafDalamDiv = document.querySelector("div .paragraf");
+console.log(paragrafDalamDiv); // Element paragraf pertama
+
+// Seleksi dengan atribut
+const link = document.querySelector("a[href='https://webiddesign.com']");
+console.log(link); // Element link</code></pre>
+      </div>
+
+      <h3 class="section-title">4. querySelectorAll</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh querySelectorAll</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// HTML
+&lt;div class="konten"&gt;
+    &lt;p class="paragraf"&gt;Paragraf 1&lt;/p&gt;
+    &lt;p class="paragraf"&gt;Paragraf 2&lt;/p&gt;
+&lt;/div&gt;
+
+// JavaScript
+// Seleksi semua element
+const paragraf = document.querySelectorAll(".paragraf");
+console.log(paragraf); // NodeList
+
+// Mengubah semua element
+paragraf.forEach(p => {
+    p.style.color = "blue";
+});
+
+// Mengubah element pertama
+paragraf[0].style.color = "red";
+
+// Mengubah element terakhir
+paragraf[paragraf.length - 1].style.color = "green";
+
+// Seleksi dengan kombinasi
+const paragrafDalamDiv = document.querySelectorAll("div .paragraf");
+console.log(paragrafDalamDiv); // NodeList</code></pre>
+      </div>
+
+      <h3 class="section-title">5. Best Practices</h3>
+      <ul>
+        <li>Gunakan querySelector untuk seleksi satu element</li>
+        <li>Gunakan querySelectorAll untuk seleksi multiple element</li>
+        <li>Beri nama variabel yang deskriptif</li>
+        <li>Tambahkan komentar untuk menjelaskan seleksi</li>
+        <li>Pisahkan logika yang rumit ke dalam fungsi</li>
+        <li>Gunakan class untuk seleksi multiple element</li>
+      </ul>
+
+      <h3 class="section-title">6. Contoh Praktis</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Penggunaan</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Contoh form validation
+function validateForm() {
+    const form = document.getElementById("form");
+    const nama = form.querySelector("#nama");
+    const email = form.querySelector("#email");
+    
+    if (nama.value.trim().length === 0) {
+        const pesan = document.createElement("div");
+        pesan.textContent = "Nama tidak boleh kosong";
+        pesan.className = "error";
+        nama.parentNode.insertBefore(pesan, nama);
+    }
+}
+
+// Contoh galeri foto
+function buatGaleri() {
+    const konten = document.querySelector(".galeri");
+    const gambar = [
+        { src: "gambar1.jpg", alt: "Gambar 1" },
+        { src: "gambar2.jpg", alt: "Gambar 2" }
+    ];
+    
+    gambar.forEach(img => {
+        const element = document.createElement("img");
+        element.src = img.src;
+        element.alt = img.alt;
+        konten.appendChild(element);
+    });
+}
+
+// Contoh todo list
+function tambahTodo() {
+    const input = document.querySelector("#todo-input");
+    const list = document.querySelector("#todo-list");
+    
+    if (input.value.trim()) {
+        const li = document.createElement("li");
+        li.textContent = input.value;
+        list.appendChild(li);
+        input.value = "";
+    }
+}
+
+// Contoh event handling
+function tambahEvent() {
+    const tombol = document.querySelectorAll(".tombol");
+    tombol.forEach(btn => {
+        btn.addEventListener("click", function() {
+            this.style.backgroundColor = "blue";
+        });
+    });
+}</code></pre>
+      </div>
+
+      <h3 class="section-title">7. Tips Penggunaan</h3>
+      <ul>
+        <li>Gunakan querySelector untuk seleksi satu element</li>
+        <li>Gunakan querySelectorAll untuk seleksi multiple element</li>
+        <li>Beri nama variabel yang deskriptif</li>
+        <li>Tambahkan komentar untuk menjelaskan seleksi</li>
+        <li>Pisahkan logika yang rumit ke dalam fungsi</li>
+        <li>Gunakan class untuk seleksi multiple element</li>
+      </ul>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='j101.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/javascript.png"
+          alt="javascript"
+          onclick="window.location.href='j1.html'"
+          title="javascript"
+        />
+        <button class="btn" onclick="window.location.href='j103.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+  </body>
+</html>

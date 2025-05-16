@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Callback Function dalam JavaScript</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Callback Function dalam JavaScript</h2>
+
+      <h3 class="section-title">1. Pengenalan Callback Function</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Dasar</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Contoh dasar
+function tampilPesan(pesan) {
+    console.log(pesan);
+}
+
+function prosesData(callback) {
+    // Proses data
+    const hasil = "Data berhasil diproses";
+    callback(hasil);
+}
+
+prosesData(tampilPesan); // "Data berhasil diproses"
+
+// Menggunakan anonymous function
+prosesData(function(hasil) {
+    console.log(hasil);
+});
+
+// Menggunakan arrow function
+prosesData(hasil => {
+    console.log(hasil);
+});</code></pre>
+      </div>
+
+      <h3 class="section-title">2. Jenis Callback Function</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Jenis Callback</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// 1. Callback sebagai parameter
+function prosesData(data, callback) {
+    // Proses data
+    const hasil = data * 2;
+    callback(hasil);
+}
+
+prosesData(5, hasil => {
+    console.log(`Hasil: ${hasil}`); // "Hasil: 10"
+});
+
+// 2. Callback sebagai return
+function prosesData(data) {
+    return function(callback) {
+        const hasil = data * 2;
+        callback(hasil);
+    };
+}
+
+const fungsi = prosesData(5);
+fungsi(hasil => {
+    console.log(`Hasil: ${hasil}`); // "Hasil: 10"
+});
+
+// 3. Callback berantai
+function prosesData1(data, callback) {
+    const hasil1 = data * 2;
+    callback(hasil1);
+}
+
+function prosesData2(data, callback) {
+    const hasil2 = data + 5;
+    callback(hasil2);
+}
+
+prosesData1(5, hasil1 => {
+    prosesData2(hasil1, hasil2 => {
+        console.log(`Hasil akhir: ${hasil2}`); // "Hasil akhir: 15"
+    });
+});</code></pre>
+      </div>
+
+      <h3 class="section-title">3. Callback Hell</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Callback Hell</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Contoh callback hell
+function proses1(data, callback) {
+    // Proses 1
+    callback(data);
+}
+
+function proses2(data, callback) {
+    // Proses 2
+    callback(data);
+}
+
+function proses3(data, callback) {
+    // Proses 3
+    callback(data);
+}
+
+proses1(5, hasil1 => {
+    proses2(hasil1, hasil2 => {
+        proses3(hasil2, hasil3 => {
+            console.log(`Hasil: ${hasil3}`);
+        });
+    });
+});
+
+// Cara menghindari callback hell
+// 1. Membuat fungsi terpisah
+function proses(data) {
+    return new Promise((resolve, reject) => {
+        // Proses data
+        resolve(data);
+    });
+}
+
+async function prosesData() {
+    const hasil1 = await proses(5);
+    const hasil2 = await proses(hasil1);
+    const hasil3 = await proses(hasil2);
+    console.log(`Hasil: ${hasil3}`);
+}
+
+// 2. Menggunakan Promise
+proses(5)
+    .then(hasil1 => proses(hasil1))
+    .then(hasil2 => proses(hasil2))
+    .then(hasil3 => {
+        console.log(`Hasil: ${hasil3}`);
+    });</code></pre>
+      </div>
+
+      <h3 class="section-title">4. Best Practices</h3>
+      <ul>
+        <li>Beri nama callback yang deskriptif</li>
+        <li>Tambahkan komentar untuk menjelaskan callback</li>
+        <li>Pisahkan logika ke dalam fungsi terpisah</li>
+        <li>Hindari callback hell dengan Promise atau async/await</li>
+        <li>Gunakan error handling yang tepat</li>
+        <li>Buat callback yang mudah dipahami</li>
+        <li>Tambahkan validasi input</li>
+      </ul>
+
+      <h3 class="section-title">5. Contoh Praktis</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Penggunaan</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Contoh todo list
+function tambahTodo(teks, callback) {
+    const li = document.createElement("li");
+    li.textContent = teks;
+    document.getElementById("todo-list").appendChild(li);
+    callback(li);
+}
+
+tambahTodo("Belajar JavaScript", function(todo) {
+    todo.style.color = "blue";
+});
+
+// Contoh galeri foto
+function tampilkanGambar(url, callback) {
+    const img = new Image();
+    img.src = url;
+    img.onload = function() {
+        callback(img);
+    };
+}
+
+tampilkanGambar("gambar.jpg", function(img) {
+    document.body.appendChild(img);
+});
+
+// Contoh form validation
+function validateForm(callback) {
+    const nama = document.getElementById("nama");
+    const email = document.getElementById("email");
+    
+    if (nama.value.trim().length === 0) {
+        callback(false, "Nama tidak boleh kosong");
+        return;
+    }
+    
+    if (!email.value.includes("@")) {
+        callback(false, "Email tidak valid");
+        return;
+    }
+    
+    callback(true, "Form valid");
+}
+
+validateForm((valid, pesan) => {
+    if (valid) {
+        console.log(pesan);
+    } else {
+        console.error(pesan);
+    }
+});
+
+// Contoh animasi
+function animasi(element, callback) {
+    let posisi = 0;
+    const animasi = setInterval(() => {
+        posisi++;
+        element.style.left = posisi + "px";
+        
+        if (posisi >= 400) {
+            clearInterval(animasi);
+            callback();
+        }
+    }, 10);
+}
+
+const kotak = document.querySelector(".kotak");
+animasi(kotak, () => {
+    console.log("Animasi selesai!");
+});</code></pre>
+      </div>
+
+      <h3 class="section-title">6. Tips Penggunaan</h3>
+      <ul>
+        <li>Beri nama callback yang deskriptif</li>
+        <li>Tambahkan komentar untuk menjelaskan callback</li>
+        <li>Pisahkan logika ke dalam fungsi terpisah</li>
+        <li>Hindari callback hell dengan Promise atau async/await</li>
+        <li>Gunakan error handling yang tepat</li>
+        <li>Buat callback yang mudah dipahami</li>
+        <li>Tambahkan validasi input</li>
+      </ul>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='j121.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/javascript.png"
+          alt="javascript"
+          onclick="window.location.href='j1.html'"
+          title="javascript"
+        />
+        <button class="btn" onclick="window.location.href='j123.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+  </body>
+</html>

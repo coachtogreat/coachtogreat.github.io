@@ -140,10 +140,20 @@ code {
 /* Navigation Buttons */
 .nav-buttons {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   margin-top: 2rem;
   gap: 1rem;
+  flex-wrap: wrap;
+  padding: 0 1rem;
+}
+
+.nav-buttons img {
+  height: 40px;
+  width: auto;
+  cursor: pointer;
+  transition: transform 0.2s;
+  margin: 0;
 }
 
 .btn {
@@ -159,13 +169,6 @@ code {
 
 .btn:hover {
   background-color: #0056b3;
-}
-
-.home-icon {
-  height: 40px;
-  width: auto;
-  cursor: pointer;
-  transition: transform 0.2s;
 }
 
 .code-highlight {
@@ -199,8 +202,30 @@ h4.code-highlight {
   line-height: 1.5;
 }
 
+.home-icon {
+  height: 40px;
+  width: auto;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
 .home-icon:hover {
   transform: scale(1.1);
+}
+
+nav .nav-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  gap: 20px;
+}
+nav .nav-buttons img {
+  margin: 0 20px;
+}
+nav .nav-buttons img {
+  display: block;
+  margin: 0 auto;
 }
 
 /* Table styles */
@@ -454,6 +479,21 @@ h4.code-highlight {
   opacity: 1;
 }
 
+.nav-buttons img[alt='CSS'] {
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+  opacity: 0.8;
+  content: url('../assets/png/css.png');
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+}
+
+.nav-buttons img[alt='CSS']:hover {
+  content: url('../assets/png/csson.png');
+  opacity: 1;
+}
+
 .btn {
   padding: 10px 25px;
   font-size: 1rem;
@@ -475,6 +515,8 @@ h4.code-highlight {
 
 /* Image styling */
 div img {
+  display: block;
+  margin: 0 auto;
   width: 100%;
   max-width: 100%;
   height: auto;

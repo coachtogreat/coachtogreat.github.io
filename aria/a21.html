@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Peran (Roles) dalam ARIA</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Peran (Roles) dalam ARIA</h2>
+
+      <h3 class="section-title">1. Pengenalan Peran ARIA</h3>
+      <p>
+        Peran (roles) dalam ARIA adalah atribut yang digunakan untuk memberikan informasi tentang
+        tujuan dan fungsi elemen dalam halaman web. Peran membantu teknologi bantuan memahami
+        struktur dan fungsi elemen, sehingga pengguna dengan keterbatasan dapat memahami konteks dan
+        interaksi dengan elemen tersebut.
+      </p>
+
+      <h3 class="section-title">2. Jenis-jenis Peran ARIA</h3>
+      <ul>
+        <li><strong>Landmark Roles:</strong> Menandai area penting dalam halaman web</li>
+        <li><strong>Widget Roles:</strong> Mendefinisikan fungsi kontrol interaktif</li>
+        <li><strong>Document Structure Roles:</strong> Menentukan struktur dokumen</li>
+        <li><strong>Window Roles:</strong> Mengelompokkan konten terkait</li>
+      </ul>
+
+      <h3 class="section-title">3. Contoh Peran ARIA Umum</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Penggunaan Peran</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>&lt;!-- Landmark Roles --&gt;
+&lt;nav role="navigation"&gt;...&lt;/nav&gt;
+&lt;main role="main"&gt;...&lt;/main&gt;
+&lt;aside role="complementary"&gt;...&lt;/aside&gt;
+
+&lt;!-- Widget Roles --&gt;
+&lt;button role="button"&gt;Klik Saya&lt;/button&gt;
+&lt;div role="menu"&gt;...&lt;/div&gt;
+&lt;div role="dialog"&gt;...&lt;/div&gt;
+
+&lt;!-- Document Structure --&gt;
+&lt;header role="banner"&gt;...&lt;/header&gt;
+&lt;footer role="contentinfo"&gt;...&lt;/footer&gt;</code></pre>
+      </div>
+
+      <h3 class="section-title">4. Cara Menggunakan Peran ARIA</h3>
+      <ul>
+        <li>Gunakan peran HTML semantik terlebih dahulu</li>
+        <li>Gunakan ARIA roles hanya jika HTML semantik tidak mencukupi</li>
+        <li>Pastikan peran sesuai dengan konteks elemen</li>
+        <li>Gunakan satu peran per elemen</li>
+        <li>Uji dengan teknologi bantuan</li>
+      </ul>
+
+      <h3 class="section-title">5. Peran ARIA untuk Aplikasi Web</h3>
+      <p>Beberapa peran ARIA yang penting untuk aplikasi web modern:</p>
+      <ul>
+        <li><code>application</code>: Menandai area aplikasi</li>
+        <li><code>tablist</code> dan <code>tab</code>: Untuk navigasi tab</li>
+        <li><code>grid</code> dan <code>row</code>: Untuk tabel interaktif</li>
+        <li><code>tree</code> dan <code>treeitem</code>: Untuk struktur hierarkis</li>
+        <li><code>dialog</code>: Untuk jendela modal</li>
+      </ul>
+
+      <h3 class="section-title">6. Best Practices Menggunakan Peran ARIA</h3>
+      <ul>
+        <li>Pahami fungsi peran sebelum menggunakan</li>
+        <li>Gunakan peran yang sesuai dengan konteks</li>
+        <li>Gunakan atribut ARIA yang mendukung</li>
+        <li>Uji dengan pembaca layar</li>
+        <li>Dokumentasikan penggunaan peran</li>
+      </ul>
+
+      <h3 class="section-title">7. Hubungan dengan HTML Semantik</h3>
+      <p>
+        Peran ARIA harus digunakan sebagai suplemen untuk HTML semantik, bukan pengganti. HTML
+        semantik seperti <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, dan
+        <code>&lt;header&gt;</code>
+        sudah memiliki peran bawaan yang seharusnya tidak perlu ditambahkan secara manual.
+      </p>
+
+      <h3 class="section-title">8. Contoh Penggunaan Praktis</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Menu Navigasi</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>&lt;nav role="navigation"&gt;
+  &lt;ul role="menubar"&gt;
+    &lt;li role="none"&gt;
+      &lt;a href="#" role="menuitem"&gt;Beranda&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li role="none"&gt;
+      &lt;a href="#" role="menuitem"&gt;Produk&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li role="none"&gt;
+      &lt;a href="#" role="menuitem"&gt;Kontak&lt;/a&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+      </div>
+
+      <h3 class="section-title">9. Tips Penggunaan Peran ARIA</h3>
+      <ul>
+        <li>Gunakan peran yang paling spesifik</li>
+        <li>Pahami hierarki peran</li>
+        <li>Gunakan dengan properti ARIA yang sesuai</li>
+        <li>Uji dengan berbagai teknologi bantuan</li>
+        <li>Ikuti perkembangan standar ARIA</li>
+      </ul>
+
+      <h3 class="section-title">10. Peran ARIA dan SEO</h3>
+      <p>Peran ARIA tidak hanya membantu aksesibilitas, tetapi juga dapat meningkatkan SEO:</p>
+      <ul>
+        <li>Membantu search engine memahami struktur situs</li>
+        <li>Meningkatkan relevansi konten</li>
+        <li>Membantu pengindeksan yang lebih baik</li>
+        <li>Meningkatkan pengalaman pengguna</li>
+        <li>Membantu konten dinamis diindeks</li>
+      </ul>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='a13.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/html5.png"
+          alt="HTML"
+          onclick="window.location.href='a1.html'"
+          title="HTML"
+        />
+        <button class="btn" onclick="window.location.href='a22.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+  </body>
+</html>

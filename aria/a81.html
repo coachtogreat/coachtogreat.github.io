@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hubungan WAI-ARIA dengan WCAG</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Hubungan WAI-ARIA dengan WCAG</h2>
+
+      <h3 class="section-title">1. Pengenalan WCAG dan WAI-ARIA</h3>
+      <p>
+        WCAG (Web Content Accessibility Guidelines) dan WAI-ARIA (Web Accessibility Initiative -
+        Accessible Rich Internet Applications) adalah dua standar penting dalam aksesibilitas web.
+        Artikel ini akan membahas hubungan antara kedua standar ini dan bagaimana mereka saling
+        melengkapi.
+      </p>
+
+      <h3 class="section-title">2. Perbedaan WCAG dan WAI-ARIA</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Perbandingan WCAG dan WAI-ARIA</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// WCAG
+- Standar yang lebih umum
+- Fokus pada prinsip aksesibilitas
+- Berbasis tingkat kepatuhan (A, AA, AAA)
+
+// WAI-ARIA
+- Standar teknis yang spesifik
+- Fokus pada implementasi aksesibilitas
+- Berbasis atribut dan peran</code></pre>
+      </div>
+
+      <h3 class="section-title">3. Cara WAI-ARIA Mendukung WCAG</h3>
+      <ul>
+        <li>Memenuhi Success Criteria WCAG</li>
+        <li>Membantu implementasi teknis</li>
+        <li>Meningkatkan interoperabilitas</li>
+        <li>Mendukung pengujian otomatis</li>
+        <li>Membantu pengembangan komponen</li>
+      </ul>
+
+      <h3 class="section-title">4. Contoh Implementasi yang Memenuhi WCAG</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Implementasi Tab Panel</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Memenuhi WCAG 2.4.6 (Headings and Labels)
+&lt;div role="tablist" aria-label="Menu Produk"&gt;
+  &lt;button role="tab" aria-selected="true" aria-controls="panel1"&gt;
+    Produk 1
+  &lt;/button&gt;
+  &lt;button role="tab" aria-selected="false" aria-controls="panel2"&gt;
+    Produk 2
+  &lt;/button&gt;
+&lt;/div&gt;
+
+// Memenuhi WCAG 1.3.1 (Info and Relationships)
+&lt;div role="tabpanel" id="panel1" aria-labelledby="tab1"&gt;
+  Konten Produk 1
+&lt;/div&gt;</code></pre>
+      </div>
+
+      <h3 class="section-title">5. WCAG Success Criteria yang Dapat Dibantu dengan WAI-ARIA</h3>
+      <ul>
+        <li>1.3.1: Info and Relationships</li>
+        <li>2.4.6: Headings and Labels</li>
+        <li>3.3.2: Labels or Instructions</li>
+        <li>4.1.2: Name, Role, Value</li>
+        <li>4.1.3: Status Messages</li>
+      </ul>
+
+      <h3 class="section-title">6. Best Practices Implementasi</h3>
+      <ul>
+        <li>Mulai dengan WCAG sebagai panduan</li>
+        <li>Gunakan WAI-ARIA untuk implementasi teknis</li>
+        <li>Test dengan berbagai teknologi bantuan</li>
+        <li>Dokumentasikan implementasi</li>
+        <li>Update secara berkala</li>
+      </ul>
+
+      <h3 class="section-title">7. Contoh Penggunaan dalam Praktik</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Form Validasi</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Memenuhi WCAG 3.3.1 dan 4.1.2
+&lt;form role="form" aria-label="Form Registrasi"&gt;
+  &lt;div&gt;
+    &lt;label for="email"&gt;Email&lt;/label&gt;
+    &lt;input type="email" id="email" 
+           aria-invalid="false" 
+           aria-describedby="email-error"&gt;
+    &lt;span id="email-error" aria-live="polite"&gt;&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/form&gt;</code></pre>
+      </div>
+
+      <h3 class="section-title">8. Tips Implementasi WCAG dengan WAI-ARIA</h3>
+      <ul>
+        <li>Pahami prinsip WCAG terlebih dahulu</li>
+        <li>Gunakan WAI-ARIA hanya jika diperlukan</li>
+        <li>Test dengan berbagai teknologi bantuan</li>
+        <li>Dokumentasikan setiap implementasi</li>
+        <li>Buat rencana pemeliharaan</li>
+      </ul>
+
+      <h3 class="section-title">9. Alat Bantu Implementasi</h3>
+      <ul>
+        <li>WCAG-EM (Evaluation Methodology)</li>
+        <li>ARIA Authoring Practices</li>
+        <li>Accessibility Testing Tools</li>
+        <li>Screen Reader Testing</li>
+        <li>Automated Testing Tools</li>
+      </ul>
+
+      <h3 class="section-title">10. Kesimpulan</h3>
+      <p>
+        WCAG dan WAI-ARIA adalah dua standar yang saling melengkapi dalam aksesibilitas web. WCAG
+        memberikan panduan umum untuk aksesibilitas, sementara WAI-ARIA menyediakan implementasi
+        teknis yang spesifik. Dengan memahami dan menerapkan kedua standar ini secara tepat, kita
+        dapat menciptakan situs web yang lebih aksesibel dan inklusif.
+      </p>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='a72.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/html5.png"
+          alt="HTML"
+          onclick="window.location.href='a1.html'"
+          title="HTML"
+        />
+        <button class="btn" onclick="window.location.href='a82.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+  </body>
+</html>

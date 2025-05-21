@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contoh Penerapan ARIA pada Komponen UI</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Contoh Penerapan ARIA pada Komponen UI</h2>
+
+      <h3 class="section-title">1. Tab Panel dengan ARIA</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Tab Panel dengan ARIA</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>&lt;div role="tablist" aria-label="Menu Produk"&gt;
+  &lt;button role="tab" aria-selected="true" aria-controls="panel1"&gt;Produk 1&lt;/button&gt;
+  &lt;button role="tab" aria-selected="false" aria-controls="panel2"&gt;Produk 2&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div role="tabpanel" id="panel1" aria-labelledby="tab1"&gt;
+  Konten Produk 1
+&lt;/div&gt;
+
+&lt;div role="tabpanel" id="panel2" aria-labelledby="tab2"&gt;
+  Konten Produk 2
+&lt;/div&gt;</code></pre>
+      </div>
+
+      <h3 class="section-title">2. Modal Dialog dengan ARIA</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Modal Dialog dengan ARIA</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>&lt;div role="dialog" aria-modal="true" aria-labelledby="dialog-title" aria-describedby="dialog-desc"&gt;
+  &lt;h2 id="dialog-title">Konfirmasi Pembayaran&lt;/h2&gt;
+  &lt;p id="dialog-desc">Apakah Anda yakin ingin melanjutkan pembayaran?&lt;/p&gt;
+  
+  &lt;div role="button" aria-label="Tutup dialog" tabindex="0"&gt;
+    &lt;button aria-label="Batal"&gt;Batal&lt;/button&gt;
+    &lt;button aria-label="Lanjutkan"&gt;Lanjutkan&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+
+      <h3 class="section-title">3. Menu Dropdown dengan ARIA</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Menu Dropdown dengan ARIA</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>&lt;div role="menu" aria-label="Menu Pengaturan"&gt;
+  &lt;button role="menuitem" aria-label="Pengaturan Akun"&gt;Akun&lt;/button&gt;
+  &lt;button role="menuitem" aria-label="Pengaturan Privasi"&gt;Privasi&lt;/button&gt;
+  &lt;button role="menuitem" aria-label="Pengaturan Notifikasi"&gt;Notifikasi&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+
+      <h3 class="section-title">4. Carousel dengan ARIA</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Carousel dengan ARIA</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>&lt;div role="region" aria-label="Carousel Produk"&gt;
+  &lt;div role="list" aria-label="Daftar Produk"&gt;
+    &lt;div role="listitem" aria-label="Produk 1"&gt;
+      &lt;img src="produk1.jpg" alt="Produk 1"&gt;
+      &lt;p&gt;Deskripsi Produk 1&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div role="listitem" aria-label="Produk 2"&gt;
+      &lt;img src="produk2.jpg" alt="Produk 2"&gt;
+      &lt;p&gt;Deskripsi Produk 2&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+
+      <h3 class="section-title">5. Form Validasi dengan ARIA</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Form Validasi dengan ARIA</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>&lt;form role="form" aria-label="Form Registrasi"&gt;
+  &lt;div&gt;
+    &lt;label for="email"&gt;Email&lt;/label&gt;
+    &lt;input type="email" id="email" 
+           aria-invalid="false" 
+           aria-describedby="email-error"&gt;
+    &lt;span id="email-error" aria-live="polite"&gt;&lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;div&gt;
+    &lt;label for="password"&gt;Password&lt;/label&gt;
+    &lt;input type="password" id="password" 
+           aria-invalid="false" 
+           aria-describedby="password-error"&gt;
+    &lt;span id="password-error" aria-live="polite"&gt;&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/form&gt;</code></pre>
+      </div>
+
+      <h3 class="section-title">6. Accordion dengan ARIA</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Accordion dengan ARIA</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>&lt;div role="region" aria-label="Accordion FAQ"&gt;
+  &lt;div&gt;
+    &lt;button role="button" aria-expanded="false" aria-controls="content1"&gt;
+      Pertanyaan 1
+    &lt;/button&gt;
+    &lt;div id="content1" role="region" hidden&gt;
+      Jawaban untuk pertanyaan 1
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div&gt;
+    &lt;button role="button" aria-expanded="false" aria-controls="content2"&gt;
+      Pertanyaan 2
+    &lt;/button&gt;
+    &lt;div id="content2" role="region" hidden&gt;
+      Jawaban untuk pertanyaan 2
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+
+      <h3 class="section-title">7. Best Practices Implementasi ARIA</h3>
+      <ul>
+        <li>Gunakan role yang tepat sesuai konteks</li>
+        <li>Gunakan aria-label untuk memberikan konteks</li>
+        <li>Gunakan aria-describedby untuk pesan error</li>
+        <li>Gunakan aria-expanded untuk elemen yang bisa dibuka/tutup</li>
+        <li>Gunakan aria-live untuk update konten dinamis</li>
+      </ul>
+
+      <h3 class="section-title">8. Tips Implementasi ARIA</h3>
+      <ul>
+        <li>Test dengan screen reader</li>
+        <li>Gunakan atribut yang relevan</li>
+        <li>Pastikan navigasi yang jelas</li>
+        <li>Update atribut saat state berubah</li>
+        <li>Dokumentasikan implementasi ARIA</li>
+      </ul>
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='a31.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/html5.png"
+          alt="HTML"
+          onclick="window.location.href='a1.html'"
+          title="HTML"
+        />
+        <button class="btn" onclick="window.location.href='a33.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Role Struktur dalam WAI-ARIA</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Role Struktur dalam WAI-ARIA</h2>
+
+      <h3 class="section-title">1. Pengenalan Role Struktur</h3>
+      <p>
+        Role struktur adalah peran ARIA yang membantu mengorganisir dan memberikan konteks pada
+        elemen-elemen yang membentuk struktur halaman web. Role ini membantu memahami hubungan antar
+        elemen dan memudahkan navigasi pengguna.
+      </p>
+
+      <h3 class="section-title">2. Jenis-jenis Role Struktur</h3>
+      <ul>
+        <li><code>article</code>: Konten independen yang dapat berdiri sendiri</li>
+        <li><code>region</code>: Area yang memiliki identitas dan fungsi yang jelas</li>
+        <li><code>group</code>: Kumpulan elemen yang terkait</li>
+        <li><code>list</code>: Daftar item yang terurut</li>
+        <li><code>listitem</code>: Item dalam daftar</li>
+        <li><code>definition</code>: Definisi atau penjelasan</li>
+        <li><code>document</code>: Konten utama halaman</li>
+        <li><code>math</code>: Konten matematika</li>
+        <li><code>note</code>: Catatan atau informasi tambahan</li>
+        <li><code>presentation</code>: Konten yang hanya untuk presentasi</li>
+      </ul>
+
+      <h3 class="section-title">3. Contoh Penggunaan Role Struktur</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Role Struktur dalam Artikel</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>&lt;article role="article" aria-label="Artikel Utama"&gt;
+  &lt;header&gt;
+    &lt;h1&gt;Judul Artikel&lt;/h1&gt;
+    &lt;p&gt;Ditulis oleh: Penulis&lt;/p&gt;
+  &lt;/header&gt;
+  
+  &lt;section&gt;
+    &lt;h2&gt;Pendahuluan&lt;/h2&gt;
+    &lt;p&gt;Isi pendahuluan...&lt;/p&gt;
+  &lt;/section&gt;
+
+  &lt;section&gt;
+    &lt;h2&gt;Isi Utama&lt;/h2&gt;
+    &lt;p&gt;Isi artikel...&lt;/p&gt;
+  &lt;/section&gt;
+&lt;/article&gt;</code></pre>
+      </div>
+
+      <h3 class="section-title">4. Role Struktur dalam Daftar</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Role Struktur dalam Daftar</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>&lt;div role="region" aria-label="Daftar Produk"&gt;
+  &lt;div role="list"&gt;
+    &lt;div role="listitem"&gt;
+      &lt;h3&gt;Produk 1&lt;/h3&gt;
+      &lt;p&gt;Deskripsi produk 1&lt;/p&gt;
+    &lt;/div&gt;
+
+    &lt;div role="listitem"&gt;
+      &lt;h3&gt;Produk 2&lt;/h3&gt;
+      &lt;p&gt;Deskripsi produk 2&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+
+      <h3 class="section-title">5. Role Struktur dalam Grup Konten</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Role Struktur dalam Grup</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>&lt;div role="region" aria-label="Pilihan Filter"&gt;
+  &lt;div role="group" aria-label="Filter Harga"&gt;
+    &lt;label&gt;Harga Minimal&lt;/label&gt;
+    &lt;input type="number" aria-label="Harga Minimal"&gt;
+
+    &lt;label&gt;Harga Maksimal&lt;/label&gt;
+    &lt;input type="number" aria-label="Harga Maksimal"&gt;
+  &lt;/div&gt;
+
+  &lt;div role="group" aria-label="Filter Kategori"&gt;
+    &lt;label&gt;Kategori&lt;/label&gt;
+    &lt;select aria-label="Pilih Kategori"&gt;
+      &lt;option&gt;Semua&lt;/option&gt;
+      &lt;option&gt;Elektronik&lt;/option&gt;
+      &lt;option&gt;Fashion&lt;/option&gt;
+    &lt;/select&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+
+      <h3 class="section-title">6. Best Practices Penggunaan Role Struktur</h3>
+      <ul>
+        <li>Gunakan role struktur yang sesuai dengan konteks</li>
+        <li>Tambahkan atribut ARIA yang diperlukan</li>
+        <li>Pastikan struktur yang konsisten</li>
+        <li>Test dengan teknologi bantuan</li>
+        <li>Dokumentasikan struktur halaman</li>
+      </ul>
+
+      <h3 class="section-title">7. Tips Penggunaan Role Struktur</h3>
+      <ul>
+        <li>Gunakan role struktur untuk memberikan konteks</li>
+        <li>Pastikan hierarki yang jelas</li>
+        <li>Gunakan atribut yang relevan</li>
+        <li>Test dengan berbagai teknologi bantuan</li>
+        <li>Dokumentasikan struktur halaman</li>
+      </ul>
+
+      <h3 class="section-title">8. Dampak Role Struktur pada Aksesibilitas</h3>
+      <ul>
+        <li>Meningkatkan pemahaman struktur halaman</li>
+        <li>Membantu navigasi yang lebih efisien</li>
+        <li>Membuat konten lebih terorganisir</li>
+        <li>Membantu pengguna dengan teknologi bantuan</li>
+        <li>Meningkatkan pengalaman pengguna</li>
+      </ul>
+
+      <h3 class="section-title">9. Kapan Menggunakan Role Struktur</h3>
+      <ul>
+        <li>Pada konten yang kompleks</li>
+        <li>Ketika HTML semantik tidak cukup</li>
+        <li>Untuk memberikan konteks tambahan</li>
+        <li>Pada halaman dengan struktur yang rumit</li>
+        <li>Untuk meningkatkan navigasi</li>
+      </ul>
+
+      <h3 class="section-title">10. Contoh Role Struktur dalam Dokumen</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Role Struktur dalam Dokumen</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>&lt;div role="document" aria-label="Dokumen Panduan"&gt;
+  &lt;div role="region" aria-label="Pendahuluan"&gt;
+    &lt;h1&gt;Panduan Penggunaan&lt;/h1&gt;
+    &lt;p&gt;Panduan ini menjelaskan cara menggunakan aplikasi...&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div role="region" aria-label="Fitur Utama"&gt;
+    &lt;h2&gt;Fitur Utama&lt;/h2&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Fitur 1&lt;/li&gt;
+      &lt;li&gt;Fitur 2&lt;/li&gt;
+      &lt;li&gt;Fitur 3&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+
+  &lt;div role="region" aria-label="Pertanyaan Umum"&gt;
+    &lt;h2&gt;Pertanyaan Umum&lt;/h2&gt;
+    &lt;div role="group"&gt;
+      &lt;div role="heading" aria-level="3"&gt;
+        Pertanyaan 1
+      &lt;/div&gt;
+      &lt;p&gt;Jawaban untuk pertanyaan 1...&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='a42.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/html5.png"
+          alt="HTML"
+          onclick="window.location.href='a1.html'"
+          title="HTML"
+        />
+        <button class="btn" onclick="window.location.href='a51.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Properti Status Dinamis dalam WAI-ARIA</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Properti Status Dinamis dalam WAI-ARIA</h2>
+
+      <h3 class="section-title">1. Pengenalan Properti Status Dinamis</h3>
+      <p>
+        Properti status dinamis adalah atribut ARIA yang digunakan untuk menggambarkan kondisi atau
+        state elemen yang dapat berubah selama interaksi pengguna. Properti ini membantu memberikan
+        informasi real-time tentang kondisi elemen kepada pengguna dengan teknologi bantuan.
+      </p>
+
+      <h3 class="section-title">2. Jenis-jenis Properti Status Dinamis</h3>
+      <ul>
+        <li>
+          <code>aria-expanded</code>: Menunjukkan apakah elemen dapat diperluas atau dikompres
+        </li>
+        <li><code>aria-selected</code>: Menunjukkan apakah elemen terpilih</li>
+        <li><code>aria-checked</code>: Menunjukkan status kotak centang atau radio button</li>
+        <li><code>aria-pressed</code>: Menunjukkan status tombol yang dapat ditekan</li>
+        <li><code>aria-disabled</code>: Menunjukkan apakah elemen dinonaktifkan</li>
+        <li><code>aria-invalid</code>: Menunjukkan apakah ada error pada elemen</li>
+        <li><code>aria-hidden</code>: Menunjukkan apakah elemen disembunyikan</li>
+        <li><code>aria-current</code>: Menunjukkan elemen yang sedang aktif</li>
+      </ul>
+
+      <h3 class="section-title">3. Contoh Penggunaan Properti Status Dinamis</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Tab Panel dengan Properti Status</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>&lt;div role="tablist" aria-label="Menu Produk"&gt;
+  &lt;button role="tab" aria-selected="true" aria-controls="panel1"&gt;Produk 1&lt;/button&gt;
+  &lt;button role="tab" aria-selected="false" aria-controls="panel2"&gt;Produk 2&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div role="tabpanel" id="panel1" aria-labelledby="tab1"&gt;
+  Konten Produk 1
+&lt;/div&gt;
+
+&lt;div role="tabpanel" id="panel2" aria-labelledby="tab2"&gt;
+  Konten Produk 2
+&lt;/div&gt;</code></pre>
+      </div>
+
+      <h3 class="section-title">4. Properti Status dalam Form Validasi</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Form dengan Properti Status</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>&lt;form role="form" aria-label="Form Registrasi"&gt;
+  &lt;div&gt;
+    &lt;label for="email"&gt;Email&lt;/label&gt;
+    &lt;input type="email" id="email" 
+           aria-invalid="false" 
+           aria-describedby="email-error"&gt;
+    &lt;span id="email-error" aria-live="polite"&gt;&lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;div&gt;
+    &lt;label for="password"&gt;Password&lt;/label&gt;
+    &lt;input type="password" id="password" 
+           aria-invalid="false" 
+           aria-describedby="password-error"&gt;
+    &lt;span id="password-error" aria-live="polite"&gt;&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/form&gt;</code></pre>
+      </div>
+
+      <h3 class="section-title">5. Properti Status dalam Menu</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Menu dengan Properti Status</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>&lt;nav role="navigation" aria-label="Menu Navigasi"&gt;
+  &lt;button aria-expanded="false" aria-controls="menu-items"&gt;Menu&lt;/button&gt;
+  
+  &lt;div id="menu-items" role="menu" hidden&gt;
+    &lt;button role="menuitem" aria-current="page"&gt;Beranda&lt;/button&gt;
+    &lt;button role="menuitem"&gt;Produk&lt;/button&gt;
+    &lt;button role="menuitem"&gt;Kontak&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/nav&gt;</code></pre>
+      </div>
+
+      <h3 class="section-title">6. Best Practices Penggunaan Properti Status</h3>
+      <ul>
+        <li>Gunakan properti status yang sesuai dengan konteks</li>
+        <li>Update status secara dinamis</li>
+        <li>Pastikan status selalu akurat</li>
+        <li>Gunakan <code>aria-live</code> untuk update status</li>
+        <li>Dokumentasikan perubahan status</li>
+      </ul>
+
+      <h3 class="section-title">7. Tips Penggunaan Properti Status</h3>
+      <ul>
+        <li>Gunakan JavaScript untuk mengelola status</li>
+        <li>Pastikan update status terdeteksi</li>
+        <li>Gunakan event listeners untuk perubahan</li>
+        <li>Test dengan screen reader</li>
+        <li>Dokumentasikan implementasi</li>
+      </ul>
+
+      <h3 class="section-title">8. Dampak Properti Status pada Aksesibilitas</h3>
+      <ul>
+        <li>Meningkatkan pemahaman kondisi elemen</li>
+        <li>Membantu navigasi yang lebih efisien</li>
+        <li>Membuat interaksi lebih terstruktur</li>
+        <li>Meningkatkan pengalaman pengguna</li>
+        <li>Membantu pengguna dengan teknologi bantuan</li>
+      </ul>
+
+      <h3 class="section-title">9. Contoh Implementasi Properti Status</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Implementasi JavaScript</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// JavaScript untuk mengelola status
+function toggleMenu(button, menu) {
+    const expanded = button.getAttribute('aria-expanded') === 'true';
+    button.setAttribute('aria-expanded', !expanded);
+    menu.hidden = expanded;
+}
+
+// Form validation
+function validateForm() {
+    const email = document.getElementById('email');
+    const emailError = document.getElementById('email-error');
+    
+    if (!isValidEmail(email.value)) {
+        email.setAttribute('aria-invalid', 'true');
+        emailError.textContent = 'Email tidak valid';
+    } else {
+        email.setAttribute('aria-invalid', 'false');
+        emailError.textContent = '';
+    }
+}</code></pre>
+      </div>
+
+      <h3 class="section-title">10. Kapan Menggunakan Properti Status</h3>
+      <ul>
+        <li>Pada elemen yang dapat berubah kondisinya</li>
+        <li>Ketika perlu memberikan feedback</li>
+        <li>Untuk meningkatkan navigasi</li>
+        <li>Pada komponen interaktif</li>
+        <li>Untuk memberikan konteks tambahan</li>
+      </ul>
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='a43.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/html5.png"
+          alt="HTML"
+          onclick="window.location.href='a1.html'"
+          title="HTML"
+        />
+        <button class="btn" onclick="window.location.href='a52.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+  </body>
+</html>

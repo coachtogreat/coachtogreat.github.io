@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Penggunaan ARIA</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Penggunaan ARIA</h2>
+
+      <h3 class="section-title">Pengertian ARIA</h3>
+      <p>
+        ARIA (Accessible Rich Internet Applications) adalah spesifikasi yang membantu membuat konten
+        web lebih aksesibel dengan menambahkan atribut yang membantu alat bantu memahami konten dan
+        interaksi yang kompleks.
+      </p>
+
+      <h3 class="section-title">Atribut ARIA yang Penting</h3>
+      <p>Berikut adalah beberapa atribut ARIA yang penting:</p>
+      <ul>
+        <li>
+          <strong>Role:</strong>
+          <ul>
+            <li><code>role="button"</code> untuk elemen yang berperilaku seperti tombol</li>
+            <li><code>role="menu"</code> untuk menu navigasi</li>
+            <li><code>role="dialog"</code> untuk dialog modal</li>
+            <li><code>role="alert"</code> untuk pesan penting</li>
+          </ul>
+        </li>
+        <li>
+          <strong>States:</strong>
+          <ul>
+            <li><code>aria-expanded="true"</code> untuk elemen yang dapat diperluas</li>
+            <li><code>aria-checked="true"</code> untuk elemen yang dapat dipilih</li>
+            <li><code>aria-disabled="true"</code> untuk elemen yang dinonaktifkan</li>
+            <li><code>aria-hidden="true"</code> untuk konten yang disembunyikan</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Properties:</strong>
+          <ul>
+            <li><code>aria-label=""</code> untuk memberikan label</li>
+            <li><code>aria-describedby=""</code> untuk memberikan deskripsi</li>
+            <li><code>aria-labelledby=""</code> untuk menghubungkan label</li>
+            <li><code>aria-controls=""</code> untuk menghubungkan kontrol</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h3 class="section-title">Implementasi dalam Praktik</h3>
+      <p>Berikut adalah beberapa praktik implementasi:</p>
+      <ul>
+        <li>
+          <strong>Untuk Komponen:</strong>
+          <ul>
+            <li>Menggunakan role yang tepat untuk komponen</li>
+            <li>Menggunakan state yang sesuai untuk status</li>
+            <li>Menggunakan property yang tepat untuk hubungan</li>
+            <li>Membuat komponen yang mudah diakses</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Untuk Interaksi:</strong>
+          <ul>
+            <li>Menggunakan aria-live untuk pesan dinamis</li>
+            <li>Menggunakan aria-pressed untuk tombol</li>
+            <li>Menggunakan aria-selected untuk item terpilih</li>
+            <li>Membuat feedback yang jelas</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Untuk Konten:</strong>
+          <ul>
+            <li>Menggunakan aria-label untuk konten</li>
+            <li>Menggunakan aria-describedby untuk deskripsi</li>
+            <li>Menggunakan aria-hidden untuk konten tersembunyi</li>
+            <li>Membuat konten yang mudah dipahami</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h3 class="section-title">Alat dan Teknik untuk Implementasi</h3>
+      <p>Beberapa alat dan teknik yang dapat digunakan:</p>
+      <ul>
+        <li>ARIA validation tools</li>
+        <li>Accessibility testing tools</li>
+        <li>Screen reader compatibility</li>
+        <li>ARIA implementation guides</li>
+        <li>Developer tools dengan ARIA support</li>
+      </ul>
+
+      <h3 class="section-title">Pengujian ARIA</h3>
+      <p>Beberapa metode pengujian yang dapat digunakan:</p>
+      <ul>
+        <li>Menguji dengan screen reader</li>
+        <li>Menguji dengan keyboard</li>
+        <li>Menguji dengan ARIA validation tools</li>
+        <li>Menguji dengan user testing</li>
+        <li>Menguji dengan accessibility tools</li>
+      </ul>
+
+      <h3 class="section-title">Kesimpulan</h3>
+      <p>
+        ARIA adalah alat yang sangat penting dalam aksesibilitas web yang membantu membuat konten
+        dan interaksi yang kompleks dapat diakses oleh semua pengguna. Dengan menggunakan atribut
+        ARIA yang tepat, kita dapat menciptakan pengalaman pengguna yang lebih baik dan lebih
+        inklusif.
+      </p>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='w51.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/html5.png"
+          alt="HTML"
+          onclick="window.location.href='w1.html'"
+          title="HTML"
+        />
+        <button class="btn" onclick="window.location.href='w53.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+  </body>
+</html>

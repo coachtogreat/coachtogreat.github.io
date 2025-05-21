@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Integrasi dengan Teknologi Bantu</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Integrasi dengan Teknologi Bantu</h2>
+
+      <h3 class="section-title">1. Pengenalan Teknologi Bantu</h3>
+      <p>
+        Teknologi bantu (assistive technology) adalah perangkat atau software yang membantu pengguna
+        dengan keterbatasan untuk mengakses teknologi. Artikel ini akan membahas bagaimana WAI-ARIA
+        dapat diintegrasikan dengan berbagai teknologi bantu.
+      </p>
+
+      <h3 class="section-title">2. Jenis-jenis Teknologi Bantu</h3>
+      <ul>
+        <li>Screen Reader (NVDA, JAWS, VoiceOver)</li>
+        <li>Screen Magnifier</li>
+        <li>Speech Recognition Software</li>
+        <li>Alternative Input Devices</li>
+        <li>Braille Display</li>
+      </ul>
+
+      <h3 class="section-title">3. Integrasi dengan Screen Reader</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Integrasi dengan Screen Reader</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Tab Panel dengan NVDA
+&lt;div role="tablist" aria-label="Menu Produk"&gt;
+  &lt;button role="tab" aria-selected="true" aria-controls="panel1"&gt;
+    Produk 1
+  &lt;/button&gt;
+  &lt;button role="tab" aria-selected="false" aria-controls="panel2"&gt;
+    Produk 2
+  &lt;/button&gt;
+&lt;/div&gt;
+
+// NVDA Shortcuts
+NVDA + Tab: Pindah antar elemen
+NVDA + F7: Menu NVDA
+NVDA + B: Landmark
+NVDA + Q: Quick Nav</code></pre>
+      </div>
+
+      <h3 class="section-title">4. Integrasi dengan Speech Recognition</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Integrasi Speech Recognition</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Voice Commands
+&lt;div role="application" aria-label="Kalkulator"&gt;
+  &lt;button aria-label="Tambah"&gt;+&lt;/button&gt;
+  &lt;button aria-label="Kurang"&gt;-&lt;/button&gt;
+&lt;/div&gt;
+
+// Dragon NaturallySpeaking
+"Click Tambah"
+"Click Kurang"
+"Go to Search Box"</code></pre>
+      </div>
+
+      <h3 class="section-title">5. Best Practices Integrasi</h3>
+      <ul>
+        <li>Gunakan ARIA yang sesuai</li>
+        <li>Test dengan berbagai teknologi bantu</li>
+        <li>Dokumentasikan shortcut</li>
+        <li>Gunakan label yang jelas</li>
+        <li>Implementasikan feedback suara</li>
+      </ul>
+
+      <h3 class="section-title">6. Tips Penggunaan Teknologi Bantu</h3>
+      <ul>
+        <li>Test dengan pengguna nyata</li>
+        <li>Gunakan mode demo</li>
+        <li>Simulasikan penggunaan</li>
+        <li>Dokumentasikan penggunaan</li>
+        <li>Buat panduan penggunaan</li>
+      </ul>
+
+      <h3 class="section-title">7. Contoh Implementasi yang Baik</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Form dengan Integrasi</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Form dengan Integrasi Teknologi Bantu
+&lt;form role="form" aria-label="Form Registrasi"&gt;
+  &lt;div&gt;
+    &lt;label for="nama"&gt;Nama&lt;/label&gt;
+    &lt;input type="text" id="nama" 
+           aria-label="Masukkan nama lengkap Anda"&gt;
+  &lt;/div&gt;
+  
+  &lt;div&gt;
+    &lt;label for="email"&gt;Email&lt;/label&gt;
+    &lt;input type="email" id="email" 
+           aria-invalid="false" 
+           aria-describedby="email-error"&gt;
+    &lt;span id="email-error" aria-live="polite"&gt;&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/form&gt;</code></pre>
+      </div>
+
+      <h3 class="section-title">8. Alat Bantu Integrasi</h3>
+      <ul>
+        <li>Accessibility Testing Tools</li>
+        <li>Screen Reader Emulators</li>
+        <li>Keyboard Navigation Tools</li>
+        <li>Speech Recognition Simulators</li>
+        <li>ARIA Validator Tools</li>
+      </ul>
+
+      <h3 class="section-title">9. Dampak Integrasi yang Baik</h3>
+      <ul>
+        <li>Meningkatkan aksesibilitas</li>
+        <li>Meningkatkan pengalaman pengguna</li>
+        <li>Membantu pengguna dengan keterbatasan</li>
+        <li>Meningkatkan inklusivitas</li>
+        <li>Meningkatkan kualitas kode</li>
+      </ul>
+
+      <h3 class="section-title">10. Kesimpulan</h3>
+      <p>
+        Integrasi WAI-ARIA dengan teknologi bantu memungkinkan pengembang untuk membuat situs web
+        yang lebih aksesibel dan inklusif. Dengan menggunakan ARIA yang tepat dan mengikuti best
+        practices, kita dapat memastikan bahwa semua pengguna dapat mengakses dan menggunakan situs
+        web dengan mudah, terlepas dari keterbatasan yang mereka miliki.
+      </p>
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='a81.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/html5.png"
+          alt="HTML"
+          onclick="window.location.href='a1.html'"
+          title="HTML"
+        />
+        <button class="btn" onclick="window.location.href='a91.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+  </body>
+</html>

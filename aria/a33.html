@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menggunakan ARIA dengan JavaScript</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Menggunakan ARIA dengan JavaScript</h2>
+
+      <h3 class="section-title">1. Pengenalan Penggunaan ARIA dengan JavaScript</h3>
+      <p>
+        JavaScript memungkinkan kita untuk mengelola atribut ARIA dinamis, memperbarui status
+        elemen, dan meningkatkan aksesibilitas interaksi pengguna.
+      </p>
+
+      <h3 class="section-title">2. Mengelola ARIA States dengan JavaScript</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Mengelola ARIA States</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Mengubah status expanded
+const button = document.querySelector('[aria-expanded]');
+button.setAttribute('aria-expanded', 'true');
+
+// Mengubah status invalid
+const input = document.querySelector('[aria-invalid]');
+input.setAttribute('aria-invalid', 'true');
+
+// Menghapus atribut ARIA
+input.removeAttribute('aria-invalid');</code></pre>
+      </div>
+
+      <h3 class="section-title">3. Menggunakan ARIA Live Regions</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh ARIA Live Regions</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// HTML
+&lt;div id="status" role="status" aria-live="polite"&gt;&lt;/div&gt;
+
+// JavaScript
+const status = document.getElementById('status');
+
+// Update status
+function updateStatus(message) {
+    status.textContent = message;
+    // Pastikan perubahan terdeteksi
+    status.setAttribute('aria-atomic', 'true');
+    setTimeout(() => status.removeAttribute('aria-atomic'), 100);
+}</code></pre>
+      </div>
+
+      <h3 class="section-title">4. Mengelola Fokus dengan JavaScript</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Mengelola Fokus</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Membuat modal fokusable
+function setupModalFocus() {
+    const modal = document.getElementById('modal');
+    const focusableElements = modal.querySelectorAll('button, [href], input, select, textarea');
+    
+    // Simpan elemen pertama dan terakhir
+    const firstFocusable = focusableElements[0];
+    const lastFocusable = focusableElements[focusableElements.length - 1];
+
+    // Event handler untuk fokus
+    modal.addEventListener('keydown', (e) => {
+        if (e.key === 'Tab') {
+            if (e.shiftKey && document.activeElement === firstFocusable) {
+                e.preventDefault();
+                lastFocusable.focus();
+            } else if (!e.shiftKey && document.activeElement === lastFocusable) {
+                e.preventDefault();
+                firstFocusable.focus();
+            }
+        }
+    });
+}</code></pre>
+      </div>
+
+      <h3 class="section-title">5. Mengelola ARIA Labels Dinamis</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Mengelola ARIA Labels</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Mengubah label dinamis
+function updateButtonLabel(button, count) {
+    button.setAttribute('aria-label', `Keranjang (${count} item)`);
+}
+
+// Mengubah deskripsi dinamis
+function updateStatusDescription(id, message) {
+    const element = document.getElementById(id);
+    element.setAttribute('aria-describedby', 'status-message');
+    document.getElementById('status-message').textContent = message;
+}</code></pre>
+      </div>
+
+      <h3 class="section-title">6. Best Practices Menggunakan ARIA dengan JavaScript</h3>
+      <ul>
+        <li>Gunakan event listeners untuk mengelola perubahan state</li>
+        <li>Pastikan perubahan ARIA terdeteksi oleh screen reader</li>
+        <li>Gunakan setTimeout untuk perubahan yang perlu diperbarui</li>
+        <li>Simpan referensi elemen yang dikelola</li>
+        <li>Gunakan try-catch untuk menghindari error</li>
+      </ul>
+
+      <h3 class="section-title">7. Contoh Implementasi Modal dengan ARIA</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Modal dengan ARIA</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// HTML
+&lt;div id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"&gt;
+    &lt;h2 id="modal-title">Konfirmasi&lt;/h2&gt;
+    &lt;p&gt;Apakah Anda yakin ingin melanjutkan?&lt;/p&gt;
+    &lt;button id="confirm"&gt;Ya&lt;/button&gt;
+    &lt;button id="cancel"&gt;Tidak&lt;/button&gt;
+&lt;/div&gt;
+
+// JavaScript
+const modal = document.getElementById('modal');
+const confirmButton = document.getElementById('confirm');
+const cancelButton = document.getElementById('cancel');
+
+function openModal() {
+    modal.setAttribute('aria-hidden', 'false');
+    modal.style.display = 'block';
+    confirmButton.focus();
+}
+
+function closeModal() {
+    modal.setAttribute('aria-hidden', 'true');
+    modal.style.display = 'none';
+}
+
+// Event listeners
+confirmButton.addEventListener('click', () => {
+    // Proses konfirmasi
+    closeModal();
+});
+
+cancelButton.addEventListener('click', closeModal);
+
+// Keyboard navigation
+modal.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        closeModal();
+    }
+});</code></pre>
+      </div>
+
+      <h3 class="section-title">8. Tips Penggunaan ARIA dengan JavaScript</h3>
+      <ul>
+        <li>Test dengan screen reader</li>
+        <li>Gunakan atribut yang relevan</li>
+        <li>Pastikan navigasi yang jelas</li>
+        <li>Update atribut saat state berubah</li>
+        <li>Dokumentasikan implementasi ARIA</li>
+      </ul>
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='a32.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/html5.png"
+          alt="HTML"
+          onclick="window.location.href='a1.html'"
+          title="HTML"
+        />
+        <button class="btn" onclick="window.location.href='a41.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+  </body>
+</html>

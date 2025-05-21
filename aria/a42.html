@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Role Widget dalam WAI-ARIA</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Role Widget dalam WAI-ARIA</h2>
+
+      <h3 class="section-title">1. Pengenalan Role Widget</h3>
+      <p>
+        Role widget adalah peran ARIA yang digunakan untuk menggambarkan komponen interaktif dalam
+        aplikasi web. Widget membantu menyediakan fungsi dan interaksi yang kompleks dengan cara
+        yang dapat diakses.
+      </p>
+
+      <h3 class="section-title">2. Jenis-jenis Role Widget</h3>
+      <ul>
+        <li><code>button</code>: Tombol interaktif</li>
+        <li><code>checkbox</code>: Kotak centang</li>
+        <li><code>combobox</code>: Kotak kombinasi</li>
+        <li><code>dialog</code>: Jendela dialog</li>
+        <li><code>menu</code>: Menu navigasi</li>
+        <li><code>menuitem</code>: Item dalam menu</li>
+        <li><code>radio</code>: Radio button</li>
+        <li><code>slider</code>: Penggeser nilai</li>
+        <li><code>tab</code>: Tab panel</li>
+        <li><code>tablist</code>: Daftar tab</li>
+        <li><code>tabpanel</code>: Konten tab</li>
+      </ul>
+
+      <h3 class="section-title">3. Contoh Penggunaan Role Widget</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Role Widget dalam Menu</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>&lt;nav role="navigation" aria-label="Menu Produk"&gt;
+  &lt;div role="menu"&gt;
+    &lt;button role="menuitem" aria-label="Kategori 1"&gt;Kategori 1&lt;/button&gt;
+    &lt;button role="menuitem" aria-label="Kategori 2"&gt;Kategori 2&lt;/button&gt;
+    &lt;button role="menuitem" aria-label="Kategori 3"&gt;Kategori 3&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/nav&gt;</code></pre>
+      </div>
+
+      <h3 class="section-title">4. Best Practices Penggunaan Role Widget</h3>
+      <ul>
+        <li>Gunakan role widget yang sesuai dengan fungsi</li>
+        <li>Tambahkan atribut ARIA yang diperlukan</li>
+        <li>Pastikan interaksi yang konsisten</li>
+        <li>Test dengan teknologi bantuan</li>
+        <li>Dokumentasikan fungsi widget</li>
+      </ul>
+
+      <h3 class="section-title">5. Contoh Role Widget dalam Tab Panel</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Tab Panel dengan Role Widget</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>&lt;div role="tablist" aria-label="Menu Produk"&gt;
+  &lt;button role="tab" aria-selected="true" aria-controls="panel1"&gt;Produk 1&lt;/button&gt;
+  &lt;button role="tab" aria-selected="false" aria-controls="panel2"&gt;Produk 2&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div role="tabpanel" id="panel1" aria-labelledby="tab1"&gt;
+  Konten Produk 1
+&lt;/div&gt;
+
+&lt;div role="tabpanel" id="panel2" aria-labelledby="tab2"&gt;
+  Konten Produk 2
+&lt;/div&gt;</code></pre>
+      </div>
+
+      <h3 class="section-title">6. Role Widget dalam Form</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Form dengan Role Widget</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>&lt;form role="form" aria-label="Form Registrasi"&gt;
+  &lt;div role="group" aria-label="Informasi Pribadi"&gt;
+    &lt;label for="nama"&gt;Nama&lt;/label&gt;
+    &lt;input type="text" id="nama" role="textbox"&gt;
+    
+    &lt;label for="gender"&gt;Jenis Kelamin&lt;/label&gt;
+    &lt;div role="radiogroup" aria-label="Pilihan Jenis Kelamin"&gt;
+      &lt;input type="radio" id="male" name="gender" role="radio"&gt;
+      &lt;label for="male">Laki-laki&lt;/label&gt;
+      
+      &lt;input type="radio" id="female" name="gender" role="radio"&gt;
+      &lt;label for="female">Perempuan&lt;/label&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/form&gt;</code></pre>
+      </div>
+
+      <h3 class="section-title">7. Role Widget dalam Modal Dialog</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Modal Dialog dengan Role Widget</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>&lt;div role="dialog" aria-modal="true" aria-labelledby="dialog-title"&gt;
+  &lt;h2 id="dialog-title">Konfirmasi Pembayaran&lt;/h2&gt;
+  
+  &lt;div role="group" aria-label="Pilihan Pembayaran"&gt;
+    &lt;div role="radiogroup" aria-label="Metode Pembayaran"&gt;
+      &lt;input type="radio" id="transfer" name="payment" role="radio"&gt;
+      &lt;label for="transfer">Transfer Bank&lt;/label&gt;
+      
+      &lt;input type="radio" id="credit" name="payment" role="radio"&gt;
+      &lt;label for="credit">Kartu Kredit&lt;/label&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div role="group" aria-label="Tombol Aksi"&gt;
+    &lt;button role="button" aria-label="Batal"&gt;Batal&lt;/button&gt;
+    &lt;button role="button" aria-label="Lanjutkan"&gt;Lanjutkan&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+
+      <h3 class="section-title">8. Tips Penggunaan Role Widget</h3>
+      <ul>
+        <li>Gunakan role yang sesuai dengan fungsi widget</li>
+        <li>Tambahkan atribut ARIA yang diperlukan</li>
+        <li>Pastikan interaksi yang konsisten</li>
+        <li>Test dengan berbagai teknologi bantuan</li>
+        <li>Dokumentasikan fungsi widget</li>
+      </ul>
+
+      <h3 class="section-title">9. Dampak Role Widget pada Aksesibilitas</h3>
+      <ul>
+        <li>Meningkatkan interaksi yang lebih baik</li>
+        <li>Membantu pengguna memahami fungsi widget</li>
+        <li>Meningkatkan navigasi yang lebih efisien</li>
+        <li>Membuat aplikasi lebih ramah teknologi bantuan</li>
+        <li>Membuat interaksi lebih terstruktur</li>
+      </ul>
+
+      <h3 class="section-title">10. Kapan Menggunakan Role Widget</h3>
+      <ul>
+        <li>Pada komponen interaktif yang kompleks</li>
+        <li>Ketika HTML semantik tidak cukup</li>
+        <li>Untuk meningkatkan aksesibilitas</li>
+        <li>Pada aplikasi web yang dinamis</li>
+        <li>Untuk memberikan konteks interaksi</li>
+      </ul>
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='a41.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/html5.png"
+          alt="HTML"
+          onclick="window.location.href='a1.html'"
+          title="HTML"
+        />
+        <button class="btn" onclick="window.location.href='a43.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+  </body>
+</html>

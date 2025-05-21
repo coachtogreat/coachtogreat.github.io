@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Studi Kasus dan Contoh Pengujian ARIA</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Studi Kasus dan Contoh Pengujian ARIA</h2>
+
+      <h3 class="section-title">1. Pengenalan Studi Kasus</h3>
+      <p>
+        Studi kasus akan membantu memahami penerapan praktis pengujian ARIA dalam berbagai situasi.
+        Artikel ini akan membahas beberapa studi kasus dan contoh pengujian yang dapat menjadi
+        referensi.
+      </p>
+
+      <h3 class="section-title">2. Studi Kasus 1: E-commerce Website</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Pengujian Produk Grid</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Struktur HTML Produk
+&lt;div role="grid" aria-label="Daftar Produk"&gt;
+  &lt;div role="row"&gt;
+    &lt;div role="columnheader"&gt;Gambar&lt;/div&gt;
+    &lt;div role="columnheader"&gt;Nama&lt;/div&gt;
+    &lt;div role="columnheader"&gt;Harga&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div role="row"&gt;
+    &lt;div role="gridcell"&gt;
+      &lt;img src="product1.jpg" alt="Produk 1"&gt;
+    &lt;/div&gt;
+    &lt;div role="gridcell"&gt;Produk 1&lt;/div&gt;
+    &lt;div role="gridcell"&gt;Rp 100.000&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+
+      <h3 class="section-title">3. Studi Kasus 2: Formulir Pendaftaran</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Pengujian Form Validasi</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Form dengan Validasi
+&lt;form role="form" aria-label="Form Pendaftaran"&gt;
+  &lt;div&gt;
+    &lt;label for="email"&gt;Email&lt;/label&gt;
+    &lt;input type="email" id="email" 
+           aria-invalid="false" 
+           aria-describedby="email-error"&gt;
+    &lt;span id="email-error" aria-live="polite"&gt;&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/form&gt;</code></pre>
+      </div>
+
+      <h3 class="section-title">4. Studi Kasus 3: Menu Navigasi</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Pengujian Menu</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Menu dengan ARIA
+&lt;nav role="navigation" aria-label="Menu Navigasi"&gt;
+  &lt;button aria-expanded="false" aria-controls="menu-items"&gt;
+    Menu
+  &lt;/button&gt;
+  
+  &lt;div id="menu-items" role="menu" hidden&gt;
+    &lt;button role="menuitem"&gt;Beranda&lt;/button&gt;
+    &lt;button role="menuitem"&gt;Produk&lt;/button&gt;
+    &lt;button role="menuitem"&gt;Kontak&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/nav&gt;</code></pre>
+      </div>
+
+      <h3 class="section-title">5. Contoh Pengujian dengan NVDA</h3>
+      <ul>
+        <li>Memeriksa navigasi dengan tab</li>
+        <li>Menggunakan shortcut NVDA</li>
+        <li>Mengidentifikasi elemen yang tidak dapat diakses</li>
+        <li>Memeriksa pesan error</li>
+        <li>Menggunakan mode browse dan focus</li>
+      </ul>
+
+      <h3 class="section-title">6. Contoh Pengujian dengan Chrome DevTools</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Penggunaan DevTools</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Membuka Accessibility Panel
+1. Buka Chrome DevTools
+2. Klik tab "Accessibility"
+3. Pilih elemen yang ingin diuji
+4. Lihat report aksesibilitas
+
+// Menggunakan Console
+console.log($0.accessibilityNode);
+console.log($0.ariaProperties);</code></pre>
+      </div>
+
+      <h3 class="section-title">7. Contoh Pengujian dengan axe-core</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Penggunaan axe-core</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>// Pengujian dengan axe-core
+const { axe } = require('@axe-core/puppeteer');
+
+async function testAccessibility() {
+  const browser = await puppeteer.launch();
+  const page = await browser.newPage();
+  await page.goto('https://example.com');
+  
+  const results = await axe(page);
+  console.log(results.violations);
+  
+  await browser.close();
+}</code></pre>
+      </div>
+
+      <h3 class="section-title">8. Best Practices Pengujian</h3>
+      <ul>
+        <li>Test dengan berbagai screen reader</li>
+        <li>Gunakan kombinasi alat pengujian</li>
+        <li>Test di berbagai device</li>
+        <li>Dokumentasikan hasil pengujian</li>
+        <li>Buat rencana perbaikan</li>
+      </ul>
+
+      <h3 class="section-title">9. Tips Pengujian Efektif</h3>
+      <ul>
+        <li>Mulai dengan pengujian manual</li>
+        <li>Gunakan alat otomatis untuk validasi</li>
+        <li>Test dengan pengguna nyata</li>
+        <li>Simulasikan berbagai kondisi</li>
+        <li>Update test cases secara berkala</li>
+      </ul>
+
+      <h3 class="section-title">10. Kesimpulan</h3>
+      <p>
+        Studi kasus dan contoh pengujian yang telah dibahas menunjukkan pentingnya pendekatan
+        terstruktur dalam pengujian ARIA. Dengan menggabungkan pengujian manual dan otomatis, serta
+        menggunakan berbagai alat pengujian, kita dapat memastikan implementasi ARIA yang benar dan
+        meningkatkan aksesibilitas situs web.
+      </p>
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='a71.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/html5.png"
+          alt="HTML"
+          onclick="window.location.href='a1.html'"
+          title="HTML"
+        />
+        <button class="btn" onclick="window.location.href='a81.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+  </body>
+</html>

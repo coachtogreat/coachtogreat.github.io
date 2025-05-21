@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Masalah Navigasi Keyboard</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Masalah Navigasi Keyboard</h2>
+
+      <h3 class="section-title">1. Definisi Navigasi Keyboard</h3>
+      <p>
+        Navigasi keyboard adalah kemampuan pengguna untuk mengakses dan
+        mengontrol elemen web menggunakan keyboard saja, tanpa perlu menggunakan
+        mouse atau perangkat input lainnya.
+      </p>
+
+      <h3 class="section-title">2. Jenis-jenis Masalah</h3>
+      <h4 class="section-title">2.1. Masalah Fokus</h4>
+      <ul>
+        <li>Fokus tidak terlihat</li>
+        <li>Fokus tidak berurutan</li>
+        <li>Fokus terjebak</li>
+        <li>Fokus hilang</li>
+      </ul>
+
+      <h4 class="section-title">2.2. Masalah Navigasi</h4>
+      <ul>
+        <li>Tidak bisa navigasi dengan Tab</li>
+        <li>Urutan Tab yang tidak logis</li>
+        <li>Element tidak dapat diakses</li>
+        <li>Shortcut yang tidak konsisten</li>
+      </ul>
+
+      <h4 class="section-title">2.3. Masalah Interaksi</h4>
+      <ul>
+        <li>Event yang hanya berfungsi dengan mouse</li>
+        <li>Menu yang tidak bisa dioperasikan</li>
+        <li>Form yang sulit diisi</li>
+        <li>Komponen yang tidak responsif</li>
+      </ul>
+
+      <h3 class="section-title">3. Dampak Masalah</h3>
+      <h4 class="section-title">3.1. Aksesibilitas</h4>
+      <ul>
+        <li>Penyandang disabilitas terhalang</li>
+        <li>Pengguna dengan keterbatasan tidak bisa mengakses</li>
+        <li>Kurangnya inklusivitas</li>
+      </ul>
+
+      <h4 class="section-title">3.2. Pengalaman Pengguna</h4>
+      <ul>
+        <li>Kesulitan navigasi</li>
+        <li>Frustrasi pengguna</li>
+        <li>Pengalaman yang tidak menyenangkan</li>
+      </ul>
+
+      <h4 class="section-title">3.3. Kepatuhan</h4>
+      <ul>
+        <li>Melanggar standar WCAG</li>
+        <li>Tidak memenuhi Section 508</li>
+        <li>Risiko hukum</li>
+      </ul>
+
+      <h3 class="section-title">4. Best Practices</h3>
+      <h4 class="section-title">4.1. Implementasi Fokus</h4>
+      <ul>
+        <li>Gunakan tabindex yang tepat</li>
+        <li>Atur urutan fokus yang logis</li>
+        <li>Buat fokus yang terlihat</li>
+        <li>Gunakan role ARIA yang sesuai</li>
+      </ul>
+
+      <h4 class="section-title">4.2. Navigasi yang Baik</h4>
+      <ul>
+        <li>Urutan Tab yang logis</li>
+        <li>Shortcut yang konsisten</li>
+        <li>Menu yang dapat dioperasikan</li>
+        <li>Form yang mudah diisi</li>
+      </ul>
+
+      <h4 class="section-title">4.3. Interaksi yang Baik</h4>
+      <ul>
+        <li>Event yang berfungsi dengan keyboard</li>
+        <li>Menu yang responsif</li>
+        <li>Komponen yang dapat dioperasikan</li>
+        <li>Feedback yang jelas</li>
+      </ul>
+
+      <h3 class="section-title">5. Contoh Masalah dan Solusinya</h3>
+      <h4 class="section-title">5.1. Contoh Masalah</h4>
+      <ul>
+        <li>
+          <strong>Fokus tidak terlihat:</strong>
+          <ul>
+            <li>Menu navigasi tidak berwarna saat fokus</li>
+            <li>Button tidak berubah saat fokus</li>
+            <li>Link tidak menunjukkan fokus</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Urutan Tab yang tidak logis:</strong>
+          <ul>
+            <li>Tab berpindah ke elemen yang tidak relevan</li>
+            <li>Urutan yang berputar-putar</li>
+            <li>Element penting tidak dapat diakses</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h4 class="section-title">5.2. Solusi</h4>
+      <ul>
+        <li>
+          <strong>Fokus yang terlihat:</strong>
+          <ul>
+            <li>Gunakan outline yang jelas</li>
+            <li>Tambahkan warna kontras</li>
+            <li>Buat animasi yang sederhana</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Urutan Tab yang baik:</strong>
+          <ul>
+            <li>Urutkan elemen berdasarkan logika</li>
+            <li>Gunakan tabindex dengan bijak</li>
+            <li>Atur focus trap</li>
+          </ul>
+        </li>
+      </ul>
+
+      <h3 class="section-title">6. Tools dan Alat Bantu</h3>
+      <h4 class="section-title">6.1. Testing Tools</h4>
+      <ul>
+        <li>Keyboard Navigation Tester</li>
+        <li>Accessibility Insights</li>
+        <li>WAVE Keyboard Testing</li>
+      </ul>
+
+      <h4 class="section-title">6.2. Browser Extensions</h4>
+      <ul>
+        <li>Keyboard Navigation Tester</li>
+        <li>Accessibility Developer Tools</li>
+        <li>Keyboard Navigation Helper</li>
+      </ul>
+
+      <h3 class="section-title">7. Tips Implementasi</h3>
+      <h4 class="section-title">7.1. Untuk Developer</h4>
+      <ul>
+        <li>Gunakan HTML semantik</li>
+        <li>Implementasikan keyboard events</li>
+        <li>Buat testing keyboard</li>
+      </ul>
+
+      <h4 class="section-title">7.2. Untuk QA</h4>
+      <ul>
+        <li>Test semua elemen interaktif</li>
+        <li>Verifikasi urutan fokus</li>
+        <li>Periksa shortcut</li>
+      </ul>
+
+      <h4 class="section-title">7.3. Untuk Desainer</h4>
+      <ul>
+        <li>Desain fokus yang jelas</li>
+        <li>Gunakan warna kontras</li>
+        <li>Buat animasi yang membantu</li>
+      </ul>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='s21.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/html5.png"
+          alt="HTML"
+          onclick="window.location.href='s1.html'"
+          title="HTML"
+        />
+        <button class="btn" onclick="window.location.href='s23.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+  </body>
+</html>

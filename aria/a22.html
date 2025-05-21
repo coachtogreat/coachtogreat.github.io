@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Properti dan Status dalam ARIA</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <div class="blog-container">
+      <a href="https://webiddesign.com" target="_blank" rel="noopener noreferrer">
+        <img src="../assets/jpg/profil.jpg" alt="Coach Surya Rachmannuh" class="profile-img" />
+      </a>
+
+      <h2 class="intro-title">Properti dan Status dalam ARIA</h2>
+
+      <h3 class="section-title">1. Pengenalan Properti dan Status ARIA</h3>
+      <p>
+        Properti (properties) dan status (states) dalam ARIA adalah atribut yang digunakan untuk
+        memberikan informasi lebih detail tentang elemen web. Properti menggambarkan karakteristik
+        statis, sedangkan status menggambarkan kondisi dinamis yang dapat berubah.
+      </p>
+
+      <h3 class="section-title">2. Properti ARIA</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Properti ARIA</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>&lt;!-- Properti untuk navigasi --&gt;
+aria-label="teks"
+aria-labelledby="id"
+aria-describedby="id"
+aria-controls="id"
+
+&lt;!-- Properti untuk konten --&gt;
+aria-live="polite"
+aria-relevant="all"
+aria-atomic="true"
+
+&lt;!-- Properti untuk hubungan --&gt;
+aria-owns="id"
+aria-flowto="id"
+aria-details="id"</code></pre>
+      </div>
+
+      <h3 class="section-title">3. Status ARIA</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Status ARIA</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>&lt;!-- Status untuk kontrol --&gt;
+aria-checked="true"
+aria-selected="true"
+aria-expanded="true"
+aria-disabled="true"
+
+&lt;!-- Status untuk validasi --&gt;
+aria-invalid="true"
+aria-required="true"
+aria-busy="true"</code></pre>
+      </div>
+
+      <h3 class="section-title">4. Cara Menggunakan Properti dan Status</h3>
+      <ul>
+        <li>Gunakan properti untuk memberikan informasi statis</li>
+        <li>Gunakan status untuk menggambarkan kondisi dinamis</li>
+        <li>Pastikan nilai properti dan status sesuai konteks</li>
+        <li>Gunakan dengan peran ARIA yang sesuai</li>
+        <li>Uji dengan teknologi bantuan</li>
+      </ul>
+
+      <h3 class="section-title">5. Properti ARIA untuk Komponen UI</h3>
+      <p>Beberapa properti ARIA yang penting untuk komponen UI:</p>
+      <ul>
+        <li><code>aria-label</code>: Memberikan label alternatif</li>
+        <li><code>aria-expanded</code>: Menunjukkan status ekspansi</li>
+        <li><code>aria-checked</code>: Menunjukkan status centang</li>
+        <li><code>aria-selected</code>: Menunjukkan item yang dipilih</li>
+        <li><code>aria-disabled</code>: Menunjukkan elemen yang dinonaktifkan</li>
+      </ul>
+
+      <h3 class="section-title">6. Best Practices Menggunakan Properti dan Status</h3>
+      <ul>
+        <li>Pahami perbedaan antara properti dan status</li>
+        <li>Gunakan nilai yang tepat untuk setiap properti</li>
+        <li>Perbarui status secara dinamis</li>
+        <li>Gunakan dengan peran ARIA yang sesuai</li>
+        <li>Uji dengan berbagai teknologi bantuan</li>
+      </ul>
+
+      <h3 class="section-title">7. Contoh Penggunaan Praktis</h3>
+      <div class="code-block">
+        <div class="code-header">
+          <span>Contoh Menu Akordion</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code>&lt;div role="region" aria-label="Menu Utama"&gt;
+  &lt;button role="button" aria-expanded="false" aria-controls="menu-content"&gt;
+    Menu
+  &lt;/button&gt;
+  &lt;div id="menu-content" role="region" aria-hidden="true"&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href="#"&gt;Beranda&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#"&gt;Produk&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href="#"&gt;Kontak&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+
+      <h3 class="section-title">8. Hubungan dengan JavaScript</h3>
+      <p>Properti dan status ARIA sering digunakan bersama JavaScript untuk:</p>
+      <ul>
+        <li>Mengubah status dinamis</li>
+        <li>Mengelola interaksi pengguna</li>
+        <li>Memperbarui konten secara real-time</li>
+        <li>Mengatur animasi dan transisi</li>
+        <li>Mengelola validasi form</li>
+      </ul>
+
+      <h3 class="section-title">9. Tips Penggunaan Properti dan Status</h3>
+      <ul>
+        <li>Gunakan properti dan status yang paling spesifik</li>
+        <li>Pahami nilai-nilai yang tersedia</li>
+        <li>Perbarui status secara tepat waktu</li>
+        <li>Gunakan dengan peran ARIA yang sesuai</li>
+        <li>Uji dengan berbagai kondisi</li>
+      </ul>
+
+      <h3 class="section-title">10. Peran dalam Aksesibilitas</h3>
+      <p>Properti dan status ARIA memainkan peran penting dalam:</p>
+      <ul>
+        <li>Meningkatkan pemahaman pengguna</li>
+        <li>Membantu navigasi yang lebih baik</li>
+        <li>Meningkatkan interaksi pengguna</li>
+        <li>Meningkatkan validasi form</li>
+        <li>Membantu pengguna dengan keterbatasan</li>
+      </ul>
+
+      <div class="nav-buttons">
+        <button class="btn" onclick="window.location.href='a21.html'">&lt;&nbsp;Prev</button>
+        <img
+          src="../assets/png/home.png"
+          alt="Home"
+          class="home-icon"
+          onclick="window.location.href='../index.html'"
+          title="Home"
+        />
+        <img
+          src="../assets/png/html5.png"
+          alt="HTML"
+          onclick="window.location.href='a1.html'"
+          title="HTML"
+        />
+        <button class="btn" onclick="window.location.href='a23.html'">Next&nbsp;&gt;</button>
+      </div>
+    </div>
+  </body>
+</html>
